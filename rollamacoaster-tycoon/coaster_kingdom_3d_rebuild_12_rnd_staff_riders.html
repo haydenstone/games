@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coaster Kingdom 3D • Rebuild Stage 1</title>
+<style>
+:root{color-scheme:dark;--bg:#071014;--panel:#0e1a1f;--card:#15262d;--line:#29434d;--text:#edf7f8;--muted:#9db1b7;--accent:#62d8c0;--danger:#ff766f}
+*{box-sizing:border-box}body{margin:0;background:#071014;color:var(--text);font:13px system-ui,Segoe UI,sans-serif;overflow-x:hidden}
+header{padding:9px 12px;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-bottom:1px solid var(--line);background:#0b161a}
+h1{font-size:16px;margin:0}.stats,.speed{display:flex;gap:5px;flex-wrap:wrap}.pill,button,select,input{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:8px;padding:7px 9px}button{cursor:pointer;min-height:38px}button.active{outline:2px solid var(--accent)}
+main{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:8px;padding:8px}.left{min-width:0}
+#view{width:100%;height:590px;display:block;border:1px solid var(--line);border-radius:12px;background:#9bc8dd;touch-action:none}
+.side{display:flex;flex-direction:column;gap:8px;min-width:0}.panel{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:9px}
+.panel h2{font-size:12px;margin:0 0 7px;color:#cce1e4;letter-spacing:.08em}.shop{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;max-height:300px;overflow:auto;padding-right:2px}
+.product{padding:0;overflow:hidden;text-align:left;min-height:116px;background:#112027}.product.active{outline:2px solid var(--accent)}.preview{height:72px;display:grid;place-items:center;background:linear-gradient(#83bdd2 0 45%,#55934e 45%);position:relative;overflow:hidden}.preview svg{width:100%;height:100%}.product .meta{padding:6px}.product b{display:block;font-size:11px}.product small{color:var(--muted)}
+.toolbar{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}.status{color:var(--muted);min-height:20px;padding-top:5px}
+.thoughts{height:130px;overflow:auto}.thought{padding:5px 0;border-bottom:1px solid var(--line);font-size:11px}.thought b{color:var(--accent)}
+.chatHead{display:flex;gap:5px}.chatHead select{min-width:0;flex:1}.chat{height:170px;overflow:auto;border:1px solid var(--line);border-radius:8px;padding:7px;margin:6px 0;background:#091418}.bubble{margin:5px 0;padding:6px 8px;border-radius:8px;background:#16272e}.bubble.me{background:#20333a}.bubble b{color:var(--accent)}form{display:flex;gap:5px}form input{min-width:0;flex:1;font-size:16px}
+#ghostLabel{position:absolute;pointer-events:none;display:none;background:#071014dd;border:1px solid var(--accent);border-radius:7px;padding:5px 7px;color:white}
+@media(max-width:800px){main{grid-template-columns:1fr}#view{height:430px}.side{display:grid;grid-template-columns:1fr 1fr}.shop{max-height:260px}}@media(max-width:540px){#view{height:370px}.side{display:block}.panel{margin-bottom:8px}.shop{grid-template-columns:repeat(2,1fr)}}
+
+/* === REBUILD 03A: NON-INVASIVE PROFESSIONAL UI === */
+:root{--ui-bg:#0a120f;--ui-card:#101a16;--ui-card2:#14211b;--ui-line:#2b493a;--ui-muted:#81978c}
+header{background:linear-gradient(180deg,#14221b,#0b1511);border-bottom:1px solid var(--ui-line);box-shadow:0 2px 12px #0005}
+header h1{font-size:17px;letter-spacing:.3px}.stats{gap:5px}.pill{background:#0b1511;border:1px solid #294637;border-radius:5px;padding:5px 8px}
+.side{background:var(--ui-bg);border-left:1px solid var(--ui-line);padding:8px;scrollbar-width:thin}
+.panel{background:linear-gradient(180deg,var(--ui-card2),var(--ui-card));border:1px solid var(--ui-line);border-radius:7px;padding:9px;margin-bottom:8px;box-shadow:0 4px 12px #0002}
+.panel h2{font-size:10px;letter-spacing:1.25px;color:#91b6a3;margin:0 0 8px}
+button{border-radius:5px;border:1px solid #365a47;background:#16261e;transition:background .12s,border-color .12s,transform .08s}
+button:hover{background:#20382b;border-color:#528267}button:active{transform:translateY(1px)}button.active{background:#315c47;border-color:#6bad89}
+.status{background:#09130f;border:1px solid #263f33;border-radius:5px;color:#a9bdb2;padding:7px}
+.product{background:#0c1712;border:1px solid #294538;border-radius:6px}.product:hover{border-color:#59876d;background:#14231b}.product.selected{border-color:#79bd95;background:#1b3327}
+input,select,textarea{background:#09130f!important;border:1px solid #355746!important;color:#dce9e1!important;border-radius:5px!important}
+.ui-section-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:8px;position:sticky;top:0;z-index:4;background:var(--ui-bg);padding:2px 0 7px}
+.ui-section-tabs button{font-size:9px;padding:5px 3px;min-height:28px}.ui-compact>.panel{display:none}.ui-compact>.panel.ui-visible{display:block}
+.ui-footer-hint{font-size:9px;color:var(--ui-muted);padding:3px 2px 7px}
+
+/* === GUEST SENTIMENT PULSE: UI ONLY === */
+#guestPulse{position:fixed;left:8px;right:8px;bottom:28px;z-index:90;height:42px;display:flex;align-items:center;gap:8px;padding:5px 8px;background:#08110eef;border:1px solid #315342;border-radius:7px;box-shadow:0 -4px 18px #0006;pointer-events:none}
+#guestPulse .pulse-title{white-space:nowrap;font-size:9px;letter-spacing:1px;color:#8fb5a2}
+#guestPulse .pulse-items{display:flex;gap:5px;overflow:hidden;flex:1}
+#guestPulse .thought-chip{white-space:nowrap;max-width:250px;overflow:hidden;text-overflow:ellipsis;padding:5px 7px;background:#122019;border:1px solid #29483a;border-radius:5px;color:#cbdad2}
+#guestPulse .thought-chip b{color:#7fc69b}
+#guestPulse .rating{white-space:nowrap;padding:5px 8px;border:1px solid #466b58;border-radius:5px;background:#102019}
+
+/* === FULL-HEIGHT VIEWPORT: REBUILD 04 BASELINE === */
+html,body{height:100%!important;min-height:100%!important;overflow:hidden!important}
+body{display:flex!important;flex-direction:column!important}
+header{flex:0 0 auto!important}
+main{flex:1 1 auto!important;min-height:0!important;height:auto!important;overflow:hidden!important}
+.left{height:100%!important;min-height:0!important;display:flex!important;flex-direction:column!important}
+#view{flex:1 1 auto!important;width:100%!important;height:100%!important;min-height:0!important;display:block!important}
+#bottomBar{flex:0 0 auto!important}
+
+.stats{flex-wrap:wrap;justify-content:flex-end}
+.stats .pill{white-space:nowrap}
+#nativeCameraBtn.camera-active{background:#3d7257;border-color:#7fc69b}
+
+#guestPopup{position:fixed;right:18px;bottom:82px;z-index:140;width:min(360px,calc(100vw - 36px));background:#0b1512f5;border:1px solid #47735e;border-radius:9px;box-shadow:0 12px 35px #0009;padding:10px;display:none}
+#guestPopup.open{display:block}
+#guestPopupHead{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#guestPopupName{font-weight:800;color:#e2eee7}
+#guestPopupMeta{font-size:10px;color:#8fa79a;margin:4px 0 8px}
+#guestPopupLog{height:130px;overflow:auto;background:#07100d;border:1px solid #263f33;border-radius:5px;padding:7px;font-size:11px}
+#guestPopupActions{display:flex;gap:5px;margin:7px 0}
+#guestPopupForm{display:flex;gap:5px}
+#guestPopupInput{flex:1;min-width:0}
+#guestPopup .msg{margin:0 0 6px}
+#guestPopup .you{color:#88b9a0}
+#guestPopup .guest{color:#d7e4dd}
+body.carrying-guest #view{cursor:grabbing!important}
+</style></head><body>
+<header><h1>🎢 COASTER KINGDOM 3D <small style="color:var(--muted)">• REBUILD 01</small></h1><div class="stats"><span class="pill">💵 <b id="cash">$15,000</b></span><span class="pill">👥 <b id="gc">0</b></span><span class="pill">😊 <b id="happy">84%</b></span><span class="pill">📈 <b id="profit">$0</b></span></div><div class="speed"><button data-speed=".25">¼×</button><button data-speed=".5" class="active" class="active" class="active">½×</button><button data-speed="1">1×</button><button id="pause">⏸</button><span class="pill">👥 In Park <b id="metricGuests">0</b></span>
+<span class="pill">😊 Mood <b id="metricMood">—</b></span>
+<span class="pill">⭐ Rating <b id="metricRating">500</b></span>
+<span class="pill">🎢 Rides <b id="metricRides">0</b></span>
+<span class="pill">💵 Revenue <b id="metricRevenue">$0</b></span>
+<span class="pill">🧹 Staff <b id="metricStaff">0</b></span></div></header>
+<main><section class="left"><canvas id="view"></canvas><div class="toolbar"><button id="home">🎥 Reset Camera</button><button id="parkShortcut">🏰 Park Manager</button><button id="bulldoze">🚜 Bulldoze</button></div><div class="status" id="status">Park starts CLOSED. Use cursor modes deliberately: Build places objects, Inspect reads status, Interact opens entrance/ride management, Guest Talk selects a guest, and Bulldoze removes objects. Every ride requires its own entrance, exit and queue path before it can open.</div>
+<div class="status">Camera: left-click and hold to look • WASD move • Space/Shift vertical • right-click object = instant bulldoze</div></section>
+<aside class="side">
+<section class="panel"><h2>⏱ SIMULATION RATE</h2>
+<div class="row"><input id="simRateSlider" type="range" min="0" max="2" step="0.05" value="0.35" style="flex:1"><b id="simRateValue">0.35×</b></div>
+<div class="status">0 pauses • 1× normal • 2× fast</div></section><div class="toolbar"><button id="exitPathMode">🎥 Exit Path / Camera</button><button id="ferrisMusicGlobal">🎡🎵 Ferris Music</button></div><nav class="ui-section-tabs" aria-label="Game management"><button data-ui-tab="build" class="active">🔨 Build</button><button data-ui-tab="park">🏰 Park</button><button data-ui-tab="guests">👥 Guests</button><button data-ui-tab="system">⚙ More</button></nav><div class="ui-footer-hint">Compact management UI • 3D viewport preserved</div>
+<section class="panel" id="startupPanel"><h2>🌲 FOREST FRONTIER • STARTING PARK</h2>
+<div class="status">Park status: <b id="startupGate">CLOSED</b> • Admission: <b>$10</b> • Guests: <b id="startupGuests">0</b></div>
+<div class="status">Initial build contains only the park entrance, edge-connected public path, forest and ponds. Build rides and their required entrance, exit and queue before opening.</div>
+<div class="toolbar"><button id="startupManage">🏰 Manage Entrance</button><button id="startupBuild">🔨 Start Building</button></div>
+</section>
+<section class="panel"><h2>🖱️ CURSOR MODE</h2>
+<div class="toolbar" id="cursorModes">
+<button id="nativeCameraBtn" class="camera-active">🎥 Camera</button><button data-mode="build">🔨 Build</button>
+<button data-mode="inspect">🔎 Inspect</button>
+<button data-mode="interact">☝ Interact</button>
+<button data-mode="talk">💬 Guest Talk</button>
+<button data-mode="bulldoze">🚜 Bulldoze</button>
+</div>
+<div class="status" id="modeStatus">Build mode: select an item and place it. Right-click any removable object to bulldoze instantly.</div>
+</section><section class="panel"><h2>🛍️ CONSTRUCTION STORE • 25 ITEMS</h2><div class="shop" id="shop"></div></section>
+<section class="panel" id="parkManager" style="display:none"><h2>🏰 PARK ENTRANCE MANAGER</h2>
+<div class="toolbar"><button id="parkToggle">🔴 PARK CLOSED</button><label class="pill">Admission $ <input id="entryFee" type="number" min="0" max="200" value="10" style="width:64px"></label></div>
+<div class="status" id="gateStatus">Entrance closed • $10 admission • 0 guests</div>
+</section>
+<section class="panel" id="rideManager" style="display:none"><h2>🎢 RIDE MANAGER</h2><div class="toolbar" id="ferrisMusicControls" style="display:none"><button id="ferrisMusicBtn">🎵 Ferris Music: OFF</button></div>
+<div id="rideName" style="font-weight:700;margin-bottom:6px">Ride</div>
+<div class="toolbar"><button id="rideToggle">🟢 OPEN</button><label class="pill">Ticket $ <input id="ridePrice" type="number" min="0" max="100" value="3" style="width:60px"></label></div>
+<div class="status" id="rideInfo">Click a ride in the park to manage it.</div>
+<div class="status" id="rideAccess">Entrance: missing • Exit: missing • Queue: missing</div>
+<div class="toolbar"><button id="placeRideEntrance">🚪 Place Ride Entrance</button><button id="placeRideExit">🚶 Place Ride Exit</button></div>
+</section><section class="panel"><h2>💭 LIVE GUEST THOUGHTS</h2><div class="thoughts" id="thoughts"></div></section>
+<section class="panel"><h2>🤖 TALK TO A GUEST • OLLAMA</h2><div class="chatHead"><select id="guestSelect"></select><select id="model"><option>Detecting Ollama…</option></select></div><div class="chat" id="chat"><div class="bubble"><b>Park radio</b><br>Select a guest and ask them about the park.</div></div><form id="chatForm"><input id="say" autocomplete="off" placeholder="Ask the guest something…"><button>Send</button></form><div class="status" id="ollama">Ollama: checking localhost:11434…</div></section>
+<section class="panel" id="rndPanel"><h2>🧪 RESEARCH & DEVELOPMENT</h2>
+<div class="status">Research points <b id="researchPoints">0</b> • Funding <b id="researchFunding">$250/mo</b></div>
+<div class="row"><input id="researchFundingSlider" type="range" min="0" max="2000" step="50" value="250" style="flex:1"><button id="autoResearch">Auto R&D: ON</button></div>
+<div id="researchProgress" class="status">Next unlock: preparing research program…</div>
+<div id="researchUnlocks" style="max-height:150px;overflow:auto"></div></section>
+<section class="panel" id="staffPanel"><h2>🧑‍🔧 STAFF</h2>
+<div class="status" id="staffSummary">No staff hired.</div>
+<div class="toolbar"><button data-hire="mechanic">🔧 Mechanic $120</button><button data-hire="janitor">🧹 Janitor $90</button><button data-hire="security">🛡 Security $110</button><button data-hire="entertainer">🎭 Entertainer $100</button></div></section></aside></main>
+<script type="module">
+const $=s=>document.querySelector(s);
+const ITEMS={
+path:["Path",20,"path"],queue:["Queue Path",28,"path"],coaster:["Steel Coaster",1100,"ride"],wood:["Wooden Coaster",950,"ride"],wheel:["Ferris Wheel",500,"ride"],tower:["Drop Tower",700,"ride"],carousel:["Carousel",300,"ride"],pirate:["Pirate Ship",450,"ride"],spinner:["Tea Cups",260,"ride"],bumper:["Bumper Cars",380,"ride"],swing:["Chair Swings",420,"ride"],goKart:["Go Karts",750,"ride"],log:["Log Flume",900,"ride"],cinema:["4D Cinema",550,"ride"],maze:["Hedge Maze",240,"ride"],arcade:["Arcade",320,"shop"],info:["Information Kiosk",180,"shop"],burger:["Burger Stand",150,"shop"],pizza:["Pizza Shop",170,"shop"],drink:["Drink Stall",110,"shop"],icecream:["Ice Cream",130,"shop"],toilet:["Restroom",180,"service"],bench:["Bench",45,"scenery"],lamp:["Lamp",35,"scenery"],tree:["Pine Tree",30,"scenery"],fountain:["Fountain",140,"scenery"],flowers:["Flower Bed",25,"scenery"]};
+const ICON={path:"▰",queue:"≋",coaster:"〽",wood:"♒",wheel:"◉",tower:"↕",carousel:"♞",pirate:"⛵",spinner:"✤",bumper:"◈",swing:"☂",goKart:"➿",log:"≋",cinema:"▣",maze:"▦",arcade:"♟",info:"ⓘ",burger:"☰",pizza:"△",drink:"♨",icecream:"♢",toilet:"WC",bench:"═",lamp:"♧",tree:"▲",fountain:"♒",flowers:"✿"};
+function preview(k){
+ const colors={ride:"#d85c4c",shop:"#e5b44c",service:"#74a7d4",scenery:"#4c9253",path:"#c9ae7d"},cat=ITEMS[k][2],c=colors[cat]||colors.path;
+ let shape=k==="wheel"?'<circle cx="50" cy="34" r="22" fill="none" stroke="'+c+'" stroke-width="5"/><path d="M50 12v44M28 34h44M35 19l30 30M65 19L35 49" stroke="'+c+'" stroke-width="2"/><path d="M40 57L31 70M60 57l9 13" stroke="#48545a" stroke-width="4"/>':
+ k==="tower"?'<rect x="47" y="10" width="6" height="57" fill="#48545a"/><rect x="34" y="29" width="32" height="9" rx="3" fill="'+c+'"/><path d="M37 68h26" stroke="#48545a" stroke-width="5"/>':
+ (k==="coaster"||k==="wood")?'<path d="M5 60 Q18 10 34 43 T61 28 T95 58" fill="none" stroke="'+c+'" stroke-width="5"/><path d="M16 45v23M36 42v26M62 31v37M83 43v25" stroke="#48545a" stroke-width="2"/>':
+ k==="tree"?'<rect x="47" y="48" width="6" height="22" fill="#6f5138"/><path d="M50 8L28 54h44z" fill="'+c+'"/>':
+ k==="path"?'<path d="M15 72L40 20h22l25 52z" fill="'+c+'" stroke="#8c7650" stroke-width="2"/>':
+ '<ellipse cx="50" cy="66" rx="31" ry="6" fill="#000" opacity=".18"/><rect x="29" y="31" width="42" height="32" rx="5" fill="'+c+'"/><text x="50" y="52" text-anchor="middle" font-size="20" fill="#fff">'+ICON[k]+'</text>';
+ return '<svg viewBox="0 0 100 80" aria-hidden="true">'+shape+'</svg>'
+}
+const shop=$("#shop");let tool="path",bulldoze=false;
+Object.entries(ITEMS).forEach(([k,v])=>{let b=document.createElement("button");b.type="button";b.className="product"+(k==="path"?" active":"");b.innerHTML='<div class="preview">'+preview(k)+'</div><div class="meta"><b>'+v[0]+'</b><small>$'+v[1]+' • '+v[2]+'</small></div>';b.onclick=()=>{tool=k;bulldoze=false;[...shop.children].forEach(x=>x.classList.toggle("active",x===b));$("#status").textContent="Preview selected: "+v[0]+". Tap terrain to place for $"+v[1]+"."};shop.appendChild(b)});
+let THREE,OrbitControls;try{THREE=await import("https://cdn.jsdelivr.net/npm/three@0.180.0/+esm");({OrbitControls}=await import("https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js/+esm"))}catch(e){$("#status").textContent="3D engine failed to load.";throw e}
+const canvas=$("#view"),renderer=new THREE.WebGLRenderer({canvas,antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x8fc5dc);scene.fog=new THREE.Fog(0x8fc5dc,55,110);const camera=new THREE.PerspectiveCamera(50,1,.1,180);camera.position.set(29,24,32);const controls=new OrbitControls(camera,canvas);controls.target.set(0,0,0);controls.enableDamping=true;controls.maxPolarAngle=1.48;controls.minDistance=6;controls.maxDistance=75;
+scene.add(new THREE.HemisphereLight(0xe8fbff,0x35572d,2.2));let sun=new THREE.DirectionalLight(0xffefd0,3.5);sun.position.set(-20,35,18);sun.castShadow=true;scene.add(sun);
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(68,68),new THREE.MeshStandardMaterial({color:0x4c934e,roughness:1}));ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;scene.add(ground);scene.add(new THREE.GridHelper(68,34,0x376d3b,0x598e58));
+const mat=(c,metal=0)=>new THREE.MeshStandardMaterial({color:c,metalness:metal,roughness:.55}),M={path:mat(0xcbb17d),metal:mat(0x465159,.7),red:mat(0xd85b4b),blue:mat(0x438bb2),yellow:mat(0xe1b647),wood:mat(0x78563b),leaf:mat(0x28723e),white:mat(0xe9e3d4),pink:mat(0xd26991),water:mat(0x4b9fc4)};
+let cash=15000,profit=0,speed=.5,paused=false,objects=[],paths=[],guests=[],follow=null;
+let parkOpen=false,entryFee=10,selectedWorldObject=null,selectedRide=null,selectedGuest=null,arrivalClock=0,cursorMode="camera",pendingRideAccess=null;
+let inspectedObject=null;
+let yaw=-0.72,pitch=-0.42,mouseLook=false,lastMouseX=0,lastMouseY=0;
+const keys=new Set();
+controls.enabled=false;
+camera.position.set(20,18,24);
+camera.lookAt(0,0,0);
+{
+ const e=new THREE.Euler().setFromQuaternion(camera.quaternion,"YXZ");
+ pitch=e.x;yaw=e.y;
+}
+function applyCameraLook(){camera.quaternion.setFromEuler(new THREE.Euler(pitch,yaw,0,"YXZ"))}
+canvas.addEventListener("pointerdown",e=>{
+ if(e.button!==0)return;
+ mouseLook=true;lastMouseX=e.clientX;lastMouseY=e.clientY;
+ canvas.setPointerCapture?.(e.pointerId);
+ canvas.style.cursor="grabbing";
+});
+canvas.addEventListener("pointermove",e=>{
+ if(!mouseLook)return;
+ const dx=e.clientX-lastMouseX,dy=e.clientY-lastMouseY;if(Math.abs(dx)+Math.abs(dy)>2)viewDrag=true;
+ lastMouseX=e.clientX;lastMouseY=e.clientY;
+ yaw-=dx*.006;pitch-=dy*.006;
+ pitch=Math.max(-1.45,Math.min(1.45,pitch));
+ applyCameraLook();
+});
+function endMouseLook(e){
+ mouseLook=false;canvas.style.cursor="grab";
+ try{canvas.releasePointerCapture?.(e.pointerId)}catch{}
+}
+canvas.addEventListener("pointerup",endMouseLook);
+canvas.addEventListener("pointercancel",endMouseLook);
+canvas.addEventListener("contextmenu",e=>{e.preventDefault();e.stopPropagation();bulldozeAt(e);});
+
+canvas.addEventListener("pointerleave",e=>{if(mouseLook&&!(e.buttons&1))endMouseLook(e)});
+document.addEventListener("keydown",e=>{
+ const tag=document.activeElement?.tagName;
+ if(tag==="INPUT"||tag==="SELECT"||tag==="TEXTAREA")return;
+ if(["KeyW","KeyA","KeyS","KeyD","Space","ShiftLeft","ShiftRight"].includes(e.code)){
+  keys.add(e.code);e.preventDefault();
+ }
+});
+document.addEventListener("keyup",e=>keys.delete(e.code));
+function moveCamera(dt){
+ const speed=.0105*dt;
+ const forward=new THREE.Vector3(0,0,-1).applyQuaternion(camera.quaternion);
+ const right=new THREE.Vector3(1,0,0).applyQuaternion(camera.quaternion);
+ forward.y=0;right.y=0;forward.normalize();right.normalize();
+ if(keys.has("KeyW"))camera.position.addScaledVector(forward,speed);
+ if(keys.has("KeyS"))camera.position.addScaledVector(forward,-speed);
+ if(keys.has("KeyA"))camera.position.addScaledVector(right,-speed);
+ if(keys.has("KeyD"))camera.position.addScaledVector(right,speed);
+ if(keys.has("Space"))camera.position.y+=speed;
+ if(keys.has("ShiftLeft")||keys.has("ShiftRight"))camera.position.y-=speed;
+ camera.position.y=Math.max(.65,Math.min(60,camera.position.y));
+}
+function shadows(o){o.traverse?.(q=>{if(q.isMesh){q.castShadow=true;q.receiveShadow=true}});return o}
+function add(k,x,z,start=false){let g=new THREE.Group(),u={kind:k,phase:Math.random()*6.28};const box=(w,h,d,m,y)=>{let q=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);q.position.y=y;g.add(q);return q};
+ if(k==="path"||k==="queue"){let q=box(2,.12,2,k==="queue"?M.yellow:M.path,.06);g=q;g.userData={kind:k};paths.push(g)}
+ else if(k==="tree"){let t=new THREE.Mesh(new THREE.CylinderGeometry(.16,.23,1.5,7),M.wood),c=new THREE.Mesh(new THREE.ConeGeometry(.9,2.5,9),M.leaf);t.position.y=.75;c.position.y=2.15;g.add(t,c)}
+ else if(k==="bench"){box(1.5,.16,.48,M.wood,.55);let a=box(1.5,.65,.12,M.wood,.85);a.position.z=.2}
+ else if(k==="lamp"){let p=new THREE.Mesh(new THREE.CylinderGeometry(.05,.08,2.3,7),M.metal),l=new THREE.Mesh(new THREE.SphereGeometry(.2,9,9),M.yellow);p.position.y=1.15;l.position.y=2.35;g.add(p,l)}
+ else if(k==="flowers"){let bed=new THREE.Mesh(new THREE.CylinderGeometry(.8,.8,.16,14),M.pink);bed.position.y=.08;g.add(bed)}
+ else if(k==="fountain"){let b=new THREE.Mesh(new THREE.CylinderGeometry(1,1.1,.35,20),M.white),w=new THREE.Mesh(new THREE.CylinderGeometry(.75,.75,.12,20),M.water),p=new THREE.Mesh(new THREE.CylinderGeometry(.1,.15,1.2,10),M.white);b.position.y=.18;w.position.y=.38;p.position.y=.9;g.add(b,w,p)}
+ else if(k==="wheel"){let rotor=new THREE.Group(),ring=new THREE.Mesh(new THREE.TorusGeometry(2.25,.12,10,32),M.red);ring.rotation.y=Math.PI/2;rotor.position.y=2.8;rotor.add(ring);for(let i=0;i<8;i++){let sp=new THREE.Mesh(new THREE.BoxGeometry(.06,4.4,.06),M.metal);sp.rotation.z=i*Math.PI/4;sp.rotation.y=Math.PI/2;rotor.add(sp)}for(let i=0;i<8;i++){let a=i*Math.PI/4,cab=new THREE.Mesh(new THREE.BoxGeometry(.48,.35,.42),i%2?M.yellow:M.blue);cab.position.set(Math.cos(a)*2.25,Math.sin(a)*2.25,0);rotor.add(cab)}g.add(rotor);u.main=rotor;u.ferrisRotor=rotor}
+ else if(k==="tower"){let p=new THREE.Mesh(new THREE.CylinderGeometry(.16,.22,6,10),M.metal),car=box(1.7,.35,1.7,M.red,1.2);p.position.y=3;g.add(p);u.main=car}
+ else if(k==="coaster"||k==="wood"){let pts=[];for(let i=0;i<36;i++){let a=i/36*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(a)*3.5,1.5+Math.sin(a*2)*1.4,Math.sin(a)*2.6))}let curve=new THREE.CatmullRomCurve3(pts,true),track=new THREE.Mesh(new THREE.TubeGeometry(curve,150,.09,6,true),k==="wood"?M.wood:M.red),train=box(.7,.45,1.25,M.blue,0);g.add(track);u.curve=curve;u.main=train;u.t=0}
+ else if(k==="carousel"){let base=new THREE.Mesh(new THREE.CylinderGeometry(1.5,1.6,.3,20),M.yellow),roof=new THREE.Mesh(new THREE.ConeGeometry(1.7,.8,20),M.red);base.position.y=.15;roof.position.y=2.1;g.add(base,roof);let spin=new THREE.Group();for(let i=0;i<6;i++){let h=box(.35,.35,.7,M.white,.9);h.position.x=Math.cos(i*Math.PI/3);h.position.z=Math.sin(i*Math.PI/3)}g.add(spin);u.main=g}
+ else if(k==="pirate"){let hull=new THREE.Mesh(new THREE.BoxGeometry(2.6,.6,1),M.wood);hull.position.y=1.3;g.add(hull);u.main=hull}
+ else if(k==="spinner"){let base=new THREE.Mesh(new THREE.CylinderGeometry(1.5,1.5,.25,20),M.blue);base.position.y=.15;g.add(base);for(let i=0;i<5;i++){let cup=new THREE.Mesh(new THREE.CylinderGeometry(.35,.45,.45,12),M.red);cup.position.set(Math.cos(i*1.256),.5,Math.sin(i*1.256));g.add(cup)}u.main=g}
+ else if(k==="swing"){let pole=new THREE.Mesh(new THREE.CylinderGeometry(.12,.18,3.4,10),M.metal),top=new THREE.Mesh(new THREE.ConeGeometry(1.5,.5,16),M.yellow);pole.position.y=1.7;top.position.y=3.2;g.add(pole,top);u.main=top}
+ else if(k==="goKart"){let track=new THREE.Mesh(new THREE.TorusGeometry(1.8,.25,8,28),M.metal);track.rotation.x=Math.PI/2;track.position.y=.1;g.add(track);let car=box(.7,.3,1,M.red,.35);car.position.x=1.8;u.main=car}
+ else if(k==="log"){let trough=box(3,.35,1.2,M.water,.2),log=box(.55,.35,1.1,M.wood,.55);u.main=log}
+ else if(k==="maze"){for(let i=-2;i<=2;i++)for(let j=-2;j<=2;j++)if((i+j)%2===0){let h=box(.22,1.2,1.2,M.leaf,.6);h.position.set(i*.55,.6,j*.55)}}
+ else if(k==="bumper"){let floor=new THREE.Mesh(new THREE.CylinderGeometry(1.7,1.7,.2,20),M.metal);floor.position.y=.1;g.add(floor);for(let i=0;i<4;i++){let car=box(.6,.3,.8,i%2?M.red:M.blue,.35);car.position.set(Math.cos(i*1.57),.35,Math.sin(i*1.57))}u.main=g}
+ else if(k==="info"){let base=box(2,1.25,1.6,M.blue,.63),roof=box(2.25,.18,1.85,M.white,1.38);let pole=new THREE.Mesh(new THREE.CylinderGeometry(.05,.07,1.8,7),M.metal),umbrella=new THREE.Mesh(new THREE.ConeGeometry(1.05,.48,16),M.red);pole.position.set(1.7,.9,0);umbrella.position.set(1.7,1.85,0);g.add(pole,umbrella);let map=box(.75,.9,.08,M.yellow,1.05);map.position.z=.86;u.main=base}
+ else {let color=ITEMS[k][2]==="shop"?M.yellow:ITEMS[k][2]==="service"?M.blue:M.red;let base=box(2,1.35,1.7,color,.68),roof=box(2.2,.22,1.9,M.white,1.48);u.main=base}
+ g.position.set(x,0,z);g.userData=u;if(ITEMS[k]?.[2]==="ride"){g.userData.rideOpen=false;g.userData.price=3;g.userData.riders=0;g.userData.hasEntrance=false;g.userData.hasExit=false;g.userData.hasQueue=false}scene.add(shadows(g));objects.push(g);return g}
+// Forest-frontier style blank starting park.
+const entrance=new THREE.Group();
+const gateL=new THREE.Mesh(new THREE.BoxGeometry(.7,3,.7),M.wood),gateR=gateL.clone();
+gateL.position.set(-13,1.5,15);gateR.position.set(-11,1.5,15);
+const beam=new THREE.Mesh(new THREE.BoxGeometry(3,.5,.7),M.wood);beam.position.set(-12,3,15);
+const sign=new THREE.Mesh(new THREE.BoxGeometry(2.3,.65,.18),M.yellow);sign.position.set(-12,3.05,14.6);
+entrance.add(gateL,gateR,beam,sign);entrance.userData={kind:"entrance"};entrance.traverse(o=>{if(o.isMesh)o.userData.parkEntranceRoot=entrance});scene.add(shadows(entrance));objects.push(entrance);
+// Only initial public path: from the map edge to the entrance and just inside the gate.
+for(let z=32;z>=14;z-=2)add("path",-12,z,true);
+for(let z=12;z>=8;z-=2)add("path",-12,z,true);
+// Forest and natural ponds.
+for(let i=0;i<72;i++){let x=-30+Math.random()*60,z=-28+Math.random()*60;if(Math.hypot(x+12,z-15)>5)add("tree",Math.round(x/2)*2,Math.round(z/2)*2,true)}
+function pond(x,z,rx,rz){
+ const w=new THREE.Mesh(new THREE.CircleGeometry(1,36),new THREE.MeshStandardMaterial({color:0x3f8fae,roughness:.35,metalness:.05,transparent:true,opacity:.88}));
+ w.scale.set(rx,rz,1);w.rotation.x=-Math.PI/2;w.position.set(x,.025,z);w.userData={kind:"water"};scene.add(w);objects.push(w)
+}
+pond(8,-5,6,4);pond(-20,-12,4.5,7);
+const names=["Maya","Leo","Sam","Ava","Noah","Ivy","Milo","Zoe","Eli","Nora","Kai","Luna","Theo","Mia","Max","Ruby"],thoughtPool=["I want a bigger coaster.","The landscaping is nice.","I'm getting hungry.","I need a restroom.","That Ferris wheel has a great view.","I'd love an ice cream.","The park feels clean.","Where is the next ride?","I hope the queue is short.","I could sit on a bench for a minute.","That coaster was incredible!","I want something more intense."];
+function thought(g,t){g.thought=t;let d=document.createElement("div");d.className="thought";d.innerHTML="<b>"+g.name+"</b> · "+t;$("#thoughts").prepend(d);while($("#thoughts").children.length>35)$("#thoughts").lastChild.remove();refreshGuests()}
+function spawn(){
+ const m=new THREE.Group(),skin=mat(0xd9a27f),shirt=mat(new THREE.Color().setHSL(Math.random(),.55,.5)),pants=mat(0x34404b),dark=mat(0x242424);
+ const head=new THREE.Mesh(new THREE.SphereGeometry(.22,10,8),skin);head.position.y=1.62;m.add(head);
+ const hair=new THREE.Mesh(new THREE.SphereGeometry(.225,10,6,0,Math.PI*2,0,Math.PI*.48),dark);hair.position.y=1.68;m.add(hair);
+ const torso=new THREE.Mesh(new THREE.BoxGeometry(.48,.68,.28),shirt);torso.position.y=1.08;m.add(torso);
+ const armL=new THREE.Mesh(new THREE.BoxGeometry(.12,.58,.13),skin),armR=armL.clone();armL.position.set(-.31,1.08,0);armR.position.set(.31,1.08,0);m.add(armL,armR);
+ const legL=new THREE.Mesh(new THREE.BoxGeometry(.15,.62,.17),pants),legR=legL.clone();legL.position.set(-.13,.43,0);legR.position.set(.13,.43,0);m.add(legL,legR);
+ const footL=new THREE.Mesh(new THREE.BoxGeometry(.17,.12,.3),dark),footR=footL.clone();footL.position.set(-.13,.08,-.07);footR.position.set(.13,.08,-.07);m.add(footL,footR);
+ m.userData.limbs={armL,armR,legL,legR};m.position.set(-12,0,14);scene.add(m);
+ let g={id:crypto.randomUUID?.()||Math.random()+"",name:names[Math.floor(Math.random()*names.length)]+" "+(guests.length+1),mesh:m,thought:"I just entered the park.",mood:75+Math.floor(Math.random()*20),hunger:Math.floor(Math.random()*60),next:7+Math.random()*12,history:[],walkPhase:Math.random()*6.28,currentPath:pathNodeNear(-12,14),targetPath:null,prevPath:null};
+ guests.push(g);thought(g,g.thought)
+}
+function refreshGuests(){let sel=$("#guestSelect"),old=sel.value;sel.innerHTML="";guests.forEach((g,i)=>{let o=document.createElement("option");o.value=i;o.textContent=g.name+" • "+g.mood+"% • "+g.thought.slice(0,25);sel.appendChild(o)});if([...sel.options].some(o=>o.value===old))sel.value=old}
+/* Park starts closed and empty. Guests arrive only after opening. */
+function stats(){$("#cash").textContent="$"+Math.floor(cash).toLocaleString();$("#profit").textContent="$"+Math.floor(profit);$("#gc").textContent=guests.length;$("#happy").textContent=Math.round(guests.reduce((a,g)=>a+g.mood,0)/Math.max(1,guests.length))+"%"}
+document.querySelectorAll("[data-speed]").forEach(b=>b.onclick=()=>{speed=+b.dataset.speed;document.querySelectorAll("[data-speed]").forEach(x=>x.classList.toggle("active",x===b))});$("#pause").onclick=()=>{paused=!paused;$("#pause").textContent=paused?"▶":"⏸"};$("#home").onclick=()=>{follow=null;camera.position.set(29,24,32);controls.target.set(0,0,0);controls.update()};$("#bulldoze").onclick=()=>{cursorMode="bulldoze";bulldoze=true;$("#status").textContent="Bulldoze mode: click an object to remove it.";};
+const ray=new THREE.Raycaster(),mouse=new THREE.Vector2();let down,viewDrag=false;
+canvas.addEventListener("pointerdown",e=>down=[e.clientX,e.clientY]);canvas.addEventListener("pointerup",e=>{const clickedGuest=guestAt(e);if(clickedGuest&&(cursorMode==="talk"||cursorMode==="inspect"||cursorMode==="interact")){showGuestDisposition(clickedGuest);return;}if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>7)return;const clickedObject=objectAt(e);if(clickedObject?.userData?.kind==="entrance"){interactAt(e);return}if(cursorMode==="talk"){talkAt(e);return}if(cursorMode==="inspect"){inspectAt(e);return}if(cursorMode==="interact"){interactAt(e);return}if(cursorMode==="bulldoze"){bulldoze=true}else if(pendingRideAccess){let p=groundPointCompat(e);if(placeAccessAt(p))return}let r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height*2-1));ray.setFromCamera(mouse,camera);if(bulldoze){let hits=ray.intersectObjects(objects,true);if(hits.length){let o=hits[0].object;while(o.parent&&o.parent!==scene)o=o.parent;scene.remove(o);objects=objects.filter(x=>x!==o);paths=paths.filter(x=>x!==o);$("#status").textContent="Object removed."}return}let h=ray.intersectObject(ground)[0];if(!h)return;let x=Math.round(h.point.x/2)*2,z=Math.round(h.point.z/2)*2,c=ITEMS[tool][1];if(cash<c){$("#status").textContent="Not enough cash.";return}cash-=c;add(tool,x,z);if(tool==="queue"){objects.filter(o=>ITEMS[o.userData?.kind]?.[2]==="ride").forEach(o=>{o.userData.hasQueue=nearestQueue(o)});if(selectedRide)updateRideAccess()}$("#status").textContent=ITEMS[tool][0]+" placed.";stats()});
+
+
+
+function groundPointCompat(e){const r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height*2-1));ray.setFromCamera(mouse,camera);const h=ray.intersectObject(ground)[0];if(!h)return null;return{x:Math.round(h.point.x/2)*2,z:Math.round(h.point.z/2)*2}}
+const MODE_TEXT={build:"Build mode: place paths, rides, shops and scenery.",inspect:"Inspect mode: click an object for status and construction information.",interact:"Interact mode: click rides or the park entrance to open their management UI.",talk:"Guest Talk mode: click a guest to select them for Ollama chat.",bulldoze:"Bulldoze mode: click an object to remove it."};
+document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{cursorMode=b.dataset.mode;bulldoze=cursorMode==="bulldoze";document.querySelectorAll("[data-mode]").forEach(x=>x.classList.toggle("active",x===b));$("#modeStatus").textContent=MODE_TEXT[cursorMode];$("#status").textContent=MODE_TEXT[cursorMode]});
+function rideReady(o){return !!(o?.userData?.hasEntrance&&o.userData.hasExit&&o.userData.hasQueue)}
+function updateRideAccess(){if(!selectedRide)return;$("#rideAccess").textContent=`Entrance: ${selectedRide.userData.hasEntrance?"built":"MISSING"} • Exit: ${selectedRide.userData.hasExit?"built":"MISSING"} • Queue: ${selectedRide.userData.hasQueue?"connected":"MISSING"}`;$("#rideToggle").disabled=!rideReady(selectedRide);if(!rideReady(selectedRide))$("#rideToggle").title="Build a ride entrance, ride exit and queue path first";else $("#rideToggle").title=""}
+function nearestQueue(o){return paths.some(p=>p.userData.kind==="queue"&&p.position.distanceTo(o.position)<7)}
+$("#placeRideEntrance").onclick=()=>{if(!selectedRide)return;pendingRideAccess="entrance";cursorMode="build";$("#status").textContent="Click beside the selected ride to place its ENTRANCE ($40)."};
+$("#placeRideExit").onclick=()=>{if(!selectedRide)return;pendingRideAccess="exit";cursorMode="build";$("#status").textContent="Click beside the selected ride to place its EXIT ($40)."};
+function placeAccessAt(p){
+ if(!pendingRideAccess||!selectedRide||!p)return false;if(cash<40){$("#status").textContent="Not enough cash.";return true}
+ let g=new THREE.Group(),post1=new THREE.Mesh(new THREE.BoxGeometry(.12,1.5,.12),M.metal),post2=post1.clone(),beam=new THREE.Mesh(new THREE.BoxGeometry(1.4,.18,.15),pendingRideAccess==="entrance"?M.red:M.blue);
+ post1.position.set(-.6,.75,0);post2.position.set(.6,.75,0);beam.position.y=1.45;g.add(post1,post2,beam);g.position.set(p.x,0,p.z);g.userData={kind:"rideAccess",accessType:pendingRideAccess,parentRide:selectedRide};scene.add(shadows(g));objects.push(g);cash-=40;
+ if(pendingRideAccess==="entrance")selectedRide.userData.hasEntrance=true;else selectedRide.userData.hasExit=true;
+ selectedRide.userData.hasQueue=nearestQueue(selectedRide);pendingRideAccess=null;updateRideAccess();stats();$("#status").textContent="Ride access point built. Queue path must connect near the ride entrance.";return true
+}
+
+function guestAt(e){
+ const r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height*2-1));ray.setFromCamera(mouse,camera);
+ let best=null,dist=Infinity;
+ guests.forEach(g=>{const mesh=g.mesh||g.obj||g.group;if(!mesh)return;const hit=ray.intersectObject(mesh,true)[0];if(hit&&hit.distance<dist){best=g;dist=hit.distance}});
+ return best;
+}
+function objectAt(e){
+ const r=canvas.getBoundingClientRect();
+ mouse.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height*2-1));
+ ray.setFromCamera(mouse,camera);
+ const hit=ray.intersectObjects(objects,true)[0];
+ if(!hit)return null;
+ if(hit.object.userData?.parkEntranceRoot)return hit.object.userData.parkEntranceRoot;
+ let o=hit.object;
+ while(o.parent&&o.parent!==scene)o=o.parent;
+ return o;
+}
+function guestAtPointer(e){
+ const r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height*2-1));ray.setFromCamera(mouse,camera);
+ const hit=ray.intersectObjects(guests.map(g=>g.mesh),false)[0];return hit?.object?.userData?.guest||null
+}
+
+function bulldozeAt(e){
+ const o=objectAt(e);
+ if(!o)return false;
+ if(o.userData?.kind==="entrance"){ $("#status").textContent="The park entrance cannot be bulldozed."; return true; }
+ const k=o.userData?.kind;
+ // Don't let right click accidentally delete water scenario features; trees, paths, rides, shops are removable.
+ if(k==="water"){ $("#status").textContent="Natural water cannot be bulldozed with the quick tool."; return true; }
+ scene.remove(o);objects=objects.filter(x=>x!==o);paths=paths.filter(x=>x!==o);
+ if(selectedRide===o){selectedRide=null;$("#rideManager").style.display="none"}
+ $("#status").textContent="Bulldozed "+(ITEMS[k]?.[0]||k||"object")+".";
+ return true;
+}
+function inspectAt(e){let o=objectAt(e);if(!o)return false;inspectedObject=o;let k=o.userData?.kind;if(k==="entrance")$("#status").textContent="Park Entrance • click with Interact mode to manage gates and admission.";else if(ITEMS[k]?.[2]==="ride")$("#status").textContent=`${ITEMS[k][0]} • ${o.userData.rideOpen?"OPEN":"CLOSED"} • $${o.userData.price} ticket • ${rideReady(o)?"access complete":"requires entrance + exit + queue"}`;else $("#status").textContent=(ITEMS[k]?.[0]||k||"Park object")+" • inspection complete.";return true}
+function interactAt(e){let o=objectAt(e);if(!o)return false;if(o.userData?.kind==="entrance"){const pm=$("#parkManager");pm.style.display="block";$("#rideManager").style.display="none";$("#status").textContent="Park entrance management opened.";pm.scrollIntoView?.({behavior:"smooth",block:"nearest"});return true}if(ITEMS[o.userData?.kind]?.[2]==="ride"){$("#parkManager").style.display="none";openRideManager(o);return true}return false}
+function talkAt(e){let g=guestAtPointer(e);if(!g)return false;let i=guests.indexOf(g);$("#guestSelect").value=String(i);$("#status").textContent=`Talking to ${g.name}: “${g.thought}”`;bubble("Park radio",`You selected ${g.name}. Current thought: “${g.thought}”`);$("#say").focus();return true}
+function updateGate(){
+ $("#parkToggle").textContent=parkOpen?"🟢 PARK OPEN":"🔴 PARK CLOSED";
+ $("#gateStatus").textContent=`Entrance ${parkOpen?"open":"closed"} • $${entryFee} admission • ${guests.length} guests`;
+ if($("#startupGate"))$("#startupGate").textContent=parkOpen?"OPEN":"CLOSED";
+ if($("#startupGuests"))$("#startupGuests").textContent=guests.length;
+}
+$("#parkToggle").onclick=()=>{parkOpen=!parkOpen;updateGate();$("#status").textContent=parkOpen?"The entrance gates are open. Guests can now arrive.":"The park is closed to new arrivals."};
+$("#parkShortcut").onclick=()=>{$("#parkManager").style.display="block";$("#rideManager").style.display="none";$("#parkManager").scrollIntoView?.({behavior:"smooth",block:"nearest"});$("#status").textContent="Park entrance management opened."};
+$("#startupManage").onclick=$("#parkShortcut").onclick;
+
+$("#guestChatShortcut")?.addEventListener("click",()=>{$("#guestDisposition")?.scrollIntoView({behavior:"smooth",block:"nearest"});$("#chatInput")?.focus()});
+$("#guestFollowShortcut")?.addEventListener("click",()=>{if(selectedGuest){follow=selectedGuest;$("#status").textContent="Following "+selectedGuest.name}});
+
+$("#startupBuild").onclick=()=>{cursorMode="build";bulldoze=false;document.querySelectorAll("[data-mode]").forEach(b=>b.classList.toggle("active",b.dataset.mode==="build"));$("#modeStatus").textContent=MODE_TEXT.build;$("#status").textContent="Build mode ready. Select paths, rides, shops or scenery."};
+
+$("#entryFee").onchange=e=>{entryFee=Math.max(0,Math.min(200,Number(e.target.value)||0));e.target.value=entryFee;updateGate()};
+function openRideManager(o){
+ selectedRide=o;$("#rideManager").style.display="block";
+ $("#rideName").textContent=ITEMS[o.userData.kind]?.[0]||"Ride";
+ $("#rideToggle").textContent=o.userData.rideOpen?"🟢 RIDE OPEN":"🔴 RIDE CLOSED";
+ $("#ridePrice").value=o.userData.price??3;
+ $("#rideInfo").textContent=`Ticket $${o.userData.price??3} • ${o.userData.riders||0} rides sold`;updateRideAccess();
+}
+$("#rideToggle").onclick=()=>{if(!selectedRide)return;if(!rideReady(selectedRide)){selectedRide.userData.rideOpen=false;$("#status").textContent="Ride cannot open until it has an entrance, exit and connected queue path.";updateRideAccess();return}selectedRide.userData.rideOpen=!selectedRide.userData.rideOpen;openRideManager(selectedRide)};
+$("#ridePrice").onchange=e=>{if(!selectedRide)return;selectedRide.userData.price=Math.max(0,Math.min(100,Number(e.target.value)||0));e.target.value=selectedRide.userData.price;openRideManager(selectedRide)};
+function pickManagedRide(e){
+ const r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height*2-1));ray.setFromCamera(mouse,camera);
+ const rides=objects.filter(o=>ITEMS[o.userData?.kind]?.[2]==="ride"),hit=ray.intersectObjects(rides,true)[0];if(!hit)return false;
+ let o=hit.object;while(o.parent&&o.parent!==scene)o=o.parent;if(!ITEMS[o.userData?.kind])return false;openRideManager(o);$("#status").textContent="Managing "+ITEMS[o.userData.kind][0];return true
+}
+updateGate();
+async function detectOllama(){try{let r=await fetch("http://127.0.0.1:11434/api/tags");if(!r.ok)throw 0;let j=await r.json(),m=$("#model");m.innerHTML="";(j.models||[]).forEach(x=>{let o=document.createElement("option");o.value=x.name;o.textContent=x.name;m.appendChild(o)});$("#ollama").textContent=m.options.length?"Ollama connected • "+m.options.length+" model(s)":"Ollama connected • no models installed"}catch(e){$("#ollama").textContent="Ollama offline or browser blocked localhost access."}}detectOllama();
+function bubble(who,text,me=false){let d=document.createElement("div");d.className="bubble"+(me?" me":"");d.innerHTML="<b>"+who+"</b><br>"+text.replace(/[<>&]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;"}[c]));$("#chat").appendChild(d);$("#chat").scrollTop=$("#chat").scrollHeight}
+$("#chatForm").onsubmit=async e=>{e.preventDefault();let text=$("#say").value.trim(),g=guests[+$("#guestSelect").value||0],model=$("#model").value;if(!text||!g)return;$("#say").value="";bubble("You",text,true);let prompt=`You are ${g.name}, a guest in a theme park currently rated ${window.getParkRating?.()??500}/999. a guest physically walking around a 3D theme park. Stay in first person and in character. Be concise and natural, 1-3 sentences. Current mood: ${g.mood}/100. Hunger: ${g.hunger}/100. Current thought: "${g.thought}". Park has ${objects.filter(o=>ITEMS[o.userData.kind]?.[2]==="ride").length} rides and ${guests.length} guests. You can comment on rides, paths, food, scenery, queues, comfort and what you want next. Never claim you can see anything beyond this supplied simulation state. Visitor says: ${text}`;try{$("#ollama").textContent="Ollama: "+g.name+" is thinking…";let r=await fetch("http://127.0.0.1:11434/api/generate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model,prompt,stream:false})});if(!r.ok)throw new Error("HTTP "+r.status);let j=await r.json(),ans=(j.response||"").trim()||"I'm not sure what to say.";g.history.push({user:text,guest:ans});g.thought=ans;g.mood=Math.max(1,Math.min(100,g.mood+(Math.random()*4-2)));thought(g,ans);bubble(g.name,ans);$("#ollama").textContent="Ollama connected • "+model}catch(err){bubble("Park radio","I couldn't reach Ollama. Make sure Ollama is running and localhost browser access is allowed.");$("#ollama").textContent="Ollama request failed."}};
+function resize(){let w=canvas.clientWidth,h=canvas.clientHeight,d=renderer.getPixelRatio();if(canvas.width!==Math.floor(w*d)||canvas.height!==Math.floor(h*d)){renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}}
+let last=performance.now(),pay=0;
+function animateGuestWalk(g,dt){
+ const mesh=g.mesh||g.obj||g.group;if(!mesh?.userData?.limbs)return;
+ const moving=g.state!=="ride"&&g.state!=="queue";
+ g.walkPhase=(g.walkPhase||0)+dt*.006*speed*(moving?1:0);
+ const swing=moving?Math.sin(g.walkPhase)*.55:0;
+ const L=mesh.userData.limbs;
+ L.armL.rotation.x=swing;L.armR.rotation.x=-swing;L.legL.rotation.x=-swing*.72;L.legR.rotation.x=swing*.72;
+ mesh.position.y=(g.baseY||0)+(moving?Math.abs(Math.sin(g.walkPhase*2))*.025:0);
+}
+function showGuestDisposition(g){
+ if(!g)return;
+ selectedGuest=g;
+ $("#guestDisposition").style.display="block";
+ $("#guestIdentity").textContent=g.name||"Park Guest";
+ const mood=Math.round(g.happiness??g.happy??75),hunger=Math.round(g.hunger??20),energy=Math.round(g.energy??80);
+ $("#guestDispositionText").innerHTML=`Mood: <b>${mood}%</b> • Hunger: <b>${hunger}%</b> • Energy: <b>${energy}%</b><br>Thought: “${g.thought||"I'm exploring the park."}”`;
+ if($("#guestSelect")){{let i=guests.indexOf(g);if(i>=0)$("#guestSelect").value=String(i)}}
+ $("#status").textContent=`Selected ${g.name}.`;
+}
+
+function pathNodeNear(x,z){
+ return paths.find(p=>Math.hypot(p.position.x-x,p.position.z-z)<1.15);
+}
+function connectedPathNeighbors(node){
+ if(!node)return [];
+ const x=node.position.x,z=node.position.z;
+ return paths.filter(p=>p!==node&&(
+   (Math.abs(p.position.x-x)<.35&&Math.abs(Math.abs(p.position.z-z)-2)<.35)||
+   (Math.abs(p.position.z-z)<.35&&Math.abs(Math.abs(p.position.x-x)-2)<.35)
+ ));
+}
+function chooseGuestNextPath(g,current){
+ const neighbors=connectedPathNeighbors(current);
+ if(!neighbors.length)return g.prevPath||null;
+ // At a dead end, the only connected neighbor is the tile we came from: turn around.
+ const forward=neighbors.filter(n=>n!==g.prevPath);
+ const next=forward.length?forward[Math.floor(Math.random()*forward.length)]:neighbors[0];
+ g.prevPath=current;return next;
+}
+function frame(now){requestAnimationFrame(frame);resize();let dt=Math.min(40,now-last);last=now;if(!paused){let sim=dt*speed;pay+=sim;objects.forEach(o=>{let u=o.userData;if(u.kind==="wheel")u.main.rotation.x+=sim*.00035;else if(u.kind==="tower")u.main.position.y=3+Math.sin(now*.0015)*2;else if(u.kind==="coaster"||u.kind==="wood"){u.t=(u.t+sim*.000025)%1;let p=u.curve.getPoint(u.t),q=u.curve.getPoint((u.t+.008)%1);u.main.position.copy(p);u.main.lookAt(q)}else if(["carousel","spinner","swing","bumper"].includes(u.kind)&&u.main)u.main.rotation.y+=sim*.0003;else if(u.kind==="pirate"&&u.main)u.main.rotation.z=Math.sin(now*.001)*.5;else if(u.kind==="goKart"&&u.main){let a=now*.0005;u.main.position.x=Math.cos(a)*1.8;u.main.position.z=Math.sin(a)*1.8}else if(u.kind==="log"&&u.main)u.main.position.z=Math.sin(now*.0007)*1.1});if(paths.length)guests.forEach(g=>{
+ if(g.carried||g.inWater)return;
+ const mesh=g.mesh||g.obj||g.group;if(!mesh)return;
+ if(!g.currentPath)g.currentPath=pathNodeNear(mesh.position.x,mesh.position.z)||paths[0];
+ if(!g.targetPath)g.targetPath=chooseGuestNextPath(g,g.currentPath);
+ const target=g.targetPath;
+ if(target){
+   const dx=target.position.x-mesh.position.x,dz=target.position.z-mesh.position.z,dist=Math.hypot(dx,dz);
+   if(dist<.16){
+     mesh.position.x=target.position.x;mesh.position.z=target.position.z;
+     g.currentPath=target;g.targetPath=chooseGuestNextPath(g,target);
+   }else{
+     const move=Math.min(dist,dt*.00042*speed);
+     mesh.position.x+=dx/dist*move;mesh.position.z+=dz/dist*move;
+     mesh.rotation.y=Math.atan2(dx,dz);
+     g.walkPhase=(g.walkPhase||0)+dt*.008*speed;
+     const L=mesh.userData.limbs;if(L){const sw=Math.sin(g.walkPhase)*.65;L.armL.rotation.x=sw;L.armR.rotation.x=-sw;L.legL.rotation.x=-sw*.8;L.legR.rotation.x=sw*.8}
+   }
+ }
+});arrivalClock+=sim;if(parkOpen&&arrivalClock>4500){arrivalClock=0;const chance=Math.max(.12,1-entryFee/55);if(Math.random()<chance&&guests.length<120){spawn();cash+=entryFee;profit+=entryFee;updateGate()}}
+ if(pay>6000){let rideObjs=objects.filter(o=>ITEMS[o.userData.kind]?.[2]==="ride"&&o.userData.rideOpen&&rideReady(o));rideObjs.forEach(o=>{if(guests.length&&Math.random()<.7){let sales=Math.min(guests.length,1+Math.floor(Math.random()*3));let rev=sales*(o.userData.price??3);o.userData.riders=(o.userData.riders||0)+sales;cash+=rev;profit+=rev}});let earned=objects.filter(o=>ITEMS[o.userData.kind]?.[2]==="ride").length*guests.length*.4;cash+=earned;profit+=earned;pay=0;stats()}}if(follow){const target=follow.mesh.position.clone(),desired=target.clone().add(new THREE.Vector3(5,3.5,7));camera.position.lerp(desired,.04);camera.lookAt(target)}else moveCamera(dt);objects.forEach(o=>{if(o.userData?.kind==="wheel"&&o.userData?.ferrisRotor)o.userData.ferrisRotor.rotation.z+=dt*.00045*speed});
+renderer.render(scene,camera)}stats();requestAnimationFrame(frame);
+
+(()=>{
+ const side=document.querySelector(".side");if(!side)return;
+ const panels=[...side.querySelectorAll(":scope > .panel")];
+ panels.forEach(p=>{
+   const t=(p.querySelector("h2")?.textContent||"").toLowerCase();
+   let g=(t.includes("guest")||t.includes("ollama")||t.includes("thought"))?"guests":
+         (t.includes("park")||t.includes("ride")||t.includes("entrance")||t.includes("frontier"))?"park":
+         (t.includes("cursor")||t.includes("path")||t.includes("construction")||t.includes("store"))?"build":"system";
+   p.dataset.uiGroup=g;
+ });
+ side.classList.add("ui-compact");
+ const show=tab=>{panels.forEach(p=>p.classList.toggle("ui-visible",p.dataset.uiGroup===tab));side.querySelectorAll("[data-ui-tab]").forEach(b=>b.classList.toggle("active",b.dataset.uiTab===tab));side.scrollTop=0};
+ side.querySelectorAll("[data-ui-tab]").forEach(b=>b.addEventListener("click",()=>show(b.dataset.uiTab)));show("build");
+})();
+
+
+// Guest sentiment -> park rating. UI/simulation metadata only.
+(()=>{
+ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+ function guestMood(g){
+   const happiness=Number(g.happiness??g.happy??g.mood??75);
+   const hunger=Number(g.hunger??20),energy=Number(g.energy??80);
+   let score=happiness*.62+(100-hunger)*.20+energy*.18;
+   const thought=(g.thought||"").toLowerCase();
+   if(/love|great|amazing|fun|beautiful|awesome|excited/.test(thought))score+=7;
+   if(/hungry|tired|dirty|lost|expensive|boring|crowded|hate|bad/.test(thought))score-=9;
+   return clamp(score,0,100);
+ }
+ function parkRating(){
+   if(!guests.length)return 500;
+   const mood=guests.reduce((a,g)=>a+guestMood(g),0)/guests.length;
+   const variety=Math.min(70,objects.filter(o=>ITEMS[o.userData?.kind]?.[2]==="ride").length*7);
+   const pricePenalty=Math.max(0,(entryFee-10)*2);
+   return Math.round(clamp(250+mood*6+variety-pricePenalty,0,999));
+ }
+ function thoughtBuckets(){
+   const buckets=new Map();
+   guests.forEach(g=>{
+     let t=(g.thought||"I'm looking around the park.").trim();
+     // Group exact/common thoughts while keeping natural guest text.
+     buckets.set(t,(buckets.get(t)||0)+1);
+   });
+   return [...buckets.entries()].sort((a,b)=>b[1]-a[1]).slice(0,4);
+ }
+ function updateGuestPulse(){
+   const rating=parkRating(),pr=document.querySelector("#pulseRating");
+   if(pr)pr.textContent=rating;
+   // Feed the rating back into each guest's disposition context.
+   guests.forEach(g=>{g.parkRating=rating;g.parkSentiment=guestMood(g)});
+   const box=document.querySelector("#commonThoughts");if(!box)return;
+   if(!guests.length){box.innerHTML='<span class="thought-chip">Park closed • awaiting first guests</span>';return}
+   const common=thoughtBuckets();
+   box.innerHTML=common.map(([t,n])=>`<span class="thought-chip"><b>${n}×</b> ${t}</span>`).join("");
+ }
+ // Make rating available to guest chat prompts and other systems.
+ window.getParkRating=parkRating;
+ window.getGuestSentiment=guestMood;
+ setInterval(updateGuestPulse,900);
+ updateGuestPulse();
+})();
+
+
+// World object selection + R-key rotation.
+// This deliberately leaves the WebGL renderer, camera, terrain and resize system untouched.
+(()=>{
+ function selectableObjectAt(e){
+   if(typeof objectAt!=="function")return null;
+   const o=objectAt(e);
+   if(!o)return null;
+   const kind=o.userData?.kind;
+   // Entrance is fixed infrastructure; paths/queues are directional networks rather than rotatable props.
+   if(kind==="entrance"||kind==="path"||kind==="queue")return null;
+   return o;
+ }
+ function setRotationSelection(o){
+   selectedWorldObject=o||null;
+   const hud=document.querySelector("#rotationSelection");
+   if(!hud)return;
+   if(!o){hud.textContent="R: rotate • nothing selected";return}
+   const kind=o.userData?.kind||"object";
+   const label=(typeof ITEMS!=="undefined"&&ITEMS[kind]?.[0])||kind;
+   const deg=((Math.round(THREE.MathUtils.radToDeg(o.rotation.y))%360)+360)%360;
+   hud.textContent=`R: rotate • ${label} • ${deg}°`;
+ }
+ canvas.addEventListener("click",e=>{
+   if(typeof cursorMode!=="undefined"&&cursorMode==="build")return;
+   const o=selectableObjectAt(e);
+   if(o)setRotationSelection(o);
+ },true);
+ document.addEventListener("keydown",e=>{
+   if(e.code!=="KeyR"||e.repeat)return;
+   if(["INPUT","TEXTAREA","SELECT"].includes(document.activeElement?.tagName))return;
+   if(!selectedWorldObject)return;
+   e.preventDefault();
+   selectedWorldObject.rotation.y-=Math.PI/2;
+   setRotationSelection(selectedWorldObject);
+   const kind=selectedWorldObject.userData?.kind||"object";
+   const label=(typeof ITEMS!=="undefined"&&ITEMS[kind]?.[0])||kind;
+   const status=document.querySelector("#status");
+   if(status)status.textContent=`${label} rotated 90°.`;
+ });
+})();
+
+
+// Hover-to-rotate benches with R.
+(()=>{
+ let hoveredBench=null;
+ function benchAtPointer(e){
+   if(typeof objectAt!=="function")return null;
+   const o=objectAt(e);
+   return o?.userData?.kind==="bench"?o:null;
+ }
+ canvas.addEventListener("pointermove",e=>{
+   hoveredBench=benchAtPointer(e);
+   if(hoveredBench){
+     canvas.style.cursor="alias";
+     const hud=document.querySelector("#rotationSelection");
+     const deg=((Math.round(THREE.MathUtils.radToDeg(hoveredBench.rotation.y))%360)+360)%360;
+     if(hud)hud.textContent=`R: rotate hovered Bench • ${deg}°`;
+   }else{
+     canvas.style.cursor="";
+   }
+ });
+ canvas.addEventListener("pointerleave",()=>{hoveredBench=null;canvas.style.cursor=""});
+ document.addEventListener("keydown",e=>{
+   if(true)return; // superseded by generic hover rotation handler
+   if(["INPUT","TEXTAREA","SELECT"].includes(document.activeElement?.tagName))return;
+   e.preventDefault();e.stopImmediatePropagation();
+   hoveredBench.rotation.y-=Math.PI/2;
+   selectedWorldObject=hoveredBench;
+   const deg=((Math.round(THREE.MathUtils.radToDeg(hoveredBench.rotation.y))%360)+360)%360;
+   const hud=document.querySelector("#rotationSelection");
+   if(hud)hud.textContent=`R: rotate hovered Bench • ${deg}°`;
+   const status=document.querySelector("#status");
+   if(status)status.textContent=`Bench rotated 90° • ${deg}°`;
+ },true);
+})();
+
+
+// Generic hover-to-rotate for all player-placeable objects.
+(()=>{
+ let hoveredRotatable=null;
+ const fixedKinds=new Set(["entrance","path","queue"]);
+ function rotatableAtPointer(e){
+   if(typeof objectAt!=="function")return null;
+   const o=objectAt(e);if(!o)return null;
+   const kind=o.userData?.kind;
+   if(!kind||fixedKinds.has(kind))return null;
+   // Only objects represented in the construction catalog are player-placeable.
+   if(typeof ITEMS!=="undefined"&&!ITEMS[kind])return null;
+   return o;
+ }
+ function labelFor(o){
+   const k=o?.userData?.kind||"object";
+   return (typeof ITEMS!=="undefined"&&ITEMS[k]?.[0])||k;
+ }
+ function degrees(o){return ((Math.round(THREE.MathUtils.radToDeg(o.rotation.y))%360)+360)%360}
+ canvas.addEventListener("pointermove",e=>{
+   hoveredRotatable=rotatableAtPointer(e);
+   if(hoveredRotatable){
+     canvas.style.cursor="alias";
+     const hud=document.querySelector("#rotationSelection");
+     if(hud)hud.textContent=`R: rotate hovered ${labelFor(hoveredRotatable)} • ${degrees(hoveredRotatable)}°`;
+   }else{
+     canvas.style.cursor="";
+   }
+ });
+ canvas.addEventListener("pointerleave",()=>{hoveredRotatable=null;canvas.style.cursor=""});
+ document.addEventListener("keydown",e=>{
+   if(e.code!=="KeyR"||e.repeat||!hoveredRotatable)return;
+   if(["INPUT","TEXTAREA","SELECT"].includes(document.activeElement?.tagName))return;
+   e.preventDefault();e.stopImmediatePropagation();
+   hoveredRotatable.rotation.y-=Math.PI/2;
+   selectedWorldObject=hoveredRotatable;
+   const label=labelFor(hoveredRotatable),deg=degrees(hoveredRotatable);
+   const hud=document.querySelector("#rotationSelection");
+   if(hud)hud.textContent=`R: rotate hovered ${label} • ${deg}°`;
+   const status=document.querySelector("#status");
+   if(status)status.textContent=`${label} rotated 90° • ${deg}°`;
+ },true);
+})();
+
+
+// Click-hold path painting. In path/queue build mode, dragging paints tiles instead of moving the camera.
+(()=>{
+ let painting=false,lastKey="",paintPointer=null;
+ function pathBuildActive(){
+   return typeof cursorMode!=="undefined"&&cursorMode==="build"&&(tool==="path"||tool==="queue")&&!bulldoze;
+ }
+ function groundTile(e){
+   const r=canvas.getBoundingClientRect();
+   mouse.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height*2-1));
+   ray.setFromCamera(mouse,camera);
+   const h=ray.intersectObject(ground)[0];if(!h)return null;
+   return {x:Math.round(h.point.x/2)*2,z:Math.round(h.point.z/2)*2};
+ }
+ function existingPathTile(x,z){
+   return paths.some(p=>Math.abs(p.position.x-x)<.2&&Math.abs(p.position.z-z)<.2&&p.userData?.kind===tool);
+ }
+ function paintTile(e){
+   const p=groundTile(e);if(!p)return;
+   const key=`${tool}:${p.x}:${p.z}`;if(key===lastKey)return;lastKey=key;
+   if(existingPathTile(p.x,p.z))return;
+   const cost=ITEMS[tool][1];if(cash<cost){$("#status").textContent="Not enough cash to continue path.";painting=false;return}
+   cash-=cost;add(tool,p.x,p.z);
+   if(tool==="queue"){objects.filter(o=>ITEMS[o.userData?.kind]?.[2]==="ride").forEach(o=>{o.userData.hasQueue=nearestQueue(o)});if(selectedRide)updateRideAccess()}
+   $("#status").textContent=`Painting ${ITEMS[tool][0]} • hold and drag`;
+   stats();
+ }
+ canvas.addEventListener("pointerdown",e=>{
+   if(e.button!==0||!pathBuildActive())return;
+   e.preventDefault();e.stopImmediatePropagation();
+   painting=true;paintPointer=e.pointerId;lastKey="";
+   try{canvas.setPointerCapture(e.pointerId)}catch{}
+   paintTile(e);
+ },true);
+ canvas.addEventListener("pointermove",e=>{
+   if(!painting||e.pointerId!==paintPointer)return;
+   e.preventDefault();e.stopImmediatePropagation();paintTile(e);
+ },true);
+ function stopPaint(e){
+   if(!painting)return;
+   if(e&&paintPointer!==null&&e.pointerId!==paintPointer)return;
+   e?.preventDefault();e?.stopImmediatePropagation();
+   painting=false;lastKey="";paintPointer=null;
+   try{if(e)canvas.releasePointerCapture(e.pointerId)}catch{}
+   $("#status").textContent=`${ITEMS[tool][0]} painting finished.`;
+ }
+ canvas.addEventListener("pointerup",stopPaint,true);
+ canvas.addEventListener("pointercancel",stopPaint,true);
+})();
+
+
+// Camera escape + authoritative park metrics. Renderer/camera implementation remains untouched.
+(()=>{
+ let nativeCameraMode=false;
+ function setNativeCamera(){
+   nativeCameraMode=true;
+   // Leave construction cleanly: no path painting, no bulldozer, no pending ride access.
+   cursorMode="camera";bulldoze=false;
+   if(typeof pendingRideAccess!=="undefined")pendingRideAccess=null;
+   document.querySelectorAll("[data-mode]").forEach(b=>b.classList.remove("active"));
+   const b=document.querySelector("#nativeCameraBtn");b?.classList.add("camera-active");
+   canvas.style.cursor="";
+   const ms=document.querySelector("#modeStatus");if(ms)ms.textContent="CAMERA • drag to orbit/pan • wheel to zoom";
+   const st=document.querySelector("#status");if(st)st.textContent="Native camera controls restored.";
+ }
+ document.querySelector("#nativeCameraBtn")?.addEventListener("click",setNativeCamera);
+ document.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>{
+   nativeCameraMode=false;document.querySelector("#nativeCameraBtn")?.classList.remove("camera-active");
+ }));
+ // Escape is a fast way out of any construction tool.
+ document.addEventListener("keydown",e=>{
+   if(e.code==="Escape"&&!["INPUT","TEXTAREA","SELECT"].includes(document.activeElement?.tagName)){e.preventDefault();setNativeCamera()}
+ });
+
+ function actualGuestsInPark(){
+   // Count active guest entities that still have a live scene representation.
+   return guests.filter(g=>{
+     const m=g.mesh||g.obj||g.group;
+     return m && m.parent && !g.exited && !g.leftPark;
+   }).length;
+ }
+ function avgMood(){
+   const active=guests.filter(g=>{const m=g.mesh||g.obj||g.group;return m&&m.parent&&!g.exited&&!g.leftPark});
+   if(!active.length)return null;
+   return Math.round(active.reduce((a,g)=>a+Number(g.happiness??g.happy??g.mood??75),0)/active.length);
+ }
+ function rideCount(){return objects.filter(o=>ITEMS[o.userData?.kind]?.[2]==="ride").length}
+ function staffCount(){
+   if(typeof staff==="object"&&staff){
+     if(Array.isArray(staff))return staff.length;
+     return Object.values(staff).reduce((a,v)=>a+(Number(v)||0),0);
+   }
+   return 0;
+ }
+ function revenueValue(){
+   if(typeof revenue!=="undefined")return Number(revenue)||0;
+   if(typeof profit!=="undefined")return Math.max(0,Number(profit)||0);
+   return 0;
+ }
+ function updateTopMetrics(){
+   const n=actualGuestsInPark(),m=avgMood();
+   const set=(id,v)=>{const e=document.querySelector(id);if(e)e.textContent=v};
+   set("#metricGuests",n);
+   set("#metricMood",m===null?"—":m+"%");
+   set("#metricRating",typeof window.getParkRating==="function"?window.getParkRating():500);
+   set("#metricRides",rideCount());
+   set("#metricRevenue","$"+Math.round(revenueValue()).toLocaleString());
+   set("#metricStaff",staffCount());
+   // Synchronize any legacy guest counter with the authoritative active count.
+   ["#guestCount","#guests","#guestStat"].forEach(id=>{const e=document.querySelector(id);if(e)e.textContent=n});
+ }
+ window.actualGuestsInPark=actualGuestsInPark;
+ setInterval(updateTopMetrics,500);updateTopMetrics();
+})();
+
+
+// Explicit exit from path painting to native click-drag camera.
+(()=>{
+ function exitPathToCamera(){
+   cursorMode="camera";bulldoze=false;
+   if(typeof pendingRideAccess!=="undefined")pendingRideAccess=null;
+   document.querySelectorAll("[data-mode]").forEach(b=>b.classList.remove("active"));
+   document.querySelector("#nativeCameraBtn")?.classList.add("camera-active");
+   canvas.style.cursor="";
+   const ms=document.querySelector("#modeStatus");if(ms)ms.textContent="CAMERA • click + drag to move view • wheel to zoom";
+   const st=document.querySelector("#status");if(st)st.textContent="Path placement ended. Camera drag controls active.";
+   // Synthetic pointer cancellation is intentionally avoided; the path painter
+   // releases naturally on pointerup and its pathBuildActive() is now false.
+ }
+ document.querySelector("#exitPathMode")?.addEventListener("click",exitPathToCamera);
+ // Right-click while path painting exits the tool instead of placing/bulldozing.
+ canvas.addEventListener("contextmenu",e=>{
+   if(cursorMode==="build"&&(tool==="path"||tool==="queue")){
+     e.preventDefault();e.stopImmediatePropagation();exitPathToCamera();
+   }
+ },true);
+ window.exitPathToCamera=exitPathToCamera;
+})();
+
+// Ferris wheel music: synthesized locally with Web Audio, no external audio asset.
+(()=>{
+ let ferrisMusic=false,audioCtx=null,timer=null,step=0;
+ const notes=[261.63,329.63,392.00,523.25,392.00,329.63,293.66,349.23,440.00,587.33,440.00,349.23];
+ function ferrisExists(){return objects.some(o=>o.userData?.kind==="wheel")}
+ function tone(freq){
+   if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+   if(audioCtx.state==="suspended")audioCtx.resume();
+   const now=audioCtx.currentTime,osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+   osc.type="triangle";osc.frequency.value=freq;
+   gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(.12,now+.025);gain.gain.exponentialRampToValueAtTime(.0001,now+.32);
+   osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+.34);
+ }
+ function playStep(){if(!ferrisMusic||!ferrisExists())return;tone(notes[step++%notes.length])}
+ function setFerrisMusic(on){
+   ferrisMusic=!!on;
+   clearInterval(timer);timer=null;
+   if(ferrisMusic){playStep();timer=setInterval(playStep,420)}
+   const b=document.querySelector("#ferrisMusicBtn");if(b)b.textContent=`🎵 Ferris Music: ${ferrisMusic?"ON":"OFF"}`;
+ }
+ document.querySelector("#ferrisMusicBtn")?.addEventListener("click",()=>setFerrisMusic(!ferrisMusic));
+ document.querySelector("#ferrisMusicGlobal")?.addEventListener("click",()=>setFerrisMusic(!ferrisMusic));
+ // Show music control when the selected ride is a Ferris wheel.
+ setInterval(()=>{
+   const box=document.querySelector("#ferrisMusicControls");if(!box)return;
+   box.style.display=ferrisExists()?"flex":"none";
+ },300);
+ window.setFerrisMusic=setFerrisMusic;
+})();
+
+
+// Guest popup interaction + pickup/drop.
+(()=>{
+ let popupGuest=null,carriedGuest=null,carryPointer={x:0,z:0};
+ const pop=$("#guestPopup"),log=$("#guestPopupLog");
+ function guestHit(e){
+   const r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height*2-1));ray.setFromCamera(mouse,camera);
+   let best=null,d=Infinity;
+   guests.forEach(g=>{const h=ray.intersectObject(g.mesh,true)[0];if(h&&h.distance<d){best=g;d=h.distance}});
+   return best;
+ }
+ function openGuest(g){
+   popupGuest=g;selectedGuest=g;pop.classList.add("open");
+   $("#guestPopupName").textContent="👤 "+g.name;
+   $("#guestPopupMeta").textContent=`Mood ${g.mood}% • Hunger ${g.hunger}% • Park rating ${window.getParkRating?.()??500}`;
+   log.innerHTML=(g.history||[]).slice(-8).map(x=>`<div class="msg guest">${x}</div>`).join("")+`<div class="msg guest"><b>${g.name}:</b> ${g.thought}</div>`;
+   log.scrollTop=log.scrollHeight;
+ }
+ $("#guestPopupClose").onclick=()=>pop.classList.remove("open");
+ $("#guestFollow").onclick=()=>{if(popupGuest){follow=popupGuest;$("#status").textContent="Following "+popupGuest.name}};
+ $("#guestPickup").onclick=()=>{
+   if(!popupGuest)return;carriedGuest=popupGuest;popupGuest.carried=true;popupGuest.currentPath=null;popupGuest.targetPath=null;
+   document.body.classList.add("carrying-guest");$("#guestPickup").textContent="✋ Carrying… click park to drop";$("#status").textContent="Carrying "+popupGuest.name+". Click terrain, path, or water to drop.";
+ };
+ function worldPoint(e){
+   const r=canvas.getBoundingClientRect();mouse.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height*2-1));ray.setFromCamera(mouse,camera);
+   // Terrain plane provides a stable X/Z point even over ponds.
+   const h=ray.intersectObject(ground)[0];return h?.point||null;
+ }
+ canvas.addEventListener("pointermove",e=>{
+   if(!carriedGuest)return;const p=worldPoint(e);if(!p)return;carryPointer={x:p.x,z:p.z};
+   carriedGuest.mesh.position.set(p.x,2.6,p.z);
+ },true);
+ canvas.addEventListener("click",e=>{
+   if(carriedGuest){
+     e.preventDefault();e.stopImmediatePropagation();
+     const p=worldPoint(e);if(!p)return;
+     const g=carriedGuest;carriedGuest=null;g.carried=false;
+     // Detect visible pond meshes at the drop coordinate.
+     const water=objects.find(o=>o.userData?.kind==="water"&&Math.hypot(o.position.x-p.x,o.position.z-p.z)<Math.max(o.scale?.x||1,o.scale?.y||1));
+     if(water){
+       g.mesh.position.set(p.x,.18,p.z);g.inWater=true;g.currentPath=null;g.targetPath=null;
+       g.thought="I'm in the water! Somebody get me out!";
+       thought(g,g.thought);$("#status").textContent=g.name+" was dropped in the pond.";
+     }else{
+       g.mesh.position.set(p.x,0,p.z);g.inWater=false;
+       g.currentPath=pathNodeNear(p.x,p.z);g.targetPath=g.currentPath?chooseGuestNextPath(g,g.currentPath):null;
+       g.thought=g.currentPath?"Okay, back on the path.":"I'm off the path. Where am I?";
+       thought(g,g.thought);$("#status").textContent=g.name+" dropped.";
+     }
+     document.body.classList.remove("carrying-guest");$("#guestPickup").textContent="✋ Pick Up";openGuest(g);return;
+   }
+   if(cursorMode!=="interact"&&cursorMode!=="talk")return;
+   const g=guestHit(e);if(g){e.preventDefault();e.stopImmediatePropagation();openGuest(g)}
+ },true);
+ $("#guestPopupForm").addEventListener("submit",async e=>{
+   e.preventDefault();if(!popupGuest)return;const input=$("#guestPopupInput"),text=input.value.trim();if(!text)return;input.value="";
+   log.insertAdjacentHTML("beforeend",`<div class="msg you"><b>You:</b> ${text.replace(/[<>&]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;"}[c]))}</div>`);
+   // Reuse the game's existing guest/Ollama chat controls when available.
+   const idx=guests.indexOf(popupGuest);if($("#guestSelect")&&idx>=0)$("#guestSelect").value=String(idx);
+   if($("#chatInput"))$("#chatInput").value=text;
+   const send=$("#sendChat")||$("#chatSend")||[...document.querySelectorAll("button")].find(b=>/send/i.test(b.textContent)&&b.closest(".panel"));
+   if(send){send.click();setTimeout(()=>{log.insertAdjacentHTML("beforeend",`<div class="msg guest"><b>${popupGuest.name}:</b> ${popupGuest.thought}</div>`);log.scrollTop=log.scrollHeight},900)}
+   else {log.insertAdjacentHTML("beforeend",`<div class="msg guest"><b>${popupGuest.name}:</b> ${popupGuest.thought}</div>`)}
+ });
+})();
+
+
+// R&D, staff, simulation slider, sickness, and visible ride riders.
+(()=>{
+ const researchCatalog=[["Aurora Hypercoaster", 6500], ["Titan Giga Coaster", 9000], ["Vortex Inverted Coaster", 7200], ["Comet Launch Coaster", 8000], ["Cyclone Looping Coaster", 7000], ["Skywing Flying Coaster", 7800], ["Tidal Water Coaster", 6900], ["Pendulum Giant Swing", 4200], ["Abyss Mega Drop", 4800], ["Celestial Observation Tower", 3600], ["Timber Mountain Railway", 5200], ["Neon Motorbike Coaster", 7600], ["Raptor Wing Coaster", 8200], ["Avalanche Bobsled", 6100], ["Phantom Mine Train", 5600], ["Tempest Suspended Coaster", 7300], ["Solar Spinner", 2800], ["Orbital Enterprise", 3300], ["Meteor Top Spin", 3100], ["Thunder Disk", 2900], ["Hydra Rapids", 5400], ["Cascade Log Flume", 4700], ["Poseidon Splash Boats", 5000], ["Lagoon Submarine Ride", 4400], ["Galaxy Dark Ride", 5900], ["Haunted Manor", 5100], ["Dinosaur Safari", 6200], ["Moonbase Motion Simulator", 4000], ["Dragon Flight", 6800], ["Clockwork Carousel", 2600], ["Skyline Monorail", 7500], ["Steam Railway", 6400], ["Grand Gondola", 5800], ["Turbo Go Karts", 4500], ["Pirate Armada", 3000], ["Jungle River Cruise", 5300], ["Zero-G Rotor", 3500], ["Starfall Slingshot", 3900], ["Crystal Cavern Coaster", 8400], ["Quantum Accelerator", 11000]];
+ let researchPointsValue=0,researchFunding=250,autoResearchOn=true,researchIndex=0,researchClock=0;
+ const staffRoster={mechanic:0,janitor:0,security:0,entertainer:0};
+ window.staff=staffRoster;
+
+ // Simulation rate slider replaces discrete speed selection.
+ const sim=document.querySelector("#simRateSlider"),sv=document.querySelector("#simRateValue");
+ if(sim){sim.value=String(typeof speed!=="undefined"?speed:.35);sv.textContent=Number(sim.value).toFixed(2)+"×";sim.addEventListener("input",()=>{speed=Number(sim.value);sv.textContent=Number(sim.value).toFixed(2)+"×"})}
+ document.querySelectorAll("[data-speed]").forEach(b=>b.style.display="none");
+
+ function researchCost(i){return 90+Math.floor(i*18)}
+ function renderResearch(){
+   const next=researchCatalog[researchIndex],need=researchCost(researchIndex);
+   $("#researchPoints").textContent=Math.floor(researchPointsValue);
+   $("#researchFunding").textContent="$"+researchFunding+"/mo";
+   $("#researchProgress").textContent=next?`Next: ${next[0]} • ${Math.floor(researchPointsValue)} / ${need} RP`:"All 40 advanced rides researched.";
+   $("#researchUnlocks").innerHTML=researchCatalog.map((r,i)=>`<div style="opacity:${i<researchIndex?1:.45}">${i<researchIndex?"✓":"🔒"} ${r[0]}</div>`).join("");
+ }
+ $("#researchFundingSlider")?.addEventListener("input",e=>{researchFunding=+e.target.value;renderResearch()});
+ $("#autoResearch")?.addEventListener("click",e=>{autoResearchOn=!autoResearchOn;e.target.textContent="Auto R&D: "+(autoResearchOn?"ON":"OFF")});
+
+ function unlockRide(){
+   if(researchIndex>=researchCatalog.length)return;
+   const [name,cost]=researchCatalog[researchIndex],key="researchRide"+researchIndex;
+   ITEMS[key]=[name,cost,"ride"];
+   researchIndex++;
+   if(typeof buildStore==="function")try{buildStore()}catch{}
+   $("#status").textContent="R&D unlocked: "+name+"!";
+ }
+ setInterval(()=>{
+   if(!autoResearchOn||researchIndex>=researchCatalog.length||researchFunding<=0)return;
+   const spend=Math.min(cash,researchFunding/120);if(spend<=0)return;
+   cash-=spend;researchPointsValue+=spend*.42;
+   while(researchIndex<researchCatalog.length&&researchPointsValue>=researchCost(researchIndex)){researchPointsValue-=researchCost(researchIndex);unlockRide()}
+   renderResearch();stats();
+ },1000);
+ renderResearch();
+
+ function staffSummary(){
+   $("#staffSummary").textContent=`Mechanics ${staffRoster.mechanic} • Janitors ${staffRoster.janitor} • Security ${staffRoster.security} • Entertainers ${staffRoster.entertainer}`;
+ }
+ document.querySelectorAll("[data-hire]").forEach(b=>b.addEventListener("click",()=>{
+   const type=b.dataset.hire,cost={mechanic:120,janitor:90,security:110,entertainer:100}[type];
+   if(cash<cost){$("#status").textContent="Not enough cash to hire staff.";return}
+   cash-=cost;staffRoster[type]++;staffSummary();stats();
+ }));staffSummary();
+ setInterval(()=>{const wages=staffRoster.mechanic*18+staffRoster.janitor*14+staffRoster.security*16+staffRoster.entertainer*15;cash-=wages/60;stats()},1000);
+
+ // Guest sickness and puke. Janitors reduce persistence.
+ setInterval(()=>{
+   if(!guests.length||speed<=0)return;
+   guests.forEach(g=>{
+     if(g.carried||g.inWater)return;
+     g.nausea=Math.max(0,(g.nausea||0)-.4);
+     if(g.nausea>72&&Math.random()<.035*speed){
+       g.nausea=Math.max(20,g.nausea-45);g.thought="Ugh… I feel sick.";
+       const puddle=new THREE.Mesh(new THREE.CircleGeometry(.28,10),new THREE.MeshStandardMaterial({color:0x91a84b,roughness:1}));
+       puddle.rotation.x=-Math.PI/2;puddle.position.set(g.mesh.position.x,.025,g.mesh.position.z);puddle.userData.kind="puke";scene.add(puddle);objects.push(puddle);
+       thought(g,g.thought);
+       setTimeout(()=>{if(staffRoster.janitor>0){scene.remove(puddle);const i=objects.indexOf(puddle);if(i>=0)objects.splice(i,1)}},Math.max(2500,12000-staffRoster.janitor*1500));
+     }
+   });
+ },1200);
+
+ // Visible riders: attach scaled guest-like figures to moving ride assemblies.
+ function seatRider(ride,g){
+   if(g.onRide)return;g.onRide=ride;g.mesh.visible=false;g.nausea=(g.nausea||0)+18+Math.random()*28;
+   const rider=g.mesh.clone(true);rider.scale.setScalar(.72);rider.position.set((Math.random()-.5)*.8,.35,(Math.random()-.5)*.5);
+   const carrier=ride.userData?.ferrisRotor||ride.userData?.main||ride;
+   carrier.add(rider);g.rideVisual=rider;
+   setTimeout(()=>{carrier.remove(rider);g.mesh.visible=true;g.onRide=null;g.rideVisual=null;const p=ride.position;g.mesh.position.set(p.x+2,0,p.z+2);g.currentPath=pathNodeNear(g.mesh.position.x,g.mesh.position.z);g.targetPath=g.currentPath?chooseGuestNextPath(g,g.currentPath):null;g.thought="That ride was intense!";thought(g,g.thought)},6500/Math.max(.2,speed));
+ }
+ setInterval(()=>{
+   if(!parkOpen||speed<=0)return;
+   const openRides=objects.filter(o=>ITEMS[o.userData?.kind]?.[2]==="ride"&&o.userData?.rideOpen!==false);
+   if(!openRides.length)return;
+   guests.filter(g=>!g.onRide&&!g.carried&&!g.inWater).forEach(g=>{
+     const ride=openRides.find(r=>Math.hypot(r.position.x-g.mesh.position.x,r.position.z-g.mesh.position.z)<4.5);
+     if(ride&&Math.random()<.08*speed)seatRider(ride,g);
+   });
+ },1000);
+})();
+
+</script><div id="guestPulse"><div class="pulse-title">💭 GUEST PULSE</div><div class="pulse-items" id="commonThoughts"><span class="thought-chip">Park closed • awaiting first guests</span></div><div class="rating">⭐ <b id="pulseRating">500</b></div></div>
+<div id="guestPopup" role="dialog" aria-label="Guest interaction">
+ <div id="guestPopupHead"><span id="guestPopupName">Guest</span><button id="guestPopupClose">✕</button></div>
+ <div id="guestPopupMeta"></div>
+ <div id="guestPopupLog"></div>
+ <div id="guestPopupActions"><button id="guestPickup">✋ Pick Up</button><button id="guestFollow">👁 Follow</button></div>
+ <form id="guestPopupForm"><input id="guestPopupInput" placeholder="Talk to this guest…" autocomplete="off"><button>Send</button></form>
+</div>
+</body></html>

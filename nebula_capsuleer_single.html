@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NEBULA // Capsuleer Sandbox</title>
+<meta name="description" content="A single-file cinematic space MMO landing page and playable browser sandbox prototype." />
+<style>
+  :root{
+    --bg:#04070a;
+    --bg2:#071015;
+    --panel:rgba(10,18,24,.86);
+    --panel2:rgba(4,10,14,.92);
+    --line:rgba(168,215,235,.16);
+    --line2:rgba(168,215,235,.35);
+    --text:#e7f1f4;
+    --muted:#8fa3ac;
+    --cyan:#8ee8ff;
+    --cyan2:#37b8db;
+    --amber:#f3bb72;
+    --red:#ff6b66;
+    --green:#76e2ae;
+    --shadow:0 30px 80px rgba(0,0,0,.55);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;background:var(--bg)}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 60% -10%, rgba(47,110,132,.18), transparent 34rem),
+      linear-gradient(180deg,#040709,#061016 65%,#030609);
+    color:var(--text);
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    letter-spacing:.015em;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit;text-decoration:none}
+  button,input,select{font:inherit}
+
+  .site-header{
+    position:fixed; inset:0 0 auto 0; z-index:50;
+    height:68px; display:flex; align-items:center; justify-content:space-between;
+    padding:0 4vw;
+    background:linear-gradient(180deg,rgba(2,6,9,.88),rgba(2,6,9,.22));
+    border-bottom:1px solid rgba(255,255,255,.045);
+    backdrop-filter:blur(14px);
+  }
+  .brand{display:flex;align-items:center;gap:14px;font-weight:800;letter-spacing:.26em;font-size:.77rem}
+  .brand-mark{
+    width:31px;height:31px;position:relative;border:1px solid var(--line2);transform:rotate(45deg);
+    box-shadow:inset 0 0 24px rgba(142,232,255,.10),0 0 28px rgba(142,232,255,.08);
+  }
+  .brand-mark:before,.brand-mark:after{
+    content:"";position:absolute;background:var(--cyan);opacity:.7
+  }
+  .brand-mark:before{width:1px;height:70%;left:50%;top:15%}
+  .brand-mark:after{height:1px;width:70%;top:50%;left:15%}
+  .nav{display:flex;gap:26px;align-items:center;color:#b4c5cb;font-size:.78rem;text-transform:uppercase;letter-spacing:.14em}
+  .nav a:hover{color:white}
+  .nav .play-small{border:1px solid rgba(142,232,255,.45);padding:10px 14px;color:var(--cyan)}
+
+  .hero{
+    position:relative; min-height:100vh; display:grid; place-items:center;
+    padding:118px 6vw 70px; isolation:isolate; overflow:hidden;
+  }
+  #heroSpace{position:absolute;inset:0;width:100%;height:100%;z-index:-4;background:#020508}
+  .hero:after{
+    content:"";position:absolute;inset:0;z-index:-2;
+    background:
+      linear-gradient(90deg,rgba(2,5,8,.78) 0%,rgba(2,5,8,.2) 50%,rgba(2,5,8,.58) 100%),
+      linear-gradient(180deg,rgba(2,5,8,.06),rgba(2,5,8,.08) 60%,var(--bg) 100%);
+  }
+  .hero-grid{
+    width:min(1460px,100%);display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.64fr);gap:80px;align-items:end
+  }
+  .eyebrow{font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:var(--cyan);margin-bottom:18px}
+  h1{
+    margin:0; max-width:10ch; font-size:clamp(3.7rem,8vw,9.7rem); line-height:.81;
+    text-transform:uppercase; letter-spacing:-.055em; font-weight:850;
+    text-shadow:0 18px 60px rgba(0,0,0,.55);
+  }
+  h1 span{display:block;color:transparent;-webkit-text-stroke:1px rgba(225,243,250,.48);font-weight:500}
+  .hero-copy{margin:28px 0 34px;max-width:650px;color:#b5c2c8;font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.7}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{
+    cursor:pointer;border:0;min-width:166px;padding:15px 22px;text-transform:uppercase;font-weight:800;
+    letter-spacing:.12em;font-size:.78rem;transition:.22s ease;
+  }
+  .btn-primary{background:#dfecef;color:#061016}
+  .btn-primary:hover{background:white;transform:translateY(-2px)}
+  .btn-ghost{background:rgba(4,10,14,.42);border:1px solid rgba(223,236,239,.33);color:#e6f2f5}
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+  .hero-card{
+    margin-left:auto;max-width:480px;background:linear-gradient(180deg,rgba(7,15,20,.68),rgba(2,7,10,.92));
+    border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(10px);padding:28px;position:relative;
+  }
+  .hero-card:before{content:"LIVE SANDBOX";position:absolute;right:14px;top:12px;color:var(--green);font-size:.62rem;letter-spacing:.2em}
+  .hero-card h3{margin:26px 0 8px;text-transform:uppercase;letter-spacing:.08em;font-size:1.15rem}
+  .hero-card p{color:var(--muted);line-height:1.65;font-size:.92rem}
+  .signal{height:3px;background:rgba(255,255,255,.08);margin-top:22px;overflow:hidden}
+  .signal i{display:block;height:100%;width:68%;background:linear-gradient(90deg,var(--cyan2),var(--green));box-shadow:0 0 18px var(--cyan)}
+
+  .band{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:repeat(4,1fr);background:#050a0e
+  }
+  .stat{padding:24px 4vw;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat strong{display:block;font-size:1.4rem;letter-spacing:.04em}
+  .stat span{color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.15em}
+
+  .section{padding:110px 5vw}
+  .section-inner{width:min(1460px,100%);margin:auto}
+  .section-head{display:flex;justify-content:space-between;gap:30px;align-items:flex-end;margin-bottom:50px}
+  .section h2{margin:0;text-transform:uppercase;font-size:clamp(2.4rem,5vw,5.8rem);line-height:.9;letter-spacing:-.045em}
+  .section-head p{max-width:540px;color:var(--muted);line-height:1.7}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .path-card{
+    min-height:390px;padding:30px;background:
+      linear-gradient(180deg,rgba(7,14,18,.72),rgba(3,7,10,.97)),
+      radial-gradient(circle at 70% 15%,rgba(142,232,255,.11),transparent 16rem);
+    position:relative;overflow:hidden;transition:.25s ease
+  }
+  .path-card:hover{background-color:#0b1419;transform:translateY(-4px);z-index:2;box-shadow:0 20px 70px rgba(0,0,0,.35)}
+  .path-card .num{font-size:.72rem;color:var(--cyan);letter-spacing:.18em}
+  .path-card h3{font-size:1.55rem;text-transform:uppercase;margin:190px 0 12px;letter-spacing:.035em}
+  .path-card p{color:var(--muted);line-height:1.65;font-size:.9rem}
+  .path-card:after{
+    content:"";position:absolute;width:210px;height:70px;border:1px solid rgba(142,232,255,.11);
+    top:65px;right:-40px;transform:skewX(-35deg) rotate(-15deg);box-shadow:0 0 35px rgba(55,184,219,.08)
+  }
+
+  .play-section{padding:0 0 90px}
+  .play-shell{
+    width:min(1680px,96vw);margin:auto;border:1px solid rgba(153,214,236,.28);background:#02070a;
+    box-shadow:0 45px 120px rgba(0,0,0,.66);position:relative
+  }
+  .sim-topbar{
+    height:48px;padding:0 14px 0 18px;display:flex;align-items:center;justify-content:space-between;
+    background:linear-gradient(180deg,#0a1216,#060c10);border-bottom:1px solid var(--line);font-size:.72rem;
+    letter-spacing:.13em;text-transform:uppercase;color:#90a5ae
+  }
+  .sim-topbar b{color:#e6f4f7}
+  .sim-layout{height:min(79vh,900px);min-height:620px;display:grid;grid-template-columns:240px 1fr 290px;overflow:hidden}
+  .side{
+    background:linear-gradient(180deg,rgba(7,15,19,.97),rgba(2,8,11,.98));
+    border-right:1px solid var(--line);overflow:auto
+  }
+  .side.right{border-right:0;border-left:1px solid var(--line)}
+  .panel{padding:16px;border-bottom:1px solid var(--line)}
+  .panel-title{font-size:.63rem;color:#6f8994;letter-spacing:.19em;text-transform:uppercase;margin-bottom:12px}
+  .kv{display:flex;justify-content:space-between;gap:10px;font-size:.75rem;padding:5px 0;color:#adc0c7}
+  .kv b{color:#f2f7f8;font-weight:650}
+  .meter{height:5px;background:#111a1e;margin:5px 0 11px;overflow:hidden}
+  .meter>i{display:block;height:100%;width:70%;background:#89ddee;transition:.2s}
+  .meter.armor>i{background:#e0bc82}.meter.hull>i{background:#d97470}
+  .target-btn,.system-btn,.module{
+    width:100%;text-align:left;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.055);
+    color:#b5c8cf;padding:9px 10px;margin:4px 0;cursor:pointer;font-size:.73rem;transition:.15s
+  }
+  .target-btn:hover,.system-btn:hover,.module:hover{border-color:rgba(142,232,255,.32);color:white;background:rgba(142,232,255,.055)}
+  .target-btn.active{border-color:rgba(255,107,102,.5);color:#ffd8d6;background:rgba(255,107,102,.08)}
+  .system-btn.active{border-color:rgba(142,232,255,.48);color:var(--cyan)}
+  .module-row{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+  .module{padding:10px 6px;text-align:center;font-size:.64rem}
+  .module.hot{color:#081014;background:var(--cyan);border-color:var(--cyan)}
+  .module.cooldown{opacity:.45}
+
+  .viewport{position:relative;min-width:0;background:#010305;overflow:hidden}
+  #gameCanvas{width:100%;height:100%;display:block;background:#010305;cursor:crosshair}
+  .hud-top{
+    position:absolute;top:16px;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;
+    text-shadow:0 2px 8px #000
+  }
+  .hud-top .sys{font-size:1rem;font-weight:800;letter-spacing:.18em}
+  .hud-top .sec{font-size:.65rem;color:var(--green);letter-spacing:.17em;margin-top:4px}
+  .crosshair{
+    position:absolute;left:50%;top:50%;width:26px;height:26px;transform:translate(-50%,-50%);
+    border:1px solid rgba(142,232,255,.28);border-radius:50%;pointer-events:none
+  }
+  .crosshair:before,.crosshair:after{content:"";position:absolute;background:rgba(142,232,255,.38)}
+  .crosshair:before{height:1px;width:42px;left:-9px;top:12px}
+  .crosshair:after{width:1px;height:42px;top:-9px;left:12px}
+  .toast{
+    position:absolute;left:50%;bottom:24px;transform:translateX(-50%);max-width:82%;
+    padding:9px 13px;background:rgba(2,7,10,.75);border:1px solid var(--line);
+    font-size:.7rem;letter-spacing:.08em;color:#c7d5da;opacity:0;transition:.2s;pointer-events:none
+  }
+  .toast.show{opacity:1}
+  .reticle{
+    position:absolute;width:58px;height:58px;border:1px solid rgba(255,107,102,.6);border-radius:50%;
+    transform:translate(-50%,-50%);pointer-events:none;display:none;
+    box-shadow:0 0 24px rgba(255,107,102,.11)
+  }
+  .reticle:before,.reticle:after{content:"";position:absolute;background:rgba(255,107,102,.75)}
+  .reticle:before{height:1px;width:16px;left:20px;top:-7px}
+  .reticle:after{width:1px;height:16px;left:-7px;top:20px}
+
+  .log{
+    height:145px;overflow:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.66rem;
+    color:#84a1ad;background:#02070a;padding:10px;border-top:1px solid var(--line)
+  }
+  .log div{margin:4px 0}.log .good{color:#7ee0ad}.log .bad{color:#ff8580}.log .info{color:#8fdff3}
+
+  .objective{font-size:.72rem;line-height:1.55;color:#a9bdc5}
+  .objective b{color:#f4f8f9}
+  .control-table{font-size:.68rem;color:#8fa5ae;line-height:1.8}
+  .key{display:inline-grid;place-items:center;min-width:24px;height:20px;padding:0 5px;border:1px solid rgba(255,255,255,.17);background:#0b1216;color:white;margin-right:4px}
+
+  .feature-split{
+    display:grid;grid-template-columns:1fr 1fr;min-height:600px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+  }
+  .feature-copy{padding:8vw 6vw;display:flex;flex-direction:column;justify-content:center}
+  .feature-copy h2{font-size:clamp(2.8rem,5vw,6rem);text-transform:uppercase;line-height:.92;margin:0 0 24px}
+  .feature-copy p{max-width:610px;color:var(--muted);line-height:1.8}
+  .feature-art{position:relative;overflow:hidden;background:linear-gradient(135deg,#07151d,#020507)}
+  .feature-art canvas{width:100%;height:100%;display:block}
+  .feature-art .label{position:absolute;left:30px;bottom:25px;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#8dcfe0}
+
+  .footer{padding:48px 5vw 70px;color:#657a83;font-size:.72rem;line-height:1.7}
+  .footer-inner{width:min(1460px,100%);margin:auto;display:flex;justify-content:space-between;gap:30px;border-top:1px solid var(--line);padding-top:28px}
+  .footer b{color:#a8bac1}
+
+  .boot{
+    position:absolute;inset:0;z-index:20;display:grid;place-items:center;background:
+      radial-gradient(circle at 50% 30%,rgba(44,116,141,.12),transparent 30rem),rgba(1,4,6,.96);
+    transition:.5s;
+  }
+  .boot.hidden{opacity:0;pointer-events:none}
+  .boot-box{width:min(500px,85%);text-align:center}
+  .boot-logo{font-weight:900;font-size:2.4rem;letter-spacing:.28em;margin-bottom:8px}
+  .boot-sub{color:#79919a;font-size:.68rem;text-transform:uppercase;letter-spacing:.23em;margin-bottom:32px}
+  .boot .btn{min-width:230px}
+  .boot p{color:#71858d;font-size:.72rem;line-height:1.6;margin-top:18px}
+
+  @media (max-width:1050px){
+    .nav a:not(.play-small){display:none}
+    .hero-grid{grid-template-columns:1fr;gap:35px}
+    .hero-card{margin:0}
+    .cards{grid-template-columns:1fr 1fr}
+    .sim-layout{grid-template-columns:190px 1fr}
+    .side.right{display:none}
+  }
+  @media (max-width:720px){
+    .site-header{padding:0 18px}.brand span{display:none}
+    .hero{padding-left:22px;padding-right:22px}
+    .hero-grid{display:block}
+    .hero-card{margin-top:35px}
+    .band{grid-template-columns:1fr 1fr}
+    .stat:nth-child(2){border-right:0}.stat{border-bottom:1px solid var(--line)}
+    .section{padding:75px 20px}.section-head{display:block}.section-head p{margin-top:20px}
+    .cards{grid-template-columns:1fr}
+    .path-card{min-height:280px}.path-card h3{margin-top:100px}
+    .sim-layout{grid-template-columns:1fr;height:75vh;min-height:570px}
+    .side{display:none}
+    .feature-split{grid-template-columns:1fr}.feature-art{min-height:400px}
+    .footer-inner{display:block}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="#top" class="brand" aria-label="Nebula home">
+    <i class="brand-mark"></i><span>NEBULA // CAPSULEER</span>
+  </a>
+  <nav class="nav">
+    <a href="#paths">Careers</a>
+    <a href="#sandbox">Universe</a>
+    <a href="#systems">Ships</a>
+    <a class="play-small" href="#sandbox">Enter Simulator</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <canvas id="heroSpace"></canvas>
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Single-file browser space sandbox</div>
+        <h1>Write Your <span>Orbit</span></h1>
+        <p class="hero-copy">
+          A cinematic MMO-style front door that does not stop at marketing copy. Launch directly into a living browser prototype, fly a capsuleer vessel, hunt raiders, mine ice-rock, earn credits, and jump between simulated systems.
+        </p>
+        <div class="cta-row">
+          <button class="btn btn-primary" id="heroLaunch">Play in browser</button>
+          <a class="btn btn-ghost" href="#paths">Explore careers</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="eyebrow">Tranquility Relay // Local</div>
+        <h3>One HTML file. Zero launcher.</h3>
+        <p>Everything on this page, including the game loop, HUD, particles, enemies, mining targets, economy state and system travel, lives in this document.</p>
+        <div class="kv"><span>Simulation state</span><b>READY</b></div>
+        <div class="kv"><span>Rendering</span><b>CANVAS 2D</b></div>
+        <div class="kv"><span>Persistence</span><b>LOCAL STORAGE</b></div>
+        <div class="signal"><i></i></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="stat"><strong>4</strong><span>Career loops</span></div>
+    <div class="stat"><strong>3</strong><span>Simulated systems</span></div>
+    <div class="stat"><strong>∞</strong><span>Procedural stars</span></div>
+    <div class="stat"><strong>1</strong><span>HTML file</span></div>
+  </section>
+
+  <section class="section" id="paths">
+    <div class="section-inner">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Find your purpose</div>
+          <h2>Choose a vector.</h2>
+        </div>
+        <p>Combat, resource extraction, exploration and trade feed the same lightweight economy. The prototype is intentionally compact, but the loops are wired together instead of being decorative buttons.</p>
+      </div>
+      <div class="cards">
+        <article class="path-card"><span class="num">01 // COMBAT</span><h3>Hunter</h3><p>Lock raiders, manage shields, fire pulse weapons, survive pursuit and collect bounties.</p></article>
+        <article class="path-card"><span class="num">02 // INDUSTRY</span><h3>Miner</h3><p>Target ore bodies, hold the mining beam on range and convert extracted material into wallet credits.</p></article>
+        <article class="path-card"><span class="num">03 // EXPLORATION</span><h3>Scout</h3><p>Cross long distances, discover beacons and jump into neighboring simulated systems.</p></article>
+        <article class="path-card"><span class="num">04 // ECONOMY</span><h3>Trader</h3><p>Dock with relay nodes to sell ore, repair hull and turn field work into a persistent local wallet.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="play-section" id="sandbox">
+    <div class="section-inner" style="width:min(1460px,90vw);margin-bottom:35px">
+      <div class="section-head">
+        <div><div class="eyebrow">Playable prototype</div><h2>Undock.</h2></div>
+        <p>Desktop controls work best. Click a contact or cycle targets, thrust with WASD, fire with Space, mine with M, and use the jump controls when you reach a gate beacon.</p>
+      </div>
+    </div>
+
+    <div class="play-shell">
+      <div class="sim-topbar">
+        <span><b>NEBULA FLIGHT CLIENT</b> // BUILD 0.9.4</span>
+        <span id="clock">--:--:-- UTC</span>
+      </div>
+      <div class="sim-layout">
+        <aside class="side">
+          <div class="panel">
+            <div class="panel-title">Ship // Warden-class Frigate</div>
+            <div class="kv"><span>Shield</span><b id="shieldText">100%</b></div>
+            <div class="meter"><i id="shieldBar" style="width:100%"></i></div>
+            <div class="kv"><span>Armor</span><b id="armorText">100%</b></div>
+            <div class="meter armor"><i id="armorBar" style="width:100%"></i></div>
+            <div class="kv"><span>Hull</span><b id="hullText">100%</b></div>
+            <div class="meter hull"><i id="hullBar" style="width:100%"></i></div>
+            <div class="kv"><span>Velocity</span><b id="velText">0 m/s</b></div>
+            <div class="kv"><span>Wallet</span><b id="creditText">2,500 ISK</b></div>
+            <div class="kv"><span>Ore hold</span><b id="oreText">0 / 100</b></div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">Modules</div>
+            <div class="module-row">
+              <button class="module" id="modGun">PULSE<br>[SPACE]</button>
+              <button class="module" id="modMine">MINER<br>[M]</button>
+              <button class="module" id="modRep">REPAIR<br>[R]</button>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">System routing</div>
+            <button class="system-btn active" data-system="0">Asterion // 0.8</button>
+            <button class="system-btn" data-system="1">Vanta Reach // 0.4</button>
+            <button class="system-btn" data-system="2">Khepri Verge // 0.2</button>
+          </div>
+          <div class="panel">
+            <div class="panel-title">Controls</div>
+            <div class="control-table">
+              <div><span class="key">W</span> thrust</div>
+              <div><span class="key">A</span><span class="key">D</span> turn</div>
+              <div><span class="key">S</span> brake / reverse</div>
+              <div><span class="key">T</span> cycle target</div>
+              <div><span class="key">SPACE</span> fire</div>
+              <div><span class="key">M</span> mining beam</div>
+              <div><span class="key">R</span> field repair</div>
+            </div>
+          </div>
+        </aside>
+
+        <section class="viewport">
+          <canvas id="gameCanvas"></canvas>
+          <div class="hud-top">
+            <div class="sys" id="systemName">ASTERION</div>
+            <div class="sec" id="systemSec">SECURITY 0.8 // STABLE</div>
+          </div>
+          <div class="crosshair"></div>
+          <div class="reticle" id="reticle"></div>
+          <div class="toast" id="toast">Simulation online.</div>
+          <div class="boot" id="boot">
+            <div class="boot-box">
+              <div class="boot-logo">NEBULA</div>
+              <div class="boot-sub">capsule interface / local simulation</div>
+              <button class="btn btn-primary" id="startGame">Initialize capsule</button>
+              <p>WASD flight · T target · SPACE weapons · M mining · R repair. No network connection is required.</p>
+            </div>
+          </div>
+        </section>
+
+        <aside class="side right">
+          <div class="panel">
+            <div class="panel-title">Current objective</div>
+            <div class="objective" id="objective"><b>First Undock</b><br>Destroy one raider or mine 20 units of ore.</div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">Selected contact</div>
+            <div id="targetInfo" class="objective">No target selected.</div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">Overview</div>
+            <div id="targetList"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-title">Navigation</div>
+            <button class="target-btn" id="dockBtn">Dock / Sell Ore</button>
+            <button class="target-btn" id="jumpBtn">Jump Gate</button>
+            <button class="target-btn" id="resetBtn">Reset Simulation</button>
+          </div>
+        </aside>
+      </div>
+      <div class="log" id="log"></div>
+    </div>
+  </section>
+
+  <section class="feature-split" id="systems">
+    <div class="feature-copy">
+      <div class="eyebrow">You are what you fly</div>
+      <h2>Systems, not screenshots.</h2>
+      <p>The ship is a small state machine: velocity has inertia, weapons have cooldown, hostile pilots maneuver and fire back, shields recharge after a delay, mining requires range, repairs cost credits, and docking turns ore into spendable currency.</p>
+      <p>This is still a prototype rather than a full MMO client, but it is deliberately built as a foundation that can grow into WebGL, multiplayer state sync, inventory, fittings, missions and an Ollama-driven agent layer.</p>
+    </div>
+    <div class="feature-art"><canvas id="shipArt"></canvas><div class="label">Warden-class frigate // procedural profile</div></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div><b>NEBULA // CAPSULEER</b><br>Independent browser prototype. Original visuals and code.</div>
+    <div>Inspired by the genre conventions of cinematic space MMOs. Not affiliated with or endorsed by EVE Online, CCP, or Fenris Creations.</div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  "use strict";
+
+  const $ = (q) => document.querySelector(q);
+  const $$ = (q) => [...document.querySelectorAll(q)];
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const lerp=(a,b,t)=>a+(b-a)*t;
+  const rand=(a,b)=>a+Math.random()*(b-a);
+
+  // ---------- Hero procedural space ----------
+  const hero = $("#heroSpace");
+  const hctx = hero.getContext("2d");
+  let heroStars = [];
+  function sizeHero(){
+    const dpr=Math.min(devicePixelRatio||1,2);
+    hero.width=innerWidth*dpr; hero.height=innerHeight*dpr;
+    hero.style.width=innerWidth+"px"; hero.style.height=innerHeight+"px";
+    hctx.setTransform(dpr,0,0,dpr,0,0);
+    heroStars=Array.from({length:220},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:rand(.15,1),tw:rand(0,6.28)}));
+  }
+  function drawHero(t){
+    const w=innerWidth,h=innerHeight;
+    hctx.clearRect(0,0,w,h);
+    const g=hctx.createRadialGradient(w*.72,h*.38,10,w*.72,h*.38,Math.max(w,h)*.5);
+    g.addColorStop(0,"rgba(47,129,154,.16)"); g.addColorStop(.35,"rgba(17,64,80,.09)"); g.addColorStop(1,"rgba(0,0,0,0)");
+    hctx.fillStyle=g;hctx.fillRect(0,0,w,h);
+    for(const s of heroStars){
+      const a=.18+s.z*.65*(.7+.3*Math.sin(t*.001+s.tw));
+      hctx.fillStyle=`rgba(210,238,246,${a})`;
+      hctx.fillRect(s.x,s.y,s.z*1.6,s.z*1.6);
+    }
+    // massive ring / station silhouette
+    hctx.save(); hctx.translate(w*.75,h*.44); hctx.rotate(-.14);
+    hctx.strokeStyle="rgba(96,160,181,.12)";hctx.lineWidth=1;
+    for(let i=0;i<7;i++){hctx.beginPath();hctx.ellipse(0,0,180+i*18,55+i*6,0,0,Math.PI*2);hctx.stroke();}
+    hctx.strokeStyle="rgba(194,226,235,.22)";hctx.lineWidth=3;hctx.beginPath();hctx.moveTo(-280,20);hctx.lineTo(210,-18);hctx.stroke();
+    hctx.restore();
+    requestAnimationFrame(drawHero);
+  }
+  addEventListener("resize",sizeHero); sizeHero(); requestAnimationFrame(drawHero);
+
+  // ---------- Ship art ----------
+  const art=$("#shipArt"), actx=art.getContext("2d");
+  function sizeArt(){
+    const r=art.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);
+    art.width=r.width*d;art.height=r.height*d;actx.setTransform(d,0,0,d,0,0);
+    drawShipArt();
+  }
+  function drawShipArt(){
+    const w=art.clientWidth,h=art.clientHeight;
+    actx.clearRect(0,0,w,h);
+    const g=actx.createRadialGradient(w*.55,h*.45,10,w*.55,h*.45,w*.65);
+    g.addColorStop(0,"rgba(48,125,150,.22)");g.addColorStop(1,"rgba(0,0,0,0)");actx.fillStyle=g;actx.fillRect(0,0,w,h);
+    for(let i=0;i<90;i++){actx.fillStyle=`rgba(220,240,246,${rand(.1,.65)})`;actx.fillRect(Math.random()*w,Math.random()*h,1,1)}
+    actx.save();actx.translate(w*.52,h*.48);actx.rotate(-.18);
+    actx.shadowBlur=34;actx.shadowColor="rgba(88,199,232,.28)";
+    actx.fillStyle="#0c171d";actx.strokeStyle="rgba(173,222,236,.58)";actx.lineWidth=1;
+    actx.beginPath();
+    actx.moveTo(190,0);actx.lineTo(62,-28);actx.lineTo(18,-72);actx.lineTo(-18,-45);
+    actx.lineTo(-150,-30);actx.lineTo(-205,-8);actx.lineTo(-135,5);actx.lineTo(-200,31);
+    actx.lineTo(-40,44);actx.lineTo(18,72);actx.lineTo(55,29);actx.closePath();actx.fill();actx.stroke();
+    actx.fillStyle="rgba(101,206,236,.45)";actx.fillRect(-165,-4,78,8);
+    actx.strokeStyle="rgba(219,236,240,.22)";
+    for(let x=-100;x<100;x+=28){actx.beginPath();actx.moveTo(x,-23);actx.lineTo(x+42,23);actx.stroke();}
+    actx.restore();
+  }
+  addEventListener("resize",sizeArt);setTimeout(sizeArt,30);
+
+  // ---------- Game ----------
+  const canvas=$("#gameCanvas"), ctx=canvas.getContext("2d");
+  const log=$("#log"), toast=$("#toast"), reticle=$("#reticle");
+  const systems=[
+    {name:"ASTERION",sec:0.8,tint:[30,105,130],hostiles:3,asteroids:11},
+    {name:"VANTA REACH",sec:0.4,tint:[90,61,107],hostiles:5,asteroids:15},
+    {name:"KHEPRI VERGE",sec:0.2,tint:[121,69,45],hostiles:7,asteroids:18}
+  ];
+  let running=false,last=0, keys={}, systemIndex=0, target=null, fireCD=0, mineCD=0, repairCD=0, damageDelay=0;
+  let stars=[], entities=[], particles=[], lasers=[];
+  let player={x:0,y:0,vx:0,vy:0,a:0,shield:100,armor:100,hull:100,credits:2500,ore:0,kills:0,mined:0};
+
+  function save(){
+    try{localStorage.setItem("nebulaCapsule",JSON.stringify({credits:player.credits,kills:player.kills,mined:player.mined,systemIndex}))}catch(e){}
+  }
+  function load(){
+    try{
+      const s=JSON.parse(localStorage.getItem("nebulaCapsule")||"null");
+      if(s){player.credits=s.credits||2500;player.kills=s.kills||0;player.mined=s.mined||0;systemIndex=clamp(s.systemIndex||0,0,2)}
+    }catch(e){}
+  }
+  load();
+
+  function resizeGame(){
+    const r=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);
+    canvas.width=Math.floor(r.width*d);canvas.height=Math.floor(r.height*d);
+    ctx.setTransform(d,0,0,d,0,0);
+  }
+  addEventListener("resize",resizeGame);setTimeout(resizeGame,30);
+
+  function addLog(msg,type=""){
+    const d=document.createElement("div");d.className=type;d.textContent=`[${new Date().toLocaleTimeString([], {hour12:false})}] ${msg}`;
+    log.appendChild(d);log.scrollTop=log.scrollHeight;
+    while(log.children.length>80)log.firstChild.remove();
+  }
+  let toastTimer=0;
+  function notify(msg){
+    toast.textContent=msg;toast.classList.add("show");clearTimeout(toastTimer);
+    toastTimer=setTimeout(()=>toast.classList.remove("show"),1800);
+  }
+
+  function spawnSystem(idx){
+    systemIndex=idx; const s=systems[idx]; entities=[];particles=[];lasers=[];target=null;
+    player.x=0;player.y=0;player.vx=0;player.vy=0;
+    stars=Array.from({length:330},()=>({x:rand(-2600,2600),y:rand(-2200,2200),z:rand(.25,1),p:rand(0,6.28)}));
+    entities.push({id:"station",type:"station",name:"Orison Relay",x:430,y:190,r:52,hp:9999});
+    entities.push({id:"gate",type:"gate",name:"Stargate Meridian",x:-760,y:-420,r:65,hp:9999});
+    for(let i=0;i<s.asteroids;i++){
+      entities.push({id:"ast"+i,type:"asteroid",name:"Veldspar Shard "+(i+1),x:rand(-1100,1100),y:rand(-900,900),r:rand(13,30),ore:rand(16,48),rot:rand(0,6.28)});
+    }
+    for(let i=0;i<s.hostiles;i++){
+      entities.push({id:"raid"+i,type:"enemy",name:(idx===0?"Gurista Scout ":"Null Raider ")+(i+1),x:rand(-950,950),y:rand(-750,750),r:15,hp:100,vx:rand(-12,12),vy:rand(-12,12),a:rand(0,6.28),cd:rand(.2,2.5)});
+    }
+    $$(".system-btn").forEach((b,i)=>b.classList.toggle("active",i===idx));
+    $("#systemName").textContent=s.name;
+    $("#systemSec").textContent=`SECURITY ${s.sec.toFixed(1)} // ${s.sec>=.7?"STABLE":s.sec>=.4?"CONTESTED":"DANGEROUS"}`;
+    $("#systemSec").style.color=s.sec>=.7?"var(--green)":s.sec>=.4?"var(--amber)":"var(--red)";
+    addLog(`Jump complete. Entered ${s.name}.`,"info");notify(`${s.name} local grid loaded`);
+    updateTargetList();save();
+  }
+
+  function worldToScreen(x,y){
+    return {x:canvas.clientWidth/2+(x-player.x),y:canvas.clientHeight/2+(y-player.y)};
+  }
+  function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
+  function validTarget(e){return e && entities.includes(e) && ((e.type==="enemy"&&e.hp>0)||(e.type==="asteroid"&&e.ore>0)||e.type==="station"||e.type==="gate")}
+
+  function cycleTarget(){
+    const list=entities.filter(e=>e.type==="enemy"&&e.hp>0 || e.type==="asteroid"&&e.ore>0);
+    if(!list.length){target=null;return}
+    const i=target?list.indexOf(target):-1;target=list[(i+1)%list.length];updateTargetInfo();updateTargetList();
+    notify(`Locked: ${target.name}`);
+  }
+  function setTarget(e){ if(validTarget(e)){target=e;updateTargetInfo();updateTargetList();} }
+
+  function updateTargetInfo(){
+    if(!validTarget(target)){target=null;$("#targetInfo").textContent="No target selected.";reticle.style.display="none";return}
+    let detail=target.type.toUpperCase();
+    if(target.type==="enemy")detail+=` // ${Math.max(0,target.hp|0)}% hull`;
+    if(target.type==="asteroid")detail+=` // ${Math.max(0,target.ore|0)} ore`;
+    $("#targetInfo").innerHTML=`<b>${target.name}</b><br>${detail}<br>Range: ${Math.round(dist(player,target))} m`;
+  }
+  function updateTargetList(){
+    const root=$("#targetList");root.innerHTML="";
+    entities.filter(e=>e.type==="enemy"&&e.hp>0 || e.type==="asteroid"&&e.ore>0).sort((a,b)=>dist(player,a)-dist(player,b)).slice(0,9).forEach(e=>{
+      const b=document.createElement("button");b.className="target-btn"+(target===e?" active":"");
+      b.textContent=`${e.type==="enemy"?"◈":"◆"} ${e.name} · ${Math.round(dist(player,e))}m`;
+      b.onclick=()=>setTarget(e);root.appendChild(b);
+    });
+  }
+
+  function shoot(){
+    if(fireCD>0)return;
+    fireCD=.36;$("#modGun").classList.add("hot");setTimeout(()=>$("#modGun").classList.remove("hot"),90);
+    const dir=target&&target.type==="enemy"?Math.atan2(target.y-player.y,target.x-player.x):player.a;
+    const sx=player.x+Math.cos(dir)*22,sy=player.y+Math.sin(dir)*22;
+    lasers.push({x1:sx,y1:sy,x2:sx+Math.cos(dir)*560,y2:sy+Math.sin(dir)*560,life:.11,friendly:true});
+    if(target&&target.type==="enemy"&&target.hp>0&&dist(player,target)<580){
+      target.hp-=rand(16,27);
+      burst(target.x,target.y,"hit");
+      if(target.hp<=0){
+        player.kills++; const bounty=Math.round(rand(430,780)*(1+(1-systems[systemIndex].sec)));
+        player.credits+=bounty; addLog(`${target.name} destroyed. Bounty +${bounty.toLocaleString()} ISK.`,"good");notify(`Bounty paid: ${bounty.toLocaleString()} ISK`);target=null;save();
+      }
+    }
+  }
+
+  function mine(dt){
+    if(!target||target.type!=="asteroid"||target.ore<=0){if(mineCD<=0){notify("Lock an asteroid first");mineCD=.8}return}
+    const d=dist(player,target);if(d>230){if(mineCD<=0){notify("Mining target out of range");mineCD=.8}return}
+    if(player.ore>=100){if(mineCD<=0){notify("Ore hold full");mineCD=.8}return}
+    $("#modMine").classList.add("hot");
+    const amt=10*dt;target.ore-=amt;player.ore=clamp(player.ore+amt,0,100);player.mined+=amt;
+    lasers.push({x1:player.x,y1:player.y,x2:target.x,y2:target.y,life:.08,friendly:true,mine:true});
+    if(target.ore<=0){target.ore=0;addLog(`${target.name} depleted.`,"good");notify("Asteroid depleted");target=null;save()}
+  }
+  function repair(){
+    if(repairCD>0)return; repairCD=3;
+    if(player.credits<300){notify("Repair requires 300 ISK");return}
+    if(player.armor>=100&&player.hull>=100){notify("Armor and hull already stable");return}
+    player.credits-=300;player.armor=clamp(player.armor+22,0,100);player.hull=clamp(player.hull+14,0,100);
+    $("#modRep").classList.add("hot");setTimeout(()=>$("#modRep").classList.remove("hot"),550);
+    addLog("Nanite field repair complete. -300 ISK.","good");save();
+  }
+  function dock(){
+    const station=entities.find(e=>e.type==="station");
+    if(dist(player,station)>160){notify("Approach Orison Relay within 160 m");return}
+    const sold=Math.floor(player.ore*21*(1+(1-systems[systemIndex].sec)*.25));
+    if(sold>0){player.credits+=sold;addLog(`Sold ${Math.floor(player.ore)} ore for ${sold.toLocaleString()} ISK.`,"good");player.ore=0}
+    player.shield=100;player.armor=Math.min(100,player.armor+30);player.hull=Math.min(100,player.hull+15);
+    notify("Dock services complete");save();
+  }
+  function jump(){
+    const gate=entities.find(e=>e.type==="gate");
+    if(dist(player,gate)>180){notify("Approach Stargate Meridian within 180 m");return}
+    spawnSystem((systemIndex+1)%systems.length);
+  }
+
+  function damagePlayer(n){
+    damageDelay=4;
+    let x=n;
+    if(player.shield>0){const a=Math.min(player.shield,x);player.shield-=a;x-=a}
+    if(x>0&&player.armor>0){const a=Math.min(player.armor,x*.75);player.armor-=a;x-=a}
+    if(x>0)player.hull-=x;
+    if(player.hull<=0){
+      player.hull=100;player.armor=55;player.shield=100;player.credits=Math.max(0,player.credits-800);player.x=430;player.y=190;player.vx=player.vy=0;
+      addLog("Clone restoration completed. Insurance deductible: 800 ISK.","bad");notify("Ship lost // clone restored");save()
+    }
+  }
+
+  function burst(x,y,kind){
+    for(let i=0;i<12;i++)particles.push({x,y,vx:rand(-80,80),vy:rand(-80,80),life:rand(.25,.7),size:rand(1,3),kind});
+  }
+
+  function update(dt){
+    if(!running)return;
+    fireCD=Math.max(0,fireCD-dt);mineCD=Math.max(0,mineCD-dt);repairCD=Math.max(0,repairCD-dt);damageDelay=Math.max(0,damageDelay-dt);
+    if(keys["a"])player.a-=2.25*dt;if(keys["d"])player.a+=2.25*dt;
+    if(keys["w"]){player.vx+=Math.cos(player.a)*105*dt;player.vy+=Math.sin(player.a)*105*dt}
+    if(keys["s"]){player.vx-=Math.cos(player.a)*58*dt;player.vy-=Math.sin(player.a)*58*dt}
+    const speed=Math.hypot(player.vx,player.vy),max=250;
+    if(speed>max){player.vx=player.vx/speed*max;player.vy=player.vy/speed*max}
+    player.vx*=Math.pow(.985,dt*60);player.vy*=Math.pow(.985,dt*60);player.x+=player.vx*dt;player.y+=player.vy*dt;
+    if(keys[" "] )shoot();
+    if(keys["m"])mine(dt);else $("#modMine").classList.remove("hot");
+    if(damageDelay<=0&&player.shield<100)player.shield=Math.min(100,player.shield+4.2*dt);
+
+    for(const e of entities){
+      if(e.type==="enemy"&&e.hp>0){
+        const d=dist(player,e),ang=Math.atan2(player.y-e.y,player.x-e.x);e.a=ang;e.cd-=dt;
+        if(d<640){e.vx+=Math.cos(ang)*28*dt;e.vy+=Math.sin(ang)*28*dt}
+        e.vx*=Math.pow(.993,dt*60);e.vy*=Math.pow(.993,dt*60);e.x+=e.vx*dt;e.y+=e.vy*dt;
+        if(d<460&&e.cd<=0){
+          e.cd=rand(1.4,2.7);lasers.push({x1:e.x,y1:e.y,x2:player.x,y2:player.y,life:.15,friendly:false});
+          if(Math.random()<.86){damagePlayer(rand(5,10));burst(player.x,player.y,"hit")}
+        }
+      }
+    }
+
+    for(const p of particles){p.x+=p.vx*dt;p.y+=p.vy*dt;p.life-=dt;p.vx*=.97;p.vy*=.97}
+    particles=particles.filter(p=>p.life>0);
+    lasers.forEach(l=>l.life-=dt);lasers=lasers.filter(l=>l.life>0);
+    if(!validTarget(target))target=null;
+    updateUI();
+  }
+
+  function draw(){
+    const w=canvas.clientWidth,h=canvas.clientHeight,s=systems[systemIndex];
+    ctx.fillStyle="#010305";ctx.fillRect(0,0,w,h);
+    const bg=ctx.createRadialGradient(w*.56,h*.44,10,w*.56,h*.44,Math.max(w,h)*.8);
+    bg.addColorStop(0,`rgba(${s.tint[0]},${s.tint[1]},${s.tint[2]},.14)`);bg.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+
+    for(const st of stars){
+      const p=worldToScreen(st.x-(player.x*(1-st.z)*.08),st.y-(player.y*(1-st.z)*.08));
+      if(p.x<-5||p.y<-5||p.x>w+5||p.y>h+5)continue;
+      ctx.globalAlpha=.22+st.z*.72;ctx.fillStyle="#d6edf3";ctx.fillRect(p.x,p.y,st.z*1.5,st.z*1.5);
+    }
+    ctx.globalAlpha=1;
+
+    // subtle tactical grid
+    ctx.strokeStyle="rgba(110,169,188,.045)";ctx.lineWidth=1;
+    const grid=180,ox=(-player.x%grid+grid)%grid,oy=(-player.y%grid+grid)%grid;
+    for(let x=ox;x<w;x+=grid){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke()}
+    for(let y=oy;y<h;y+=grid){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
+
+    for(const e of entities){
+      if((e.type==="enemy"&&e.hp<=0)||(e.type==="asteroid"&&e.ore<=0))continue;
+      const p=worldToScreen(e.x,e.y);if(p.x<-100||p.y<-100||p.x>w+100||p.y>h+100)continue;
+      ctx.save();ctx.translate(p.x,p.y);
+      if(e.type==="asteroid"){
+        ctx.rotate(e.rot||0);ctx.fillStyle="#172127";ctx.strokeStyle="rgba(175,198,206,.22)";
+        ctx.beginPath();for(let i=0;i<9;i++){let a=i/9*Math.PI*2,r=e.r*(.75+.32*Math.sin(i*3.7+e.r));let x=Math.cos(a)*r,y=Math.sin(a)*r;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.closePath();ctx.fill();ctx.stroke();
+      } else if(e.type==="enemy"){
+        ctx.rotate(e.a);ctx.fillStyle="#1a0d0e";ctx.strokeStyle="rgba(255,112,105,.75)";
+        ctx.beginPath();ctx.moveTo(20,0);ctx.lineTo(-12,-10);ctx.lineTo(-6,0);ctx.lineTo(-12,10);ctx.closePath();ctx.fill();ctx.stroke();
+        ctx.fillStyle="rgba(255,90,83,.5)";ctx.fillRect(-12,-2,5,4);
+      } else if(e.type==="station"){
+        ctx.rotate(performance.now()*.00007);ctx.strokeStyle="rgba(114,196,220,.5)";ctx.lineWidth=3;
+        ctx.beginPath();ctx.arc(0,0,48,0,Math.PI*2);ctx.stroke();ctx.lineWidth=1;ctx.beginPath();ctx.arc(0,0,30,0,Math.PI*2);ctx.stroke();
+        ctx.fillStyle="rgba(142,232,255,.22)";ctx.fillRect(-72,-4,144,8);
+      } else if(e.type==="gate"){
+        ctx.strokeStyle="rgba(239,188,112,.55)";ctx.lineWidth=4;ctx.beginPath();ctx.ellipse(0,0,44,70,.2,0,Math.PI*2);ctx.stroke();
+        ctx.lineWidth=1;ctx.strokeStyle="rgba(239,188,112,.23)";for(let i=0;i<4;i++){ctx.beginPath();ctx.ellipse(0,0,50+i*9,76+i*8,.2,0,Math.PI*2);ctx.stroke()}
+      }
+      ctx.restore();
+      // labels
+      if(e.type!=="asteroid"||dist(player,e)<550){
+        ctx.fillStyle=e.type==="enemy"?"rgba(255,150,144,.82)":"rgba(176,205,214,.65)";
+        ctx.font="10px ui-monospace,monospace";ctx.fillText(`${e.name}  ${Math.round(dist(player,e))}m`,p.x+e.r+8,p.y-4);
+      }
+    }
+
+    for(const l of lasers){
+      const a=worldToScreen(l.x1,l.y1),b=worldToScreen(l.x2,l.y2);
+      ctx.strokeStyle=l.mine?"rgba(113,232,181,.85)":l.friendly?"rgba(123,226,255,.95)":"rgba(255,87,81,.9)";
+      ctx.lineWidth=l.mine?2:1.4;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+    }
+    for(const p of particles){
+      const a=worldToScreen(p.x,p.y);ctx.globalAlpha=clamp(p.life*2,0,1);ctx.fillStyle=p.kind==="hit"?"#efaa75":"#8ee8ff";ctx.fillRect(a.x,a.y,p.size,p.size)
+    }ctx.globalAlpha=1;
+
+    // player ship
+    const px=w/2,py=h/2;ctx.save();ctx.translate(px,py);ctx.rotate(player.a);
+    ctx.shadowBlur=18;ctx.shadowColor="rgba(92,211,241,.24)";ctx.fillStyle="#0d171c";ctx.strokeStyle="rgba(155,222,239,.88)";
+    ctx.beginPath();ctx.moveTo(22,0);ctx.lineTo(-10,-9);ctx.lineTo(-4,0);ctx.lineTo(-10,9);ctx.closePath();ctx.fill();ctx.stroke();
+    const thrust=keys["w"]?rand(14,25):5;ctx.fillStyle="rgba(106,224,255,.75)";ctx.beginPath();ctx.moveTo(-9,-3);ctx.lineTo(-9-thrust,0);ctx.lineTo(-9,3);ctx.fill();ctx.restore();
+
+    if(target&&validTarget(target)){
+      const p=worldToScreen(target.x,target.y);reticle.style.display="block";reticle.style.left=p.x+"px";reticle.style.top=p.y+"px";
+    }else reticle.style.display="none";
+  }
+
+  function updateUI(){
+    const speed=Math.hypot(player.vx,player.vy);
+    $("#shieldText").textContent=Math.round(player.shield)+"%";$("#armorText").textContent=Math.round(player.armor)+"%";$("#hullText").textContent=Math.round(player.hull)+"%";
+    $("#shieldBar").style.width=player.shield+"%";$("#armorBar").style.width=player.armor+"%";$("#hullBar").style.width=player.hull+"%";
+    $("#velText").textContent=Math.round(speed)+" m/s";$("#creditText").textContent=Math.round(player.credits).toLocaleString()+" ISK";$("#oreText").textContent=Math.floor(player.ore)+" / 100";
+    updateTargetInfo();
+    if(Math.random()<.035)updateTargetList();
+    if(player.kills>0&&player.mined>=20)$("#objective").innerHTML="<b>Independent Capsuleer</b><br>Combat and industry loops proven. Reach a gate and continue into lower-security space.";
+    else if(player.kills>0)$("#objective").innerHTML="<b>First Blood</b><br>Raider destroyed. Mine 20 units of ore to prove the industry loop.";
+    else if(player.mined>=20)$("#objective").innerHTML="<b>Resourceful</b><br>Mining loop proven. Destroy one hostile raider.";
+  }
+
+  function frame(t){
+    const dt=Math.min(.035,(t-last)/1000||0);last=t;update(dt);draw();requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  document.addEventListener("keydown",e=>{
+    if([" ","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(e.key))e.preventDefault();
+    keys[e.key.toLowerCase()]=true;
+    if(e.key.toLowerCase()==="t")cycleTarget();
+    if(e.key.toLowerCase()==="r")repair();
+  });
+  document.addEventListener("keyup",e=>keys[e.key.toLowerCase()]=false);
+
+  canvas.addEventListener("click",e=>{
+    const r=canvas.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;
+    const hit=entities.filter(validTarget).map(ent=>({ent,p:worldToScreen(ent.x,ent.y)})).sort((a,b)=>Math.hypot(a.p.x-mx,a.p.y-my)-Math.hypot(b.p.x-mx,b.p.y-my))[0];
+    if(hit&&Math.hypot(hit.p.x-mx,hit.p.y-my)<65)setTarget(hit.ent);
+  });
+
+  $("#modGun").onclick=shoot;$("#modMine").onmousedown=()=>keys["m"]=true;$("#modMine").onmouseup=()=>keys["m"]=false;$("#modMine").onmouseleave=()=>keys["m"]=false;$("#modRep").onclick=repair;
+  $("#dockBtn").onclick=dock;$("#jumpBtn").onclick=jump;
+  $("#resetBtn").onclick=()=>{localStorage.removeItem("nebulaCapsule");player={x:0,y:0,vx:0,vy:0,a:0,shield:100,armor:100,hull:100,credits:2500,ore:0,kills:0,mined:0};spawnSystem(0);notify("Simulation reset")};
+  $$(".system-btn").forEach((b,i)=>b.onclick=()=>{const gate=entities.find(e=>e.type==="gate"); if(dist(player,gate)<180)spawnSystem(i); else notify("Manual jump denied. Approach stargate.")});
+
+  function start(){
+    running=true;$("#boot").classList.add("hidden");addLog("Capsule neural handshake confirmed.","good");addLog("Flight controls online. Overview seeded.","info");notify("Undock authorized");
+  }
+  $("#startGame").onclick=start;
+  $("#heroLaunch").onclick=()=>{location.hash="sandbox";setTimeout(()=>{start();canvas.focus()},500)};
+
+  setInterval(()=>{$("#clock").textContent=new Date().toISOString().slice(11,19)+" UTC"},1000);
+  spawnSystem(systemIndex);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Green Crack Grow Lab</title>
+<style>
+  :root{
+    --bg1:#0b0b10;
+    --bg2:#131320;
+    --panel:rgba(20,22,26,.92);
+    --panel-border:rgba(180,210,150,.18);
+    --text:#eef0e7;
+    --muted:#aab09b;
+    --green:#82d94a;
+    --green-dark:#2d7f2b;
+    --blue:#68b8ff;
+    --yellow:#ffd85c;
+    --purple:#c37cff;
+    --danger:#ff6d6d;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    color:var(--text);
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(140,70,220,.22), transparent 22%),
+      radial-gradient(circle at 85% 12%, rgba(95,55,160,.18), transparent 18%),
+      linear-gradient(180deg, var(--bg2), var(--bg1));
+  }
+  .app{
+    min-height:100%;
+    display:grid;
+    grid-template-rows:1fr auto;
+  }
+  .scene{
+    position:relative;
+    min-height:0;
+    overflow:hidden;
+    padding:18px;
+  }
+  .scene::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px);
+    background-size:100% 5px;
+    opacity:.28;
+    pointer-events:none;
+  }
+  .titlebar{
+    position:absolute;
+    left:50%; top:12px;
+    transform:translateX(-50%);
+    font-size:12px;
+    letter-spacing:.28em;
+    color:rgba(235,240,225,.55);
+    text-transform:uppercase;
+    z-index:5;
+  }
+  .hud{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:minmax(260px,340px) 1fr minmax(260px,340px);
+    gap:18px;
+    align-items:start;
+  }
+  .stack{display:grid; gap:18px;}
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    padding:16px;
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+    backdrop-filter: blur(8px);
+  }
+  .panel h2{
+    margin:0 0 12px;
+    font-size:1.35rem;
+    letter-spacing:.04em;
+    border-bottom:1px solid rgba(255,255,255,.10);
+    padding-bottom:10px;
+  }
+  .row{
+    display:grid;
+    grid-template-columns:100px 1fr 48px;
+    gap:10px;
+    align-items:center;
+    margin:11px 0;
+    font-size:14px;
+  }
+  .meter{
+    height:12px;
+    background:#252932;
+    border-radius:999px;
+    overflow:hidden;
+  }
+  .fill{height:100%; border-radius:inherit; transition:width .25s ease;}
+  .fill.health{background:linear-gradient(90deg,#4aaf42,#84db4c)}
+  .fill.water{background:linear-gradient(90deg,#468ee0,#75c2ff)}
+  .fill.light{background:linear-gradient(90deg,#d7a82b,#ffe067)}
+  .fill.nutrients{background:linear-gradient(90deg,#8a57cf,#d08dff)}
+  .fill.progress{background:linear-gradient(90deg,#3f9dd5,#6ee2ff)}
+  .muted{color:var(--muted)}
+  .stage-name{
+    font-size:1.1rem;
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .objective-list{
+    list-style:none;
+    padding:0;
+    margin:10px 0 0;
+  }
+  .objective-list li{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    margin:10px 0;
+    color:#d7dbcf;
+  }
+  .mark{width:20px; text-align:center; font-weight:700;}
+
+  .grow-room{
+    position:relative;
+    min-height:620px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+  }
+  .room-glow{
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 50% 28%, rgba(160,96,225,.16), transparent 26%),
+      radial-gradient(circle at 50% 92%, rgba(90,55,35,.35), transparent 26%);
+    pointer-events:none;
+  }
+  .plant-zone{
+    position:relative;
+    width:min(720px, 100%);
+    height:560px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+  }
+  #plantSvg{
+    width:min(520px, 100%);
+    height:520px;
+    overflow:visible;
+    filter:drop-shadow(0 16px 22px rgba(0,0,0,.45));
+  }
+  .label-chip{
+    position:absolute;
+    bottom:88px;
+    background:linear-gradient(180deg,#b5aa9d,#8d8379);
+    color:#131313;
+    border:1px solid #544b43;
+    border-radius:10px;
+    padding:14px 18px;
+    text-align:center;
+    min-width:220px;
+    box-shadow:0 12px 18px rgba(0,0,0,.22);
+  }
+  .label-chip .top{font-size:22px; line-height:1;}
+  .label-chip .name{display:block; font-size:1.65rem; font-weight:800; letter-spacing:.04em;}
+  .label-chip .sub{display:block; font-size:.8rem; font-weight:800; letter-spacing:.18em;}
+
+  .event-log{
+    max-height:180px;
+    overflow:auto;
+    padding-right:4px;
+  }
+  .event-log p{
+    margin:0 0 10px;
+    color:#d7dccd;
+    line-height:1.45;
+    font-size:14px;
+  }
+
+  .actionbar{
+    position:relative;
+    z-index:4;
+    display:grid;
+    grid-template-columns:repeat(5, minmax(120px, 1fr));
+    gap:12px;
+    padding:14px 18px 18px;
+    width:min(1100px, calc(100vw - 24px));
+    margin:0 auto;
+  }
+  button.action{
+    border:1px solid rgba(190,220,165,.2);
+    background:linear-gradient(180deg, rgba(30,32,37,.96), rgba(16,18,22,.98));
+    color:var(--text);
+    border-radius:14px;
+    min-height:96px;
+    cursor:pointer;
+    box-shadow:0 14px 24px rgba(0,0,0,.28);
+    transition:transform .15s ease, border-color .15s ease;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    font-weight:700;
+    letter-spacing:.04em;
+  }
+  button.action:hover{transform:translateY(-2px); border-color:rgba(190,220,165,.42)}
+  button.action:active{transform:translateY(1px)}
+  .icon{font-size:2rem; line-height:1}
+  .toast{
+    position:absolute;
+    left:50%; bottom:136px;
+    transform:translateX(-50%);
+    background:rgba(10,11,14,.94);
+    border:1px solid rgba(200,220,170,.18);
+    border-radius:999px;
+    padding:10px 16px;
+    color:#eff2e8;
+    font-size:14px;
+    opacity:0;
+    transition:opacity .2s ease, transform .2s ease;
+    pointer-events:none;
+    z-index:9;
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(-6px)}
+  .overlay{
+    position:absolute;
+    inset:0;
+    display:none;
+    place-items:center;
+    z-index:10;
+    background:rgba(5,6,8,.78);
+    backdrop-filter:blur(8px);
+  }
+  .overlay.show{display:grid}
+  .modal{
+    width:min(520px, calc(100vw - 24px));
+    background:rgba(22,24,28,.98);
+    border:1px solid rgba(200,220,170,.18);
+    border-radius:18px;
+    padding:24px;
+    text-align:center;
+    box-shadow:0 18px 48px rgba(0,0,0,.45);
+  }
+  .modal h1{margin:0 0 8px; font-size:2rem}
+  .modal p{color:#c9cec0; line-height:1.5}
+  .modal button{
+    margin-top:12px;
+    border:1px solid rgba(190,220,165,.26);
+    border-radius:10px;
+    background:#20311f;
+    color:#eff5e6;
+    padding:12px 18px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .warning{color:#ffb4b4}
+
+  @media (max-width: 1100px){
+    .hud{grid-template-columns:1fr;}
+    .grow-room{min-height:460px}
+    .plant-zone{height:420px}
+    #plantSvg{height:400px}
+    .label-chip{bottom:48px}
+  }
+  @media (max-width: 700px){
+    .scene{padding:12px}
+    .titlebar{font-size:10px}
+    .row{grid-template-columns:1fr; gap:4px}
+    .actionbar{grid-template-columns:repeat(2,1fr)}
+    .grow-room{min-height:360px}
+    .plant-zone{height:320px}
+    #plantSvg{height:310px}
+    .label-chip{padding:10px 14px; min-width:180px}
+    .label-chip .name{font-size:1.2rem}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <main class="scene">
+    <div class="titlebar">Grow Lab // Cannabis Simulator</div>
+
+    <div class="hud">
+      <div class="stack">
+        <section class="panel">
+          <h2>🌿 Plant Status</h2>
+          <div class="row"><div>Health</div><div class="meter"><div id="healthBar" class="fill health"></div></div><div id="healthVal">100%</div></div>
+          <div class="row"><div>Water</div><div class="meter"><div id="waterBar" class="fill water"></div></div><div id="waterVal">70%</div></div>
+          <div class="row"><div>Light</div><div class="meter"><div id="lightBar" class="fill light"></div></div><div id="lightVal">75%</div></div>
+          <div class="row"><div>Nutrients</div><div class="meter"><div id="nutrientsBar" class="fill nutrients"></div></div><div id="nutrientsVal">62%</div></div>
+        </section>
+
+        <section class="panel">
+          <h2 id="dayLabel">Day 1</h2>
+          <div class="stage-name" id="stageLabel">Seedling Stage</div>
+          <div class="muted">Progress to <span id="nextStage">Vegetative</span></div>
+          <div class="row" style="grid-template-columns:1fr 60px; margin-top:12px;">
+            <div class="meter"><div id="growthBar" class="fill progress"></div></div>
+            <div id="growthVal">5%</div>
+          </div>
+        </section>
+      </div>
+
+      <div class="grow-room">
+        <div class="room-glow"></div>
+        <div class="plant-zone">
+          <svg id="plantSvg" viewBox="0 0 500 500" aria-label="Cannabis plant visual"></svg>
+          <div class="label-chip">
+            <div class="top">🌿</div>
+            <span class="name">GREEN CRACK</span>
+            <span class="sub">SATIVA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack">
+        <section class="panel">
+          <h2>Current Objective</h2>
+          <div class="muted">Keep the meters balanced and guide the plant through all growth stages.</div>
+          <ul class="objective-list">
+            <li><span id="taskWater" class="mark">✓</span><span>Maintain adequate water</span></li>
+            <li><span id="taskLight" class="mark">✓</span><span>Maintain adequate light</span></li>
+            <li><span id="taskNutrients" class="mark">✓</span><span>Maintain adequate nutrients</span></li>
+          </ul>
+        </section>
+
+        <section class="panel">
+          <h2>Grow Log</h2>
+          <div id="eventLog" class="event-log"></div>
+        </section>
+      </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <div id="overlay" class="overlay">
+      <div class="modal">
+        <h1 id="overlayTitle">Harvest Complete</h1>
+        <p id="overlayText"></p>
+        <button id="restartBtn">Start New Grow</button>
+      </div>
+    </div>
+  </main>
+
+  <nav class="actionbar" aria-label="Plant controls">
+    <button class="action" data-action="water"><div class="icon">💧</div><div>WATER</div></button>
+    <button class="action" data-action="light"><div class="icon">💡</div><div>LIGHT</div></button>
+    <button class="action" data-action="nutrients"><div class="icon">🧪</div><div>NUTRIENTS</div></button>
+    <button class="action" data-action="air"><div class="icon">🌀</div><div>AIRFLOW</div></button>
+    <button class="action" data-action="interact"><div class="icon">✋</div><div>INTERACT</div></button>
+  </nav>
+</div>
+
+<script>
+(function(){
+  const SAVE_KEY = 'green-crack-grow-lab-v2';
+  const stages = [
+    { id:'seedling', name:'Seedling Stage', next:'Vegetative', max:20, height:120, pairs:1, buds:false },
+    { id:'vegetative', name:'Vegetative Stage', next:'Preflower', max:45, height:190, pairs:3, buds:false },
+    { id:'preflower', name:'Preflower Stage', next:'Flowering', max:70, height:250, pairs:4, buds:true },
+    { id:'flowering', name:'Flowering Stage', next:'Mature', max:92, height:300, pairs:5, buds:true },
+    { id:'mature', name:'Mature Stage', next:'Complete', max:100, height:340, pairs:6, buds:true }
+  ];
+
+  let state = {
+    day:1,
+    health:100,
+    water:70,
+    light:75,
+    nutrients:62,
+    airflow:68,
+    growth:5,
+    actions:0,
+    alive:true,
+    won:false,
+    messages:[
+      'Day 1: A healthy little cannabis seedling emerges from the soil.'
+    ]
+  };
+
+  const $ = (id) => document.getElementById(id);
+  const clamp = (n) => Math.max(0, Math.min(100, n));
+  const rand = (a,b) => Math.floor(Math.random() * (b - a + 1)) + a;
+
+  function save(){
+    localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+  }
+
+  function load(){
+    try{
+      const raw = localStorage.getItem(SAVE_KEY);
+      if(!raw) return;
+      const parsed = JSON.parse(raw);
+      if(parsed && typeof parsed === 'object'){
+        state = Object.assign({}, state, parsed);
+      }
+    }catch(err){
+      console.warn('Save load failed', err);
+    }
+  }
+
+  function getStage(){
+    for(const stage of stages){
+      if(state.growth <= stage.max) return stage;
+    }
+    return stages[stages.length - 1];
+  }
+
+  function setMeter(id, value){
+    const val = Math.round(value);
+    $(id + 'Bar').style.width = val + '%';
+    $(id + 'Val').textContent = val + '%';
+  }
+
+  function setTask(id, ok){
+    const el = $(id);
+    el.textContent = ok ? '✓' : '○';
+    el.style.color = ok ? '#8fdf61' : '#9ba08f';
+  }
+
+  function qualityScore(){
+    const waterQ = 100 - Math.abs(72 - state.water) * 1.5;
+    const lightQ = 100 - Math.abs(76 - state.light) * 1.4;
+    const nutrientQ = 100 - Math.abs(65 - state.nutrients) * 1.5;
+    const airflowQ = 100 - Math.abs(70 - state.airflow) * 1.1;
+    return clamp((waterQ + lightQ + nutrientQ + airflowQ) / 4);
+  }
+
+  function pushLog(text){
+    state.messages.unshift(text);
+    state.messages = state.messages.slice(0, 8);
+  }
+
+  function showToast(text){
+    const toast = $('toast');
+    toast.textContent = text;
+    toast.classList.add('show');
+    clearTimeout(showToast._timer);
+    showToast._timer = setTimeout(() => toast.classList.remove('show'), 1500);
+  }
+
+  function leafPath(length, width){
+    return [
+      `M 0 0`,
+      `C ${length*0.1} ${-width*0.5}, ${length*0.25} ${-width}, ${length*0.55} ${-width*0.9}`,
+      `C ${length*0.8} ${-width*0.7}, ${length*0.95} ${-width*0.28}, ${length} 0`,
+      `C ${length*0.95} ${width*0.28}, ${length*0.8} ${width*0.7}, ${length*0.55} ${width*0.9}`,
+      `C ${length*0.25} ${width}, ${length*0.1} ${width*0.5}, 0 0 Z`
+    ].join(' ');
+  }
+
+  function cannabisLeafGroup(x, y, scale, rotation, color1, color2){
+    const baseLength = 42 * scale;
+    const widths = [4.5, 6.5, 8.4, 10.4, 8.4, 6.5, 4.5];
+    const angles = [-48,-32,-16,0,16,32,48];
+    let parts = `<g transform="translate(${x},${y}) rotate(${rotation})">`;
+    for(let i = 0; i < angles.length; i++){
+      const path = leafPath(baseLength * (0.86 + (i===3 ? 0.24 : 0)), widths[i] * scale);
+      parts += `<path d="${path}" transform="rotate(${angles[i]})" fill="url(#leafGrad)" stroke="#214f1f" stroke-width="1.2"/>`;
+      parts += `<line x1="0" y1="0" x2="${baseLength * (0.88 + (i===3 ? 0.2 : 0))}" y2="0" transform="rotate(${angles[i]})" stroke="rgba(220,255,220,.35)" stroke-width="0.8"/>`;
+    }
+    parts += `</g>`;
+    return parts;
+  }
+
+  function renderPlant(){
+    const svg = $('plantSvg');
+    const stage = getStage();
+    const stemHeight = stage.height;
+    const stemTopY = 420 - stemHeight;
+    const baseX = 250;
+    const nodes = [];
+
+    for(let i=0; i<stage.pairs; i++){
+      const frac = stage.pairs === 1 ? 0.72 : (0.24 + (i/(stage.pairs-1))*0.58);
+      nodes.push(420 - stemHeight * frac);
+    }
+
+    let out = `
+      <defs>
+        <linearGradient id="potGrad" x1="0" x2="1">
+          <stop offset="0%" stop-color="#0b0c10"/>
+          <stop offset="50%" stop-color="#28272d"/>
+          <stop offset="100%" stop-color="#101116"/>
+        </linearGradient>
+        <linearGradient id="soilGrad" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#3c2618"/>
+          <stop offset="100%" stop-color="#150d08"/>
+        </linearGradient>
+        <linearGradient id="stemGrad" x1="0" x2="1">
+          <stop offset="0%" stop-color="#40671e"/>
+          <stop offset="50%" stop-color="#8dc340"/>
+          <stop offset="100%" stop-color="#3c641d"/>
+        </linearGradient>
+        <linearGradient id="leafGrad" x1="0" x2="1">
+          <stop offset="0%" stop-color="#7fb645"/>
+          <stop offset="60%" stop-color="#4f8a2f"/>
+          <stop offset="100%" stop-color="#2e6a24"/>
+        </linearGradient>
+        <radialGradient id="budGrad">
+          <stop offset="0%" stop-color="#d8ef8a"/>
+          <stop offset="45%" stop-color="#97c650"/>
+          <stop offset="100%" stop-color="#557d30"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="250" cy="462" rx="165" ry="16" fill="rgba(0,0,0,.28)"/>
+      <path d="M120 280 Q250 240 380 280 L355 425 Q250 455 145 425 Z" fill="url(#potGrad)" stroke="rgba(205,210,190,.15)" stroke-width="2"/>
+      <ellipse cx="250" cy="276" rx="135" ry="28" fill="#1d1f23"/>
+      <ellipse cx="250" cy="278" rx="122" ry="20" fill="url(#soilGrad)"/>
+      <ellipse cx="170" cy="274" rx="4" ry="3" fill="#b2ada4"/><ellipse cx="302" cy="270" rx="3" ry="2.5" fill="#9d978f"/><ellipse cx="232" cy="286" rx="4" ry="3" fill="#b8b0a6"/><ellipse cx="332" cy="282" rx="3" ry="2.5" fill="#8e887d"/>
+      <rect x="188" y="344" width="124" height="72" rx="10" fill="#a89f94" stroke="#534b45" stroke-width="1.5"/>
+      <text x="250" y="366" text-anchor="middle" font-size="20">🌿</text>
+      <text x="250" y="388" text-anchor="middle" font-size="16" font-weight="800" fill="#121212" letter-spacing="1">GREEN CRACK</text>
+      <text x="250" y="408" text-anchor="middle" font-size="11" font-weight="800" fill="#121212" letter-spacing="3">SATIVA</text>
+      <path d="M ${baseX} 420 C ${baseX-6} ${420-stemHeight*0.25}, ${baseX+7} ${420-stemHeight*0.75}, ${baseX} ${stemTopY}" fill="none" stroke="url(#stemGrad)" stroke-width="10" stroke-linecap="round"/>
+    `;
+
+    nodes.forEach((nodeY, idx) => {
+      const leafScale = 0.45 + idx * 0.12 + stage.pairs * 0.02;
+      out += cannabisLeafGroup(baseX - 2, nodeY, leafScale, 195, '#7fb645', '#2e6a24');
+      out += cannabisLeafGroup(baseX + 2, nodeY, leafScale, -15, '#7fb645', '#2e6a24');
+      if(idx > 1){
+        out += cannabisLeafGroup(baseX, nodeY - 6, leafScale * 0.85, -88, '#7fb645', '#2e6a24');
+      }
+    });
+
+    out += cannabisLeafGroup(baseX, stemTopY + 8, 0.82 + stage.pairs*0.05, -90, '#7fb645', '#2e6a24');
+
+    if(stage.buds){
+      out += `<g>
+        <circle cx="${baseX}" cy="${stemTopY + 12}" r="10" fill="url(#budGrad)" stroke="#466425" stroke-width="1.3"/>
+        <circle cx="${baseX-26}" cy="${nodes[Math.max(0, nodes.length-2)]}" r="7" fill="url(#budGrad)" stroke="#466425" stroke-width="1.1"/>
+        <circle cx="${baseX+26}" cy="${nodes[Math.max(0, nodes.length-2)]}" r="7" fill="url(#budGrad)" stroke="#466425" stroke-width="1.1"/>
+      </g>`;
+    }
+
+    svg.innerHTML = out;
+  }
+
+  function render(){
+    setMeter('health', state.health);
+    setMeter('water', state.water);
+    setMeter('light', state.light);
+    setMeter('nutrients', state.nutrients);
+    $('dayLabel').textContent = 'Day ' + state.day;
+    $('growthBar').style.width = Math.round(state.growth) + '%';
+    $('growthVal').textContent = Math.round(state.growth) + '%';
+
+    const stage = getStage();
+    $('stageLabel').textContent = stage.name;
+    $('nextStage').textContent = stage.next;
+
+    setTask('taskWater', state.water >= 40 && state.water <= 90);
+    setTask('taskLight', state.light >= 45 && state.light <= 92);
+    setTask('taskNutrients', state.nutrients >= 40 && state.nutrients <= 85);
+
+    const log = $('eventLog');
+    log.innerHTML = state.messages.map(msg => `<p>${escapeHtml(msg)}</p>`).join('');
+
+    renderPlant();
+  }
+
+  function escapeHtml(str){
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function applyPassiveDecay(multiplier){
+    state.water = clamp(state.water - (1.8 * multiplier));
+    state.light = clamp(state.light - (1.2 * multiplier));
+    state.nutrients = clamp(state.nutrients - (1.0 * multiplier));
+    state.airflow = clamp(state.airflow - (1.1 * multiplier));
+
+    const quality = qualityScore();
+    if(quality > 78){
+      state.health = clamp(state.health + (1.5 * multiplier));
+      state.growth = clamp(state.growth + (1.8 * multiplier));
+    } else if(quality > 60){
+      state.growth = clamp(state.growth + (1.05 * multiplier));
+    } else if(quality > 45){
+      state.health = clamp(state.health - (1.2 * multiplier));
+      state.growth = clamp(state.growth + (0.4 * multiplier));
+    } else {
+      state.health = clamp(state.health - (3.4 * multiplier));
+    }
+
+    if(state.water < 18 || state.light < 18 || state.nutrients < 18 || state.airflow < 18){
+      state.health = clamp(state.health - (2.6 * multiplier));
+    }
+    if(state.water > 97 || state.nutrients > 97){
+      state.health = clamp(state.health - (2.2 * multiplier));
+    }
+  }
+
+  function takeAction(action){
+    if(!state.alive) return;
+    state.actions += 1;
+
+    if(action === 'water'){
+      state.water = clamp(state.water + 18);
+      pushLog('You water the cannabis plant. The soil darkens and the leaves perk up.');
+      showToast('Water applied');
+    }
+    if(action === 'light'){
+      state.light = clamp(state.light + 16);
+      pushLog('You adjust the lamp to keep the plant energized.');
+      showToast('Light adjusted');
+    }
+    if(action === 'nutrients'){
+      state.nutrients = clamp(state.nutrients + 14);
+      pushLog('You add a nutrient dose to support new growth.');
+      showToast('Nutrients added');
+    }
+    if(action === 'air'){
+      state.airflow = clamp(state.airflow + 20);
+      state.health = clamp(state.health + 2);
+      pushLog('Fresh airflow moves through the room and strengthens the plant.');
+      showToast('Airflow improved');
+    }
+    if(action === 'interact'){
+      const options = [
+        'You inspect the serrated leaves. The new growth looks promising.',
+        'You rotate the pot so the canopy develops more evenly.',
+        'You check the stem and canopy. Everything looks stable.',
+        'You lean in for a closer look at the cannabis plant’s latest growth.',
+        'You monitor the plant carefully and catch stress before it spreads.'
+      ];
+      pushLog(options[rand(0, options.length - 1)]);
+      state.health = clamp(state.health + 1);
+      state.growth = clamp(state.growth + 1.2);
+      showToast('Inspection complete');
+    }
+
+    applyPassiveDecay(0.65);
+
+    if(state.actions % 4 === 0){
+      state.day += 1;
+    }
+
+    evaluateState();
+    save();
+    render();
+  }
+
+  function evaluateState(){
+    if(state.health <= 0){
+      state.health = 0;
+      state.alive = false;
+      state.won = false;
+      $('overlayTitle').textContent = 'Grow Failed';
+      $('overlayText').innerHTML = `The cannabis plant didn\'t make it. It failed on day <strong>${state.day}</strong>. Try balancing the meters more carefully.`;
+      $('overlay').classList.add('show');
+    }
+    if(state.growth >= 100){
+      state.growth = 100;
+      state.alive = false;
+      state.won = true;
+      $('overlayTitle').textContent = 'Harvest Complete';
+      $('overlayText').innerHTML = `You guided the marijuana plant through the full grow cycle in <strong>${state.day}</strong> days with <strong>${Math.round(state.health)}%</strong> health remaining.`;
+      $('overlay').classList.add('show');
+    }
+  }
+
+  function restart(){
+    state = {
+      day:1,
+      health:100,
+      water:70,
+      light:75,
+      nutrients:62,
+      airflow:68,
+      growth:5,
+      actions:0,
+      alive:true,
+      won:false,
+      messages:['Day 1: A healthy little cannabis seedling emerges from the soil.']
+    };
+    $('overlay').classList.remove('show');
+    save();
+    render();
+  }
+
+  document.querySelectorAll('.action').forEach(btn => {
+    btn.addEventListener('click', () => takeAction(btn.dataset.action));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    const mapping = {
+      '1': 'water',
+      '2': 'light',
+      '3': 'nutrients',
+      '4': 'air',
+      '5': 'interact'
+    };
+    if(mapping[event.key]) takeAction(mapping[event.key]);
+  });
+
+  $('restartBtn').addEventListener('click', restart);
+
+  load();
+  render();
+})();
+</script>
+</body>
+</html>
