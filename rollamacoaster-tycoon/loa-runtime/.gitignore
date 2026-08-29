@@ -1,0 +1,18 @@
+# Runtime databases / archive payloads
+mongo/*
+elasticsearch/*
+vault/staging/*
+vault/archive/*
+logs/*
+
+# Keep directory placeholders
+!mongo/.gitkeep
+!elasticsearch/.gitkeep
+!vault/staging/.gitkeep
+!vault/archive/.gitkeep
+!logs/.gitkeep
+
+# Process/runtime files
+*.pid
+*.log
+*.tmp
