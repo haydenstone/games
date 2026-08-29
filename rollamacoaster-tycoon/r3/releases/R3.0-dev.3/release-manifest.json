@@ -1,0 +1,34 @@
+{
+  "release": "R3.0-dev.3",
+  "createdAt": "2026-08-28T20:48:22.111890+00:00",
+  "artifact": "rollamacoasterTycoon_R3_rebuilt.html",
+  "sha256": "16e99036a031902747b6e1397a8cdd48a7361eb77815f998d46a122fdbcec204",
+  "bytes": 1988557,
+  "codex": {
+    "file": "codex.json",
+    "sha256": "2a7ea9ee5971065ced42934eee2cedbb3539e5e0f63c9f7b3ebefab0dbd56795",
+    "bytes": 4787468
+  },
+  "tests": [
+    {
+      "cmd": "/usr/bin/python3 /home/hstone/Documents/games/rollamacoaster-tycoon/r3/build_rct_r3_PORTABLE.py --codex /home/hstone/Documents/games/rollamacoaster-tycoon/r3/codex.json",
+      "ok": true,
+      "stdout": "Built /home/hstone/Documents/games/rollamacoaster-tycoon/r3/rollamacoasterTycoon_R3_rebuilt.html (1,988,557 bytes)\nCodex /home/hstone/Documents/games/rollamacoaster-tycoon/r3/codex.json (4,787,468 bytes)\n",
+      "stderr": ""
+    },
+    {
+      "cmd": "/usr/bin/node --check /home/hstone/Documents/games/rollamacoaster-tycoon/r3/.r3-release-check.js",
+      "ok": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "cmd": "required markers",
+      "ok": true,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "passed": true,
+  "workflowNext": "TEST \u2192 COMMENTS \u2192 CORE DUMP \u2192 REVIEW \u2192 PLAN \u2192 BUILD \u2192 RELEASE"
+}

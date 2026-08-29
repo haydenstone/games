@@ -1,0 +1,795 @@
+{
+  "kind": "rollamacoaster-r3-review-packet",
+  "version": 1,
+  "release": {
+    "id": "R3.0-dev.4",
+    "schema": 1,
+    "builtBy": "build_rct_r3.py",
+    "artifact": "rollamacoasterTycoon_R3_rebuilt.html"
+  },
+  "sessionId": "R3.0-dev.4-2026-08-28T20-59-29-045Z-yf8sz",
+  "createdAt": "2026-08-28T21:00:07.158Z",
+  "workflow": {
+    "completedThrough": "REVIEW",
+    "next": "REVIEW → PLAN → BUILD → RELEASE"
+  },
+  "testResult": "FAIL",
+  "comments": [
+    {
+      "id": "comment_mtdfqozd_doj6jh",
+      "release": "R3.0-dev.4",
+      "sessionId": "R3.0-dev.4-2026-08-28T20-59-29-045Z-yf8sz",
+      "time": "2026-08-28T20:59:57.817Z",
+      "area": "Performance",
+      "severity": "note",
+      "text": "i tried wasd and the game froze",
+      "context": {
+        "bootPhase": "RUNNING",
+        "toolMode": "orbit",
+        "selectedBuild": null,
+        "buildRotationDeg": 0,
+        "selectedEntity": null,
+        "hoveredEntity": null,
+        "camera": {
+          "position": [
+            36.85312753450978,
+            35.905137032828726,
+            -15.382114590121184
+          ],
+          "target": [
+            -6,
+            0,
+            4.999999999999999
+          ],
+          "input": {
+            "keysDown": [],
+            "shift": false,
+            "moveFrames": 0,
+            "lastMove": null,
+            "lastKeyAt": 9539.100000023842
+          }
+        },
+        "focus": {
+          "tag": "BUTTON",
+          "id": "devAddComment",
+          "contentEditable": false
+        },
+        "park": {
+          "id": "park_mtdfq6vm_kv77pq",
+          "name": "Forest Frontiers",
+          "open": false,
+          "day": 1,
+          "minutes": 481.22004000000004,
+          "rate": 1,
+          "cash": 50000,
+          "guests": 0,
+          "staff": 0,
+          "entities": 18
+        },
+        "visiblePanels": [
+          "devPanel"
+        ],
+        "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+      },
+      "errorsSinceStart": 1
+    },
+    {
+      "id": "comment_mtdfqpss_2uue48",
+      "release": "R3.0-dev.4",
+      "sessionId": "R3.0-dev.4-2026-08-28T20-59-29-045Z-yf8sz",
+      "time": "2026-08-28T20:59:58.876Z",
+      "area": "Performance",
+      "severity": "bug",
+      "text": "Marked this playtest checkpoint FAIL.",
+      "context": {
+        "bootPhase": "RUNNING",
+        "toolMode": "orbit",
+        "selectedBuild": null,
+        "buildRotationDeg": 0,
+        "selectedEntity": null,
+        "hoveredEntity": null,
+        "camera": {
+          "position": [
+            36.85312753450978,
+            35.905137032828726,
+            -15.382114590121184
+          ],
+          "target": [
+            -6,
+            0,
+            4.999999999999999
+          ],
+          "input": {
+            "keysDown": [],
+            "shift": false,
+            "moveFrames": 0,
+            "lastMove": null,
+            "lastKeyAt": 9539.100000023842
+          }
+        },
+        "focus": {
+          "tag": "BUTTON",
+          "id": "devFail",
+          "contentEditable": false
+        },
+        "park": {
+          "id": "park_mtdfq6vm_kv77pq",
+          "name": "Forest Frontiers",
+          "open": false,
+          "day": 1,
+          "minutes": 481.22004000000004,
+          "rate": 1,
+          "cash": 50000,
+          "guests": 0,
+          "staff": 0,
+          "entities": 18
+        },
+        "visiblePanels": [
+          "devPanel"
+        ],
+        "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+      },
+      "errorsSinceStart": 1
+    }
+  ],
+  "coreDump": {
+    "kind": "rollamacoaster-r3-core-dump",
+    "version": 1,
+    "release": {
+      "id": "R3.0-dev.4",
+      "schema": 1,
+      "builtBy": "build_rct_r3.py",
+      "artifact": "rollamacoasterTycoon_R3_rebuilt.html"
+    },
+    "sessionId": "R3.0-dev.4-2026-08-28T20-59-29-045Z-yf8sz",
+    "capturedAt": "2026-08-28T21:00:03.296Z",
+    "reason": "operator-capture",
+    "testResult": "FAIL",
+    "phase": "COMMENTS",
+    "boot": {
+      "phase": "RUNNING",
+      "log": [
+        {
+          "t": "2026-08-28T20:59:28.974Z",
+          "p": "DB",
+          "msg": "Opening Revision 3 IndexedDB"
+        },
+        {
+          "t": "2026-08-28T20:59:29.044Z",
+          "p": "DB",
+          "msg": "Schema ready: saves, ledger, brains, conversations, files, Alexandria, Codex"
+        },
+        {
+          "t": "2026-08-28T20:59:29.044Z",
+          "p": "UI",
+          "msg": "Binding one window manager and one input router"
+        },
+        {
+          "t": "2026-08-28T20:59:29.049Z",
+          "p": "3D",
+          "msg": "Creating clean renderer and camera lifecycle"
+        },
+        {
+          "t": "2026-08-28T20:59:29.049Z",
+          "p": "3D",
+          "msg": "Loading Three.js cleanly"
+        },
+        {
+          "t": "2026-08-28T20:59:29.627Z",
+          "p": "WORLD",
+          "msg": "Constructing starter world graph"
+        },
+        {
+          "t": "2026-08-28T20:59:29.632Z",
+          "p": "AI",
+          "msg": "Discovering local Ollama without blocking gameplay"
+        },
+        {
+          "t": "2026-08-28T20:59:29.632Z",
+          "p": "KNOWLEDGE",
+          "msg": "Scheduling disk-backed Alexandria and Codex seeding"
+        },
+        {
+          "t": "2026-08-28T20:59:29.818Z",
+          "p": "READY",
+          "msg": "Revision 3 entry guards passed"
+        }
+      ]
+    },
+    "context": {
+      "bootPhase": "RUNNING",
+      "toolMode": "orbit",
+      "selectedBuild": null,
+      "buildRotationDeg": 0,
+      "selectedEntity": null,
+      "hoveredEntity": null,
+      "camera": {
+        "position": [
+          36.85312753450978,
+          35.905137032828726,
+          -15.382114590121184
+        ],
+        "target": [
+          -6,
+          0,
+          4.999999999999999
+        ],
+        "input": {
+          "keysDown": [],
+          "shift": false,
+          "moveFrames": 0,
+          "lastMove": null,
+          "lastKeyAt": 9539.100000023842
+        }
+      },
+      "focus": {
+        "tag": "BUTTON",
+        "id": "devCoreDump",
+        "contentEditable": false
+      },
+      "park": {
+        "id": "park_mtdfq6vm_kv77pq",
+        "name": "Forest Frontiers",
+        "open": false,
+        "day": 1,
+        "minutes": 481.22004000000004,
+        "rate": 1,
+        "cash": 50000,
+        "guests": 0,
+        "staff": 0,
+        "entities": 18
+      },
+      "visiblePanels": [
+        "devPanel"
+      ],
+      "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+    },
+    "performance": {
+      "now": 34542.69999998808,
+      "memory": {
+        "jsHeapSizeLimit": 4395630592,
+        "totalJSHeapSize": 10864492,
+        "usedJSHeapSize": 9894464
+      },
+      "frames": 232,
+      "devicePixelRatio": 1,
+      "viewport": {
+        "width": 1801,
+        "height": 930
+      }
+    },
+    "database": {
+      "saves": 0,
+      "ledger": 0,
+      "guestBrains": 0,
+      "conversations": 0,
+      "flockFiles": 3,
+      "metadata": 3,
+      "codex": 31102,
+      "alexandria": 10000
+    },
+    "errors": [
+      {
+        "time": "2026-08-28T20:59:35.423Z",
+        "type": "error",
+        "message": "Uncaught TypeError: cam.distanceTo is not a function",
+        "source": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html",
+        "line": 399,
+        "column": 37,
+        "stack": "TypeError: cam.distanceTo is not a function\n    at updateKeyboardCamera (http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html:399:37)\n    at frame (http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html:405:193)"
+      }
+    ],
+    "console": [],
+    "comments": [
+      {
+        "id": "comment_mtdfqozd_doj6jh",
+        "release": "R3.0-dev.4",
+        "sessionId": "R3.0-dev.4-2026-08-28T20-59-29-045Z-yf8sz",
+        "time": "2026-08-28T20:59:57.817Z",
+        "area": "Performance",
+        "severity": "note",
+        "text": "i tried wasd and the game froze",
+        "context": {
+          "bootPhase": "RUNNING",
+          "toolMode": "orbit",
+          "selectedBuild": null,
+          "buildRotationDeg": 0,
+          "selectedEntity": null,
+          "hoveredEntity": null,
+          "camera": {
+            "position": [
+              36.85312753450978,
+              35.905137032828726,
+              -15.382114590121184
+            ],
+            "target": [
+              -6,
+              0,
+              4.999999999999999
+            ],
+            "input": {
+              "keysDown": [],
+              "shift": false,
+              "moveFrames": 0,
+              "lastMove": null,
+              "lastKeyAt": 9539.100000023842
+            }
+          },
+          "focus": {
+            "tag": "BUTTON",
+            "id": "devAddComment",
+            "contentEditable": false
+          },
+          "park": {
+            "id": "park_mtdfq6vm_kv77pq",
+            "name": "Forest Frontiers",
+            "open": false,
+            "day": 1,
+            "minutes": 481.22004000000004,
+            "rate": 1,
+            "cash": 50000,
+            "guests": 0,
+            "staff": 0,
+            "entities": 18
+          },
+          "visiblePanels": [
+            "devPanel"
+          ],
+          "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+        },
+        "errorsSinceStart": 1
+      },
+      {
+        "id": "comment_mtdfqpss_2uue48",
+        "release": "R3.0-dev.4",
+        "sessionId": "R3.0-dev.4-2026-08-28T20-59-29-045Z-yf8sz",
+        "time": "2026-08-28T20:59:58.876Z",
+        "area": "Performance",
+        "severity": "bug",
+        "text": "Marked this playtest checkpoint FAIL.",
+        "context": {
+          "bootPhase": "RUNNING",
+          "toolMode": "orbit",
+          "selectedBuild": null,
+          "buildRotationDeg": 0,
+          "selectedEntity": null,
+          "hoveredEntity": null,
+          "camera": {
+            "position": [
+              36.85312753450978,
+              35.905137032828726,
+              -15.382114590121184
+            ],
+            "target": [
+              -6,
+              0,
+              4.999999999999999
+            ],
+            "input": {
+              "keysDown": [],
+              "shift": false,
+              "moveFrames": 0,
+              "lastMove": null,
+              "lastKeyAt": 9539.100000023842
+            }
+          },
+          "focus": {
+            "tag": "BUTTON",
+            "id": "devFail",
+            "contentEditable": false
+          },
+          "park": {
+            "id": "park_mtdfq6vm_kv77pq",
+            "name": "Forest Frontiers",
+            "open": false,
+            "day": 1,
+            "minutes": 481.22004000000004,
+            "rate": 1,
+            "cash": 50000,
+            "guests": 0,
+            "staff": 0,
+            "entities": 18
+          },
+          "visiblePanels": [
+            "devPanel"
+          ],
+          "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+        },
+        "errorsSinceStart": 1
+      }
+    ],
+    "recentLedger": [],
+    "simulation": {
+      "schema": 3,
+      "id": "park_mtdfq6vm_kv77pq",
+      "name": "Forest Frontiers",
+      "sign": "FOREST FRONTIERS",
+      "created": 1787950774354,
+      "updated": 1787950774354,
+      "sim": {
+        "minutes": 481.22004000000004,
+        "rate": 1,
+        "open": false,
+        "day": 1,
+        "spawnClock": 0,
+        "guestLimit": 300
+      },
+      "economy": {
+        "cash": 50000,
+        "entranceFee": 10,
+        "income": 0,
+        "expenses": 0,
+        "revenue": 0,
+        "wages": 0,
+        "parkValue": 50241
+      },
+      "entities": [
+        {
+          "id": "path_mtdfq6vm_sk6i8m",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 24
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_hits8y",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 22
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_1hggr9",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 20
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_n2u3zp",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 18
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_6zzovh",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 16
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_i3jjqv",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 14
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_nkj9ju",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 12
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_01zwxa",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 10
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_899ayc",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 8
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_92lmn3",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 6
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_avutqn",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 4
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_861g4u",
+          "kind": "path",
+          "pos": {
+            "x": -10,
+            "y": 0,
+            "z": 4
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_oupju5",
+          "kind": "path",
+          "pos": {
+            "x": -8,
+            "y": 0,
+            "z": 4
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_bj0xlj",
+          "kind": "path",
+          "pos": {
+            "x": -6,
+            "y": 0,
+            "z": 4
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdfq6vm_oimim5",
+          "kind": "path",
+          "pos": {
+            "x": -4,
+            "y": 0,
+            "z": 4
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "lamp_mtdfq6vm_2uhxoy",
+          "kind": "lamp",
+          "pos": {
+            "x": -10,
+            "y": 0,
+            "z": 6
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": []
+        },
+        {
+          "id": "bench_mtdfq6vm_m3avtl",
+          "kind": "bench",
+          "pos": {
+            "x": -8,
+            "y": 0,
+            "z": 5
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": []
+        },
+        {
+          "id": "bin_mtdfq6vm_ov8rou",
+          "kind": "bin",
+          "pos": {
+            "x": -6,
+            "y": 0,
+            "z": 5
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": []
+        }
+      ],
+      "guests": [],
+      "staff": [],
+      "research": {
+        "unlocked": [
+          "path",
+          "queue",
+          "stonepath",
+          "boardwalk",
+          "brickpath",
+          "dirtpath",
+          "ferris",
+          "carousel",
+          "teacups",
+          "train",
+          "darkride",
+          "giantswing",
+          "freefall",
+          "observation",
+          "coaster",
+          "launchcoaster",
+          "logflume",
+          "rapids",
+          "burger",
+          "fries",
+          "pizza",
+          "pretzel",
+          "smoothie",
+          "icecream",
+          "drink",
+          "souvenir",
+          "plush",
+          "photo",
+          "restroom",
+          "familycare",
+          "firstaid",
+          "securitypost",
+          "information",
+          "atm",
+          "wifiap",
+          "speaker",
+          "securitycam",
+          "staffroom",
+          "bench",
+          "table",
+          "bin",
+          "lamp",
+          "bollardlight",
+          "banner",
+          "rgbflood",
+          "wavebeacon",
+          "lasershow",
+          "fountain",
+          "jumpfountain",
+          "tree",
+          "flowerbed",
+          "pond",
+          "geocache",
+          "statue"
+        ]
+      },
+      "settings": {
+        "grid": true,
+        "lowDef": false,
+        "ambience": true
+      },
+      "pulse": [
+        {
+          "id": "pulse_mtdfqpsy_8bnh9q",
+          "time": 1787950798882,
+          "text": "Playtest comment saved · Performance",
+          "type": "DEV",
+          "entityId": null
+        },
+        {
+          "id": "pulse_mtdfqozo_mnam30",
+          "time": 1787950797828,
+          "text": "Playtest comment saved · Performance",
+          "type": "DEV",
+          "entityId": null
+        }
+      ],
+      "flock": {
+        "topic": "How can we make the park easier to navigate and more welcoming?",
+        "collectivePrompt": "Share useful observations, learn from one another, and ground claims in the park database.",
+        "lastLesson": ""
+      },
+      "network": {
+        "ssids": [
+          "Forest Frontiers Guest",
+          "Forest Frontiers Worker"
+        ],
+        "pa": {
+          "program": "Frontier Ambient",
+          "playing": false
+        }
+      },
+      "nextGuest": 1,
+      "nextStaff": 1
+    }
+  }
+}

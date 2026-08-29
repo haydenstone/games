@@ -1,0 +1,27 @@
+{
+  "capturedAt": "2026-08-28T23:19:48.143Z",
+  "width": 1800,
+  "height": 928,
+  "bytes": 969364,
+  "mode": "display-media-full-composited-viewport",
+  "displaySurface": "browser",
+  "viewport": {
+    "width": 1801,
+    "height": 899,
+    "devicePixelRatio": 1
+  },
+  "visiblePanels": [
+    "entityPanel",
+    "devPanel"
+  ],
+  "menuOpen": false,
+  "menuMode": "main",
+  "release": {
+    "id": "R3.0-dev.16",
+    "schema": 1,
+    "builtBy": "build_rct_r3.py",
+    "artifact": "rollamacoasterTycoon_R3_rebuilt.html"
+  },
+  "sessionId": "R3.0-dev.16-2026-08-28T23-16-29-698Z-qbtgv",
+  "saved": "rct_r3_dev_sessions/R3.0-dev.16-2026-08-28T23-16-29-698Z-qbtgv/viewport-20260828T231948Z.png"
+}

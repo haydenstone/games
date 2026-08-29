@@ -1,0 +1,29 @@
+{
+  "release": "R3-POC-SPRINT06L",
+  "collector": "R3-COLLECTOR-5B",
+  "generated_at": "2026-08-29T00:53:48",
+  "source": "R3-POC-SPRINT06K",
+  "file": "rollamacoasterTycoon_R3_POC_SPRINT06L_guest_economy_health_workers_fix.html",
+  "changes": [
+    "new guest wallet distribution $60-$180, expected mean $120",
+    "Guest Opinions Combined Guest Health aggregate dashboard",
+    "FrontierOS dashboard workers ReferenceError root fix to staffR61",
+    "Collector 5A interaction telemetry retained as 5B"
+  ],
+  "validation": {
+    "all_executable_scripts_parse": "PASS",
+    "script_payloads_checked": 19,
+    "failed_scripts": [],
+    "checks": {
+      "release_identity": true,
+      "starting_wallet_target_120": true,
+      "combined_health_panel": true,
+      "combined_health_metrics": true,
+      "dead_dashboard_workers_removed": true,
+      "dashboard_uses_staffR61": true,
+      "interaction_trace_preserved": true,
+      "gps_collapse_preserved": true,
+      "multi_comment_export_preserved": true
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "release": "R3-POC-SPRINT06E",
+  "collector": "R3-COLLECTOR-4B",
+  "generated_at": "2026-08-28T23:23:38",
+  "root_cause": {
+    "primary": "06D deferred synthetic anchor download until after several awaits, so Chromium could lose trusted user activation and block/ignore the download.",
+    "secondary": "06D restored-session path could call clone() before const clone initialization when comments existed, causing a TDZ ReferenceError after reload."
+  },
+  "fixes": [
+    "showSaveFilePicker acquired immediately from EXPORT FEEDBACK click before diagnostics",
+    "native file handle written only after diagnostics and comment integrity verification",
+    "fallback renders persistent DOWNLOAD READY link requiring a fresh trusted click",
+    "comments frozen at export click",
+    "all submitted comments verified in cycle and dump",
+    "clone declared before restored-session use",
+    "export state shown in UI"
+  ],
+  "validation": {
+    "executable_scripts_checked": 19,
+    "syntax": "PASS",
+    "failed": [],
+    "showSaveFilePicker_present": true,
+    "download_ready_present": true,
+    "old_sprint02b_filename_literal_present": false,
+    "collector_identity_present": true
+  }
+}

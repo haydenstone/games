@@ -1,0 +1,39 @@
+{
+  "project": "RollamacoasterTycoon Revision Conversion",
+  "current_gate": "G2",
+  "completed_gates": [
+    "G0",
+    "G1"
+  ],
+  "next_gate": "G2",
+  "source_revision_target": "R233M lineage",
+  "release_target": "single dist/rollamacoaster.html plus optional localhost agentic backend",
+  "counts": {
+    "feature_implementation_atoms": 11923,
+    "revision_meta_descriptions": 201,
+    "build_catalog_items": 140,
+    "build_meta_descriptions": 75,
+    "legacy_audit_contracts": 221,
+    "legacy_functions": 1345,
+    "legacy_dom_ids": 900,
+    "legacy_runtime_userdata_keys": 298
+  },
+  "asset_ledger": "rollamacoaster_asset_disposition_ledger.csv",
+  "tracker": "rollamacoaster_revision_conversion_tracker.md",
+  "g1_validation": {
+    "node_check": "PASS",
+    "smoke": "PASS",
+    "backend_zip": "rollamacoaster_g1_backend.zip",
+    "contracts": [
+      "versioned envelopes",
+      "health/meta/project endpoints",
+      "domain event bus",
+      "Server-Sent Events stream",
+      "provider registry: ollama/openai/gemini",
+      "Game query/command boundary",
+      "Flock run registry",
+      "project identity",
+      "RemoteControlPlane/BrowserControlPlane transport boundary"
+    ]
+  }
+}

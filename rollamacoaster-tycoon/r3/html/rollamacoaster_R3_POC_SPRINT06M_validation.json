@@ -1,0 +1,25 @@
+{
+  "release": "R3-POC-SPRINT06M",
+  "collector": "R3-COLLECTOR-5C",
+  "generated_at": "2026-08-29T01:04:31",
+  "scripts_checked": 19,
+  "all_scripts_parse": true,
+  "failed_scripts": [],
+  "checks": {
+    "release_identity": true,
+    "collector_identity": true,
+    "r3_drag_installer": true,
+    "four_hire_cards": true,
+    "construction_hire": true,
+    "security_db_not_in_staff": true,
+    "security_db_standalone": true,
+    "park_security_launcher": true,
+    "construction_persistence": true,
+    "construction_ops": true,
+    "security_fines": true,
+    "interaction_collector_preserved": true,
+    "security_render_global": true,
+    "construction_duties_saved": true,
+    "construction_chat_role": true
+  }
+}

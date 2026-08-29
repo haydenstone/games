@@ -1,0 +1,4669 @@
+{
+  "kind": "rollamacoaster-r3-review-packet",
+  "version": 1,
+  "release": {
+    "id": "R3.0-dev.14",
+    "schema": 1,
+    "builtBy": "build_rct_r3.py",
+    "artifact": "rollamacoasterTycoon_R3_rebuilt.html"
+  },
+  "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+  "createdAt": "2026-08-28T22:41:51.548Z",
+  "workflow": {
+    "completedThrough": "REVIEW",
+    "next": "REVIEW → PLAN → BUILD → RELEASE"
+  },
+  "testResult": "FAIL",
+  "comments": [
+    {
+      "id": "comment_mtdj97nl_qwedy4",
+      "release": "R3.0-dev.14",
+      "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+      "time": "2026-08-28T22:38:20.673Z",
+      "area": "Build UI",
+      "severity": "note",
+      "text": "the construction grid must be dark grey lines not white and in the settings menu would like to add show hide treese. show hide wifi coverage, show hide people. show hide attractions, above ground underground, and all these views should be accessible with hotkeys 12345etc...",
+      "context": {
+        "bootPhase": "RUNNING",
+        "toolMode": "orbit",
+        "selectedBuild": null,
+        "buildRotationDeg": 0,
+        "selectedEntity": null,
+        "hoveredEntity": null,
+        "camera": {
+          "position": [
+            12.343354557729892,
+            14.330448539997553,
+            15.232170968793914
+          ],
+          "target": [
+            -11.79784112380515,
+            0,
+            19.71861979628288
+          ],
+          "input": {
+            "keysDown": [],
+            "shift": false,
+            "moveFrames": 62,
+            "lastMove": {
+              "at": 10885.899999976158,
+              "delta": [
+                -0.24834050149987416,
+                0,
+                0.07552032552091283
+              ],
+              "speed": 15.636716742348511,
+              "keys": [
+                "KeyW"
+              ]
+            },
+            "lastKeyAt": 10609.799999952316
+          },
+          "frameFaults": []
+        },
+        "focus": {
+          "tag": "BUTTON",
+          "id": "devAddComment",
+          "contentEditable": false
+        },
+        "park": {
+          "id": "park_mtdj6kdg_c82of3",
+          "name": "Forest Frontiers",
+          "open": false,
+          "day": 1,
+          "minutes": 628.1599199998993,
+          "rate": 1,
+          "cash": 50000,
+          "guests": 0,
+          "staff": 0,
+          "entities": 19
+        },
+        "construction": {
+          "gridStep": 2,
+          "gridCellHalf": 1,
+          "pathTileSize": 2,
+          "entranceSignMode": "fixed-plane-both-faces",
+          "signText": "FOREST FRONTIERS",
+          "signFont": "frontier",
+          "gateStyle": "frontier",
+          "masonryStyle": "granite",
+          "bounds": {
+            "minX": -43,
+            "maxX": 43,
+            "minZ": -39,
+            "maxZ": 27
+          },
+          "gate": {
+            "centerX": -12,
+            "width": 6,
+            "northZ": 27
+          },
+          "wildernessApproach": {
+            "worldPublicPath": true,
+            "immutable": true,
+            "fromGate": [
+              -12,
+              27
+            ],
+            "mapEdge": [
+              82,
+              47
+            ],
+            "waypoints": [
+              [
+                -12,
+                26
+              ],
+              [
+                -12,
+                29
+              ],
+              [
+                -8,
+                33
+              ],
+              [
+                1,
+                34
+              ],
+              [
+                10,
+                32
+              ],
+              [
+                20,
+                36
+              ],
+              [
+                30,
+                35
+              ],
+              [
+                40,
+                40
+              ],
+              [
+                52,
+                39
+              ],
+              [
+                72,
+                44
+              ],
+              [
+                82,
+                47
+              ]
+            ]
+          },
+          "propertyParcels": {},
+          "lastContextAction": null,
+          "lastPlacement": null
+        },
+        "ui": {
+          "settingsOpen": true,
+          "systemsOpen": false,
+          "menuOpen": false,
+          "menuMode": "main",
+          "menuOpenedAt": 396.5999999642372,
+          "lastUserAction": {
+            "kind": "ui-pointer",
+            "detail": "devAddComment",
+            "time": 1787956700604
+          },
+          "lastActionTip": null,
+          "entrancePreviewActive": false,
+          "screenshot": null
+        },
+        "economyRules": {
+          "maxEntranceFee": 200,
+          "guestWalletMean": 120,
+          "guestWalletMin": 20,
+          "guestWalletMax": 220,
+          "walletDistribution": "triangular-20-220-mean-120"
+        },
+        "network": {
+          "endpoint": "http://127.0.0.1:11434",
+          "model": "gemma4:e2b",
+          "ssids": [
+            "Forest Frontiers Guest",
+            "Forest Frontiers Worker"
+          ],
+          "pa": {
+            "program": "Frontier Ambient",
+            "playing": false
+          }
+        },
+        "economyFeedback": {
+          "lastOperatorTransaction": null
+        },
+        "interaction": {
+          "lastRoute": null
+        },
+        "visiblePanels": [
+          "settingsPanel",
+          "devPanel"
+        ],
+        "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+      },
+      "errorsSinceStart": 0
+    },
+    {
+      "id": "comment_mtdj9o35_eo2lme",
+      "release": "R3.0-dev.14",
+      "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+      "time": "2026-08-28T22:38:41.969Z",
+      "area": "Build UI",
+      "severity": "note",
+      "text": "settings should be at the end after systems not before and should always be at the end.",
+      "context": {
+        "bootPhase": "RUNNING",
+        "toolMode": "orbit",
+        "selectedBuild": null,
+        "buildRotationDeg": 0,
+        "selectedEntity": null,
+        "hoveredEntity": null,
+        "camera": {
+          "position": [
+            12.343354557729892,
+            14.330448539997553,
+            15.232170968793914
+          ],
+          "target": [
+            -11.79784112380515,
+            0,
+            19.71861979628288
+          ],
+          "input": {
+            "keysDown": [],
+            "shift": false,
+            "moveFrames": 62,
+            "lastMove": {
+              "at": 10885.899999976158,
+              "delta": [
+                -0.24834050149987416,
+                0,
+                0.07552032552091283
+              ],
+              "speed": 15.636716742348511,
+              "keys": [
+                "KeyW"
+              ]
+            },
+            "lastKeyAt": 10609.799999952316
+          },
+          "frameFaults": []
+        },
+        "focus": {
+          "tag": "BUTTON",
+          "id": "devAddComment",
+          "contentEditable": false
+        },
+        "park": {
+          "id": "park_mtdj6kdg_c82of3",
+          "name": "Forest Frontiers",
+          "open": false,
+          "day": 1,
+          "minutes": 653.7199199998774,
+          "rate": 1,
+          "cash": 50000,
+          "guests": 0,
+          "staff": 0,
+          "entities": 19
+        },
+        "construction": {
+          "gridStep": 2,
+          "gridCellHalf": 1,
+          "pathTileSize": 2,
+          "entranceSignMode": "fixed-plane-both-faces",
+          "signText": "FOREST FRONTIERS",
+          "signFont": "frontier",
+          "gateStyle": "frontier",
+          "masonryStyle": "granite",
+          "bounds": {
+            "minX": -43,
+            "maxX": 43,
+            "minZ": -39,
+            "maxZ": 27
+          },
+          "gate": {
+            "centerX": -12,
+            "width": 6,
+            "northZ": 27
+          },
+          "wildernessApproach": {
+            "worldPublicPath": true,
+            "immutable": true,
+            "fromGate": [
+              -12,
+              27
+            ],
+            "mapEdge": [
+              82,
+              47
+            ],
+            "waypoints": [
+              [
+                -12,
+                26
+              ],
+              [
+                -12,
+                29
+              ],
+              [
+                -8,
+                33
+              ],
+              [
+                1,
+                34
+              ],
+              [
+                10,
+                32
+              ],
+              [
+                20,
+                36
+              ],
+              [
+                30,
+                35
+              ],
+              [
+                40,
+                40
+              ],
+              [
+                52,
+                39
+              ],
+              [
+                72,
+                44
+              ],
+              [
+                82,
+                47
+              ]
+            ]
+          },
+          "propertyParcels": {},
+          "lastContextAction": null,
+          "lastPlacement": null
+        },
+        "ui": {
+          "settingsOpen": true,
+          "systemsOpen": false,
+          "menuOpen": false,
+          "menuMode": "main",
+          "menuOpenedAt": 396.5999999642372,
+          "lastUserAction": {
+            "kind": "ui-pointer",
+            "detail": "devAddComment",
+            "time": 1787956721894
+          },
+          "lastActionTip": null,
+          "entrancePreviewActive": false,
+          "screenshot": null
+        },
+        "economyRules": {
+          "maxEntranceFee": 200,
+          "guestWalletMean": 120,
+          "guestWalletMin": 20,
+          "guestWalletMax": 220,
+          "walletDistribution": "triangular-20-220-mean-120"
+        },
+        "network": {
+          "endpoint": "http://127.0.0.1:11434",
+          "model": "gemma4:e2b",
+          "ssids": [
+            "Forest Frontiers Guest",
+            "Forest Frontiers Worker"
+          ],
+          "pa": {
+            "program": "Frontier Ambient",
+            "playing": false
+          }
+        },
+        "economyFeedback": {
+          "lastOperatorTransaction": null
+        },
+        "interaction": {
+          "lastRoute": null
+        },
+        "visiblePanels": [
+          "settingsPanel",
+          "devPanel"
+        ],
+        "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+      },
+      "errorsSinceStart": 0
+    },
+    {
+      "id": "comment_mtdjanlt_svesq4",
+      "release": "R3.0-dev.14",
+      "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+      "time": "2026-08-28T22:39:28.001Z",
+      "area": "Build UI",
+      "severity": "note",
+      "text": "the ui should track park rating/popularity, there should be more emojis next to metric data in the main ui like cash emoji next to 50,000 person icon next to guests",
+      "context": {
+        "bootPhase": "RUNNING",
+        "toolMode": "orbit",
+        "selectedBuild": null,
+        "buildRotationDeg": 0,
+        "selectedEntity": null,
+        "hoveredEntity": null,
+        "camera": {
+          "position": [
+            12.343354557729892,
+            14.330448539997553,
+            15.232170968793914
+          ],
+          "target": [
+            -11.79784112380515,
+            0,
+            19.71861979628288
+          ],
+          "input": {
+            "keysDown": [],
+            "shift": false,
+            "moveFrames": 62,
+            "lastMove": {
+              "at": 10885.899999976158,
+              "delta": [
+                -0.24834050149987416,
+                0,
+                0.07552032552091283
+              ],
+              "speed": 15.636716742348511,
+              "keys": [
+                "KeyW"
+              ]
+            },
+            "lastKeyAt": 10609.799999952316
+          },
+          "frameFaults": []
+        },
+        "focus": {
+          "tag": "BUTTON",
+          "id": "devAddComment",
+          "contentEditable": false
+        },
+        "park": {
+          "id": "park_mtdj6kdg_c82of3",
+          "name": "Forest Frontiers",
+          "open": false,
+          "day": 1,
+          "minutes": 708.959999999829,
+          "rate": 1,
+          "cash": 50000,
+          "guests": 0,
+          "staff": 0,
+          "entities": 19
+        },
+        "construction": {
+          "gridStep": 2,
+          "gridCellHalf": 1,
+          "pathTileSize": 2,
+          "entranceSignMode": "fixed-plane-both-faces",
+          "signText": "FOREST FRONTIERS",
+          "signFont": "frontier",
+          "gateStyle": "frontier",
+          "masonryStyle": "granite",
+          "bounds": {
+            "minX": -43,
+            "maxX": 43,
+            "minZ": -39,
+            "maxZ": 27
+          },
+          "gate": {
+            "centerX": -12,
+            "width": 6,
+            "northZ": 27
+          },
+          "wildernessApproach": {
+            "worldPublicPath": true,
+            "immutable": true,
+            "fromGate": [
+              -12,
+              27
+            ],
+            "mapEdge": [
+              82,
+              47
+            ],
+            "waypoints": [
+              [
+                -12,
+                26
+              ],
+              [
+                -12,
+                29
+              ],
+              [
+                -8,
+                33
+              ],
+              [
+                1,
+                34
+              ],
+              [
+                10,
+                32
+              ],
+              [
+                20,
+                36
+              ],
+              [
+                30,
+                35
+              ],
+              [
+                40,
+                40
+              ],
+              [
+                52,
+                39
+              ],
+              [
+                72,
+                44
+              ],
+              [
+                82,
+                47
+              ]
+            ]
+          },
+          "propertyParcels": {},
+          "lastContextAction": null,
+          "lastPlacement": null
+        },
+        "ui": {
+          "settingsOpen": true,
+          "systemsOpen": false,
+          "menuOpen": false,
+          "menuMode": "main",
+          "menuOpenedAt": 396.5999999642372,
+          "lastUserAction": {
+            "kind": "ui-pointer",
+            "detail": "devAddComment",
+            "time": 1787956767948
+          },
+          "lastActionTip": null,
+          "entrancePreviewActive": false,
+          "screenshot": null
+        },
+        "economyRules": {
+          "maxEntranceFee": 200,
+          "guestWalletMean": 120,
+          "guestWalletMin": 20,
+          "guestWalletMax": 220,
+          "walletDistribution": "triangular-20-220-mean-120"
+        },
+        "network": {
+          "endpoint": "http://127.0.0.1:11434",
+          "model": "gemma4:e2b",
+          "ssids": [
+            "Forest Frontiers Guest",
+            "Forest Frontiers Worker"
+          ],
+          "pa": {
+            "program": "Frontier Ambient",
+            "playing": false
+          }
+        },
+        "economyFeedback": {
+          "lastOperatorTransaction": null
+        },
+        "interaction": {
+          "lastRoute": null
+        },
+        "visiblePanels": [
+          "settingsPanel",
+          "devPanel"
+        ],
+        "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+      },
+      "errorsSinceStart": 0
+    },
+    {
+      "id": "comment_mtdjb2l1_83zcnh",
+      "release": "R3.0-dev.14",
+      "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+      "time": "2026-08-28T22:39:47.413Z",
+      "area": "Build UI",
+      "severity": "note",
+      "text": "main ui saves button is obselete and can be deleted.",
+      "context": {
+        "bootPhase": "RUNNING",
+        "toolMode": "orbit",
+        "selectedBuild": null,
+        "buildRotationDeg": 0,
+        "selectedEntity": null,
+        "hoveredEntity": null,
+        "camera": {
+          "position": [
+            12.343354557729892,
+            14.330448539997553,
+            15.232170968793914
+          ],
+          "target": [
+            -11.79784112380515,
+            0,
+            19.71861979628288
+          ],
+          "input": {
+            "keysDown": [],
+            "shift": false,
+            "moveFrames": 62,
+            "lastMove": {
+              "at": 10885.899999976158,
+              "delta": [
+                -0.24834050149987416,
+                0,
+                0.07552032552091283
+              ],
+              "speed": 15.636716742348511,
+              "keys": [
+                "KeyW"
+              ]
+            },
+            "lastKeyAt": 10609.799999952316
+          },
+          "frameFaults": []
+        },
+        "focus": {
+          "tag": "BUTTON",
+          "id": "devAddComment",
+          "contentEditable": false
+        },
+        "park": {
+          "id": "park_mtdj6kdg_c82of3",
+          "name": "Forest Frontiers",
+          "open": false,
+          "day": 1,
+          "minutes": 732.2599199998089,
+          "rate": 1,
+          "cash": 50000,
+          "guests": 0,
+          "staff": 0,
+          "entities": 19
+        },
+        "construction": {
+          "gridStep": 2,
+          "gridCellHalf": 1,
+          "pathTileSize": 2,
+          "entranceSignMode": "fixed-plane-both-faces",
+          "signText": "FOREST FRONTIERS",
+          "signFont": "frontier",
+          "gateStyle": "frontier",
+          "masonryStyle": "granite",
+          "bounds": {
+            "minX": -43,
+            "maxX": 43,
+            "minZ": -39,
+            "maxZ": 27
+          },
+          "gate": {
+            "centerX": -12,
+            "width": 6,
+            "northZ": 27
+          },
+          "wildernessApproach": {
+            "worldPublicPath": true,
+            "immutable": true,
+            "fromGate": [
+              -12,
+              27
+            ],
+            "mapEdge": [
+              82,
+              47
+            ],
+            "waypoints": [
+              [
+                -12,
+                26
+              ],
+              [
+                -12,
+                29
+              ],
+              [
+                -8,
+                33
+              ],
+              [
+                1,
+                34
+              ],
+              [
+                10,
+                32
+              ],
+              [
+                20,
+                36
+              ],
+              [
+                30,
+                35
+              ],
+              [
+                40,
+                40
+              ],
+              [
+                52,
+                39
+              ],
+              [
+                72,
+                44
+              ],
+              [
+                82,
+                47
+              ]
+            ]
+          },
+          "propertyParcels": {},
+          "lastContextAction": null,
+          "lastPlacement": null
+        },
+        "ui": {
+          "settingsOpen": true,
+          "systemsOpen": false,
+          "menuOpen": false,
+          "menuMode": "main",
+          "menuOpenedAt": 396.5999999642372,
+          "lastUserAction": {
+            "kind": "ui-pointer",
+            "detail": "devAddComment",
+            "time": 1787956787346
+          },
+          "lastActionTip": null,
+          "entrancePreviewActive": false,
+          "screenshot": null
+        },
+        "economyRules": {
+          "maxEntranceFee": 200,
+          "guestWalletMean": 120,
+          "guestWalletMin": 20,
+          "guestWalletMax": 220,
+          "walletDistribution": "triangular-20-220-mean-120"
+        },
+        "network": {
+          "endpoint": "http://127.0.0.1:11434",
+          "model": "gemma4:e2b",
+          "ssids": [
+            "Forest Frontiers Guest",
+            "Forest Frontiers Worker"
+          ],
+          "pa": {
+            "program": "Frontier Ambient",
+            "playing": false
+          }
+        },
+        "economyFeedback": {
+          "lastOperatorTransaction": null
+        },
+        "interaction": {
+          "lastRoute": null
+        },
+        "visiblePanels": [
+          "settingsPanel",
+          "savePanel",
+          "devPanel"
+        ],
+        "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+      },
+      "errorsSinceStart": 0
+    },
+    {
+      "id": "comment_mtdjcp15_quhl2y",
+      "release": "R3.0-dev.14",
+      "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+      "time": "2026-08-28T22:41:03.161Z",
+      "area": "Build UI",
+      "severity": "note",
+      "text": "each entity should track the purchase for instance park entrance should track guest admisssion and guest should be able to be selected in transaction histor to bring up entity ui window. land purchase opens land menu etc.",
+      "context": {
+        "bootPhase": "RUNNING",
+        "toolMode": "orbit",
+        "selectedBuild": null,
+        "buildRotationDeg": 0,
+        "selectedEntity": null,
+        "hoveredEntity": null,
+        "camera": {
+          "position": [
+            12.343354557729892,
+            14.330448539997553,
+            15.232170968793914
+          ],
+          "target": [
+            -11.79784112380515,
+            0,
+            19.71861979628288
+          ],
+          "input": {
+            "keysDown": [],
+            "shift": false,
+            "moveFrames": 62,
+            "lastMove": {
+              "at": 10885.899999976158,
+              "delta": [
+                -0.24834050149987416,
+                0,
+                0.07552032552091283
+              ],
+              "speed": 15.636716742348511,
+              "keys": [
+                "KeyW"
+              ]
+            },
+            "lastKeyAt": 10609.799999952316
+          },
+          "frameFaults": []
+        },
+        "focus": {
+          "tag": "BUTTON",
+          "id": "devAddComment",
+          "contentEditable": false
+        },
+        "park": {
+          "id": "park_mtdj6kdg_c82of3",
+          "name": "Forest Frontiers",
+          "open": false,
+          "day": 1,
+          "minutes": 823.159919999769,
+          "rate": 1,
+          "cash": 50000,
+          "guests": 0,
+          "staff": 0,
+          "entities": 19
+        },
+        "construction": {
+          "gridStep": 2,
+          "gridCellHalf": 1,
+          "pathTileSize": 2,
+          "entranceSignMode": "fixed-plane-both-faces",
+          "signText": "FOREST FRONTIERS",
+          "signFont": "frontier",
+          "gateStyle": "frontier",
+          "masonryStyle": "granite",
+          "bounds": {
+            "minX": -43,
+            "maxX": 43,
+            "minZ": -39,
+            "maxZ": 27
+          },
+          "gate": {
+            "centerX": -12,
+            "width": 6,
+            "northZ": 27
+          },
+          "wildernessApproach": {
+            "worldPublicPath": true,
+            "immutable": true,
+            "fromGate": [
+              -12,
+              27
+            ],
+            "mapEdge": [
+              82,
+              47
+            ],
+            "waypoints": [
+              [
+                -12,
+                26
+              ],
+              [
+                -12,
+                29
+              ],
+              [
+                -8,
+                33
+              ],
+              [
+                1,
+                34
+              ],
+              [
+                10,
+                32
+              ],
+              [
+                20,
+                36
+              ],
+              [
+                30,
+                35
+              ],
+              [
+                40,
+                40
+              ],
+              [
+                52,
+                39
+              ],
+              [
+                72,
+                44
+              ],
+              [
+                82,
+                47
+              ]
+            ]
+          },
+          "propertyParcels": {},
+          "lastContextAction": null,
+          "lastPlacement": null
+        },
+        "ui": {
+          "settingsOpen": true,
+          "systemsOpen": false,
+          "menuOpen": false,
+          "menuMode": "main",
+          "menuOpenedAt": 396.5999999642372,
+          "lastUserAction": {
+            "kind": "ui-pointer",
+            "detail": "devAddComment",
+            "time": 1787956863094
+          },
+          "lastActionTip": null,
+          "entrancePreviewActive": false,
+          "screenshot": null
+        },
+        "economyRules": {
+          "maxEntranceFee": 200,
+          "guestWalletMean": 120,
+          "guestWalletMin": 20,
+          "guestWalletMax": 220,
+          "walletDistribution": "triangular-20-220-mean-120"
+        },
+        "network": {
+          "endpoint": "http://127.0.0.1:11434",
+          "model": "gemma4:e2b",
+          "ssids": [
+            "Forest Frontiers Guest",
+            "Forest Frontiers Worker"
+          ],
+          "pa": {
+            "program": "Frontier Ambient",
+            "playing": false
+          }
+        },
+        "economyFeedback": {
+          "lastOperatorTransaction": null
+        },
+        "interaction": {
+          "lastRoute": null
+        },
+        "visiblePanels": [
+          "settingsPanel",
+          "economyPanel",
+          "devPanel"
+        ],
+        "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+      },
+      "errorsSinceStart": 0
+    },
+    {
+      "id": "comment_mtdjdgh6_afq7y5",
+      "release": "R3.0-dev.14",
+      "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+      "time": "2026-08-28T22:41:38.730Z",
+      "area": "Build UI",
+      "severity": "note",
+      "text": "every button should have a tool tip",
+      "context": {
+        "bootPhase": "RUNNING",
+        "toolMode": "build",
+        "selectedBuild": "carousel",
+        "buildRotationDeg": 0,
+        "selectedEntity": null,
+        "hoveredEntity": null,
+        "camera": {
+          "position": [
+            12.343354557729892,
+            14.330448539997553,
+            15.232170968793914
+          ],
+          "target": [
+            -11.79784112380515,
+            0,
+            19.71861979628288
+          ],
+          "input": {
+            "keysDown": [],
+            "shift": false,
+            "moveFrames": 62,
+            "lastMove": {
+              "at": 10885.899999976158,
+              "delta": [
+                -0.24834050149987416,
+                0,
+                0.07552032552091283
+              ],
+              "speed": 15.636716742348511,
+              "keys": [
+                "KeyW"
+              ]
+            },
+            "lastKeyAt": 10609.799999952316
+          },
+          "frameFaults": []
+        },
+        "focus": {
+          "tag": "BUTTON",
+          "id": "devAddComment",
+          "contentEditable": false
+        },
+        "park": {
+          "id": "park_mtdj6kdg_c82of3",
+          "name": "Forest Frontiers",
+          "open": false,
+          "day": 1,
+          "minutes": 865.7599199997834,
+          "rate": 1,
+          "cash": 50000,
+          "guests": 0,
+          "staff": 0,
+          "entities": 19
+        },
+        "construction": {
+          "gridStep": 2,
+          "gridCellHalf": 1,
+          "pathTileSize": 2,
+          "entranceSignMode": "fixed-plane-both-faces",
+          "signText": "FOREST FRONTIERS",
+          "signFont": "frontier",
+          "gateStyle": "frontier",
+          "masonryStyle": "granite",
+          "bounds": {
+            "minX": -43,
+            "maxX": 43,
+            "minZ": -39,
+            "maxZ": 27
+          },
+          "gate": {
+            "centerX": -12,
+            "width": 6,
+            "northZ": 27
+          },
+          "wildernessApproach": {
+            "worldPublicPath": true,
+            "immutable": true,
+            "fromGate": [
+              -12,
+              27
+            ],
+            "mapEdge": [
+              82,
+              47
+            ],
+            "waypoints": [
+              [
+                -12,
+                26
+              ],
+              [
+                -12,
+                29
+              ],
+              [
+                -8,
+                33
+              ],
+              [
+                1,
+                34
+              ],
+              [
+                10,
+                32
+              ],
+              [
+                20,
+                36
+              ],
+              [
+                30,
+                35
+              ],
+              [
+                40,
+                40
+              ],
+              [
+                52,
+                39
+              ],
+              [
+                72,
+                44
+              ],
+              [
+                82,
+                47
+              ]
+            ]
+          },
+          "propertyParcels": {},
+          "lastContextAction": null,
+          "lastPlacement": {
+            "kind": "carousel",
+            "raw": [
+              -29.666134171881094,
+              21.179114471337595
+            ],
+            "snapped": [
+              -29.75,
+              21.25
+            ],
+            "inside": true,
+            "gridStep": 0.25,
+            "activeBounds": {
+              "minX": -43,
+              "maxX": 43,
+              "minZ": -39,
+              "maxZ": 27
+            }
+          }
+        },
+        "ui": {
+          "settingsOpen": true,
+          "systemsOpen": false,
+          "menuOpen": false,
+          "menuMode": "main",
+          "menuOpenedAt": 396.5999999642372,
+          "lastUserAction": {
+            "kind": "ui-pointer",
+            "detail": "devAddComment",
+            "time": 1787956898662
+          },
+          "lastActionTip": null,
+          "entrancePreviewActive": false,
+          "screenshot": null
+        },
+        "economyRules": {
+          "maxEntranceFee": 200,
+          "guestWalletMean": 120,
+          "guestWalletMin": 20,
+          "guestWalletMax": 220,
+          "walletDistribution": "triangular-20-220-mean-120"
+        },
+        "network": {
+          "endpoint": "http://127.0.0.1:11434",
+          "model": "gemma4:e2b",
+          "ssids": [
+            "Forest Frontiers Guest",
+            "Forest Frontiers Worker"
+          ],
+          "pa": {
+            "program": "Frontier Ambient",
+            "playing": false
+          }
+        },
+        "economyFeedback": {
+          "lastOperatorTransaction": null
+        },
+        "interaction": {
+          "lastRoute": null
+        },
+        "visiblePanels": [
+          "buildPanel",
+          "settingsPanel",
+          "devPanel"
+        ],
+        "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+      },
+      "errorsSinceStart": 0
+    },
+    {
+      "id": "comment_mtdjdh2h_n0y4au",
+      "release": "R3.0-dev.14",
+      "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+      "time": "2026-08-28T22:41:39.497Z",
+      "area": "Build UI",
+      "severity": "bug",
+      "text": "Marked this playtest checkpoint FAIL.",
+      "context": {
+        "bootPhase": "RUNNING",
+        "toolMode": "build",
+        "selectedBuild": "carousel",
+        "buildRotationDeg": 0,
+        "selectedEntity": null,
+        "hoveredEntity": null,
+        "camera": {
+          "position": [
+            12.343354557729892,
+            14.330448539997553,
+            15.232170968793914
+          ],
+          "target": [
+            -11.79784112380515,
+            0,
+            19.71861979628288
+          ],
+          "input": {
+            "keysDown": [],
+            "shift": false,
+            "moveFrames": 62,
+            "lastMove": {
+              "at": 10885.899999976158,
+              "delta": [
+                -0.24834050149987416,
+                0,
+                0.07552032552091283
+              ],
+              "speed": 15.636716742348511,
+              "keys": [
+                "KeyW"
+              ]
+            },
+            "lastKeyAt": 10609.799999952316
+          },
+          "frameFaults": []
+        },
+        "focus": {
+          "tag": "BUTTON",
+          "id": "devFail",
+          "contentEditable": false
+        },
+        "park": {
+          "id": "park_mtdj6kdg_c82of3",
+          "name": "Forest Frontiers",
+          "open": false,
+          "day": 1,
+          "minutes": 866.6799599997835,
+          "rate": 1,
+          "cash": 50000,
+          "guests": 0,
+          "staff": 0,
+          "entities": 19
+        },
+        "construction": {
+          "gridStep": 2,
+          "gridCellHalf": 1,
+          "pathTileSize": 2,
+          "entranceSignMode": "fixed-plane-both-faces",
+          "signText": "FOREST FRONTIERS",
+          "signFont": "frontier",
+          "gateStyle": "frontier",
+          "masonryStyle": "granite",
+          "bounds": {
+            "minX": -43,
+            "maxX": 43,
+            "minZ": -39,
+            "maxZ": 27
+          },
+          "gate": {
+            "centerX": -12,
+            "width": 6,
+            "northZ": 27
+          },
+          "wildernessApproach": {
+            "worldPublicPath": true,
+            "immutable": true,
+            "fromGate": [
+              -12,
+              27
+            ],
+            "mapEdge": [
+              82,
+              47
+            ],
+            "waypoints": [
+              [
+                -12,
+                26
+              ],
+              [
+                -12,
+                29
+              ],
+              [
+                -8,
+                33
+              ],
+              [
+                1,
+                34
+              ],
+              [
+                10,
+                32
+              ],
+              [
+                20,
+                36
+              ],
+              [
+                30,
+                35
+              ],
+              [
+                40,
+                40
+              ],
+              [
+                52,
+                39
+              ],
+              [
+                72,
+                44
+              ],
+              [
+                82,
+                47
+              ]
+            ]
+          },
+          "propertyParcels": {},
+          "lastContextAction": null,
+          "lastPlacement": {
+            "kind": "carousel",
+            "raw": [
+              -29.666134171881094,
+              21.179114471337595
+            ],
+            "snapped": [
+              -29.75,
+              21.25
+            ],
+            "inside": true,
+            "gridStep": 0.25,
+            "activeBounds": {
+              "minX": -43,
+              "maxX": 43,
+              "minZ": -39,
+              "maxZ": 27
+            }
+          }
+        },
+        "ui": {
+          "settingsOpen": true,
+          "systemsOpen": false,
+          "menuOpen": false,
+          "menuMode": "main",
+          "menuOpenedAt": 396.5999999642372,
+          "lastUserAction": {
+            "kind": "ui-pointer",
+            "detail": "devFail",
+            "time": 1787956899434
+          },
+          "lastActionTip": null,
+          "entrancePreviewActive": false,
+          "screenshot": null
+        },
+        "economyRules": {
+          "maxEntranceFee": 200,
+          "guestWalletMean": 120,
+          "guestWalletMin": 20,
+          "guestWalletMax": 220,
+          "walletDistribution": "triangular-20-220-mean-120"
+        },
+        "network": {
+          "endpoint": "http://127.0.0.1:11434",
+          "model": "gemma4:e2b",
+          "ssids": [
+            "Forest Frontiers Guest",
+            "Forest Frontiers Worker"
+          ],
+          "pa": {
+            "program": "Frontier Ambient",
+            "playing": false
+          }
+        },
+        "economyFeedback": {
+          "lastOperatorTransaction": null
+        },
+        "interaction": {
+          "lastRoute": null
+        },
+        "visiblePanels": [
+          "buildPanel",
+          "settingsPanel",
+          "devPanel"
+        ],
+        "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+      },
+      "errorsSinceStart": 0
+    }
+  ],
+  "coreDump": {
+    "kind": "rollamacoaster-r3-core-dump",
+    "version": 1,
+    "release": {
+      "id": "R3.0-dev.14",
+      "schema": 1,
+      "builtBy": "build_rct_r3.py",
+      "artifact": "rollamacoasterTycoon_R3_rebuilt.html"
+    },
+    "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+    "capturedAt": "2026-08-28T22:41:51.058Z",
+    "reason": "review-packet",
+    "testResult": "FAIL",
+    "phase": "COMMENTS",
+    "boot": {
+      "phase": "RUNNING",
+      "log": [
+        {
+          "t": "2026-08-28T22:36:10.393Z",
+          "p": "DB",
+          "msg": "Opening Revision 3 IndexedDB"
+        },
+        {
+          "t": "2026-08-28T22:36:10.398Z",
+          "p": "DB",
+          "msg": "Schema ready: saves, ledger, brains, conversations, files, Alexandria, Codex"
+        },
+        {
+          "t": "2026-08-28T22:36:10.398Z",
+          "p": "UI",
+          "msg": "Binding one window manager and one input router"
+        },
+        {
+          "t": "2026-08-28T22:36:10.403Z",
+          "p": "3D",
+          "msg": "Creating clean renderer and camera lifecycle"
+        },
+        {
+          "t": "2026-08-28T22:36:10.403Z",
+          "p": "3D",
+          "msg": "Loading Three.js cleanly"
+        },
+        {
+          "t": "2026-08-28T22:36:10.543Z",
+          "p": "WORLD",
+          "msg": "Constructing starter world graph"
+        },
+        {
+          "t": "2026-08-28T22:36:10.555Z",
+          "p": "AI",
+          "msg": "Discovering local Ollama without blocking gameplay"
+        },
+        {
+          "t": "2026-08-28T22:36:10.555Z",
+          "p": "KNOWLEDGE",
+          "msg": "Scheduling disk-backed Alexandria and Codex seeding"
+        },
+        {
+          "t": "2026-08-28T22:36:10.576Z",
+          "p": "READY",
+          "msg": "Revision 3 entry guards passed"
+        }
+      ]
+    },
+    "context": {
+      "bootPhase": "RUNNING",
+      "toolMode": "build",
+      "selectedBuild": "carousel",
+      "buildRotationDeg": 0,
+      "selectedEntity": null,
+      "hoveredEntity": null,
+      "camera": {
+        "position": [
+          12.343354557729892,
+          14.330448539997553,
+          15.232170968793914
+        ],
+        "target": [
+          -11.79784112380515,
+          0,
+          19.71861979628288
+        ],
+        "input": {
+          "keysDown": [],
+          "shift": false,
+          "moveFrames": 62,
+          "lastMove": {
+            "at": 10885.899999976158,
+            "delta": [
+              -0.24834050149987416,
+              0,
+              0.07552032552091283
+            ],
+            "speed": 15.636716742348511,
+            "keys": [
+              "KeyW"
+            ]
+          },
+          "lastKeyAt": 10609.799999952316
+        },
+        "frameFaults": []
+      },
+      "focus": {
+        "tag": "BUTTON",
+        "id": "devExportReview",
+        "contentEditable": false
+      },
+      "park": {
+        "id": "park_mtdj6kdg_c82of3",
+        "name": "Forest Frontiers",
+        "open": false,
+        "day": 1,
+        "minutes": 880.4398799997862,
+        "rate": 1,
+        "cash": 50000,
+        "guests": 0,
+        "staff": 0,
+        "entities": 19
+      },
+      "construction": {
+        "gridStep": 2,
+        "gridCellHalf": 1,
+        "pathTileSize": 2,
+        "entranceSignMode": "fixed-plane-both-faces",
+        "signText": "FOREST FRONTIERS",
+        "signFont": "frontier",
+        "gateStyle": "frontier",
+        "masonryStyle": "granite",
+        "bounds": {
+          "minX": -43,
+          "maxX": 43,
+          "minZ": -39,
+          "maxZ": 27
+        },
+        "gate": {
+          "centerX": -12,
+          "width": 6,
+          "northZ": 27
+        },
+        "wildernessApproach": {
+          "worldPublicPath": true,
+          "immutable": true,
+          "fromGate": [
+            -12,
+            27
+          ],
+          "mapEdge": [
+            82,
+            47
+          ],
+          "waypoints": [
+            [
+              -12,
+              26
+            ],
+            [
+              -12,
+              29
+            ],
+            [
+              -8,
+              33
+            ],
+            [
+              1,
+              34
+            ],
+            [
+              10,
+              32
+            ],
+            [
+              20,
+              36
+            ],
+            [
+              30,
+              35
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              52,
+              39
+            ],
+            [
+              72,
+              44
+            ],
+            [
+              82,
+              47
+            ]
+          ]
+        },
+        "propertyParcels": {},
+        "lastContextAction": null,
+        "lastPlacement": {
+          "kind": "carousel",
+          "raw": [
+            -36.99303287452794,
+            12.930001160445283
+          ],
+          "snapped": [
+            -37,
+            13
+          ],
+          "inside": true,
+          "gridStep": 0.25,
+          "activeBounds": {
+            "minX": -43,
+            "maxX": 43,
+            "minZ": -39,
+            "maxZ": 27
+          }
+        }
+      },
+      "ui": {
+        "settingsOpen": true,
+        "systemsOpen": false,
+        "menuOpen": false,
+        "menuMode": "main",
+        "menuOpenedAt": 396.5999999642372,
+        "lastUserAction": {
+          "kind": "ui-pointer",
+          "detail": "devExportReview",
+          "time": 1787956910972
+        },
+        "lastActionTip": null,
+        "entrancePreviewActive": false,
+        "screenshot": null
+      },
+      "economyRules": {
+        "maxEntranceFee": 200,
+        "guestWalletMean": 120,
+        "guestWalletMin": 20,
+        "guestWalletMax": 220,
+        "walletDistribution": "triangular-20-220-mean-120"
+      },
+      "network": {
+        "endpoint": "http://127.0.0.1:11434",
+        "model": "gemma4:e2b",
+        "ssids": [
+          "Forest Frontiers Guest",
+          "Forest Frontiers Worker"
+        ],
+        "pa": {
+          "program": "Frontier Ambient",
+          "playing": false
+        }
+      },
+      "economyFeedback": {
+        "lastOperatorTransaction": null
+      },
+      "interaction": {
+        "lastRoute": null
+      },
+      "visiblePanels": [
+        "settingsPanel",
+        "devPanel"
+      ],
+      "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+    },
+    "performance": {
+      "now": 340878.39999997616,
+      "memory": {
+        "jsHeapSizeLimit": 4395630592,
+        "totalJSHeapSize": 29981648,
+        "usedJSHeapSize": 17885176
+      },
+      "frames": 20193,
+      "devicePixelRatio": 1,
+      "viewport": {
+        "width": 1801,
+        "height": 930
+      }
+    },
+    "database": {
+      "saves": 1,
+      "ledger": 365,
+      "guestBrains": 348,
+      "conversations": 8,
+      "flockFiles": 3,
+      "metadata": 3,
+      "codex": 31102,
+      "alexandria": 10000
+    },
+    "errors": [],
+    "console": [],
+    "comments": [
+      {
+        "id": "comment_mtdj97nl_qwedy4",
+        "release": "R3.0-dev.14",
+        "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+        "time": "2026-08-28T22:38:20.673Z",
+        "area": "Build UI",
+        "severity": "note",
+        "text": "the construction grid must be dark grey lines not white and in the settings menu would like to add show hide treese. show hide wifi coverage, show hide people. show hide attractions, above ground underground, and all these views should be accessible with hotkeys 12345etc...",
+        "context": {
+          "bootPhase": "RUNNING",
+          "toolMode": "orbit",
+          "selectedBuild": null,
+          "buildRotationDeg": 0,
+          "selectedEntity": null,
+          "hoveredEntity": null,
+          "camera": {
+            "position": [
+              12.343354557729892,
+              14.330448539997553,
+              15.232170968793914
+            ],
+            "target": [
+              -11.79784112380515,
+              0,
+              19.71861979628288
+            ],
+            "input": {
+              "keysDown": [],
+              "shift": false,
+              "moveFrames": 62,
+              "lastMove": {
+                "at": 10885.899999976158,
+                "delta": [
+                  -0.24834050149987416,
+                  0,
+                  0.07552032552091283
+                ],
+                "speed": 15.636716742348511,
+                "keys": [
+                  "KeyW"
+                ]
+              },
+              "lastKeyAt": 10609.799999952316
+            },
+            "frameFaults": []
+          },
+          "focus": {
+            "tag": "BUTTON",
+            "id": "devAddComment",
+            "contentEditable": false
+          },
+          "park": {
+            "id": "park_mtdj6kdg_c82of3",
+            "name": "Forest Frontiers",
+            "open": false,
+            "day": 1,
+            "minutes": 628.1599199998993,
+            "rate": 1,
+            "cash": 50000,
+            "guests": 0,
+            "staff": 0,
+            "entities": 19
+          },
+          "construction": {
+            "gridStep": 2,
+            "gridCellHalf": 1,
+            "pathTileSize": 2,
+            "entranceSignMode": "fixed-plane-both-faces",
+            "signText": "FOREST FRONTIERS",
+            "signFont": "frontier",
+            "gateStyle": "frontier",
+            "masonryStyle": "granite",
+            "bounds": {
+              "minX": -43,
+              "maxX": 43,
+              "minZ": -39,
+              "maxZ": 27
+            },
+            "gate": {
+              "centerX": -12,
+              "width": 6,
+              "northZ": 27
+            },
+            "wildernessApproach": {
+              "worldPublicPath": true,
+              "immutable": true,
+              "fromGate": [
+                -12,
+                27
+              ],
+              "mapEdge": [
+                82,
+                47
+              ],
+              "waypoints": [
+                [
+                  -12,
+                  26
+                ],
+                [
+                  -12,
+                  29
+                ],
+                [
+                  -8,
+                  33
+                ],
+                [
+                  1,
+                  34
+                ],
+                [
+                  10,
+                  32
+                ],
+                [
+                  20,
+                  36
+                ],
+                [
+                  30,
+                  35
+                ],
+                [
+                  40,
+                  40
+                ],
+                [
+                  52,
+                  39
+                ],
+                [
+                  72,
+                  44
+                ],
+                [
+                  82,
+                  47
+                ]
+              ]
+            },
+            "propertyParcels": {},
+            "lastContextAction": null,
+            "lastPlacement": null
+          },
+          "ui": {
+            "settingsOpen": true,
+            "systemsOpen": false,
+            "menuOpen": false,
+            "menuMode": "main",
+            "menuOpenedAt": 396.5999999642372,
+            "lastUserAction": {
+              "kind": "ui-pointer",
+              "detail": "devAddComment",
+              "time": 1787956700604
+            },
+            "lastActionTip": null,
+            "entrancePreviewActive": false,
+            "screenshot": null
+          },
+          "economyRules": {
+            "maxEntranceFee": 200,
+            "guestWalletMean": 120,
+            "guestWalletMin": 20,
+            "guestWalletMax": 220,
+            "walletDistribution": "triangular-20-220-mean-120"
+          },
+          "network": {
+            "endpoint": "http://127.0.0.1:11434",
+            "model": "gemma4:e2b",
+            "ssids": [
+              "Forest Frontiers Guest",
+              "Forest Frontiers Worker"
+            ],
+            "pa": {
+              "program": "Frontier Ambient",
+              "playing": false
+            }
+          },
+          "economyFeedback": {
+            "lastOperatorTransaction": null
+          },
+          "interaction": {
+            "lastRoute": null
+          },
+          "visiblePanels": [
+            "settingsPanel",
+            "devPanel"
+          ],
+          "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+        },
+        "errorsSinceStart": 0
+      },
+      {
+        "id": "comment_mtdj9o35_eo2lme",
+        "release": "R3.0-dev.14",
+        "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+        "time": "2026-08-28T22:38:41.969Z",
+        "area": "Build UI",
+        "severity": "note",
+        "text": "settings should be at the end after systems not before and should always be at the end.",
+        "context": {
+          "bootPhase": "RUNNING",
+          "toolMode": "orbit",
+          "selectedBuild": null,
+          "buildRotationDeg": 0,
+          "selectedEntity": null,
+          "hoveredEntity": null,
+          "camera": {
+            "position": [
+              12.343354557729892,
+              14.330448539997553,
+              15.232170968793914
+            ],
+            "target": [
+              -11.79784112380515,
+              0,
+              19.71861979628288
+            ],
+            "input": {
+              "keysDown": [],
+              "shift": false,
+              "moveFrames": 62,
+              "lastMove": {
+                "at": 10885.899999976158,
+                "delta": [
+                  -0.24834050149987416,
+                  0,
+                  0.07552032552091283
+                ],
+                "speed": 15.636716742348511,
+                "keys": [
+                  "KeyW"
+                ]
+              },
+              "lastKeyAt": 10609.799999952316
+            },
+            "frameFaults": []
+          },
+          "focus": {
+            "tag": "BUTTON",
+            "id": "devAddComment",
+            "contentEditable": false
+          },
+          "park": {
+            "id": "park_mtdj6kdg_c82of3",
+            "name": "Forest Frontiers",
+            "open": false,
+            "day": 1,
+            "minutes": 653.7199199998774,
+            "rate": 1,
+            "cash": 50000,
+            "guests": 0,
+            "staff": 0,
+            "entities": 19
+          },
+          "construction": {
+            "gridStep": 2,
+            "gridCellHalf": 1,
+            "pathTileSize": 2,
+            "entranceSignMode": "fixed-plane-both-faces",
+            "signText": "FOREST FRONTIERS",
+            "signFont": "frontier",
+            "gateStyle": "frontier",
+            "masonryStyle": "granite",
+            "bounds": {
+              "minX": -43,
+              "maxX": 43,
+              "minZ": -39,
+              "maxZ": 27
+            },
+            "gate": {
+              "centerX": -12,
+              "width": 6,
+              "northZ": 27
+            },
+            "wildernessApproach": {
+              "worldPublicPath": true,
+              "immutable": true,
+              "fromGate": [
+                -12,
+                27
+              ],
+              "mapEdge": [
+                82,
+                47
+              ],
+              "waypoints": [
+                [
+                  -12,
+                  26
+                ],
+                [
+                  -12,
+                  29
+                ],
+                [
+                  -8,
+                  33
+                ],
+                [
+                  1,
+                  34
+                ],
+                [
+                  10,
+                  32
+                ],
+                [
+                  20,
+                  36
+                ],
+                [
+                  30,
+                  35
+                ],
+                [
+                  40,
+                  40
+                ],
+                [
+                  52,
+                  39
+                ],
+                [
+                  72,
+                  44
+                ],
+                [
+                  82,
+                  47
+                ]
+              ]
+            },
+            "propertyParcels": {},
+            "lastContextAction": null,
+            "lastPlacement": null
+          },
+          "ui": {
+            "settingsOpen": true,
+            "systemsOpen": false,
+            "menuOpen": false,
+            "menuMode": "main",
+            "menuOpenedAt": 396.5999999642372,
+            "lastUserAction": {
+              "kind": "ui-pointer",
+              "detail": "devAddComment",
+              "time": 1787956721894
+            },
+            "lastActionTip": null,
+            "entrancePreviewActive": false,
+            "screenshot": null
+          },
+          "economyRules": {
+            "maxEntranceFee": 200,
+            "guestWalletMean": 120,
+            "guestWalletMin": 20,
+            "guestWalletMax": 220,
+            "walletDistribution": "triangular-20-220-mean-120"
+          },
+          "network": {
+            "endpoint": "http://127.0.0.1:11434",
+            "model": "gemma4:e2b",
+            "ssids": [
+              "Forest Frontiers Guest",
+              "Forest Frontiers Worker"
+            ],
+            "pa": {
+              "program": "Frontier Ambient",
+              "playing": false
+            }
+          },
+          "economyFeedback": {
+            "lastOperatorTransaction": null
+          },
+          "interaction": {
+            "lastRoute": null
+          },
+          "visiblePanels": [
+            "settingsPanel",
+            "devPanel"
+          ],
+          "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+        },
+        "errorsSinceStart": 0
+      },
+      {
+        "id": "comment_mtdjanlt_svesq4",
+        "release": "R3.0-dev.14",
+        "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+        "time": "2026-08-28T22:39:28.001Z",
+        "area": "Build UI",
+        "severity": "note",
+        "text": "the ui should track park rating/popularity, there should be more emojis next to metric data in the main ui like cash emoji next to 50,000 person icon next to guests",
+        "context": {
+          "bootPhase": "RUNNING",
+          "toolMode": "orbit",
+          "selectedBuild": null,
+          "buildRotationDeg": 0,
+          "selectedEntity": null,
+          "hoveredEntity": null,
+          "camera": {
+            "position": [
+              12.343354557729892,
+              14.330448539997553,
+              15.232170968793914
+            ],
+            "target": [
+              -11.79784112380515,
+              0,
+              19.71861979628288
+            ],
+            "input": {
+              "keysDown": [],
+              "shift": false,
+              "moveFrames": 62,
+              "lastMove": {
+                "at": 10885.899999976158,
+                "delta": [
+                  -0.24834050149987416,
+                  0,
+                  0.07552032552091283
+                ],
+                "speed": 15.636716742348511,
+                "keys": [
+                  "KeyW"
+                ]
+              },
+              "lastKeyAt": 10609.799999952316
+            },
+            "frameFaults": []
+          },
+          "focus": {
+            "tag": "BUTTON",
+            "id": "devAddComment",
+            "contentEditable": false
+          },
+          "park": {
+            "id": "park_mtdj6kdg_c82of3",
+            "name": "Forest Frontiers",
+            "open": false,
+            "day": 1,
+            "minutes": 708.959999999829,
+            "rate": 1,
+            "cash": 50000,
+            "guests": 0,
+            "staff": 0,
+            "entities": 19
+          },
+          "construction": {
+            "gridStep": 2,
+            "gridCellHalf": 1,
+            "pathTileSize": 2,
+            "entranceSignMode": "fixed-plane-both-faces",
+            "signText": "FOREST FRONTIERS",
+            "signFont": "frontier",
+            "gateStyle": "frontier",
+            "masonryStyle": "granite",
+            "bounds": {
+              "minX": -43,
+              "maxX": 43,
+              "minZ": -39,
+              "maxZ": 27
+            },
+            "gate": {
+              "centerX": -12,
+              "width": 6,
+              "northZ": 27
+            },
+            "wildernessApproach": {
+              "worldPublicPath": true,
+              "immutable": true,
+              "fromGate": [
+                -12,
+                27
+              ],
+              "mapEdge": [
+                82,
+                47
+              ],
+              "waypoints": [
+                [
+                  -12,
+                  26
+                ],
+                [
+                  -12,
+                  29
+                ],
+                [
+                  -8,
+                  33
+                ],
+                [
+                  1,
+                  34
+                ],
+                [
+                  10,
+                  32
+                ],
+                [
+                  20,
+                  36
+                ],
+                [
+                  30,
+                  35
+                ],
+                [
+                  40,
+                  40
+                ],
+                [
+                  52,
+                  39
+                ],
+                [
+                  72,
+                  44
+                ],
+                [
+                  82,
+                  47
+                ]
+              ]
+            },
+            "propertyParcels": {},
+            "lastContextAction": null,
+            "lastPlacement": null
+          },
+          "ui": {
+            "settingsOpen": true,
+            "systemsOpen": false,
+            "menuOpen": false,
+            "menuMode": "main",
+            "menuOpenedAt": 396.5999999642372,
+            "lastUserAction": {
+              "kind": "ui-pointer",
+              "detail": "devAddComment",
+              "time": 1787956767948
+            },
+            "lastActionTip": null,
+            "entrancePreviewActive": false,
+            "screenshot": null
+          },
+          "economyRules": {
+            "maxEntranceFee": 200,
+            "guestWalletMean": 120,
+            "guestWalletMin": 20,
+            "guestWalletMax": 220,
+            "walletDistribution": "triangular-20-220-mean-120"
+          },
+          "network": {
+            "endpoint": "http://127.0.0.1:11434",
+            "model": "gemma4:e2b",
+            "ssids": [
+              "Forest Frontiers Guest",
+              "Forest Frontiers Worker"
+            ],
+            "pa": {
+              "program": "Frontier Ambient",
+              "playing": false
+            }
+          },
+          "economyFeedback": {
+            "lastOperatorTransaction": null
+          },
+          "interaction": {
+            "lastRoute": null
+          },
+          "visiblePanels": [
+            "settingsPanel",
+            "devPanel"
+          ],
+          "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+        },
+        "errorsSinceStart": 0
+      },
+      {
+        "id": "comment_mtdjb2l1_83zcnh",
+        "release": "R3.0-dev.14",
+        "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+        "time": "2026-08-28T22:39:47.413Z",
+        "area": "Build UI",
+        "severity": "note",
+        "text": "main ui saves button is obselete and can be deleted.",
+        "context": {
+          "bootPhase": "RUNNING",
+          "toolMode": "orbit",
+          "selectedBuild": null,
+          "buildRotationDeg": 0,
+          "selectedEntity": null,
+          "hoveredEntity": null,
+          "camera": {
+            "position": [
+              12.343354557729892,
+              14.330448539997553,
+              15.232170968793914
+            ],
+            "target": [
+              -11.79784112380515,
+              0,
+              19.71861979628288
+            ],
+            "input": {
+              "keysDown": [],
+              "shift": false,
+              "moveFrames": 62,
+              "lastMove": {
+                "at": 10885.899999976158,
+                "delta": [
+                  -0.24834050149987416,
+                  0,
+                  0.07552032552091283
+                ],
+                "speed": 15.636716742348511,
+                "keys": [
+                  "KeyW"
+                ]
+              },
+              "lastKeyAt": 10609.799999952316
+            },
+            "frameFaults": []
+          },
+          "focus": {
+            "tag": "BUTTON",
+            "id": "devAddComment",
+            "contentEditable": false
+          },
+          "park": {
+            "id": "park_mtdj6kdg_c82of3",
+            "name": "Forest Frontiers",
+            "open": false,
+            "day": 1,
+            "minutes": 732.2599199998089,
+            "rate": 1,
+            "cash": 50000,
+            "guests": 0,
+            "staff": 0,
+            "entities": 19
+          },
+          "construction": {
+            "gridStep": 2,
+            "gridCellHalf": 1,
+            "pathTileSize": 2,
+            "entranceSignMode": "fixed-plane-both-faces",
+            "signText": "FOREST FRONTIERS",
+            "signFont": "frontier",
+            "gateStyle": "frontier",
+            "masonryStyle": "granite",
+            "bounds": {
+              "minX": -43,
+              "maxX": 43,
+              "minZ": -39,
+              "maxZ": 27
+            },
+            "gate": {
+              "centerX": -12,
+              "width": 6,
+              "northZ": 27
+            },
+            "wildernessApproach": {
+              "worldPublicPath": true,
+              "immutable": true,
+              "fromGate": [
+                -12,
+                27
+              ],
+              "mapEdge": [
+                82,
+                47
+              ],
+              "waypoints": [
+                [
+                  -12,
+                  26
+                ],
+                [
+                  -12,
+                  29
+                ],
+                [
+                  -8,
+                  33
+                ],
+                [
+                  1,
+                  34
+                ],
+                [
+                  10,
+                  32
+                ],
+                [
+                  20,
+                  36
+                ],
+                [
+                  30,
+                  35
+                ],
+                [
+                  40,
+                  40
+                ],
+                [
+                  52,
+                  39
+                ],
+                [
+                  72,
+                  44
+                ],
+                [
+                  82,
+                  47
+                ]
+              ]
+            },
+            "propertyParcels": {},
+            "lastContextAction": null,
+            "lastPlacement": null
+          },
+          "ui": {
+            "settingsOpen": true,
+            "systemsOpen": false,
+            "menuOpen": false,
+            "menuMode": "main",
+            "menuOpenedAt": 396.5999999642372,
+            "lastUserAction": {
+              "kind": "ui-pointer",
+              "detail": "devAddComment",
+              "time": 1787956787346
+            },
+            "lastActionTip": null,
+            "entrancePreviewActive": false,
+            "screenshot": null
+          },
+          "economyRules": {
+            "maxEntranceFee": 200,
+            "guestWalletMean": 120,
+            "guestWalletMin": 20,
+            "guestWalletMax": 220,
+            "walletDistribution": "triangular-20-220-mean-120"
+          },
+          "network": {
+            "endpoint": "http://127.0.0.1:11434",
+            "model": "gemma4:e2b",
+            "ssids": [
+              "Forest Frontiers Guest",
+              "Forest Frontiers Worker"
+            ],
+            "pa": {
+              "program": "Frontier Ambient",
+              "playing": false
+            }
+          },
+          "economyFeedback": {
+            "lastOperatorTransaction": null
+          },
+          "interaction": {
+            "lastRoute": null
+          },
+          "visiblePanels": [
+            "settingsPanel",
+            "savePanel",
+            "devPanel"
+          ],
+          "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+        },
+        "errorsSinceStart": 0
+      },
+      {
+        "id": "comment_mtdjcp15_quhl2y",
+        "release": "R3.0-dev.14",
+        "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+        "time": "2026-08-28T22:41:03.161Z",
+        "area": "Build UI",
+        "severity": "note",
+        "text": "each entity should track the purchase for instance park entrance should track guest admisssion and guest should be able to be selected in transaction histor to bring up entity ui window. land purchase opens land menu etc.",
+        "context": {
+          "bootPhase": "RUNNING",
+          "toolMode": "orbit",
+          "selectedBuild": null,
+          "buildRotationDeg": 0,
+          "selectedEntity": null,
+          "hoveredEntity": null,
+          "camera": {
+            "position": [
+              12.343354557729892,
+              14.330448539997553,
+              15.232170968793914
+            ],
+            "target": [
+              -11.79784112380515,
+              0,
+              19.71861979628288
+            ],
+            "input": {
+              "keysDown": [],
+              "shift": false,
+              "moveFrames": 62,
+              "lastMove": {
+                "at": 10885.899999976158,
+                "delta": [
+                  -0.24834050149987416,
+                  0,
+                  0.07552032552091283
+                ],
+                "speed": 15.636716742348511,
+                "keys": [
+                  "KeyW"
+                ]
+              },
+              "lastKeyAt": 10609.799999952316
+            },
+            "frameFaults": []
+          },
+          "focus": {
+            "tag": "BUTTON",
+            "id": "devAddComment",
+            "contentEditable": false
+          },
+          "park": {
+            "id": "park_mtdj6kdg_c82of3",
+            "name": "Forest Frontiers",
+            "open": false,
+            "day": 1,
+            "minutes": 823.159919999769,
+            "rate": 1,
+            "cash": 50000,
+            "guests": 0,
+            "staff": 0,
+            "entities": 19
+          },
+          "construction": {
+            "gridStep": 2,
+            "gridCellHalf": 1,
+            "pathTileSize": 2,
+            "entranceSignMode": "fixed-plane-both-faces",
+            "signText": "FOREST FRONTIERS",
+            "signFont": "frontier",
+            "gateStyle": "frontier",
+            "masonryStyle": "granite",
+            "bounds": {
+              "minX": -43,
+              "maxX": 43,
+              "minZ": -39,
+              "maxZ": 27
+            },
+            "gate": {
+              "centerX": -12,
+              "width": 6,
+              "northZ": 27
+            },
+            "wildernessApproach": {
+              "worldPublicPath": true,
+              "immutable": true,
+              "fromGate": [
+                -12,
+                27
+              ],
+              "mapEdge": [
+                82,
+                47
+              ],
+              "waypoints": [
+                [
+                  -12,
+                  26
+                ],
+                [
+                  -12,
+                  29
+                ],
+                [
+                  -8,
+                  33
+                ],
+                [
+                  1,
+                  34
+                ],
+                [
+                  10,
+                  32
+                ],
+                [
+                  20,
+                  36
+                ],
+                [
+                  30,
+                  35
+                ],
+                [
+                  40,
+                  40
+                ],
+                [
+                  52,
+                  39
+                ],
+                [
+                  72,
+                  44
+                ],
+                [
+                  82,
+                  47
+                ]
+              ]
+            },
+            "propertyParcels": {},
+            "lastContextAction": null,
+            "lastPlacement": null
+          },
+          "ui": {
+            "settingsOpen": true,
+            "systemsOpen": false,
+            "menuOpen": false,
+            "menuMode": "main",
+            "menuOpenedAt": 396.5999999642372,
+            "lastUserAction": {
+              "kind": "ui-pointer",
+              "detail": "devAddComment",
+              "time": 1787956863094
+            },
+            "lastActionTip": null,
+            "entrancePreviewActive": false,
+            "screenshot": null
+          },
+          "economyRules": {
+            "maxEntranceFee": 200,
+            "guestWalletMean": 120,
+            "guestWalletMin": 20,
+            "guestWalletMax": 220,
+            "walletDistribution": "triangular-20-220-mean-120"
+          },
+          "network": {
+            "endpoint": "http://127.0.0.1:11434",
+            "model": "gemma4:e2b",
+            "ssids": [
+              "Forest Frontiers Guest",
+              "Forest Frontiers Worker"
+            ],
+            "pa": {
+              "program": "Frontier Ambient",
+              "playing": false
+            }
+          },
+          "economyFeedback": {
+            "lastOperatorTransaction": null
+          },
+          "interaction": {
+            "lastRoute": null
+          },
+          "visiblePanels": [
+            "settingsPanel",
+            "economyPanel",
+            "devPanel"
+          ],
+          "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+        },
+        "errorsSinceStart": 0
+      },
+      {
+        "id": "comment_mtdjdgh6_afq7y5",
+        "release": "R3.0-dev.14",
+        "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+        "time": "2026-08-28T22:41:38.730Z",
+        "area": "Build UI",
+        "severity": "note",
+        "text": "every button should have a tool tip",
+        "context": {
+          "bootPhase": "RUNNING",
+          "toolMode": "build",
+          "selectedBuild": "carousel",
+          "buildRotationDeg": 0,
+          "selectedEntity": null,
+          "hoveredEntity": null,
+          "camera": {
+            "position": [
+              12.343354557729892,
+              14.330448539997553,
+              15.232170968793914
+            ],
+            "target": [
+              -11.79784112380515,
+              0,
+              19.71861979628288
+            ],
+            "input": {
+              "keysDown": [],
+              "shift": false,
+              "moveFrames": 62,
+              "lastMove": {
+                "at": 10885.899999976158,
+                "delta": [
+                  -0.24834050149987416,
+                  0,
+                  0.07552032552091283
+                ],
+                "speed": 15.636716742348511,
+                "keys": [
+                  "KeyW"
+                ]
+              },
+              "lastKeyAt": 10609.799999952316
+            },
+            "frameFaults": []
+          },
+          "focus": {
+            "tag": "BUTTON",
+            "id": "devAddComment",
+            "contentEditable": false
+          },
+          "park": {
+            "id": "park_mtdj6kdg_c82of3",
+            "name": "Forest Frontiers",
+            "open": false,
+            "day": 1,
+            "minutes": 865.7599199997834,
+            "rate": 1,
+            "cash": 50000,
+            "guests": 0,
+            "staff": 0,
+            "entities": 19
+          },
+          "construction": {
+            "gridStep": 2,
+            "gridCellHalf": 1,
+            "pathTileSize": 2,
+            "entranceSignMode": "fixed-plane-both-faces",
+            "signText": "FOREST FRONTIERS",
+            "signFont": "frontier",
+            "gateStyle": "frontier",
+            "masonryStyle": "granite",
+            "bounds": {
+              "minX": -43,
+              "maxX": 43,
+              "minZ": -39,
+              "maxZ": 27
+            },
+            "gate": {
+              "centerX": -12,
+              "width": 6,
+              "northZ": 27
+            },
+            "wildernessApproach": {
+              "worldPublicPath": true,
+              "immutable": true,
+              "fromGate": [
+                -12,
+                27
+              ],
+              "mapEdge": [
+                82,
+                47
+              ],
+              "waypoints": [
+                [
+                  -12,
+                  26
+                ],
+                [
+                  -12,
+                  29
+                ],
+                [
+                  -8,
+                  33
+                ],
+                [
+                  1,
+                  34
+                ],
+                [
+                  10,
+                  32
+                ],
+                [
+                  20,
+                  36
+                ],
+                [
+                  30,
+                  35
+                ],
+                [
+                  40,
+                  40
+                ],
+                [
+                  52,
+                  39
+                ],
+                [
+                  72,
+                  44
+                ],
+                [
+                  82,
+                  47
+                ]
+              ]
+            },
+            "propertyParcels": {},
+            "lastContextAction": null,
+            "lastPlacement": {
+              "kind": "carousel",
+              "raw": [
+                -29.666134171881094,
+                21.179114471337595
+              ],
+              "snapped": [
+                -29.75,
+                21.25
+              ],
+              "inside": true,
+              "gridStep": 0.25,
+              "activeBounds": {
+                "minX": -43,
+                "maxX": 43,
+                "minZ": -39,
+                "maxZ": 27
+              }
+            }
+          },
+          "ui": {
+            "settingsOpen": true,
+            "systemsOpen": false,
+            "menuOpen": false,
+            "menuMode": "main",
+            "menuOpenedAt": 396.5999999642372,
+            "lastUserAction": {
+              "kind": "ui-pointer",
+              "detail": "devAddComment",
+              "time": 1787956898662
+            },
+            "lastActionTip": null,
+            "entrancePreviewActive": false,
+            "screenshot": null
+          },
+          "economyRules": {
+            "maxEntranceFee": 200,
+            "guestWalletMean": 120,
+            "guestWalletMin": 20,
+            "guestWalletMax": 220,
+            "walletDistribution": "triangular-20-220-mean-120"
+          },
+          "network": {
+            "endpoint": "http://127.0.0.1:11434",
+            "model": "gemma4:e2b",
+            "ssids": [
+              "Forest Frontiers Guest",
+              "Forest Frontiers Worker"
+            ],
+            "pa": {
+              "program": "Frontier Ambient",
+              "playing": false
+            }
+          },
+          "economyFeedback": {
+            "lastOperatorTransaction": null
+          },
+          "interaction": {
+            "lastRoute": null
+          },
+          "visiblePanels": [
+            "buildPanel",
+            "settingsPanel",
+            "devPanel"
+          ],
+          "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+        },
+        "errorsSinceStart": 0
+      },
+      {
+        "id": "comment_mtdjdh2h_n0y4au",
+        "release": "R3.0-dev.14",
+        "sessionId": "R3.0-dev.14-2026-08-28T22-36-10-399Z-wgrwi",
+        "time": "2026-08-28T22:41:39.497Z",
+        "area": "Build UI",
+        "severity": "bug",
+        "text": "Marked this playtest checkpoint FAIL.",
+        "context": {
+          "bootPhase": "RUNNING",
+          "toolMode": "build",
+          "selectedBuild": "carousel",
+          "buildRotationDeg": 0,
+          "selectedEntity": null,
+          "hoveredEntity": null,
+          "camera": {
+            "position": [
+              12.343354557729892,
+              14.330448539997553,
+              15.232170968793914
+            ],
+            "target": [
+              -11.79784112380515,
+              0,
+              19.71861979628288
+            ],
+            "input": {
+              "keysDown": [],
+              "shift": false,
+              "moveFrames": 62,
+              "lastMove": {
+                "at": 10885.899999976158,
+                "delta": [
+                  -0.24834050149987416,
+                  0,
+                  0.07552032552091283
+                ],
+                "speed": 15.636716742348511,
+                "keys": [
+                  "KeyW"
+                ]
+              },
+              "lastKeyAt": 10609.799999952316
+            },
+            "frameFaults": []
+          },
+          "focus": {
+            "tag": "BUTTON",
+            "id": "devFail",
+            "contentEditable": false
+          },
+          "park": {
+            "id": "park_mtdj6kdg_c82of3",
+            "name": "Forest Frontiers",
+            "open": false,
+            "day": 1,
+            "minutes": 866.6799599997835,
+            "rate": 1,
+            "cash": 50000,
+            "guests": 0,
+            "staff": 0,
+            "entities": 19
+          },
+          "construction": {
+            "gridStep": 2,
+            "gridCellHalf": 1,
+            "pathTileSize": 2,
+            "entranceSignMode": "fixed-plane-both-faces",
+            "signText": "FOREST FRONTIERS",
+            "signFont": "frontier",
+            "gateStyle": "frontier",
+            "masonryStyle": "granite",
+            "bounds": {
+              "minX": -43,
+              "maxX": 43,
+              "minZ": -39,
+              "maxZ": 27
+            },
+            "gate": {
+              "centerX": -12,
+              "width": 6,
+              "northZ": 27
+            },
+            "wildernessApproach": {
+              "worldPublicPath": true,
+              "immutable": true,
+              "fromGate": [
+                -12,
+                27
+              ],
+              "mapEdge": [
+                82,
+                47
+              ],
+              "waypoints": [
+                [
+                  -12,
+                  26
+                ],
+                [
+                  -12,
+                  29
+                ],
+                [
+                  -8,
+                  33
+                ],
+                [
+                  1,
+                  34
+                ],
+                [
+                  10,
+                  32
+                ],
+                [
+                  20,
+                  36
+                ],
+                [
+                  30,
+                  35
+                ],
+                [
+                  40,
+                  40
+                ],
+                [
+                  52,
+                  39
+                ],
+                [
+                  72,
+                  44
+                ],
+                [
+                  82,
+                  47
+                ]
+              ]
+            },
+            "propertyParcels": {},
+            "lastContextAction": null,
+            "lastPlacement": {
+              "kind": "carousel",
+              "raw": [
+                -29.666134171881094,
+                21.179114471337595
+              ],
+              "snapped": [
+                -29.75,
+                21.25
+              ],
+              "inside": true,
+              "gridStep": 0.25,
+              "activeBounds": {
+                "minX": -43,
+                "maxX": 43,
+                "minZ": -39,
+                "maxZ": 27
+              }
+            }
+          },
+          "ui": {
+            "settingsOpen": true,
+            "systemsOpen": false,
+            "menuOpen": false,
+            "menuMode": "main",
+            "menuOpenedAt": 396.5999999642372,
+            "lastUserAction": {
+              "kind": "ui-pointer",
+              "detail": "devFail",
+              "time": 1787956899434
+            },
+            "lastActionTip": null,
+            "entrancePreviewActive": false,
+            "screenshot": null
+          },
+          "economyRules": {
+            "maxEntranceFee": 200,
+            "guestWalletMean": 120,
+            "guestWalletMin": 20,
+            "guestWalletMax": 220,
+            "walletDistribution": "triangular-20-220-mean-120"
+          },
+          "network": {
+            "endpoint": "http://127.0.0.1:11434",
+            "model": "gemma4:e2b",
+            "ssids": [
+              "Forest Frontiers Guest",
+              "Forest Frontiers Worker"
+            ],
+            "pa": {
+              "program": "Frontier Ambient",
+              "playing": false
+            }
+          },
+          "economyFeedback": {
+            "lastOperatorTransaction": null
+          },
+          "interaction": {
+            "lastRoute": null
+          },
+          "visiblePanels": [
+            "buildPanel",
+            "settingsPanel",
+            "devPanel"
+          ],
+          "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+        },
+        "errorsSinceStart": 0
+      }
+    ],
+    "recentLedger": [
+      {
+        "id": "tx_mtdgylxv_bazqal",
+        "time": 1787952846739,
+        "simMinutes": 1124.4559199997834,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_214_775767",
+        "balance": 18140
+      },
+      {
+        "id": "tx_mtdgynsn_gsik6d",
+        "time": 1787952849143,
+        "simMinutes": 1127.355839999782,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_215_295232",
+        "balance": 18150
+      },
+      {
+        "id": "tx_mtdgypnq_rqb5f8",
+        "time": 1787952851558,
+        "simMinutes": 1130.25587999978,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_216_814697",
+        "balance": 18160
+      },
+      {
+        "id": "tx_mtdgyriw_9am8k9",
+        "time": 1787952853976,
+        "simMinutes": 1133.155919999778,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_217_334162",
+        "balance": 18170
+      },
+      {
+        "id": "tx_mtdgytdr_bnhpt2",
+        "time": 1787952856383,
+        "simMinutes": 1136.0359199997763,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_218_853627",
+        "balance": 18180
+      },
+      {
+        "id": "tx_mtdgyv8b_i7q1rm",
+        "time": 1787952858779,
+        "simMinutes": 1138.9159199997741,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_219_373092",
+        "balance": 18190
+      },
+      {
+        "id": "tx_mtdgyx34_4r60xo",
+        "time": 1787952861184,
+        "simMinutes": 1141.7959199997724,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_220_538237",
+        "balance": 18200
+      },
+      {
+        "id": "tx_mtdgyyxm_dt5f43",
+        "time": 1787952863578,
+        "simMinutes": 1144.6759199997703,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_221_18772",
+        "balance": 18210
+      },
+      {
+        "id": "tx_mtdgz0sl_0afm6v",
+        "time": 1787952865989,
+        "simMinutes": 1147.5559199997679,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_222_577167",
+        "balance": 18220
+      },
+      {
+        "id": "tx_mtdgz2n4_zanwdc",
+        "time": 1787952868384,
+        "simMinutes": 1150.4359199997662,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_223_57702",
+        "balance": 18230
+      },
+      {
+        "id": "tx_mtdgz4hs_5nwvoy",
+        "time": 1787952870784,
+        "simMinutes": 1153.315919999764,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_224_616097",
+        "balance": 18240
+      },
+      {
+        "id": "tx_mtdgz6c7_brza1t",
+        "time": 1787952873175,
+        "simMinutes": 1156.1960399997615,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_225_96632",
+        "balance": 18250
+      },
+      {
+        "id": "tx_mtdgz87f_t5nmfn",
+        "time": 1787952875595,
+        "simMinutes": 1159.095959999759,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_226_655027",
+        "balance": 18260
+      },
+      {
+        "id": "tx_mtdgza2i_rssjzj",
+        "time": 1787952878010,
+        "simMinutes": 1161.9959999997566,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_227_135562",
+        "balance": 18270
+      },
+      {
+        "id": "tx_mtdgzbxe_ligmo9",
+        "time": 1787952880418,
+        "simMinutes": 1164.875999999754,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_228_382517",
+        "balance": 18280
+      },
+      {
+        "id": "tx_mtdgzdsi_fdc8e7",
+        "time": 1787952882834,
+        "simMinutes": 1167.7759199997513,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_229_863052",
+        "balance": 18290
+      },
+      {
+        "id": "tx_mtdgzfn1_u0ayt0",
+        "time": 1787952885229,
+        "simMinutes": 1170.6560399997493,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_230_258127",
+        "balance": 18300
+      },
+      {
+        "id": "tx_mtdgzhid_c05fzg",
+        "time": 1787952887653,
+        "simMinutes": 1173.5559599997468,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_231_777592",
+        "balance": 18310
+      },
+      {
+        "id": "tx_mtdgzjcr_br4b1a",
+        "time": 1787952890043,
+        "simMinutes": 1176.4359599997442,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_232_219197",
+        "balance": 18320
+      },
+      {
+        "id": "tx_mtdgzl7l_079un1",
+        "time": 1787952892449,
+        "simMinutes": 1179.3159599997418,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_233_738662",
+        "balance": 18330
+      },
+      {
+        "id": "tx_mtdgzn29_nuno3g",
+        "time": 1787952894849,
+        "simMinutes": 1182.1960799997403,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_234_180267",
+        "balance": 18340
+      },
+      {
+        "id": "tx_mtdgzox6_2hu48y",
+        "time": 1787952897258,
+        "simMinutes": 1185.095519999738,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_235_699732",
+        "balance": 18350
+      },
+      {
+        "id": "tx_mtdgzqs2_if23z6",
+        "time": 1787952899666,
+        "simMinutes": 1187.975639999736,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_236_141337",
+        "balance": 18360
+      },
+      {
+        "id": "tx_mtdgzsng_ml3lnv",
+        "time": 1787952902092,
+        "simMinutes": 1190.8955999997343,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_237_660802",
+        "balance": 18370
+      },
+      {
+        "id": "tx_mtdgzuif_9zd1rx",
+        "time": 1787952904503,
+        "simMinutes": 1193.7755999997323,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_238_413847",
+        "balance": 18380
+      },
+      {
+        "id": "tx_mtdgzwda_lh5p2o",
+        "time": 1787952906910,
+        "simMinutes": 1196.6756399997305,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_239_933312",
+        "balance": 18390
+      },
+      {
+        "id": "tx_mtdgzy84_oupov1",
+        "time": 1787952909316,
+        "simMinutes": 1199.555639999729,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_240_589977",
+        "balance": 18400
+      },
+      {
+        "id": "tx_mtdh002q_c7y6rg",
+        "time": 1787952911714,
+        "simMinutes": 1202.4356399997278,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_241_70512",
+        "balance": 18410
+      },
+      {
+        "id": "tx_mtdh01xp_fi2wcj",
+        "time": 1787952914125,
+        "simMinutes": 1205.3355599997274,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_242_551047",
+        "balance": 18420
+      },
+      {
+        "id": "tx_mtdh03sw_hz0vf8",
+        "time": 1787952916544,
+        "simMinutes": 1208.2355999997255,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_243_31582",
+        "balance": 18430
+      },
+      {
+        "id": "tx_mtdh05nv_67yslt",
+        "time": 1787952918955,
+        "simMinutes": 1211.1155999997238,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_244_512117",
+        "balance": 18440
+      },
+      {
+        "id": "tx_mtdh07i4_tffk8g",
+        "time": 1787952921340,
+        "simMinutes": 1213.9957199997214,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_245_992652",
+        "balance": 18450
+      },
+      {
+        "id": "tx_mtdh09dp_oyjz2d",
+        "time": 1787952923773,
+        "simMinutes": 1216.9155599997212,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_246_473187",
+        "balance": 18460
+      },
+      {
+        "id": "tx_mtdh0b8x_3x07va",
+        "time": 1787952926193,
+        "simMinutes": 1219.8155999997193,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_247_953722",
+        "balance": 18470
+      },
+      {
+        "id": "tx_mtdh0d3o_gbtca6",
+        "time": 1787952928596,
+        "simMinutes": 1222.6955999997183,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_248_434257",
+        "balance": 18480
+      },
+      {
+        "id": "tx_mtdh0eyf_v45es7",
+        "time": 1787952930999,
+        "simMinutes": 1225.575599999717,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_249_914792",
+        "balance": 18490
+      },
+      {
+        "id": "tx_mtdh0gsy_bkgvw0",
+        "time": 1787952933394,
+        "simMinutes": 1228.4555999997153,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_250_309867",
+        "balance": 18500
+      },
+      {
+        "id": "tx_mtdh0inl_mwpz47",
+        "time": 1787952935793,
+        "simMinutes": 1231.3357199997138,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_251_829332",
+        "balance": 18510
+      },
+      {
+        "id": "tx_mtdh0ki9_3qkfdd",
+        "time": 1787952938193,
+        "simMinutes": 1234.2157199997118,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_252_348797",
+        "balance": 18520
+      },
+      {
+        "id": "tx_mtdh0mdw_3rrehf",
+        "time": 1787952940628,
+        "simMinutes": 1237.1356799997095,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_253_868262",
+        "balance": 18530
+      },
+      {
+        "id": "tx_mtdh0o92_19w81k",
+        "time": 1787952943046,
+        "simMinutes": 1240.0355999997078,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_254_232007",
+        "balance": 18540
+      },
+      {
+        "id": "tx_mtdh0q45_n4wp03",
+        "time": 1787952945461,
+        "simMinutes": 1242.9357599997052,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_255_751472",
+        "balance": 18550
+      },
+      {
+        "id": "tx_mtdh0ryz_urskfn",
+        "time": 1787952947867,
+        "simMinutes": 1245.8157599997025,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_256_270937",
+        "balance": 18560
+      },
+      {
+        "id": "tx_mtdh0ttu_yikbrr",
+        "time": 1787952950274,
+        "simMinutes": 1248.7156799997,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_257_790402",
+        "balance": 18570
+      },
+      {
+        "id": "tx_mtdh0voz_ctx6t2",
+        "time": 1787952952691,
+        "simMinutes": 1251.6149999996976,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_258_154147",
+        "balance": 18580
+      },
+      {
+        "id": "tx_mtdh0xjp_2u50k2",
+        "time": 1787952955093,
+        "simMinutes": 1254.4949999996954,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_259_673612",
+        "balance": 18590
+      },
+      {
+        "id": "tx_mtdh0zef_lojo07",
+        "time": 1787952957495,
+        "simMinutes": 1257.3751199996932,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_260_18837",
+        "balance": 18600
+      },
+      {
+        "id": "tx_mtdh11a1_7x9vfg",
+        "time": 1787952959929,
+        "simMinutes": 1260.294959999691,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_261_499372",
+        "balance": 18610
+      },
+      {
+        "id": "tx_mtdh1356_tuxt01",
+        "time": 1787952962346,
+        "simMinutes": 1263.1949999996884,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_262_57767",
+        "balance": 18620
+      },
+      {
+        "id": "tx_mtdh150l_h6528u",
+        "time": 1787952964773,
+        "simMinutes": 1266.0950399996864,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_263_538302",
+        "balance": 18630
+      },
+      {
+        "id": "tx_mtdh16va_4y9qus",
+        "time": 1787952967174,
+        "simMinutes": 1268.9949599996844,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_264_940977",
+        "balance": 18640
+      },
+      {
+        "id": "tx_mtdh18qb_ses4u1",
+        "time": 1787952969587,
+        "simMinutes": 1271.8749599996834,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_265_421512",
+        "balance": 18650
+      },
+      {
+        "id": "tx_mtdh1al0_hugxp6",
+        "time": 1787952971988,
+        "simMinutes": 1274.7549599996814,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_266_979907",
+        "balance": 18660
+      },
+      {
+        "id": "tx_mtdh1cfn_i7jy8y",
+        "time": 1787952974387,
+        "simMinutes": 1277.6350799996803,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_267_460442",
+        "balance": 18670
+      },
+      {
+        "id": "tx_mtdh1e9y_t6oxy4",
+        "time": 1787952976774,
+        "simMinutes": 1280.5150799996816,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_268_174557",
+        "balance": 18680
+      },
+      {
+        "id": "tx_mtdh1g4w_b5htqe",
+        "time": 1787952979184,
+        "simMinutes": 1283.3950799996799,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_269_655092",
+        "balance": 18690
+      },
+      {
+        "id": "tx_mtdh1hzf_u3gxat",
+        "time": 1787952981579,
+        "simMinutes": 1286.2750799996793,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_270_247207",
+        "balance": 18700
+      },
+      {
+        "id": "tx_mtdh1juj_4s3lm9",
+        "time": 1787952983995,
+        "simMinutes": 1289.1749999996778,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_271_766672",
+        "balance": 18710
+      },
+      {
+        "id": "tx_mtdh1lpg_xkrcsi",
+        "time": 1787952986404,
+        "simMinutes": 1292.0551199996755,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_272_208277",
+        "balance": 18720
+      },
+      {
+        "id": "tx_mtdh1nkt_54zydn",
+        "time": 1787952988829,
+        "simMinutes": 1294.9750799996743,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_273_727742",
+        "balance": 18730
+      },
+      {
+        "id": "tx_mtdh1pfu_zrhfxt",
+        "time": 1787952991242,
+        "simMinutes": 1297.8749999996726,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_274_325067",
+        "balance": 18740
+      },
+      {
+        "id": "tx_mtdh1ral_lpca4p",
+        "time": 1787952993645,
+        "simMinutes": 1300.7551199996713,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_275_844532",
+        "balance": 18750
+      },
+      {
+        "id": "tx_mtdh1t5m_hdqjck",
+        "time": 1787952996058,
+        "simMinutes": 1303.6551599996699,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_276_286137",
+        "balance": 18760
+      },
+      {
+        "id": "tx_mtdh1v1c_ylecge",
+        "time": 1787952998496,
+        "simMinutes": 1306.5751199996673,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_277_805602",
+        "balance": 18770
+      },
+      {
+        "id": "tx_mtdh1wwc_x1sfiw",
+        "time": 1787953000908,
+        "simMinutes": 1309.4751599996653,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_278_402927",
+        "balance": 18780
+      },
+      {
+        "id": "tx_mtdh1yrf_uzfabf",
+        "time": 1787953003323,
+        "simMinutes": 1312.3551599996629,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_279_922392",
+        "balance": 18790
+      },
+      {
+        "id": "tx_mtdh20ma_iga2kt",
+        "time": 1787953005730,
+        "simMinutes": 1315.2551999996601,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_280_579057",
+        "balance": 18800
+      },
+      {
+        "id": "tx_mtdh22h4_2lka2x",
+        "time": 1787953008136,
+        "simMinutes": 1318.1351999996575,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_281_59592",
+        "balance": 18810
+      },
+      {
+        "id": "tx_mtdh24cm_5rg0cx",
+        "time": 1787953010566,
+        "simMinutes": 1321.055159999655,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_282_540127",
+        "balance": 18820
+      },
+      {
+        "id": "tx_mtdh267d_owd8nd",
+        "time": 1787953012969,
+        "simMinutes": 1323.9351599996523,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_283_20662",
+        "balance": 18830
+      },
+      {
+        "id": "tx_mtdh2825_q5jeix",
+        "time": 1787953015373,
+        "simMinutes": 1326.81515999965,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_284_656917",
+        "balance": 18840
+      },
+      {
+        "id": "tx_mtdh29wx_nhafaw",
+        "time": 1787953017777,
+        "simMinutes": 1329.715079999648,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_285_137452",
+        "balance": 18850
+      },
+      {
+        "id": "tx_mtdh2bro_oj8dx9",
+        "time": 1787953020180,
+        "simMinutes": 1332.5951999996453,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_286_617987",
+        "balance": 18860
+      },
+      {
+        "id": "tx_mtdh2dmm_ejc95q",
+        "time": 1787953022590,
+        "simMinutes": 1335.4949999996436,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_287_98522",
+        "balance": 18870
+      },
+      {
+        "id": "tx_mtdh2fhy_1pez4z",
+        "time": 1787953025014,
+        "simMinutes": 1338.3952799996416,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_288_423337",
+        "balance": 18880
+      },
+      {
+        "id": "tx_mtdh2hdg_dnf0la",
+        "time": 1787953027444,
+        "simMinutes": 1341.31535999964,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_289_903872",
+        "balance": 18890
+      },
+      {
+        "id": "tx_mtdh2j8s_k0531j",
+        "time": 1787953029868,
+        "simMinutes": 1344.2152799996381,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_290_298947",
+        "balance": 18900
+      },
+      {
+        "id": "tx_mtdh2l3g_lzearj",
+        "time": 1787953032268,
+        "simMinutes": 1347.095279999636,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_291_818412",
+        "balance": 18910
+      },
+      {
+        "id": "tx_mtdh2myr_ur7r8t",
+        "time": 1787953034691,
+        "simMinutes": 1349.9951999996335,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_292_337877",
+        "balance": 18920
+      },
+      {
+        "id": "tx_mtdh2otz_95vt4p",
+        "time": 1787953037111,
+        "simMinutes": 1352.915039999632,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_293_857342",
+        "balance": 18930
+      },
+      {
+        "id": "tx_mtdh2szh_0nxcdd",
+        "time": 1787953042493,
+        "simMinutes": 1355.8147199996295,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_294_376807",
+        "balance": 18940
+      },
+      {
+        "id": "tx_mtdh2vev_f7ya9b",
+        "time": 1787953045639,
+        "simMinutes": 1358.1347999996278,
+        "amount": 43,
+        "type": "refund",
+        "label": "Demolished Path Bench Pair",
+        "entityId": "bench_mtdgn2mf_uflj7d",
+        "guestId": null,
+        "balance": 18983
+      },
+      {
+        "id": "tx_mtdh2vqv_b5bn4l",
+        "time": 1787953046071,
+        "simMinutes": 1358.6948399996274,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_295_896272",
+        "balance": 18993
+      },
+      {
+        "id": "tx_mtdh2xlv_drbepd",
+        "time": 1787953048483,
+        "simMinutes": 1361.5948799996265,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_296_415737",
+        "balance": 19003
+      },
+      {
+        "id": "tx_mtdh2zh9_bssep5",
+        "time": 1787953050909,
+        "simMinutes": 1364.514719999625,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_297_935202",
+        "balance": 19013
+      },
+      {
+        "id": "tx_mtdh31c8_2qcntq",
+        "time": 1787953053320,
+        "simMinutes": 1367.3948399996236,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_298_143227",
+        "balance": 19023
+      },
+      {
+        "id": "tx_mtdh3378_n4kokg",
+        "time": 1787953055732,
+        "simMinutes": 1370.2948799996211,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_299_662692",
+        "balance": 19033
+      },
+      {
+        "id": "tx_mtdh3529_uzdazm",
+        "time": 1787953058145,
+        "simMinutes": 1373.1949199996186,
+        "amount": 10,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_300_128269",
+        "balance": 19043
+      },
+      {
+        "id": "tx_mtdhy3x7_dm7h8w",
+        "time": 1787954503003,
+        "simMinutes": 574.6799999999466,
+        "amount": -18000,
+        "type": "property",
+        "label": "Purchased North Woodland Reserve",
+        "entityId": null,
+        "guestId": null,
+        "balance": 32000
+      },
+      {
+        "id": "tx_mtdhybik_bs2fp7",
+        "time": 1787954512844,
+        "simMinutes": 586.0600799999365,
+        "amount": -22000,
+        "type": "property",
+        "label": "Purchased East Ridge Parcel",
+        "entityId": null,
+        "guestId": null,
+        "balance": 10000
+      },
+      {
+        "id": "tx_mtdivipz_3sosni",
+        "time": 1787956061831,
+        "simMinutes": 921.2755199998248,
+        "amount": 100,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_1_396342",
+        "balance": 50100
+      },
+      {
+        "id": "tx_mtdivkl1_ucwpmh",
+        "time": 1787956064245,
+        "simMinutes": 924.1753199998271,
+        "amount": 100,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_2_954737",
+        "balance": 50200
+      },
+      {
+        "id": "tx_mtdivmfq_ujorju",
+        "time": 1787956066646,
+        "simMinutes": 927.0557999998293,
+        "amount": 100,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_3_435272",
+        "balance": 50300
+      },
+      {
+        "id": "tx_mtdivo15_2iqfou",
+        "time": 1787956068713,
+        "simMinutes": 929.9606999998309,
+        "amount": 100,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_4_993667",
+        "balance": 50400
+      },
+      {
+        "id": "tx_mtdivok4_w3d9tb",
+        "time": 1787956069396,
+        "simMinutes": 932.8409699998302,
+        "amount": 100,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_5_474202",
+        "balance": 50500
+      },
+      {
+        "id": "tx_mtdivp0s_mki8i9",
+        "time": 1787956069996,
+        "simMinutes": 935.7821099998303,
+        "amount": 100,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_6_32597",
+        "balance": 50600
+      },
+      {
+        "id": "tx_mtdivpg1_mzzftv",
+        "time": 1787956070545,
+        "simMinutes": 938.7521099998313,
+        "amount": 100,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_7_513132",
+        "balance": 50700
+      },
+      {
+        "id": "tx_mtdivpv9_m734w4",
+        "time": 1787956071093,
+        "simMinutes": 941.7221099998322,
+        "amount": 100,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_8_71527",
+        "balance": 50800
+      },
+      {
+        "id": "tx_mtdivqai_6mwa2g",
+        "time": 1787956071642,
+        "simMinutes": 944.6915699998334,
+        "amount": 100,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_9_552062",
+        "balance": 50900
+      },
+      {
+        "id": "tx_mtdivqpc_uwfm1x",
+        "time": 1787956072176,
+        "simMinutes": 947.5719299998344,
+        "amount": 100,
+        "type": "admission",
+        "label": "Park admission",
+        "entityId": null,
+        "guestId": "guest_10_457786",
+        "balance": 51000
+      }
+    ],
+    "simulation": {
+      "schema": 3,
+      "id": "park_mtdj6kdg_c82of3",
+      "name": "Forest Frontiers",
+      "sign": "FOREST FRONTIERS",
+      "signFont": "frontier",
+      "gateStyle": "frontier",
+      "masonryStyle": "granite",
+      "property": {
+        "parcels": {}
+      },
+      "created": 1787956577188,
+      "updated": 1787956577188,
+      "sim": {
+        "minutes": 880.9999199997865,
+        "rate": 1,
+        "open": false,
+        "day": 1,
+        "spawnClock": 0,
+        "guestLimit": 300
+      },
+      "economy": {
+        "cash": 50000,
+        "entranceFee": 10,
+        "income": 0,
+        "expenses": 0,
+        "revenue": 0,
+        "wages": 0,
+        "parkValue": 50247
+      },
+      "entities": [
+        {
+          "id": "path_mtdj6kdg_lg3jif",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 24
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_i0iijm",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 22
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_c4jpjs",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 20
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_6jpoud",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 18
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_rxxs42",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 16
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_2591w8",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 14
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_n97zub",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 12
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_glxgvs",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 10
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_kkaenu",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 8
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_i49unx",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 6
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_4la1ul",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 4
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_a5n2fx",
+          "kind": "path",
+          "pos": {
+            "x": -10,
+            "y": 0,
+            "z": 4
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_t5bb6p",
+          "kind": "path",
+          "pos": {
+            "x": -8,
+            "y": 0,
+            "z": 4
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_nlsb05",
+          "kind": "path",
+          "pos": {
+            "x": -6,
+            "y": 0,
+            "z": 4
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "path_mtdj6kdg_pt8ydv",
+          "kind": "path",
+          "pos": {
+            "x": -4,
+            "y": 0,
+            "z": 4
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true
+        },
+        {
+          "id": "lamp_mtdj6kdg_9rziw6",
+          "kind": "lamp",
+          "pos": {
+            "x": -10,
+            "y": 0,
+            "z": 6
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": []
+        },
+        {
+          "id": "bench_mtdj6kdg_flrzgv",
+          "kind": "bench",
+          "pos": {
+            "x": -8,
+            "y": 0,
+            "z": 5
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": []
+        },
+        {
+          "id": "bin_mtdj6kdg_36xsrl",
+          "kind": "bin",
+          "pos": {
+            "x": -6,
+            "y": 0,
+            "z": 5
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": []
+        },
+        {
+          "id": "path_mtdj6kdh_60vfzf",
+          "kind": "path",
+          "pos": {
+            "x": -12,
+            "y": 0,
+            "z": 26
+          },
+          "rot": 0,
+          "running": true,
+          "price": 0,
+          "access": null,
+          "queue": [],
+          "protected": true,
+          "infrastructure": "gateConnector"
+        }
+      ],
+      "guests": [],
+      "staff": [],
+      "research": {
+        "unlocked": [
+          "path",
+          "queue",
+          "stonepath",
+          "boardwalk",
+          "brickpath",
+          "dirtpath",
+          "ferris",
+          "carousel",
+          "teacups",
+          "train",
+          "darkride",
+          "giantswing",
+          "freefall",
+          "observation",
+          "coaster",
+          "launchcoaster",
+          "logflume",
+          "rapids",
+          "burger",
+          "fries",
+          "pizza",
+          "pretzel",
+          "smoothie",
+          "icecream",
+          "drink",
+          "souvenir",
+          "plush",
+          "photo",
+          "restroom",
+          "familycare",
+          "firstaid",
+          "securitypost",
+          "information",
+          "atm",
+          "wifiap",
+          "speaker",
+          "securitycam",
+          "staffroom",
+          "bench",
+          "table",
+          "bin",
+          "lamp",
+          "bollardlight",
+          "banner",
+          "rgbflood",
+          "wavebeacon",
+          "lasershow",
+          "fountain",
+          "jumpfountain",
+          "tree",
+          "flowerbed",
+          "pond",
+          "geocache",
+          "statue"
+        ]
+      },
+      "settings": {
+        "grid": true,
+        "lowDef": false,
+        "ambience": true,
+        "trayOpen": false
+      },
+      "pulse": [
+        {
+          "id": "pulse_mtdjdh32_c6coxz",
+          "time": 1787956899518,
+          "text": "Playtest comment saved · Build UI",
+          "type": "DEV",
+          "entityId": null
+        },
+        {
+          "id": "pulse_mtdjdghl_6trfex",
+          "time": 1787956898745,
+          "text": "Playtest comment saved · Build UI",
+          "type": "DEV",
+          "entityId": null
+        },
+        {
+          "id": "pulse_mtdjcp1m_gmf5me",
+          "time": 1787956863178,
+          "text": "Playtest comment saved · Build UI",
+          "type": "DEV",
+          "entityId": null
+        },
+        {
+          "id": "pulse_mtdjb2lg_q592gu",
+          "time": 1787956787428,
+          "text": "Playtest comment saved · Build UI",
+          "type": "DEV",
+          "entityId": null
+        },
+        {
+          "id": "pulse_mtdjanm3_19li8c",
+          "time": 1787956768011,
+          "text": "Playtest comment saved · Build UI",
+          "type": "DEV",
+          "entityId": null
+        },
+        {
+          "id": "pulse_mtdj9o3g_kthap6",
+          "time": 1787956721980,
+          "text": "Playtest comment saved · Build UI",
+          "type": "DEV",
+          "entityId": null
+        },
+        {
+          "id": "pulse_mtdj97nu_atyvpy",
+          "time": 1787956700682,
+          "text": "Playtest comment saved · Build UI",
+          "type": "DEV",
+          "entityId": null
+        },
+        {
+          "id": "pulse_mtdj6ui0_t0ewdl",
+          "time": 1787956590312,
+          "text": "Construction grid shown",
+          "type": "SETTINGS",
+          "entityId": null
+        },
+        {
+          "id": "pulse_mtdj6u4l_rzat97",
+          "time": 1787956589829,
+          "text": "Construction grid hidden",
+          "type": "SETTINGS",
+          "entityId": null
+        },
+        {
+          "id": "pulse_mtdj6ked_a9irsv",
+          "time": 1787956577221,
+          "text": "New Forest Frontiers park initialized",
+          "type": "PARK",
+          "entityId": null
+        }
+      ],
+      "flock": {
+        "topic": "How can we make the park easier to navigate and more welcoming?",
+        "collectivePrompt": "Share useful observations, learn from one another, and ground claims in the park database.",
+        "lastLesson": ""
+      },
+      "network": {
+        "ssids": [
+          "Forest Frontiers Guest",
+          "Forest Frontiers Worker"
+        ],
+        "pa": {
+          "program": "Frontier Ambient",
+          "playing": false
+        },
+        "guestWifi": true
+      },
+      "nextGuest": 1,
+      "nextStaff": 1
+    }
+  }
+}

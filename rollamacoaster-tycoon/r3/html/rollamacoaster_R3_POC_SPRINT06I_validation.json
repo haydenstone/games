@@ -1,0 +1,24 @@
+{
+  "release": "R3-POC-SPRINT06I",
+  "collector": "R3-COLLECTOR-4F",
+  "generated_at": "2026-08-28T23:59:49",
+  "source": "SPRINT06H",
+  "feedback_addressed": "park letters restored on themed entrance plaque; marquee mode and font selection added",
+  "validation": {
+    "release_identity": true,
+    "collector_identity": true,
+    "sign_mode_selector": true,
+    "font_selector": true,
+    "font_count_5": true,
+    "marquee_mode": true,
+    "sign_attached_position": true,
+    "marquee_animation_hook": true,
+    "snapshot_persists_sign_style": true,
+    "trusted_multi_comment_export": true,
+    "regression_audit": true,
+    "all_scripts_parse": true
+  },
+  "script_payloads_checked": 19,
+  "failed_scripts": [],
+  "root_cause": "R06H moved/thickened the themed plaque to y=4.03/z\u22480.61 while legacy R30 sign plane remained at y=3.65/z=0.36, placing the text plane behind/misaligned with the new physical sign face."
+}

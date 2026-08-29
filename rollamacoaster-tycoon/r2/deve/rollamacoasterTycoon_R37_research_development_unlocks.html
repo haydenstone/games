@@ -1,0 +1,1797 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RollamacoasterTycoon!! Revision One</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#050706;color:#eaf1eb;font-family:system-ui,sans-serif}
+#app{position:fixed;inset:0}
+#view{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab}
+#hud{position:fixed;left:12px;top:12px;z-index:10;display:flex;gap:8px;align-items:center;background:#070a08e8;border:1px solid #304137;padding:7px 9px;border-radius:5px;box-shadow:0 8px 28px #0008}
+#hud b{letter-spacing:.08em;font-size:12px}
+#hud span{font-size:11px;color:#9fb0a4}
+#hud button{background:#111713;color:#eaf1eb;border:1px solid #34483b;padding:5px 8px;cursor:pointer}
+#status{position:fixed;left:12px;bottom:12px;z-index:10;max-width:min(720px,calc(100vw - 24px));background:#070a08e8;border:1px solid #304137;padding:7px 9px;font-size:11px}
+
+.panel{position:fixed;z-index:20;top:55px;width:290px;max-height:70vh;overflow:auto;background:#070a08ed;border:1px solid #405647;box-shadow:0 12px 35px #0009;padding:8px}
+#buildPanel{left:12px}#dbPanel{right:12px;width:360px}.hidden{display:none!important}
+.head{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:12px;margin-bottom:7px}.head button{background:#171d18;color:#fff;border:1px solid #405647;cursor:pointer}
+#buildGrid{display:grid;grid-template-columns:1fr 1fr;gap:5px}#buildGrid button{background:#111713;color:#eaf1eb;border:1px solid #34483b;padding:7px;text-align:left;cursor:pointer}
+#buildGrid button.active{outline:2px solid #d8c675}.hint{font-size:10px;color:#9fb0a4;margin-top:7px}
+#timeHud{position:fixed;right:12px;top:12px;z-index:15;background:#070a08e8;border:1px solid #304137;padding:7px 10px;font-size:11px}
+.dbRow{border-top:1px solid #27332b;padding:5px 2px;font-size:10px}.dbRow b{display:block}.dbRow small{color:#8ca092}
+
+#parkPanel{left:50%;transform:translateX(-50%);width:320px}
+.parkStat{display:flex;justify-content:space-between;gap:10px;padding:6px 2px;border-top:1px solid #27332b;font-size:11px}
+.parkActions{display:flex;gap:6px;margin-top:8px}.parkActions button{flex:1;background:#111713;color:#eef5ef;border:1px solid #405647;padding:7px;cursor:pointer}
+
+#cameraHud{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:15;background:#070a08e8;border:1px solid #304137;padding:6px 10px;font-size:10px;white-space:nowrap;pointer-events:none}
+
+/* R6: every child UI window is independently draggable */
+.panel{touch-action:none}
+.panel .head{cursor:move;user-select:none}
+.panel.draggingR6{box-shadow:0 18px 45px #000c;z-index:1000!important}
+
+.parkBrandR7{display:flex;align-items:center;gap:9px;padding:7px;background:#101712;border:1px solid #34483b;margin-bottom:7px}
+.parkBrandR7 small{display:block;color:#8fa194;font-size:9px;margin-top:2px}.parkLogoR7{font-size:24px}
+.parkDescriptionR7,.parkLoreR7{font-size:10px;line-height:1.45;color:#bdc9c0;background:#090d0a;border:1px solid #29382f;padding:7px;margin-bottom:7px}
+.parkLoreR7 p{margin:4px 0 0}.priceR7{display:flex;align-items:center}.priceLogoR7{background:#1b3521;color:#8ee59c;border:1px solid #356540;padding:3px 6px;font-weight:900}
+#parkAdmissionR7{width:66px;background:#0b100d;color:#eef5ef;border:1px solid #405647;padding:3px}
+.signalR7{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:-1px;box-shadow:0 0 8px currentColor}
+.goR7{background:#46dc6d;color:#46dc6d}.stopR7{background:#e64c4c;color:#e64c4c}
+
+#landPanel{right:12px;top:70px;width:310px}
+
+#buildPanel{width:390px}
+#buildTabsR10{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:7px}
+#buildTabsR10 button{background:#0d130f;color:#cbd7ce;border:1px solid #304137;padding:5px 7px;cursor:pointer;font-size:10px}
+#buildTabsR10 button.active{background:#24382a;color:#fff;border-color:#6d9276}
+#buildGrid{grid-template-columns:1fr 1fr}
+.catalogItemR10{display:grid!important;grid-template-columns:28px 1fr;gap:6px;align-items:center}
+.catalogItemR10 .ico{font-size:21px}.catalogItemR10 b{display:block;font-size:10px}.catalogItemR10 small{color:#8da095;font-size:8px}
+#catalogLoreR10{margin-top:7px;padding:7px;border:1px solid #29382f;background:#090d0a;color:#b9c7bd;font-size:10px;line-height:1.4}
+#rotationHudR10{position:fixed;z-index:18;left:50%;top:52px;transform:translateX(-50%);background:#070a08e8;border:1px solid #405647;padding:5px 9px;font-size:10px;display:none}
+
+#bulldozeHudR11{position:fixed;z-index:19;left:50%;top:80px;transform:translateX(-50%);background:#2a0d0de8;border:1px solid #a74444;color:#ffd7d7;padding:5px 9px;font-size:10px;display:none}
+
+#cameraModeHudR14{position:fixed;left:12px;bottom:46px;z-index:19;display:grid;grid-template-columns:auto 24px auto;align-items:center;gap:6px;background:#070a08ed;border:1px solid #405647;padding:6px 9px;font-size:9px;pointer-events:none}
+#cameraModeHudR14>b{display:grid;place-items:center;width:22px;height:22px;border:1px solid #78907e;background:#162019;font-size:13px}
+#cameraModeHudR14>strong{font-size:10px}#cameraModeHudR14>small{grid-column:1/-1;color:#91a398}
+
+#guestHoverR15{position:fixed;z-index:40;pointer-events:none;background:#07100bed;border:1px solid #66806d;padding:6px 8px;font-size:10px;min-width:120px}
+#guestHoverR15 b,#guestHoverR15 span{display:block}#guestHoverR15 span{color:#9daf9f;font-size:9px;margin-top:2px}
+</style>
+</head>
+<body>
+<div id="app">
+  <canvas id="view"></canvas>
+  <div id="hud"><b>🎢 ROLLAMACOASTERTYCOON!! R37</b><span id="counts">0 entities</span><span id="parkPopularityR21">⭐ POPULARITY <b>10%</b></span><span id="biomeStatusR9">🌲 Frontier biome active</span><button id="buildBtn">🏗 Build</button><button id="dbBtn">🗃 DB</button><button id="parkBtn">🏰 Park</button><button id="guestManagerBtnR35">👥 Guests</button><button id="attractionManagerBtnR35">🎢 Attractions</button><button id="economyBtnR36">📈 Economy</button><button id="researchBtnR37">🔬 R&amp;D</button><button id="resetCam">Reset Camera</button></div>
+<div id="buildPanel" class="panel hidden"><div class="head">🏗 BUILD MANAGER <button data-close="buildPanel">×</button></div>
+ <div id="buildTabsR10"></div><div id="buildGrid"></div>
+ <div id="catalogLoreR10">Choose a catalog item to read its frontier notes.</div>
+ <div class="hint">Select an item • click places once • hold Shift to place multiple / drag paths • paths snap + auto-rotate • R rotates • Ctrl+Click bulldozes.</div>
+</div>
+<div id="dbPanel" class="panel hidden"><div class="head">🗃 ENTITY DATABASE <button data-close="dbPanel">×</button></div><div id="dbStats"></div><div id="dbList"></div></div>
+<div id="parkPanel" class="panel hidden"><div class="head">🏰 PARK MANAGER <button data-close="parkPanel">×</button></div>
+ <div class="parkBrandR7"><div class="parkLogoR7">🌲🏰🌲</div><div><b>FOREST FRONTIERS</b><small>RollamacoasterTycoon!! Park No. 001</small></div></div>
+ <div class="parkStat" id="parkNamingLauncherR32"><span>Park Identity</span><button id="parkNamingOpenR32" type="button" title="Name park and entrance sign">📝 NAME &amp; SIGN</button></div>
+ <div id="parkNamingEditorR32" style="display:none;margin:6px 0;padding:7px;border:1px solid #33473b;background:#0c1510;border-radius:4px;font-size:9px">
+  <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px"><span style="font-size:18px">📄</span><div><b>PARK LETTERHEAD</b><div style="opacity:.7">Park name + entrance lettering</div></div></div>
+  <label style="display:grid;grid-template-columns:78px 1fr;gap:5px;margin:4px 0;align-items:center"><span>Park Name</span><input id="parkNameR30" maxlength="32"></label>
+  <label style="display:grid;grid-template-columns:78px 1fr;gap:5px;margin:4px 0;align-items:center"><span>Sign Text</span><input id="parkSignR30" maxlength="24"></label>
+  <div style="display:flex;gap:5px;justify-content:flex-end;margin-top:6px"><button id="saveParkNameR30" type="button">Save Name</button><button id="saveParkSignR30" type="button">Apply Sign</button><button id="parkNamingCloseR32" type="button">Done</button></div>
+ </div>
+ <div class="parkDescriptionR7">A young amusement park carved into a broad woodland frontier. The old forest still surrounds the gates, while fresh asphalt marks the first path toward whatever you build next.</div>
+ <div class="parkLoreR7"><b>📜 FRONTIER LOG</b><p>Local stories say this land once belonged only to pines, deer trails, and an abandoned survey road. The new entrance stands where the first expedition crossed into the woods. Forest Frontiers begins with little more than trees, open ground, and ambition. Its history is yours to construct.</p></div>
+ <div class="parkStat"><span>Park</span><b>Forest Frontiers</b></div>
+ <div class="parkStat"><span>Status</span><b id="parkStatus"><i class="signalR7 stopR7"></i>CLOSED</b></div>
+ <div class="parkStat"><span>Admission</span><label class="priceR7"><span class="priceLogoR7">$</span><input id="parkAdmissionR7" type="number" min="0" max="250" step=".5" value="10.00"></label></div>
+ <div class="parkStat"><span>Guests</span><b id="parkGuests">0</b></div><div class="parkStat"><span>Popularity</span><b id="parkPopularityManagerR21">10%</b></div><div class="parkStat"><span>Guest Sentiment</span><b id="guestSentimentR21">NO DATA</b></div>
+ <div class="parkStat"><span>Entities</span><b id="parkEntities">0</b></div>
+ <div class="parkStat"><span>Day / Time</span><b id="parkTime">Day 1 • 08:00</b></div>
+ <div class="parkActions"><button id="parkOpenBtn"><i class="signalR7 goR7"></i> OPEN PARK</button><button id="parkCloseBtn"><i class="signalR7 stopR7"></i> CLOSE PARK</button></div>
+ <div class="parkActions"><button id="parkLandBtn">🗺 LAND MENU</button></div>
+</div>
+<div id="landPanel" class="panel hidden"><div class="head">🗺 LAND MANAGER <button data-close="landPanel">×</button></div>
+ <div class="parkDescriptionR7">Click a boundary fence in the world to inspect that frontier. Purchasing land expands the buildable park boundary outward on that side.</div>
+ <div class="parkStat"><span>Owned Land</span><b id="landOwnedR8">64 × 64</b></div>
+ <div class="parkStat"><span>Selected Frontier</span><b id="landSideR8">None</b></div>
+ <div class="parkStat"><span>Expansion Cost</span><b id="landCostR8">$500</b></div>
+ <div class="parkActions"><button id="buyLandR8">💵 BUY LAND</button></div>
+</div>
+<div id="timeHud">DAY 1 • <b id="clockText">08:00</b></div>
+<div id="bulldozeHudR11">🧨 BULLDOZE MODE • CTRL+CLICK OBJECT</div><div id="rotationHudR10">↻ ROTATION <b id="rotationValueR10">0°</b></div><div id="guestHoverR15" hidden><b id="guestHoverNameR15">Guest</b><span id="guestHoverMetaR15">Guest entity</span></div>
+<div id="cameraModeHudR14"><span>CAMERA</span><b id="cameraModeNumR14">1</b><strong id="cameraModeNameR14">ORBIT</strong><small id="cameraModeHelpR14">Free orbit / zoom</small></div>
+<div id="cameraHud">🖱 CLICK: PLACE/PIVOT • SHIFT+CLICK: REPEAT BUILD • CTRL+CLICK: BULLDOZE • R: ROTATE</div>
+  <div id="status">REVISION THIRTY-SEVEN • R&D tree • research-gated advanced catalog • persistent unlocks</div>
+</div>
+<div id="guestHoverR29" style="position:fixed;display:none;z-index:50000;pointer-events:none;min-width:230px;padding:9px;background:#09110ded;border:1px solid #587060;border-radius:5px;font-size:9px"></div>
+<section id="guestWindowR29" class="panel hidden" style="width:min(460px,calc(100vw - 24px));right:12px;top:72px;max-height:78vh;overflow:auto;z-index:49000;font-size:9px;line-height:1.3"><div class="head">👤 <b id="gw29Name">GUEST</b><button id="gw29Close">×</button></div><div id="gw29Meta" class="status">—</div><div id="gw29Thought" class="status">💭 —</div>
+<div id="guestNeedsR34" style="padding:7px;border-bottom:1px solid #26342c">
+ <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px"><b>🫀 GUEST STATUS</b><span id="guestOverallR34">—</span></div>
+ <div id="guestNeedsGridR34" style="display:grid;grid-template-columns:1fr 1fr;gap:5px"></div>
+</div><div class="parkStat"><span>Wallet</span><b id="gw29Wallet">$0</b></div><div class="parkStat"><span>Inventory</span><b id="gw29Count">0</b></div><div id="gw29Inventory" style="padding:6px"></div><div class="parkStat"><span>CHAT</span><b id="gw29OllamaState">LOCAL AI</b></div>
+<div style="display:flex;gap:5px;padding:6px"><select id="gw29Model" style="flex:1;font-size:9px"></select><button id="gw29Detect" type="button">↻ Detect Ollama</button></div><div id="gw29Log" style="height:180px;overflow:auto;padding:8px;background:#0b110d;font-size:9px;line-height:1.35"></div><form id="gw29Form" style="display:flex;gap:6px;padding:8px;font-size:9px"><input id="gw29Input" style="flex:1" placeholder="Talk to this guest…" autocomplete="off"><button>Send</button></form></section>
+<section id="rideNameWindowR30" class="panel hidden" style="position:fixed;right:12px;top:300px;width:310px;z-index:48000">
+ <div class="head">🎢 RIDE NAME <button id="rideNameCloseR30">×</button></div>
+ <div class="parkStat"><span>Name</span><input id="rideNameInputR30" maxlength="32" style="width:170px"></div>
+ <button id="rideNameSaveR30">SAVE RIDE NAME</button>
+</section>
+
+<section id="shopInspectorR33" class="panel hidden" style="position:fixed;right:12px;top:72px;width:390px;max-height:78vh;overflow:auto;z-index:48500;font-size:9px">
+ <div class="head">🏪 SHOP INSPECTOR <button id="shopCloseR33">×</button></div>
+ <div id="shopBrandR33" style="padding:8px;font-size:13px;font-weight:800">🏪 Shop</div>
+ <div id="shopLoreR33" class="status">—</div>
+ <div class="parkStat"><span>Status</span><b id="shopStatusR33">CLOSED</b></div>
+ <div class="parkStat"><span>Lifetime Revenue</span><b id="shopRevenueR33">$0.00</b></div>
+ <div class="parkStat"><span>Sales</span><b id="shopSalesR33">0</b></div>
+ <div style="padding:6px"><b>PRODUCT ECONOMY</b><div id="shopProductsR33"></div></div>
+ <div style="display:flex;gap:5px;padding:7px"><button id="shopStartR33">🟢 START SHOP</button><button id="shopStopR33">🔴 STOP SHOP</button></div>
+</section>
+
+<section id="attractionManagerR33" class="panel hidden" style="position:fixed;left:12px;top:72px;width:430px;max-height:78vh;overflow:auto;z-index:48400;font-size:9px">
+ <div class="head">🎢 ATTRACTION MANAGER <button id="attractionCloseR33">×</button></div>
+ <div class="status">All rides and attractions currently placed in the park.</div>
+ <div class="parkStat"><span>Attractions</span><b id="attractionCountR33">0</b></div>
+ <div id="attractionListR33" style="padding:6px"></div>
+</section>
+
+<section id="guestManagerR35" class="panel hidden" style="position:fixed;left:12px;top:72px;width:450px;max-height:78vh;overflow:auto;z-index:48450;font-size:9px">
+ <div class="head">👥 GUEST MANAGER <button id="guestManagerCloseR35">×</button></div>
+ <div class="status">Live guest database</div>
+ <div class="parkStat"><span>Tracked Guests</span><b id="guestManagerCountR35">0</b></div>
+ <div id="guestManagerListR35" style="padding:6px"></div>
+</section>
+
+<section id="economyManagerR36" class="panel hidden" style="position:fixed;right:12px;top:72px;width:470px;max-height:80vh;overflow:auto;z-index:48480;font-size:9px">
+ <div class="head">📈 ECONOMY MANAGER <button id="economyCloseR36">×</button></div>
+ <div id="economySummaryR36"></div>
+ <canvas id="economyChartR36" width="430" height="150" style="width:100%;height:150px;background:#09100c;border:1px solid #29382f"></canvas>
+ <div class="status">Income, build spending, shop COGS and profit are recorded in the park economy ledger.</div>
+ <div id="economyLedgerR36" style="padding:6px;max-height:230px;overflow:auto"></div>
+</section>
+
+<section id="researchManagerR37" class="panel hidden" style="position:fixed;right:12px;top:72px;width:470px;max-height:80vh;overflow:auto;z-index:48490;font-size:9px">
+ <div class="head">🔬 RESEARCH &amp; DEVELOPMENT <button id="researchCloseR37">×</button></div>
+ <div class="status">Fund new park technology. Completed research permanently unlocks its catalog template for this save.</div>
+ <div class="parkStat"><span>Research Budget</span><b id="researchBudgetR37">$0</b></div>
+ <div id="researchListR37" style="padding:6px"></div>
+</section>
+<script type="module">
+const $=s=>document.querySelector(s);
+let THREE,OrbitControls;
+try{
+  THREE=await import("https://cdn.jsdelivr.net/npm/three@0.180.0/+esm");
+  ({OrbitControls}=await import("https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js/+esm"));
+}catch(e){
+  $("#status").textContent="3D engine failed to load: "+e.message;
+  throw e;
+}
+
+const canvas=$("#view");
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.shadowMap.enabled=true;
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x8fc5dc);
+scene.fog=new THREE.Fog(0x8fc5dc,55,110);
+const camera=new THREE.PerspectiveCamera(50,1,.1,180);
+camera.position.set(24,20,28);
+const controls=new OrbitControls(camera,canvas);
+
+controls.target.set(0,0,0);controls.enableDamping=true;controls.maxPolarAngle=1.48;controls.minDistance=3;controls.maxDistance=100;
+
+
+// R14 five camera modes. Number keys 1-5 switch modes.
+let cameraModeR14=1;
+const cameraModesR14={
+ 1:["ORBIT","Free orbit / zoom"],
+ 2:["BUILD","Build from the current camera • hold Shift for multiple placement"],
+ 3:["INTERACT","Interact with guests and park entities"],
+ 4:["INSPECT","Inspect entity details"],
+ 5:["GUEST HOVER","Hover guests for live identity / mood"]
+};
+function setCameraModeR14(n){
+ cameraModeR14=n;
+ controls.enabled=n!==2; // Build mode freezes the CURRENT camera angle; it does not switch top-down.
+ if(n!==2){pathPaintingR13=false}
+ const [name,help]=cameraModesR14[n];
+ $("#cameraModeNumR14").textContent=n;
+ $("#cameraModeNameR14").textContent=name;
+ $("#cameraModeHelpR14").textContent=help;
+ 
+ $("#status").textContent=`CAMERA ${n} • ${name}`;
+}
+addEventListener("keydown",e=>{
+ if(/^[1-5]$/.test(e.key)&&!e.target?.matches?.("input,textarea,select,[contenteditable=true]")){
+   setCameraModeR14(Number(e.key));
+ }
+});
+
+// R5 character-centered camera pivot.
+// When a guest is selected, OrbitControls rotates/zooms around that guest instead
+// of an arbitrary screen/world center. The pivot follows the guest as they walk.
+let cameraPivotGuest=null;
+function guestWorldPosition(g){
+  const obj=g?.mesh||g?.object3D||g;
+  if(!obj)return null;
+  if(obj.getWorldPosition){const p=new THREE.Vector3();obj.getWorldPosition(p);return p}
+  return obj.position?.clone?.()||null;
+}
+function pivotCameraAtGuest(g){
+  const p=guestWorldPosition(g);if(!p)return false;
+  cameraPivotGuest=g;
+  const offset=new THREE.Vector3().subVectors(camera.position,controls.target);
+  controls.target.copy(p).add(new THREE.Vector3(0,1.25,0));
+  camera.position.copy(controls.target).add(offset);
+  controls.update();
+  $("#status").textContent=`CAMERA PIVOT • ${g.name||"Guest"}`;
+  return true;
+}
+function updateCharacterPivot(){
+  if(!cameraPivotGuest)return;
+  const p=guestWorldPosition(cameraPivotGuest);if(!p)return;
+  controls.target.lerp(new THREE.Vector3(p.x,p.y+1.25,p.z),.18);
+}
+
+
+// R4 camera: click terrain to move focus, Shift boosts movement/zoom, arrows raise/lower camera.
+let cameraBoost=false;
+let bulldozeHeldR11=false;
+addEventListener("keydown",e=>{if(e.key==="Control"){bulldozeHeldR11=true;$("#bulldozeHudR11").style.display="block"}});
+addEventListener("keyup",e=>{if(e.key==="Control"){bulldozeHeldR11=false;$("#bulldozeHudR11").style.display="none"}});
+
+const camKeys=new Set();
+addEventListener("keydown",e=>{
+  if(e.key==="Shift")cameraBoost=true;
+  if(["ArrowUp","ArrowDown","w","a","s","d","W","A","S","D"].includes(e.key)){
+    if(!e.target?.matches?.("input,textarea,select,[contenteditable=true]")){camKeys.add(e.key.toLowerCase());e.preventDefault()}
+  }
+});
+addEventListener("keyup",e=>{if(e.key==="Shift")cameraBoost=false;camKeys.delete(e.key.toLowerCase())});
+addEventListener("blur",()=>{cameraBoost=false;camKeys.clear()});
+
+// Wheel zoom gets an extra boost while Shift is held.
+canvas.addEventListener("wheel",e=>{
+  if(cameraModeR14===2)return;
+  if(!cameraBoost)return;
+  const dir=new THREE.Vector3().subVectors(camera.position,controls.target).normalize();
+  const amount=Math.sign(e.deltaY)*3.5;
+  camera.position.addScaledVector(dir,amount);
+}, {passive:true});
+
+function updateCameraMotion(dt){
+  if(cameraModeR14===2)return;
+  const boost=cameraBoost?3.2:1, speed=12*boost*dt;
+  if(camKeys.has("arrowup")){camera.position.y+=speed;controls.target.y+=speed}
+  if(camKeys.has("arrowdown")){camera.position.y=Math.max(1.5,camera.position.y-speed);controls.target.y=Math.max(0,controls.target.y-speed)}
+  const forward=new THREE.Vector3();camera.getWorldDirection(forward);forward.y=0;forward.normalize();
+  const right=new THREE.Vector3().crossVectors(forward,camera.up).normalize();
+  const move=new THREE.Vector3();
+  if(camKeys.has("w"))move.add(forward);
+  if(camKeys.has("s"))move.sub(forward);
+  if(camKeys.has("d"))move.add(right);
+  if(camKeys.has("a"))move.sub(right);
+  if(move.lengthSq()){move.normalize().multiplyScalar(speed);camera.position.add(move);controls.target.add(move)}
+}
+
+scene.add(new THREE.HemisphereLight(0xe8fbff,0x35572d,2.2));
+const sun=new THREE.DirectionalLight(0xffefd0,3.5);sun.position.set(-20,35,18);sun.castShadow=true;scene.add(sun);
+
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(68,68),new THREE.MeshStandardMaterial({color:0x4c934e,roughness:1}));
+ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;scene.add(ground);
+scene.add(new THREE.GridHelper(68,34,0x376d3b,0x598e58));
+
+const mat=(c,metal=0)=>new THREE.MeshStandardMaterial({color:c,metalness:metal,roughness:.55});
+const M={path:mat(0x34383a),metal:mat(0x465159,.7),red:mat(0xd85b4b),blue:mat(0x438bb2),yellow:mat(0xe1b647),wood:mat(0x78563b),leaf:mat(0x28723e),white:mat(0xe9e3d4),pink:mat(0xd26991),water:mat(0x4b9fc4)};
+const shadows=o=>{o.traverse?.(x=>{if(x.isMesh){x.castShadow=true;x.receiveShadow=true}});return o};
+const ITEMS={
+path:["Path",20,"path"],queue:["Queue Path",28,"path"],coaster:["Steel Coaster",1100,"ride"],wood:["Wooden Coaster",950,"ride"],wheel:["Ferris Wheel",500,"ride"],tower:["Drop Tower",700,"ride"],carousel:["Carousel",300,"ride"],pirate:["Pirate Ship",450,"ride"],spinner:["Tea Cups",260,"ride"],bumper:["Bumper Cars",380,"ride"],swing:["Chair Swings",420,"ride"],goKart:["Go Karts",750,"ride"],log:["Log Flume",900,"ride"],cinema:["4D Cinema",550,"ride"],maze:["Hedge Maze",240,"ride"],arcade:["Arcade",320,"shop"],info:["Information Kiosk",180,"shop"],burger:["Burger Stand",150,"shop"],pizza:["Pizza Shop",170,"shop"],drink:["Drink Stall",110,"shop"],icecream:["Ice Cream",130,"shop"],toilet:["Restroom",180,"service"],bench:["Bench",45,"scenery"],lamp:["Lamp",35,"scenery"],tree:["Pine Tree",30,"scenery"],fountain:["Fountain",140,"scenery"],flowers:["Flower Bed",25,"scenery"]};
+
+let objects=[],paths=[],guests=[];
+function add(k,x,z,start=false){
+ // R26: path material metadata is independent from walkability.
+ const requestedPathMaterialR26=(k==="path"?"asphalt":k==="queue"?"queue":null);
+let g=new THREE.Group(),u={kind:k,phase:Math.random()*6.28};const box=(w,h,d,m,y)=>{let q=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);q.position.y=y;g.add(q);return q};
+ if(k==="path"||k==="queue"){let q=box(2,.12,2,k==="queue"?M.yellow:M.path,.06);g=q;g.userData={kind:k};paths.push(g)}
+ else if(k==="tree"){let t=new THREE.Mesh(new THREE.CylinderGeometry(.16,.23,1.5,7),M.wood),c=new THREE.Mesh(new THREE.ConeGeometry(.9,2.5,9),M.leaf);t.position.y=.75;c.position.y=2.15;g.add(t,c)}
+ else if(k==="bench"){box(1.5,.16,.48,M.wood,.55);let a=box(1.5,.65,.12,M.wood,.85);a.position.z=.2}
+ else if(k==="lamp"){let p=new THREE.Mesh(new THREE.CylinderGeometry(.05,.08,2.3,7),M.metal),l=new THREE.Mesh(new THREE.SphereGeometry(.2,9,9),M.yellow);p.position.y=1.15;l.position.y=2.35;g.add(p,l)}
+ else if(k==="flowers"){let bed=new THREE.Mesh(new THREE.CylinderGeometry(.8,.8,.16,14),M.pink);bed.position.y=.08;g.add(bed)}
+ else if(k==="fountain"){let b=new THREE.Mesh(new THREE.CylinderGeometry(1,1.1,.35,20),M.white),w=new THREE.Mesh(new THREE.CylinderGeometry(.75,.75,.12,20),M.water),p=new THREE.Mesh(new THREE.CylinderGeometry(.1,.15,1.2,10),M.white);b.position.y=.18;w.position.y=.38;p.position.y=.9;g.add(b,w,p)}
+ else if(k==="wheel"){let rotor=new THREE.Group(),ring=new THREE.Mesh(new THREE.TorusGeometry(2.25,.12,10,32),M.red);ring.rotation.y=Math.PI/2;rotor.position.y=2.8;rotor.add(ring);for(let i=0;i<8;i++){let sp=new THREE.Mesh(new THREE.BoxGeometry(.06,4.4,.06),M.metal);sp.rotation.z=i*Math.PI/4;sp.rotation.y=Math.PI/2;rotor.add(sp)}for(let i=0;i<8;i++){let a=i*Math.PI/4,cab=new THREE.Mesh(new THREE.BoxGeometry(.48,.35,.42),i%2?M.yellow:M.blue);cab.position.set(Math.cos(a)*2.25,Math.sin(a)*2.25,0);rotor.add(cab)}g.add(rotor);u.main=rotor;u.ferrisRotor=rotor}
+ else if(k==="tower"){let p=new THREE.Mesh(new THREE.CylinderGeometry(.16,.22,6,10),M.metal),car=box(1.7,.35,1.7,M.red,1.2);p.position.y=3;g.add(p);u.main=car}
+ else if(k==="coaster"||k==="wood"){let pts=[];for(let i=0;i<36;i++){let a=i/36*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(a)*3.5,1.5+Math.sin(a*2)*1.4,Math.sin(a)*2.6))}let curve=new THREE.CatmullRomCurve3(pts,true),track=new THREE.Mesh(new THREE.TubeGeometry(curve,150,.09,6,true),k==="wood"?M.wood:M.red),train=box(.7,.45,1.25,M.blue,0);g.add(track);u.curve=curve;u.main=train;u.t=0}
+ else if(k==="carousel"){let base=new THREE.Mesh(new THREE.CylinderGeometry(1.5,1.6,.3,20),M.yellow),roof=new THREE.Mesh(new THREE.ConeGeometry(1.7,.8,20),M.red);base.position.y=.15;roof.position.y=2.1;g.add(base,roof);let spin=new THREE.Group();for(let i=0;i<6;i++){let h=box(.35,.35,.7,M.white,.9);h.position.x=Math.cos(i*Math.PI/3);h.position.z=Math.sin(i*Math.PI/3)}g.add(spin);u.main=g}
+ else if(k==="pirate"){let hull=new THREE.Mesh(new THREE.BoxGeometry(2.6,.6,1),M.wood);hull.position.y=1.3;g.add(hull);u.main=hull}
+ else if(k==="spinner"){let base=new THREE.Mesh(new THREE.CylinderGeometry(1.5,1.5,.25,20),M.blue);base.position.y=.15;g.add(base);for(let i=0;i<5;i++){let cup=new THREE.Mesh(new THREE.CylinderGeometry(.35,.45,.45,12),M.red);cup.position.set(Math.cos(i*1.256),.5,Math.sin(i*1.256));g.add(cup)}u.main=g}
+ else if(k==="swing"){let pole=new THREE.Mesh(new THREE.CylinderGeometry(.12,.18,3.4,10),M.metal),top=new THREE.Mesh(new THREE.ConeGeometry(1.5,.5,16),M.yellow);pole.position.y=1.7;top.position.y=3.2;g.add(pole,top);u.main=top}
+ else if(k==="goKart"){let track=new THREE.Mesh(new THREE.TorusGeometry(1.8,.25,8,28),M.metal);track.rotation.x=Math.PI/2;track.position.y=.1;g.add(track);let car=box(.7,.3,1,M.red,.35);car.position.x=1.8;u.main=car}
+ else if(k==="log"){let trough=box(3,.35,1.2,M.water,.2),log=box(.55,.35,1.1,M.wood,.55);u.main=log}
+ else if(k==="maze"){for(let i=-2;i<=2;i++)for(let j=-2;j<=2;j++)if((i+j)%2===0){let h=box(.22,1.2,1.2,M.leaf,.6);h.position.set(i*.55,.6,j*.55)}}
+ else if(k==="bumper"){let floor=new THREE.Mesh(new THREE.CylinderGeometry(1.7,1.7,.2,20),M.metal);floor.position.y=.1;g.add(floor);for(let i=0;i<4;i++){let car=box(.6,.3,.8,i%2?M.red:M.blue,.35);car.position.set(Math.cos(i*1.57),.35,Math.sin(i*1.57))}u.main=g}
+ else if(k==="info"){let base=box(2,1.25,1.6,M.blue,.63),roof=box(2.25,.18,1.85,M.white,1.38);let pole=new THREE.Mesh(new THREE.CylinderGeometry(.05,.07,1.8,7),M.metal),umbrella=new THREE.Mesh(new THREE.ConeGeometry(1.05,.48,16),M.red);pole.position.set(1.7,.9,0);umbrella.position.set(1.7,1.85,0);g.add(pole,umbrella);let map=box(.75,.9,.08,M.yellow,1.05);map.position.z=.86;u.main=base}
+ else if(k==="restroom"||k==="bathroom"){
+   let body=box(4.6,3.2,3.6,mat(0xb8b4a3),1.6);
+   let roof=box(4.9,.45,3.9,mat(0x42504a),3.35);
+   let dl=box(.9,2.15,.14,mat(0x315b69),1.08);dl.position.set(-1.15,1.08,1.81);
+   let dr=box(.9,2.15,.14,mat(0x315b69),1.08);dr.position.set(1.15,1.08,1.81);
+   let sign=box(2.7,.55,.16,mat(0xe7dfbd),2.75);sign.position.set(0,2.75,1.86);
+   u.main=body;u.name="Frontier Restroom";
+ }
+ else {let color=ITEMS[k][2]==="shop"?M.yellow:ITEMS[k][2]==="service"?M.blue:M.red;let base=box(2,1.35,1.7,color,.68),roof=box(2.2,.22,1.9,M.white,1.48);u.main=base}
+ g.position.set(x,0,z);g.userData=u;if(ITEMS[k]?.[2]==="ride"){g.userData.rideOpen=false;g.userData.price=3;g.userData.riders=0;g.userData.hasEntrance=false;g.userData.hasExit=false;g.userData.hasQueue=false}scene.add(shadows(g));objects.push(g);return g}
+
+const names=["Maya","Leo","Sam","Ava","Noah","Ivy","Milo","Zoe","Eli","Nora","Kai","Luna","Theo","Mia","Max","Ruby"];
+function pathNodeNear(){return null}
+function refreshGuests(){refreshCounts()}
+function thought(g,t){g.thought=t;refreshCounts()}
+function spawn(){
+ const m=new THREE.Group(),skin=mat(0xd9a27f),shirt=mat(new THREE.Color().setHSL(Math.random(),.55,.5)),pants=mat(0x34404b),dark=mat(0x242424);
+ const head=new THREE.Mesh(new THREE.SphereGeometry(.22,10,8),skin);head.position.y=1.62;m.add(head);
+ const hair=new THREE.Mesh(new THREE.SphereGeometry(.225,10,6,0,Math.PI*2,0,Math.PI*.48),dark);hair.position.y=1.68;m.add(hair);
+ const torso=new THREE.Mesh(new THREE.BoxGeometry(.48,.68,.28),shirt);torso.position.y=1.08;m.add(torso);
+ const armL=new THREE.Mesh(new THREE.BoxGeometry(.12,.58,.13),skin),armR=armL.clone();armL.position.set(-.31,1.08,0);armR.position.set(.31,1.08,0);m.add(armL,armR);
+ const legL=new THREE.Mesh(new THREE.BoxGeometry(.15,.62,.17),pants),legR=legL.clone();legL.position.set(-.13,.43,0);legR.position.set(.13,.43,0);m.add(legL,legR);
+ const footL=new THREE.Mesh(new THREE.BoxGeometry(.17,.12,.3),dark),footR=footL.clone();footL.position.set(-.13,.08,-.07);footR.position.set(.13,.08,-.07);m.add(footL,footR);
+ m.userData.limbs={armL,armR,legL,legR};m.position.set(-12,0,14);scene.add(m);
+ let g={id:crypto.randomUUID?.()||Math.random()+"",name:names[Math.floor(Math.random()*names.length)]+" "+(guests.length+1),mesh:m,thought:"I just entered the park.",mood:75+Math.floor(Math.random()*20),hunger:Math.floor(Math.random()*60),next:7+Math.random()*12,history:[],walkPhase:Math.random()*6.28,currentPath:pathNodeNear(-12,14),targetPath:null,prevPath:null};
+ guests.push(g);thought(g,g.thought)
+}
+
+function refreshCounts(){$("#counts").textContent=`${entityDB?.size??objects.length} entities • ${guests.length} guests`}
+
+function pond(x,z,rx,rz){
+ const w=new THREE.Mesh(new THREE.CircleGeometry(1,36),new THREE.MeshStandardMaterial({color:0x3f8fae,roughness:.35,transparent:true,opacity:.88}));
+ w.scale.set(rx,rz,1);w.rotation.x=-Math.PI/2;w.position.set(x,.025,z);w.userData={kind:"water"};scene.add(w);objects.push(w)
+}
+
+function makeParkEntrance(x,z){
+ const g=new THREE.Group();g.position.set(x,0,z);g.userData={kind:"parkEntrance",name:"Park Entrance",protected:true};
+ const stone=mat(0x6f7472),dark=mat(0x202525),sign=mat(0xd8c675);
+ for(const px of [-3.2,3.2]){
+   const p=new THREE.Mesh(new THREE.BoxGeometry(1.1,4.4,1.2),stone);p.position.set(px,2.2,0);g.add(p);
+   const cap=new THREE.Mesh(new THREE.BoxGeometry(1.45,.35,1.5),dark);cap.position.set(px,4.5,0);g.add(cap);
+ }
+ const beam=new THREE.Mesh(new THREE.BoxGeometry(5.5,.75,.85),dark);beam.position.set(0,4.15,0);g.add(beam);
+ const plaque=new THREE.Mesh(new THREE.BoxGeometry(4.3,.62,.18),sign);plaque.position.set(0,4.15,.52);g.add(plaque);
+ for(const px of [-1.55,1.55]){
+   const gate=new THREE.Mesh(new THREE.BoxGeometry(.12,2.1,2.1),M.metal);gate.position.set(px,1.1,0);g.add(gate);
+ }
+ shadows(g);scene.add(g);objects.push(g);return g;
+}
+
+
+
+// R9 procedural frontier beyond the owned park boundary.
+// Surrounding chunks use the same grass family as the park ground, with deterministic
+// trees, ponds, rocks and a meandering river. These are scenery, not owned buildable land.
+const frontierGroup=new THREE.Group();frontierGroup.userData={kind:"frontierWorld"};scene.add(frontierGroup);
+const frontierChunks=new Map(), FRONTIER_CHUNK=32, FRONTIER_RADIUS=3;
+function hashR9(x,z,n=0){
+ let h=(x*374761393+z*668265263+n*1442695041)|0;
+ h=(h^(h>>>13))*1274126177;return ((h^(h>>>16))>>>0)/4294967295;
+}
+function frontierTreeR9(x,z,scale=1){
+ const g=new THREE.Group();
+ const trunk=new THREE.Mesh(new THREE.CylinderGeometry(.18*scale,.27*scale,1.8*scale,7),M.wood);trunk.position.y=.9*scale;g.add(trunk);
+ const crown=new THREE.Mesh(new THREE.ConeGeometry(1.05*scale,2.7*scale,8),M.leaf);crown.position.y=2.6*scale;g.add(crown);
+ g.position.set(x,0,z);shadows(g);return g;
+}
+function rockR9(x,z,scale=1){
+ const r=new THREE.Mesh(new THREE.DodecahedronGeometry(.55*scale,0),mat(0x6e746d));
+ r.scale.y=.65;r.position.set(x,.35*scale,z);shadows(r);return r;
+}
+function waterPatchR9(x,z,rx,rz){
+ const w=new THREE.Mesh(new THREE.CircleGeometry(1,28),new THREE.MeshStandardMaterial({color:0x3f8fae,roughness:.28,metalness:.05,transparent:true,opacity:.82}));
+ w.scale.set(rx,rz,1);w.rotation.x=-Math.PI/2;w.position.set(x,.035,z);w.userData={kind:"frontierWater"};return w;
+}
+function riverSegmentR9(cx,cz){
+ const curve=new THREE.CatmullRomCurve3([
+  new THREE.Vector3(cx-FRONTIER_CHUNK*.6,.045,cz-18),
+  new THREE.Vector3(cx-6+Math.sin(cz*.03)*5,.045,cz-7),
+  new THREE.Vector3(cx+5+Math.sin((cz+11)*.03)*6,.045,cz+6),
+  new THREE.Vector3(cx+FRONTIER_CHUNK*.55,.045,cz+18)
+ ]);
+ const tube=new THREE.Mesh(new THREE.TubeGeometry(curve,32,1.7,8,false),
+  new THREE.MeshStandardMaterial({color:0x398aaa,roughness:.24,transparent:true,opacity:.84}));
+ tube.userData={kind:"frontierRiver"};return tube;
+}
+function makeFrontierChunkR9(gx,gz){
+ const key=gx+","+gz;if(frontierChunks.has(key))return;
+ const group=new THREE.Group(),cx=gx*FRONTIER_CHUNK,cz=gz*FRONTIER_CHUNK;
+ group.userData={kind:"frontierChunk",gx,gz};
+
+ // Same basic ground material family as the owned park.
+ const tile=new THREE.Mesh(new THREE.PlaneGeometry(FRONTIER_CHUNK+.15,FRONTIER_CHUNK+.15),
+   new THREE.MeshStandardMaterial({color:0x4c934e,roughness:1}));
+ tile.rotation.x=-Math.PI/2;tile.position.set(cx,-.018,cz);tile.receiveShadow=true;group.add(tile);
+
+ const hasRiver=(gx===2 || gx===-2) && Math.abs(gz)<=3;
+ if(hasRiver)group.add(riverSegmentR9(cx,cz));
+
+ const pondChance=hashR9(gx,gz,91);
+ if(pondChance>.76 && !hasRiver){
+   const px=cx+(hashR9(gx,gz,92)-.5)*18,pz=cz+(hashR9(gx,gz,93)-.5)*18;
+   group.add(waterPatchR9(px,pz,2.5+hashR9(gx,gz,94)*4,2+hashR9(gx,gz,95)*3.5));
+ }
+ const count=10+Math.floor(hashR9(gx,gz,1)*14);
+ for(let i=0;i<count;i++){
+   const x=cx+(hashR9(gx,gz,10+i*3)-.5)*(FRONTIER_CHUNK-3);
+   const z=cz+(hashR9(gx,gz,11+i*3)-.5)*(FRONTIER_CHUNK-3);
+   // Keep the immediate owned park clear. Fence remains readable.
+   if(Math.abs(x)<parkHalfSize+3 && Math.abs(z)<parkHalfSize+3)continue;
+   group.add(frontierTreeR9(x,z,.7+hashR9(gx,gz,12+i*3)*.85));
+ }
+ for(let i=0;i<4;i++){
+   const x=cx+(hashR9(gx,gz,200+i*2)-.5)*(FRONTIER_CHUNK-3);
+   const z=cz+(hashR9(gx,gz,201+i*2)-.5)*(FRONTIER_CHUNK-3);
+   if(Math.abs(x)<parkHalfSize+2 && Math.abs(z)<parkHalfSize+2)continue;
+   group.add(rockR9(x,z,.6+hashR9(gx,gz,220+i)*1.2));
+ }
+ frontierGroup.add(group);frontierChunks.set(key,group);
+}
+function rebuildFrontierR9(){
+ for(const g of frontierChunks.values())frontierGroup.remove(g);
+ frontierChunks.clear();
+ const centerChunkX=Math.round(controls.target.x/FRONTIER_CHUNK);
+ const centerChunkZ=Math.round(controls.target.z/FRONTIER_CHUNK);
+ for(let dz=-FRONTIER_RADIUS;dz<=FRONTIER_RADIUS;dz++)for(let dx=-FRONTIER_RADIUS;dx<=FRONTIER_RADIUS;dx++){
+   const gx=centerChunkX+dx,gz=centerChunkZ+dz;
+   // Owned park uses its original ground plane. Surrounding tiles start outside it.
+   const cx=gx*FRONTIER_CHUNK,cz=gz*FRONTIER_CHUNK;
+   if(Math.abs(cx)<parkHalfSize*.72 && Math.abs(cz)<parkHalfSize*.72)continue;
+   makeFrontierChunkR9(gx,gz);
+ }
+}
+let lastFrontierCellR9="";
+function updateFrontierR9(){
+ const cell=Math.round(controls.target.x/FRONTIER_CHUNK)+","+Math.round(controls.target.z/FRONTIER_CHUNK);
+ if(cell!==lastFrontierCellR9){lastFrontierCellR9=cell;rebuildFrontierR9()}
+}
+
+// R8 park boundary / purchasable land.
+let parkHalfSize=32,selectedFenceSide=null,landExpansionCount=0;
+const fenceGroup=new THREE.Group();fenceGroup.userData={kind:"parkFenceGroup"};scene.add(fenceGroup);
+function fenceSegment(x,z,w,d,side){
+ const m=new THREE.Mesh(new THREE.BoxGeometry(w,1.15,d),mat(0x555b56,.25));
+ m.position.set(x,.58,z);m.userData={kind:"parkFence",side,name:`${side} Boundary Fence`};
+ shadows(m);fenceGroup.add(m);return m;
+}
+function rebuildFence(){
+ while(fenceGroup.children.length)fenceGroup.remove(fenceGroup.children[0]);
+ const h=parkHalfSize, gap=5.2, seg=4;
+ // North boundary has a gate opening aligned to the entrance at x=-12.
+ for(let x=-h;x<h;x+=seg){
+   const cx=x+seg/2;
+   if(Math.abs(cx+12)<gap/2)continue;
+   fenceSegment(cx,h,seg-.15,.18,"north");
+ }
+ for(let x=-h;x<h;x+=seg)fenceSegment(x+seg/2,-h,seg-.15,.18,"south");
+ for(let z=-h;z<h;z+=seg)fenceSegment(-h,z+seg/2,.18,seg-.15,"west");
+ for(let z=-h;z<h;z+=seg)fenceSegment(h,z+seg/2,.18,seg-.15,"east");
+}
+rebuildFence();
+rebuildFrontierR9();
+
+function landCost(){return 500+landExpansionCount*250}
+function updateLandPanel(){
+ $("#landOwnedR8").textContent=`${parkHalfSize*2} × ${parkHalfSize*2}`;
+ $("#landSideR8").textContent=selectedFenceSide?selectedFenceSide.toUpperCase():"None";
+ $("#landCostR8").textContent="$"+landCost().toLocaleString();
+ $("#buyLandR8").disabled=!selectedFenceSide;
+}
+function openLand(side=null){
+ if(side)selectedFenceSide=side;
+ updateLandPanel();$("#landPanel").classList.remove("hidden");bringUIFront($("#landPanel"));
+}
+$("#parkLandBtn").onclick=()=>openLand();
+$("#buyLandR8").onclick=()=>{
+ if(!selectedFenceSide)return;
+ parkHalfSize+=8;landExpansionCount++;
+ rebuildFence();rebuildFrontierR9();updateLandPanel();
+ $("#status").textContent=`LAND PURCHASED • ${selectedFenceSide.toUpperCase()} frontier • park boundary now ${parkHalfSize*2} × ${parkHalfSize*2}`;
+};
+
+// Revision Two starts as an empty park: entrance, approach path, trees, no rides and no guests.
+const parkEntrance=makeParkEntrance(-12,27);
+for(let z=32;z>=16;z-=2)add("path",-12,z,true);
+for(let i=0;i<58;i++){
+  let x=-31+Math.random()*62,z=-31+Math.random()*62;
+  if(Math.abs(x+12)<5 && z>18){i--;continue}
+  add("tree",x,z,true);
+}
+pond(-18,-13,4.5,6);
+
+
+// Tiny entity database. In-memory Map + localStorage persistence.
+const entityDB=new Map();
+const DBKEY="rct-r2-entities";
+const uid=()=>crypto.randomUUID?.()||("ent-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2));
+function classify(o){
+  if(guests.includes(o))return "guest";
+  return o?.userData?.kind||"object";
+}
+function registerEntity(o,meta={}){
+  if(!o)return null;
+  const id=o.userData?.entityId||uid();
+  o.userData=o.userData||{};o.userData.entityId=id;
+  const rec={id,type:classify(o),name:meta.name||o.userData.kind||"entity",
+    x:+(o.position?.x||0).toFixed(2),y:+(o.position?.y||0).toFixed(2),z:+(o.position?.z||0).toFixed(2),
+    createdAt:meta.createdAt||Date.now()};
+  entityDB.set(id,rec);persistDB();renderDB();return rec;
+}
+function persistDB(){try{localStorage.setItem(DBKEY,JSON.stringify([...entityDB.values()]))}catch(_){}}
+function renderDB(){
+  $("#dbStats").textContent=`${entityDB.size} tracked entities`;
+  $("#dbList").innerHTML=[...entityDB.values()].slice().reverse().map(r=>
+    `<div class="dbRow"><b>${r.name}</b><small>${r.type} • ${r.id.slice(0,13)} • (${r.x}, ${r.z})</small></div>`).join("")||'<div class="dbRow">Database empty.</div>';
+  refreshCounts();
+}
+function rebuildDBFromWorld(){
+  entityDB.clear();
+  [...objects,...guests].forEach(o=>registerEntity(o));
+}
+rebuildDBFromWorld();
+registerEntity(parkEntrance,{name:"Park Entrance"});
+const fenceDbEntity={position:new THREE.Vector3(),userData:{kind:"parkBoundary",name:"Park Boundary",protected:true}};
+registerEntity(fenceDbEntity,{name:"Park Boundary"});
+
+
+
+// R6 universal draggable child UI windows.
+let uiFrontZ=100;
+function bringUIFront(el){el.style.zIndex=String(++uiFrontZ)}
+function installDraggable(el){
+  if(!el||el.dataset.draggableR6)return;
+  el.dataset.draggableR6="1";
+  const handle=el.querySelector(".head")||el;
+  handle.addEventListener("pointerdown",e=>{
+    if(e.button!==0||e.target.closest("button,input,select,textarea"))return;
+    e.preventDefault();e.stopPropagation();
+    bringUIFront(el);el.classList.add("draggingR6");
+    const rect=el.getBoundingClientRect();
+    const dx=e.clientX-rect.left,dy=e.clientY-rect.top;
+    el.style.transform="none";
+    el.style.right="auto";el.style.bottom="auto";
+    el.style.left=rect.left+"px";el.style.top=rect.top+"px";
+    handle.setPointerCapture?.(e.pointerId);
+    const move=ev=>{
+      const maxX=Math.max(0,innerWidth-el.offsetWidth);
+      const maxY=Math.max(0,innerHeight-el.offsetHeight);
+      el.style.left=Math.max(0,Math.min(maxX,ev.clientX-dx))+"px";
+      el.style.top=Math.max(0,Math.min(maxY,ev.clientY-dy))+"px";
+    };
+    const up=ev=>{
+      handle.removeEventListener("pointermove",move);
+      handle.removeEventListener("pointerup",up);
+      handle.removeEventListener("pointercancel",up);
+      handle.releasePointerCapture?.(ev.pointerId);
+      el.classList.remove("draggingR6");
+    };
+    handle.addEventListener("pointermove",move);
+    handle.addEventListener("pointerup",up);
+    handle.addEventListener("pointercancel",up);
+  });
+  el.addEventListener("pointerdown",()=>bringUIFront(el));
+}
+function installAllDraggableUI(){
+  document.querySelectorAll(".panel").forEach(installDraggable);
+}
+installAllDraggableUI();
+
+// Future child windows inherit dragging automatically.
+new MutationObserver(records=>{
+  for(const rec of records)for(const n of rec.addedNodes){
+    if(n.nodeType!==1)continue;
+    if(n.matches?.(".panel"))installDraggable(n);
+    n.querySelectorAll?.(".panel").forEach(installDraggable);
+  }
+}).observe(document.body,{childList:true,subtree:true});
+
+// Park Manager
+let parkIsOpen=false;
+let parkAdmission=Number(localStorage.getItem("rct-r7-admission")||10);
+function updateParkManager(){
+ const status=$("#parkStatus");
+ status.innerHTML=`<i class="signalR7 ${parkIsOpen?"goR7":"stopR7"}"></i>${parkIsOpen?"OPEN":"CLOSED"}`;
+ $("#parkGuests").textContent=guests.length;
+ const pop21=$("#parkPopularityManagerR21");if(pop21)pop21.textContent=Math.round(parkPopularityR21)+"%";
+ $("#parkEntities").textContent=entityDB.size;
+ $("#parkTime").textContent=`Day ${day} • ${$("#clockText").textContent}`;
+ const price=$("#parkAdmissionR7");if(price&&document.activeElement!==price)price.value=parkAdmission.toFixed(2);
+}
+$("#parkBtn").onclick=()=>{updateParkManager();$("#parkPanel").classList.toggle("hidden")};
+$("#parkAdmissionR7").value=parkAdmission.toFixed(2);
+$("#parkAdmissionR7").addEventListener("change",e=>{
+ parkAdmission=Math.max(0,Math.min(250,Number(e.target.value)||0));
+ e.target.value=parkAdmission.toFixed(2);
+ localStorage.setItem("rct-r7-admission",String(parkAdmission));
+ $("#status").textContent=`PARK ADMISSION • $${parkAdmission.toFixed(2)}`;
+});
+$("#parkOpenBtn").onclick=()=>{parkIsOpen=true;updateParkManager();$("#status").textContent="PARK OPEN • entrance accepting guests"};
+$("#parkCloseBtn").onclick=()=>{parkIsOpen=false;updateParkManager();$("#status").textContent="PARK CLOSED"};
+
+// R10 Build Manager: categorized catalog, lore, live placement ghost and R rotation.
+const catalogR10={
+ paths:{label:"Paths",icon:"🛣️",items:[
+  ["path","🛣️","Asphalt Path","Fresh blacktop for the first roads into Forest Frontiers."],
+  ["queue","〰️","Queue Path","A controlled waiting lane for future attractions."]]},
+ food:{label:"Food & Drink",icon:"🍔",items:[
+  ["burger","🍔","Burger Stand","A frontier grill serving quick meals to hungry explorers."],
+  ["pizza","🍕","Pizza Stall","Hot slices for guests unwilling to leave the midway."],
+  ["drink","🥤","Drink Stall","Cold drinks for long summer days beneath the pines."],
+  ["icecream","🍦","Ice Cream Stall","A small frozen-treat counter with old park charm."]]},
+ facilities:{label:"Facilities",icon:"🏥",items:[
+  ["info","ℹ️","Information Kiosk","Maps, directions and a human landmark in the wilderness."],
+  ["restroom","🚻","Restroom","A permanent frontier bathroom building with twin doors and sheltered guest facilities."]]},
+ scenery:{label:"Scenery",icon:"🌲",items:[
+  ["bench","🪑","Park Bench","A quiet resting place beside the paths."],
+  ["lamp","💡","Lamp Post","Warm pools of light when the frontier turns dark."],
+  ["tree","🌲","Pine Tree","Restore a piece of woodland wherever construction thins it."],
+  ["fountain","⛲","Fountain","A civic centerpiece where paths and guests can gather."]]},
+ rides:{label:"Rides",icon:"🎢",items:[
+  ["wheel","🎡","Ferris Wheel","A slow landmark rising above the Forest Frontiers canopy."],
+  ["carousel","🎠","Carousel","Painted horses and music, a traditional heart for a young park."],
+  ["coaster","🎢","Steel Coaster","The frontier's first major skyline-changing thrill ride."]]}
+};
+let buildTopicR10="paths",buildKind=null,buildRotationR10=0,buildGhostR10=null,buildGhostSourceR10=null;
+
+function renderBuildTabsR10(){
+ $("#buildTabsR10").innerHTML=Object.entries(catalogR10).map(([k,v])=>`<button data-topic="${k}" class="${k===buildTopicR10?"active":""}">${v.icon} ${v.label}</button>`).join("");
+}
+function renderBuildCatalogR10(){
+ const topic=catalogR10[buildTopicR10];
+ $("#buildGrid").innerHTML=topic.items.map(([k,ico,name,lore])=>`<button class="catalogItemR10 ${k===buildKind?"active":""}" data-build="${k}"><span class="ico">${ico}</span><span><b>${name}</b><small>${topic.icon} ${topic.label}</small></span></button>`).join("");
+}
+renderBuildTabsR10();renderBuildCatalogR10();
+$("#buildTabsR10").onclick=e=>{
+ const b=e.target.closest("[data-topic]");if(!b)return;
+ buildTopicR10=b.dataset.topic;renderBuildTabsR10();renderBuildCatalogR10();
+};
+$("#buildGrid").onclick=e=>{
+ const b=e.target.closest("[data-build]");if(!b)return;
+ buildKind=b.dataset.build;buildRotationR10=0;
+ renderBuildCatalogR10();
+ const item=Object.values(catalogR10).flatMap(x=>x.items).find(x=>x[0]===buildKind);
+ $("#catalogLoreR10").innerHTML=`<b>${item[1]} ${item[2]}</b><br>${item[3]}`;
+ $("#rotationHudR10").style.display="block";$("#rotationValueR10").textContent="0°";
+ clearBuildGhostR10();
+ $("#status").textContent=`BUILD: ${item[2]} • R rotates • click terrain to place`;
+};
+function clearBuildGhostR10(){
+ if(buildGhostR10){scene.remove(buildGhostR10);buildGhostR10=null}
+}
+function ghostifyR10(o){
+ o.traverse?.(x=>{if(x.isMesh){x.material=x.material.clone();x.material.transparent=true;x.material.opacity=.34;x.material.depthWrite=false}});
+ return o;
+}
+function makeBuildGhostR10(kind){
+ // Reuse the actual mature object builder, then remove it from normal world tracking.
+ const before=objects.length;
+ const g=add(kind,0,0,true);
+ const oi=objects.indexOf(g);if(oi>=0)objects.splice(oi,1);
+ const pi=paths.indexOf(g);if(pi>=0)paths.splice(pi,1);
+ scene.remove(g);ghostifyR10(g);scene.add(g);return g;
+}
+function updateBuildGhostR10(p){
+ if(!buildKind)return;
+ if(!buildGhostR10||buildGhostSourceR10!==buildKind){
+   clearBuildGhostR10();buildGhostR10=makeBuildGhostR10(buildKind);buildGhostSourceR10=buildKind;
+ }
+ buildGhostR10.position.x=Math.round(p.x);buildGhostR10.position.z=Math.round(p.z);
+ buildGhostR10.rotation.y=buildRotationR10;
+}
+addEventListener("keydown",e=>{
+ if((e.key==="r"||e.key==="R")&&buildKind&&!isPathKindR13()&&!e.target?.matches?.("input,textarea,select,[contenteditable=true]")){
+   e.preventDefault();buildRotationR10=(buildRotationR10+Math.PI/2)%(Math.PI*2);
+   if(buildGhostR10)buildGhostR10.rotation.y=buildRotationR10;
+   $("#rotationValueR10").textContent=Math.round(THREE.MathUtils.radToDeg(buildRotationR10))+"°";
+ }
+});
+$("#buildBtn").onclick=()=>{setCameraModeR14(2);$("#buildPanel").classList.toggle("hidden")};
+$("#dbBtn").onclick=()=>{renderDB();$("#dbPanel").classList.toggle("hidden")};
+document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>$("#"+b.dataset.close).classList.add("hidden"));
+
+const raycaster=new THREE.Raycaster(),mouse=new THREE.Vector2(),groundPlane=new THREE.Plane(new THREE.Vector3(0,1,0),0);
+
+// R13 path painter: click + drag continuously lays path/queue tiles.
+// Path tiles snap to the integer grid and automatically rotate to the drag direction.
+let pathPaintingR13=false,lastPathCellR13=null,lastPathPointR13=null;
+const isPathKindR13=()=>buildKind==="path"||buildKind==="queue";
+const snapPathR13=p=>new THREE.Vector3(Math.round(p.x),0,Math.round(p.z));
+function pathRotationR13(a,b){
+ if(!a||!b)return buildRotationR10;
+ const dx=b.x-a.x,dz=b.z-a.z;
+ if(Math.abs(dx)>Math.abs(dz))return Math.PI/2;
+ if(Math.abs(dz)>0)return 0;
+ return buildRotationR10;
+}
+function placePathCellR13(p,rot){
+ const key=`${buildKind}:${p.x}:${p.z}`;
+ if(lastPathCellR13===key)return null;
+ // Prevent duplicate path/queue tiles at the exact snapped cell.
+ const duplicate=objects.find(o=>(o.userData?.kind==="path"||o.userData?.kind==="queue") &&
+   Math.round(o.position.x)===p.x && Math.round(o.position.z)===p.z);
+ if(duplicate){lastPathCellR13=key;return duplicate}
+ const o=add(buildKind,p.x,p.z,true);
+ if(!o)return null;
+ o.rotation.y=rot;registerEntity(o,{name:buildKind,rotationY:rot});
+ lastPathCellR13=key;refreshCounts();return o;
+}
+function terrainPointR13(e){
+ const r=canvas.getBoundingClientRect();
+ mouse.x=((e.clientX-r.left)/r.width)*2-1;mouse.y=-((e.clientY-r.top)/r.height)*2+1;
+ raycaster.setFromCamera(mouse,camera);const p=new THREE.Vector3();
+ return raycaster.ray.intersectPlane(groundPlane,p)?p:null;
+}
+canvas.addEventListener("pointermove",e=>{
+ if(cameraModeR14===5){
+   const r=canvas.getBoundingClientRect();
+   mouse.x=((e.clientX-r.left)/r.width)*2-1;mouse.y=-((e.clientY-r.top)/r.height)*2+1;
+   raycaster.setFromCamera(mouse,camera);
+   const guestMeshes=guests.map(g=>g.mesh||g).filter(Boolean);
+   const hits=raycaster.intersectObjects(guestMeshes,true);
+   const card=$("#guestHoverR15");
+   if(hits.length){
+     let hit=hits[0].object,owner=null;
+     while(hit&&!owner){owner=guests.find(g=>(g.mesh||g)===hit)||null;hit=hit.parent}
+     if(owner){
+       card.hidden=false;card.style.left=(e.clientX+14)+"px";card.style.top=(e.clientY+14)+"px";
+       $("#guestHoverNameR15").textContent=owner.name||owner.userData?.name||"Guest";
+       $("#guestHoverMetaR15").textContent=owner.userData?.mood!=null?`Mood ${owner.userData.mood}%`:"Guest entity";
+     }else card.hidden=true;
+   }else card.hidden=true;
+ }
+ if(cameraModeR14!==2||!buildKind)return;
+ const raw=terrainPointR13(e);if(!raw)return;
+ if(isPathKindR13()){
+   const p=snapPathR13(raw),rot=pathRotationR13(lastPathPointR13,p);
+   buildRotationR10=rot;updateBuildGhostR10(p);
+   if(buildGhostR10){buildGhostR10.position.set(p.x,buildGhostR10.position.y,p.z);buildGhostR10.rotation.y=rot}
+   $("#rotationValueR10").textContent=Math.round(THREE.MathUtils.radToDeg(rot))+"°";
+   if(pathPaintingR13&&(e.buttons&1)&&e.shiftKey){
+     placePathCellR13(p,rot);lastPathPointR13=p.clone();
+     $("#status").textContent=`PATH PAINT • SHIFT HELD • ${p.x}, ${p.z} • snapped`;
+   }
+ }else updateBuildGhostR10(raw);
+});
+canvas.addEventListener("pointerup",e=>{
+ if(pathPaintingR13){pathPaintingR13=false;lastPathCellR13=null;lastPathPointR13=null;canvas.releasePointerCapture?.(e.pointerId)}
+});
+canvas.addEventListener("pointercancel",()=>{pathPaintingR13=false;lastPathCellR13=null;lastPathPointR13=null});
+canvas.addEventListener("pointerleave",()=>{if(buildGhostR10)buildGhostR10.visible=false;$("#guestHoverR15").hidden=true});
+canvas.addEventListener("pointerenter",()=>{if(buildGhostR10)buildGhostR10.visible=true});
+
+function removeEntityRecordR11(o){
+ const id=o?.userData?.entityId;if(id){entityDB.delete(id);persistDB();renderDB()}
+}
+function bulldozableRootR11(obj){
+ let n=obj;
+ while(n&&n.parent&&n.parent!==scene){
+   if(n.userData?.entityId||objects.includes(n)||n.userData?.kind==="parkEntrance")break;
+   n=n.parent;
+ }
+ return n;
+}
+function bulldozeAtPointerR11(e){
+ const r=canvas.getBoundingClientRect();
+ mouse.x=((e.clientX-r.left)/r.width)*2-1;mouse.y=-((e.clientY-r.top)/r.height)*2+1;
+ raycaster.setFromCamera(mouse,camera);
+ const targets=objects.filter(o=>o&&o!==parkEntrance);
+ const hits=raycaster.intersectObjects(targets,true);
+ if(!hits.length){$("#status").textContent="BULLDOZE • nothing selected";return false}
+ const o=bulldozableRootR11(hits[0].object);
+ if(!o||o===parkEntrance||o.userData?.protected){$("#status").textContent="BULLDOZE BLOCKED • protected entity";return false}
+ const kind=o.userData?.kind||"object";
+ removeEntityRecordR11(o);
+ const oi=objects.indexOf(o);if(oi>=0)objects.splice(oi,1);
+ const pi=paths.indexOf(o);if(pi>=0)paths.splice(pi,1);
+ o.parent?.remove(o);
+ $("#status").textContent=`BULLDOZED • ${String(kind).toUpperCase()}`;
+ refreshCounts();return true;
+}
+canvas.addEventListener("pointerdown",e=>{
+  // Ctrl+Click always means bulldoze, regardless of active build selection.
+  if(e.ctrlKey||bulldozeHeldR11){
+    e.preventDefault();e.stopPropagation();bulldozeAtPointerR11(e);return;
+  }
+  if(cameraModeR14===2&&buildKind&&isPathKindR13()&&e.button===0){
+    const raw=terrainPointR13(e);if(!raw)return;
+    const p=snapPathR13(raw);
+    pathPaintingR13=!!e.shiftKey;lastPathCellR13=null;lastPathPointR13=p.clone();
+    placePathCellR13(p,buildRotationR10);
+    if(pathPaintingR13)canvas.setPointerCapture?.(e.pointerId);
+    $("#status").textContent=e.shiftKey
+      ? `PATH PAINT • SHIFT HELD • drag to continue`
+      : `PATH PLACED • hold SHIFT while dragging for multiple`;
+    return;
+  }
+  if(cameraModeR14!==2||!buildKind){
+    if(e.button!==0)return;
+    const r=canvas.getBoundingClientRect();
+    mouse.x=((e.clientX-r.left)/r.width)*2-1;mouse.y=-((e.clientY-r.top)/r.height)*2+1;
+    raycaster.setFromCamera(mouse,camera);
+
+    // Park entrance opens Park Manager directly.
+    const entranceHits=raycaster.intersectObject(parkEntrance,true);
+    if(entranceHits.length){
+      updateParkManager();$("#parkPanel").classList.remove("hidden");bringUIFront($("#parkPanel"));
+      $("#status").textContent="PARK ENTRANCE • Forest Frontiers";
+      return;
+    }
+
+    // Boundary fence opens Land Manager for that side.
+    const fenceHits=raycaster.intersectObjects(fenceGroup.children,true);
+    if(fenceHits.length){
+      openLand(fenceHits[0].object.userData.side);
+      $("#status").textContent=`LAND FRONTIER • ${fenceHits[0].object.userData.side.toUpperCase()}`;
+      return;
+    }
+
+    // Character hit wins. Any mesh belonging to a guest resolves back to that guest.
+    const guestMeshes=guests.map(g=>g.mesh).filter(Boolean);
+    const hits=raycaster.intersectObjects(guestMeshes,true);
+    if(hits.length){
+      let hit=hits[0].object, owner=null;
+      while(hit&&!owner){
+        owner=guests.find(g=>g.mesh===hit)||null;
+        hit=hit.parent;
+      }
+      if(owner){
+        if(cameraModeR14===3){openGuestWindowR29(owner);$("#status").textContent=`CHAT • ${owner.name||"GUEST"}`}
+        else if(cameraModeR14===4){openGuestWindowR29(owner);$("#status").textContent=`INSPECT • ${owner.name||"GUEST"}`}
+        else if(cameraModeR14===1)pivotCameraAtGuest(owner);
+      }
+    }
+    return;
+  }
+  const r=canvas.getBoundingClientRect();
+  mouse.x=((e.clientX-r.left)/r.width)*2-1;mouse.y=-((e.clientY-r.top)/r.height)*2+1;
+  raycaster.setFromCamera(mouse,camera);
+  const p=new THREE.Vector3();
+  if(raycaster.ray.intersectPlane(groundPlane,p)){
+    const o=add(buildKind,Math.round(p.x),Math.round(p.z),true);
+    if(!o){$("#status").textContent=`BUILD ERROR • ${buildKind.toUpperCase()} has no model`;return}
+    o.rotation.y=buildRotationR10;
+    registerEntity(o,{name:buildKind,rotationY:buildRotationR10});
+    $("#status").textContent=`PLACED ${buildKind.toUpperCase()} • DB linked${e.shiftKey?" • CONTINUOUS":""}`;
+    if(!e.shiftKey){
+      buildKind=null;clearBuildGhostR10();buildGhostSourceR10=null;
+      $("#rotationHudR10").style.display="none";
+      renderBuildCatalogR10();
+    }
+  }
+});
+
+// Day/night cycle: one game day every 4 real minutes.
+let simMinutes=8*60,day=1;
+function updateSky(dt){
+  simMinutes+=dt*6; // 1440 game minutes / 240 seconds
+  if(simMinutes>=1440){simMinutes-=1440;day++}
+  const hour=simMinutes/60,angle=(hour/24)*Math.PI*2-Math.PI/2;
+  const daylight=Math.max(.05,Math.sin(angle));
+  sun.position.set(Math.cos(angle)*35,Math.max(-8,Math.sin(angle)*42),18);
+  sun.intensity=.12+daylight*3.4;
+  const sky=new THREE.Color().setHSL(.57,.45,.10+daylight*.55);
+  scene.background.copy(sky);scene.fog.color.copy(sky);
+  const hh=String(Math.floor(hour)).padStart(2,"0"),mm=String(Math.floor(simMinutes%60)).padStart(2,"0");
+  $("#clockText").textContent=`${hh}:${mm}`;$("#timeHud").firstChild.textContent=`DAY ${day} • `;
+  if(!$("#parkPanel").classList.contains("hidden"))updateParkManager();
+}
+$("#resetCam").onclick=()=>{cameraPivotGuest=null;camera.position.set(24,20,28);controls.target.set(0,0,0);controls.update();setCameraModeR14(1)};
+
+function resize(){
+ const w=innerWidth,h=innerHeight;
+ renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();
+}
+addEventListener("resize",resize);resize();
+
+const clock=new THREE.Clock();
+
+// R21 SAFE REBASE: R15 visible UI + data-only guest thoughts/popularity.
+let parkPopularityR21=10;
+const guestThoughtDBR21=new Map();
+let nextThoughtSweepR21=0,nextGuestArrivalR21=0;
+
+function guestKeyR21(g){
+ g.userData=g.userData||{};
+ if(!g.userData.guestKeyR21)g.userData.guestKeyR21="guest-"+Math.random().toString(36).slice(2,10);
+ return g.userData.guestKeyR21;
+}
+function thoughtRecordR21(g){
+ const id=guestKeyR21(g);
+ if(!guestThoughtDBR21.has(id))guestThoughtDBR21.set(id,{thoughts:[],sentiment:0,last:0});
+ return guestThoughtDBR21.get(id);
+}
+function updatePopularityR21(){
+ const rows=[...guestThoughtDBR21.values()].filter(r=>r.thoughts.length);
+ let sentiment=0;
+ if(rows.length)sentiment=rows.reduce((a,r)=>a+r.sentiment,0)/rows.length;
+ const target=rows.length?Math.max(5,Math.min(100,10+((sentiment+1)/2)*45+Math.min(20,rows.length*.5))):10;
+ parkPopularityR21+=(target-parkPopularityR21)*.04;
+ const pct=Math.round(parkPopularityR21);
+ const hud=$("#parkPopularityR21");if(hud)hud.innerHTML=`⭐ POPULARITY <b>${pct}%</b>`;
+ const pm=$("#parkPopularityManagerR21");if(pm)pm.textContent=pct+"%";
+ const gs=$("#guestSentimentR21");if(gs)gs.textContent=rows.length?`${sentiment>.2?"😊":sentiment<-.2?"☹️":"😐"} ${Math.round(sentiment*100)} • ${rows.length} voices`:"NO DATA";
+}
+function addThoughtR21(g,text,sentiment){
+ const r=thoughtRecordR21(g);
+ r.thoughts.unshift({text,sentiment,time:Date.now()});if(r.thoughts.length>12)r.thoughts.length=12;
+ r.sentiment=r.thoughts.reduce((a,t)=>a+t.sentiment,0)/r.thoughts.length;r.last=Date.now();
+ g.userData.currentThought=text;g.userData.thoughtSentiment=sentiment;
+ updatePopularityR21();
+}
+function updateThoughtsR21(now){
+ if(!parkIsOpen||now<nextThoughtSweepR21)return;
+ nextThoughtSweepR21=now+6500;
+ const built=objects.filter(o=>!["path","queue"].includes(o.userData?.kind)).length;
+ for(const g of guests){
+   if(Math.random()>.22)continue;
+   const r=thoughtRecordR21(g);if(Date.now()-r.last<12000)continue;
+   if(built<3)addThoughtR21(g,"I hope they build more attractions soon.",-.28);
+   else if(Math.random()<.6)addThoughtR21(g,"Forest Frontiers is coming together nicely.",.38);
+   else addThoughtR21(g,"I'm still exploring the park.",.04);
+ }
+}
+function spawnPopularityGuestR21(){
+ if(!parkIsOpen)return;
+ const desiredX=-12,desiredZ=parkHalfSize+7;
+ const asphaltNode=nearestWalkablePathR26(desiredX,desiredZ,o=>{
+   const u=o.userData||{};
+   return /asphalt/i.test(String(u.material||u.pathMaterial||u.name||u.variant||""));
+ });
+ const outsideNode=asphaltNode||nearestWalkablePathR26(desiredX,desiredZ);
+ // Never spawn a guest if there is no actual walkable path node.
+ if(!outsideNode){$("#status").textContent="GUEST WAITING • entrance asphalt path is missing";return}
+ const x=outsideNode.position.x,z=outsideNode.position.z;
+ const before=guests.length;
+ spawn();
+ const g=guests[guests.length-1];
+ if(guests.length<=before||!g)return;
+ canonicalGuestNameR31(g);
+ const mesh=g.mesh||g;
+ if(mesh?.position)mesh.position.set(x,mesh.position.y||0,z);
+ g.currentPath=outsideNode||pathNodeNear(x,z);
+ g.prevPath=null;
+ const firstSteps=pathNeighborsR24(g.currentPath);
+ g.targetPath=firstSteps[0]||g.currentPath;
+ g.userData=g.userData||{};
+ g.userData.arrivalSource="parkPopularity";
+ g.userData.arrivalPopularity=Math.round(parkPopularityR21);
+ addThoughtR21(g,"I've just arrived at Forest Frontiers.",.06);
+ refreshCounts();
+ $("#status").textContent=`NEW GUEST • outside entrance • popularity ${Math.round(parkPopularityR21)}%`;
+}
+function updateArrivalsR21(now){
+ if(!parkIsOpen){nextGuestArrivalR21=0;return}
+ if(!nextGuestArrivalR21)nextGuestArrivalR21=now+2200;
+ if(now>=nextGuestArrivalR21){
+   spawnPopularityGuestR21();
+   const p=Math.max(.1,parkPopularityR21/100);
+   nextGuestArrivalR21=now+(30000-p*17000)*(.82+Math.random()*.36);
+ }
+}
+updatePopularityR21();
+
+
+
+// R26 path-material agnostic navigation.
+// A path is walkable because it is a PATH entity, never because of its visual material.
+function isWalkablePathR26(o){
+ if(!o)return false;
+ const u=o.userData||{},k=String(u.kind||"").toLowerCase(),t=String(u.type||"").toLowerCase();
+ return k==="path"||k==="queue"||t==="path"||t==="queue"||
+        u.isPath===true||u.walkablePath===true||
+        /path|queue|boardwalk|paver|brick|gravel|asphalt/.test(k);
+}
+function nearestWalkablePathR26(x,z,filter=null){
+ let best=null,bestD=Infinity;
+ for(const o of objects){
+   if(!isWalkablePathR26(o))continue;
+   if(filter&&!filter(o))continue;
+   const dx=o.position.x-x,dz=o.position.z-z,d=dx*dx+dz*dz;
+   if(d<bestD){bestD=d;best=o}
+ }
+ return best;
+}
+
+
+
+
+
+
+
+
+
+
+// R37 research tree + catalog locks.
+const researchStateR37=JSON.parse(localStorage.getItem("rct-r37-research")||'{"unlocked":[]}');
+const researchProjectsR37=[
+ {id:"hydro-show",icon:"⛲",name:"Hydrodynamic Show Systems",cost:850,time:18,unlocks:["Jumping Fountain"],lore:"Pressure-control research turns ordinary water scenery into choreographed jumping streams."},
+ {id:"river-engineering",icon:"🚤",name:"Frontier Waterworks",cost:2200,time:30,unlocks:["River Boats"],lore:"Hull, channel and dock engineering unlocks a full scenic river attraction."},
+ {id:"compact-spin",icon:"🌀",name:"Compact Spin Dynamics",cost:1350,time:24,unlocks:["Scrambler"],lore:"A compact drive platform delivers high excitement without demanding coaster-scale land."},
+ {id:"leisure-design",icon:"🏌️",name:"Interactive Leisure Design",cost:1200,time:22,unlocks:["Mini Golf"],lore:"Landscape-led attraction research creates a slower, highly themed guest experience."},
+ {id:"premium-merch",icon:"🎈",name:"Premium Park Merchandise",cost:700,time:16,unlocks:["Balloon Stall"],lore:"Branded portable merchandise creates visible souvenirs that travel through the park with guests."},
+ {id:"guest-fintech",icon:"🏧",name:"Guest Financial Services",cost:950,time:20,unlocks:["ATM"],lore:"Secure cash-service infrastructure extends guest purchasing power deeper into the park."},
+ {id:"advanced-care",icon:"🩹",name:"Advanced Guest Care",cost:1250,time:25,unlocks:["First Aid"],lore:"Medical-service planning unlocks a dedicated first-aid facility for the frontier."}
+];
+let activeResearchR37=null;
+function researchUnlockedR37(name){return researchStateR37.unlocked.includes(name)}
+function saveResearchR37(){localStorage.setItem("rct-r37-research",JSON.stringify(researchStateR37))}
+function projectForItemR37(name){return researchProjectsR37.find(p=>p.unlocks.includes(name))}
+function renderResearchR37(){
+ $("#researchBudgetR37").textContent="$"+economyR36.cash.toFixed(2);
+ $("#researchListR37").innerHTML=researchProjectsR37.map(p=>{
+   const done=p.unlocks.every(researchUnlockedR37),active=activeResearchR37?.id===p.id;
+   return `<div style="padding:7px;margin:5px 0;border:1px solid #2b3b31;background:#0a120d"><div style="display:flex;justify-content:space-between;gap:8px"><span><b>${p.icon} ${p.name}</b><small style="display:block">${p.lore}</small><small style="display:block">Unlocks: ${p.unlocks.join(", ")}</small></span><b>${done?"✅ COMPLETE":active?"🧪 RESEARCHING":"$"+p.cost}</b></div>${active?`<div style="height:4px;background:#17241c;margin-top:6px"><div id="researchBarR37" style="height:100%;width:${Math.min(100,activeResearchR37.progress/p.time*100)}%;background:currentColor"></div></div>`:""}${!done&&!active?`<button data-r37-project="${p.id}" style="margin-top:6px">Fund Research</button>`:""}</div>`;
+ }).join("");
+ $("#researchListR37").querySelectorAll("[data-r37-project]").forEach(b=>b.onclick=()=>startResearchR37(b.dataset.r37Project));
+}
+function startResearchR37(id){
+ const p=researchProjectsR37.find(x=>x.id===id);if(!p||activeResearchR37||economyR36.cash<p.cost)return;
+ recordEconomyR36("build",p.cost,"R&D • "+p.name);activeResearchR37={id:p.id,progress:0,last:performance.now()};renderResearchR37();
+}
+function researchTickR37(now){
+ if(!activeResearchR37)return;
+ const p=researchProjectsR37.find(x=>x.id===activeResearchR37.id);if(!p)return;
+ const dt=Math.min(1,(now-activeResearchR37.last)/1000);activeResearchR37.last=now;activeResearchR37.progress+=dt;
+ if(activeResearchR37.progress>=p.time){for(const n of p.unlocks)if(!researchStateR37.unlocked.includes(n))researchStateR37.unlocked.push(n);saveResearchR37();activeResearchR37=null;enrichBuildManagerR36();applyResearchLocksR37()}
+ if(!$("#researchManagerR37").classList.contains("hidden"))renderResearchR37();
+}
+function applyResearchLocksR37(){
+ const grid=$("#buildGrid");if(!grid)return;
+ grid.querySelectorAll("[data-r36-name]").forEach(b=>{
+   const name=b.dataset.r36Name,p=projectForItemR37(name);if(!p)return;
+   const locked=!researchUnlockedR37(name);b.dataset.r37Locked=locked?"1":"0";
+   b.style.opacity=locked?".52":"1";
+   const base=b.querySelector("small");if(base)base.textContent=locked?`🔒 RESEARCH REQUIRED • $${b.dataset.r36Cost} build`:`$${b.dataset.r36Cost} build • ${b.dataset.r36Topic}`;
+   if(locked)b.title=`Research ${p.name} to unlock ${name}`;
+ });
+}
+
+// R36 catalog templates, unique entity DB records, shop stock, carryables and economy.
+const entityTemplatesR36=new Map(), entityInstancesR36=new Map();
+const economyR36={cash:25000,income:0,buildSpend:0,cogs:0,ledger:[],history:[]};
+const productTemplatesR36={
+ burger:{icon:"🍔",name:"Frontier Burger",cost:2.10,price:6.50,carry:"hand"},
+ fries:{icon:"🍟",name:"Trail Fries",cost:.85,price:3.75,carry:"hand"},
+ soda:{icon:"🥤",name:"Fountain Soda",cost:.55,price:3.25,carry:"hand"},
+ water:{icon:"💧",name:"Spring Water",cost:.35,price:2.50,carry:"hand"},
+ pizza:{icon:"🍕",name:"Pizza Slice",cost:1.65,price:5.75,carry:"hand"},
+ icecream:{icon:"🍦",name:"Ice Cream",cost:1.20,price:4.75,carry:"hand"},
+ coffee:{icon:"☕",name:"Frontier Coffee",cost:.80,price:4.25,carry:"hand"},
+ donut:{icon:"🍩",name:"Donut",cost:.70,price:3.25,carry:"hand"},
+ taco:{icon:"🌮",name:"Trail Taco",cost:1.40,price:5.25,carry:"hand"},
+ candy:{icon:"🍬",name:"Candy Bag",cost:.65,price:3.50,carry:"hand"},
+ plush:{icon:"🧸",name:"Forest Plush",cost:5.25,price:14,carry:"hand"},
+ cap:{icon:"🧢",name:"Park Logo Cap",cost:6.50,price:18,carry:"wear"},
+ balloon:{icon:"🎈",name:"Park Balloon",cost:.90,price:5,carry:"balloon"},
+ photo:{icon:"📷",name:"Ride Photo",cost:2.25,price:12,carry:"hand"},
+ map:{icon:"🗺️",name:"Park Map",cost:.15,price:1,carry:"hand"},
+ petrock:{icon:"🪨",name:"Pet Rock",cost:0,price:0,carry:"hand"}
+};
+const shopInventoryR36={
+ burger:["burger","fries","soda"],pizza:["pizza","soda","water"],drink:["soda","water"],ice:["icecream","water"],
+ coffee:["coffee","donut","water"],souvenir:["plush","cap","photo","map"],arcade:["plush","candy"],candy:["candy","soda"],
+ donut:["donut","coffee"],taco:["taco","soda"],lemonade:["water","candy"],balloon:["balloon","map"],photo:["photo"]
+};
+function uuidR36(prefix="ent"){return prefix+"-"+crypto.randomUUID?.()||prefix+"-"+Math.random().toString(36).slice(2)}
+function recordEconomyR36(type,amount,label){
+ amount=Number(amount)||0; economyR36.ledger.push({id:"txn-"+Date.now()+"-"+Math.random().toString(36).slice(2,6),time:Date.now(),type,amount,label});
+ if(type==="income"){economyR36.income+=amount;economyR36.cash+=amount}
+ if(type==="build"){economyR36.buildSpend+=amount;economyR36.cash-=amount}
+ if(type==="cogs"){economyR36.cogs+=amount;economyR36.cash-=amount}
+ if(economyR36.ledger.length>300)economyR36.ledger.shift();
+}
+function registerTemplateR36(kind,data){if(!entityTemplatesR36.has(kind))entityTemplatesR36.set(kind,{templateId:"tpl-"+kind,kind,...data})}
+function registerEntityR36(o){
+ if(!o)return null;o.userData=o.userData||{};
+ if(!o.userData.entityIdR36)o.userData.entityIdR36="obj-"+(crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2));
+ const id=o.userData.entityIdR36;
+ entityInstancesR36.set(id,{id,templateId:"tpl-"+String(o.userData.kind||"object").toLowerCase(),kind:o.userData.kind||"object",name:o.userData.name||o.name||"Entity",object:o,createdAt:o.userData.createdAtR36||Date.now()});
+ o.userData.createdAtR36=o.userData.createdAtR36||Date.now();return id;
+}
+function ensureShopInventoryR36(o){
+ const d=shopDbR33(o),def=shopDefR33(o),text=(String(o.userData?.kind||"")+" "+def.title).toLowerCase();
+ let key=Object.keys(shopInventoryR36).find(k=>text.includes(k))||"souvenir";
+ if(!d.stockR36)d.stockR36={};
+ for(const p of shopInventoryR36[key])if(!Number.isFinite(d.stockR36[p]))d.stockR36[p]=12+Math.floor(Math.random()*19);
+ return {d,key,items:shopInventoryR36[key]};
+}
+function carryableVisualR36(g,p){
+ if(!g?.mesh||!p)return;
+ const old=g.mesh.getObjectByName("carryableR36");if(old)g.mesh.remove(old);
+ const geo=p.carry==="balloon"?new THREE.SphereGeometry(.12,10,8):new THREE.BoxGeometry(.18,.18,.18);
+ const mat=new THREE.MeshStandardMaterial({color:0xf2d27a,roughness:.65});
+ const m=new THREE.Mesh(geo,mat);m.name="carryableR36";m.position.set(.25,.7,0);g.mesh.add(m);
+ let t=0;m.onBeforeRender=()=>{t+=.04;m.position.y=.7+Math.sin(t)*.035;m.rotation.y+=.025};
+}
+function giveProductR36(g,key,source="Park Shop"){
+ const p=productTemplatesR36[key];if(!p)return false;const d=ensureGuestNeedsR34(g);
+ if(d.wallet<p.price)return false;
+ d.wallet-=p.price;d.inventory.push({id:"itm-"+(crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2)),templateId:"product-"+key,icon:p.icon,name:p.name,source,acquiredAt:Date.now(),carry:p.carry});
+ recordEconomyR36("income",p.price,p.name);recordEconomyR36("cogs",p.cost,p.name+" stock");
+ carryableVisualR36(g,p);return true;
+}
+
+// Expanded build catalog database. Existing catalog remains; these are additive templates.
+const catalogExtraR36=[
+ ["scenery","🗑️","Trash Can",35,"Keeps paths clean and gives guests somewhere to discard finished food packaging."],
+ ["scenery","♻️","Recycling Bin",40,"A sorted waste point for bottles, maps and recyclable park litter."],
+ ["scenery","🌲","Redwood Tree",55,"A towering frontier evergreen for dense woodland vistas."],
+ ["scenery","🌼","Wildflower Patch",22,"Low-cost color for path edges and quiet corners."],
+ ["scenery","🪨","Boulder Cluster",45,"Natural rockwork for rugged frontier landscaping."],
+ ["scenery","⛲","Jumping Fountain",180,"Animated water scenery that can become a playful guest discovery point."],
+ ["scenery","🪵","Picnic Table",65,"A resting place near food stalls and scenic overlooks."],
+ ["ride","🎠","Junior Carousel",1450,"A gentle family ride with dependable throughput."],
+ ["ride","🌀","Scrambler",1900,"A compact spinning attraction with strong excitement for its footprint."],
+ ["ride","🚤","River Boats",3200,"A scenic water attraction built for leisurely frontier exploration."],
+ ["ride","🏌️","Mini Golf",2100,"A low-intensity attraction that broadens the park beyond mechanical rides."],
+ ["shop","🍩","Donut Shop",340,"Sweet baked inventory with strong impulse-purchase appeal."],
+ ["shop","🌮","Taco Stall",390,"A compact hot-food concession with solid per-item margin."],
+ ["shop","🍬","Candy Shop",360,"Portable sweets and colorful merchandise for wandering guests."],
+ ["shop","🎈","Balloon Stall",260,"Sells animated carryable balloons that visibly travel with guests."],
+ ["facility","🏧","ATM",220,"Extends guest spending capacity and supports the park economy."],
+ ["facility","🩹","First Aid",650,"A park service point for guests needing recovery and care."],
+ ["facility","🔐","Lockers",300,"Temporary storage infrastructure for guests carrying park goods."]
+];
+for(const [topic,icon,name,cost,lore] of catalogExtraR36)registerTemplateR36(name.toLowerCase().replace(/\W+/g,"-"),{topic,icon,name,cost,lore});
+
+// Decorate existing catalog cards with template lore/economy when possible and append missing entries.
+function enrichBuildManagerR36(){
+ const grid=$("#buildGrid");if(!grid)return;
+ for(const x of catalogExtraR36){
+   const [topic,icon,name,cost,lore]=x;
+   if([...grid.querySelectorAll("button")].some(b=>b.textContent.includes(name)))continue;
+   const b=document.createElement("button");b.className="catalogItemR10";b.dataset.r36Topic=topic;b.dataset.r36Name=name;b.dataset.r36Cost=cost;b.dataset.r36Lore=lore;
+   b.innerHTML=`<span class="ico">${icon}</span><span><b>${name}</b><small>$${cost} build • ${topic}</small></span>`;
+   b.onclick=()=>{const rp=projectForItemR37(name);if(rp&&!researchUnlockedR37(name)){$("#catalogLoreR10").innerHTML=`<b>🔒 ${icon} ${name}</b><br>${lore}<br><small>Requires R&D: ${rp.name} • Research $${rp.cost} • Build $${cost}</small>`;return}$("#catalogLoreR10").innerHTML=`<b>${icon} ${name}</b><br>${lore}<br><small>Template: tpl-${name.toLowerCase().replace(/\W+/g,"-")} • Build cost $${cost}</small>`};
+   grid.appendChild(b);
+ }
+}
+setTimeout(()=>{enrichBuildManagerR36();applyResearchLocksR37()},100);
+
+function renderShopInventoryR36(){
+ if(!activeShopR33)return;const {d,items}=ensureShopInventoryR36(activeShopR33),box=$("#shopProductsR33");if(!box)return;
+ const stock=document.createElement("div");stock.innerHTML='<b>📦 PHYSICAL STOCK</b>'+items.map(k=>{const p=productTemplatesR36[k];return `<div class="parkStat"><span>${p.icon} ${p.name}<small style="display:block">Unit cost $${p.cost.toFixed(2)} • carry: ${p.carry}</small></span><b>${d.stockR36[k]} units</b></div>`}).join("");
+ box.appendChild(stock);
+}
+
+let econLastR36=performance.now();
+function economyTickR36(now){
+ if(now-econLastR36<5000)return;econLastR36=now;
+ // Register all live objects and occasionally simulate a purchase at open shops.
+ objects.forEach(registerEntityR36);
+ for(const o of objects.filter(isShopR33)){
+   const {d,items}=ensureShopInventoryR36(o);if(!d.shopOpenR33||!guests.length||Math.random()>.22)continue;
+   const key=items[Math.floor(Math.random()*items.length)],g=guests[Math.floor(Math.random()*guests.length)];
+   if(d.stockR36[key]>0&&giveProductR36(g,key,shopDefR33(o).title)){d.stockR36[key]--;d.shopRevenueR33+=productTemplatesR36[key].price;d.shopSalesR33++}
+ }
+ economyR36.history.push({time:Date.now(),income:economyR36.income,spend:economyR36.buildSpend+economyR36.cogs,cash:economyR36.cash});
+ if(economyR36.history.length>40)economyR36.history.shift();
+ if(!$("#economyManagerR36").classList.contains("hidden"))renderEconomyR36();
+ if(activeShopR33&&!$("#shopInspectorR33").classList.contains("hidden")){renderShopR33();renderShopInventoryR36()}
+}
+function renderEconomyR36(){
+ const profit=economyR36.income-economyR36.cogs-economyR36.buildSpend;
+ $("#economySummaryR36").innerHTML=`<div class="parkStat"><span>💰 Cash</span><b>$${economyR36.cash.toFixed(2)}</b></div><div class="parkStat"><span>📥 Income</span><b>$${economyR36.income.toFixed(2)}</b></div><div class="parkStat"><span>🏗 Build Spend</span><b>$${economyR36.buildSpend.toFixed(2)}</b></div><div class="parkStat"><span>📦 Cost of Goods</span><b>$${economyR36.cogs.toFixed(2)}</b></div><div class="parkStat"><span>📊 Net</span><b>$${profit.toFixed(2)}</b></div><div class="parkStat"><span>DB</span><b>${entityTemplatesR36.size} templates • ${entityInstancesR36.size} unique objects</b></div>`;
+ const c=$("#economyChartR36"),ctx=c.getContext("2d"),h=economyR36.history;ctx.clearRect(0,0,c.width,c.height);ctx.strokeStyle="#31443a";ctx.strokeRect(0,0,c.width,c.height);
+ if(h.length>1){const vals=h.flatMap(x=>[x.income,x.spend]),max=Math.max(1,...vals);for(const [field,yoff] of [["income",0],["spend",2]]){ctx.beginPath();h.forEach((p,i)=>{const x=8+i*(c.width-16)/(h.length-1),y=c.height-8-(p[field]/max)*(c.height-20)+yoff;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.strokeStyle=field==="income"?"#9bd6a7":"#d6b09b";ctx.stroke()}}
+ $("#economyLedgerR36").innerHTML=economyR36.ledger.slice(-30).reverse().map(x=>`<div>${new Date(x.time).toLocaleTimeString()} • <b>${x.type}</b> • $${x.amount.toFixed(2)} • ${x.label}</div>`).join("")||"No transactions yet.";
+}
+$("#economyBtnR36").onclick=()=>{renderEconomyR36();$("#economyManagerR36").classList.remove("hidden")};
+$("#economyCloseR36").onclick=()=>$("#economyManagerR36").classList.add("hidden");
+$("#researchBtnR37").onclick=()=>{renderResearchR37();$("#researchManagerR37").classList.remove("hidden")};
+$("#researchCloseR37").onclick=()=>$("#researchManagerR37").classList.add("hidden");
+
+// R35 complete managers + keyboard routing.
+function allAttractionsR35(){
+ return objects.filter(o=>{
+   const k=String(o?.userData?.kind||"").toLowerCase(),n=String(o?.name||o?.userData?.name||"").toLowerCase();
+   return isRideR30(o)||/attraction|ride|coaster|wheel|carousel|tower|ship|cups|bumper|swing|kart|flume|cinema|maze|golf|boats|chairlift|scrambler|saucer|fun house/.test(k+" "+n);
+ });
+}
+function renderAttractionsR35(){
+ const list=allAttractionsR35();
+ $("#attractionCountR33").textContent=list.length;
+ $("#attractionListR33").innerHTML=list.length?list.map((o,i)=>{
+   const d=o.userData||{},running=d.running!==false;
+   return `<div class="parkStat"><span>🎢 <b>${attractionNameR33(o)}</b><small style="display:block">${d.kind||"attraction"} • ${running?"🟢 Running":"🔴 Stopped"}</small></span><span><button data-r35-a="${i}" data-act="inspect">Inspect</button><button data-r35-a="${i}" data-act="${running?"stop":"start"}">${running?"Stop":"Start"}</button></span></div>`;
+ }).join(""):'<div class="status">No rides or attractions placed yet.</div>';
+ $("#attractionListR33").querySelectorAll("[data-r35-a]").forEach(b=>b.onclick=()=>{
+   const o=list[Number(b.dataset.r35A)];if(!o)return;
+   if(b.dataset.act==="inspect")openRideNameR30(o);
+   else{o.userData=o.userData||{};o.userData.running=b.dataset.act==="start";renderAttractionsR35()}
+ });
+}
+function openAttractionsR35(){renderAttractionsR35();$("#attractionManagerR33").classList.remove("hidden")}
+
+function renderGuestManagerR35(){
+ hydrateGuestNamesR31();
+ $("#guestManagerCountR35").textContent=guests.length;
+ $("#guestManagerListR35").innerHTML=guests.length?guests.map((g,i)=>{
+   const d=ensureGuestNeedsR34(g),m=guestMoodR29(g);
+   return `<div class="parkStat"><span>${m[0]} <b>${canonicalGuestNameR31(g)}</b><small style="display:block">${guestActivityR29(g)} • Mood ${Math.round(d.mood)}% • Hunger ${Math.round(d.hunger)}% • Thirst ${Math.round(d.thirst)}% • Boredom ${Math.round(d.boredom)}%</small></span><button data-r35-g="${i}">Open</button></div>`;
+ }).join(""):'<div class="status">No guests currently tracked.</div>';
+ $("#guestManagerListR35").querySelectorAll("[data-r35-g]").forEach(b=>b.onclick=()=>{const g=guests[Number(b.dataset.r35G)];if(g)openGuestWindowR29(g)});
+}
+function openGuestManagerR35(){renderGuestManagerR35();$("#guestManagerR35").classList.remove("hidden")}
+$("#guestManagerBtnR35").onclick=openGuestManagerR35;
+$("#attractionManagerBtnR35").onclick=openAttractionsR35;
+$("#guestManagerCloseR35").onclick=()=>$("#guestManagerR35").classList.add("hidden");
+
+// F1 is explicitly Build mode + Build Manager. F2 is Park Manager.
+addEventListener("keydown",e=>{
+ if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||""))return;
+ if(e.key==="F1"){
+   e.preventDefault();cameraModeR14=2;
+   $("#buildPanel").classList.remove("hidden");
+   $("#status").textContent="F1 • BUILD MODE";
+   updateCameraModeHudR14?.();
+ }else if(e.key==="F2"){
+   e.preventDefault();$("#parkPanel").classList.remove("hidden");
+   $("#status").textContent="F2 • PARK MANAGER";
+ }
+});
+
+// R33 shop economy inspector + unified attraction manager.
+let activeShopR33=null;
+const shopDefsR33={
+ burger:{icon:"🍔",title:"Burger Stand",lore:"A frontier grill serving quick meals to hungry explorers.",products:[["🍔","Frontier Burger",6.50,2.10],["🥤","Fountain Drink",3.25,.55]]},
+ pizza:{icon:"🍕",title:"Pizza Shop",lore:"Hot slices, fast turnover, and the smell that pulls guests off the midway.",products:[["🍕","Pizza Slice",5.75,1.65],["🥤","Soda",3.25,.55]]},
+ drink:{icon:"🥤",title:"Drink Stall",lore:"Cold drinks keep long park days moving.",products:[["🥤","Soft Drink",3.25,.55],["💧","Water",2.50,.35]]},
+ ice:{icon:"🍦",title:"Ice Cream",lore:"A cold frontier treat for warm afternoons.",products:[["🍦","Ice Cream",4.75,1.20]]},
+ coffee:{icon:"☕",title:"Coffee Shop",lore:"Roasted coffee and small comforts for guests pushing into another park day.",products:[["☕","Coffee",4.25,.80],["🥐","Pastry",3.75,1.05]]},
+ souvenir:{icon:"🎁",title:"Souvenir Shop",lore:"Keepsakes turn a park visit into something guests carry home.",products:[["🧸","Park Plush",14.00,5.25],["🧢","Logo Cap",18.00,6.50],["📷","Ride Photo",12.00,2.25]]},
+ arcade:{icon:"🕹️",title:"Arcade",lore:"Lights, prizes and small challenges tucked between the larger attractions.",products:[["🎟️","Game Play",2.00,.20],["🧸","Prize",8.00,3.25]]}
+};
+function shopDefR33(o){
+ const k=String(o?.userData?.kind||"").toLowerCase(),n=String(o?.userData?.name||o?.name||"").toLowerCase();
+ const key=Object.keys(shopDefsR33).find(x=>k.includes(x)||n.includes(x));
+ return key?shopDefsR33[key]:{icon:"🏪",title:o?.userData?.name||o?.name||"Park Shop",lore:"A park concession serving guests along the frontier.",products:[["🛍️","Park Product",5.00,1.50]]};
+}
+function isShopR33(o){
+ const k=String(o?.userData?.kind||"").toLowerCase(),n=String(o?.name||"").toLowerCase();
+ return /stall|shop|burger|pizza|drink|ice|coffee|souvenir|arcade|kiosk|candy|donut|taco|lemonade|balloon|photo/.test(k+" "+n);
+}
+function shopDbR33(o){
+ o.userData=o.userData||{};const d=o.userData;
+ if(typeof d.shopOpenR33!=="boolean")d.shopOpenR33=true;
+ if(!Number.isFinite(d.shopRevenueR33))d.shopRevenueR33=0;
+ if(!Number.isFinite(d.shopSalesR33))d.shopSalesR33=0;
+ if(!d.productPricesR33)d.productPricesR33={};
+ return d;
+}
+function renderShopR33(){
+ const o=activeShopR33;if(!o)return;const d=shopDbR33(o),def=shopDefR33(o);
+ $("#shopBrandR33").textContent=`${def.icon} ${def.title}`;$("#shopLoreR33").textContent=def.lore;
+ $("#shopStatusR33").textContent=d.shopOpenR33?"🟢 OPEN":"🔴 CLOSED";
+ $("#shopRevenueR33").textContent="$"+d.shopRevenueR33.toFixed(2);$("#shopSalesR33").textContent=d.shopSalesR33;
+ $("#shopProductsR33").innerHTML=def.products.map((p,i)=>{
+   const price=d.productPricesR33[i]??p[2],margin=price-p[3];
+   return `<div class="parkStat"><span>${p[0]} <b>${p[1]}</b><small style="display:block">Cost $${p[3].toFixed(2)} • Margin $${margin.toFixed(2)}</small></span><label>$ <input data-r33-price="${i}" type="number" min="0" step=".25" value="${price.toFixed(2)}" style="width:62px"></label></div>`;
+ }).join("");
+ $("#shopProductsR33").querySelectorAll("[data-r33-price]").forEach(inp=>inp.onchange=()=>{d.productPricesR33[inp.dataset.r33Price]=Math.max(0,Number(inp.value)||0);renderShopR33()});
+}
+function openShopR33(o){activeShopR33=o;shopDbR33(o);ensureShopInventoryR36(o);renderShopR33();renderShopInventoryR36();$("#shopInspectorR33").classList.remove("hidden")}
+$("#shopCloseR33").onclick=()=>$("#shopInspectorR33").classList.add("hidden");
+$("#shopStartR33").onclick=()=>{if(activeShopR33){shopDbR33(activeShopR33).shopOpenR33=true;renderShopR33()}};
+$("#shopStopR33").onclick=()=>{if(activeShopR33){shopDbR33(activeShopR33).shopOpenR33=false;renderShopR33()}};
+
+function attractionNameR33(o){return isRideR30(o)?rideNameR30(o):(o.userData?.name||o.name||o.userData?.kind||"Attraction")}
+function renderAttractionsR33(){
+ const list=objects.filter(o=>isRideR30(o));
+ $("#attractionCountR33").textContent=list.length;
+ $("#attractionListR33").innerHTML=list.length?list.map((o,i)=>{
+   const d=o.userData||{},running=d.running!==false;
+   return `<div class="parkStat"><span>🎢 <b>${attractionNameR33(o)}</b><small style="display:block">${d.kind||"attraction"} • ${running?"🟢 Running":"🔴 Stopped"}</small></span><span><button data-r33-attraction="${i}" data-act="inspect">Inspect</button><button data-r33-attraction="${i}" data-act="${running?"stop":"start"}">${running?"Stop":"Start"}</button></span></div>`;
+ }).join(""):'<div class="status">No rides or attractions placed yet.</div>';
+ $("#attractionListR33").querySelectorAll("[data-r33-attraction]").forEach(b=>b.onclick=()=>{
+   const o=list[Number(b.dataset.r33Attraction)];if(!o)return;
+   if(b.dataset.act==="inspect"){openRideNameR30(o);$("#status").textContent=`INSPECT • ${attractionNameR33(o)}`}
+   else{o.userData=o.userData||{};o.userData.running=b.dataset.act==="start";renderAttractionsR33()}
+ });
+}
+function openAttractionsR33(){renderAttractionsR33();$("#attractionManagerR33").classList.remove("hidden")}
+const oldAttractionLauncherR33=$("#openAttractionManagerR33");if(oldAttractionLauncherR33)oldAttractionLauncherR33.onclick=openAttractionsR33;
+$("#attractionCloseR33").onclick=()=>$("#attractionManagerR33").classList.add("hidden");
+
+// Backspace closes the new child windows when typing focus is not active.
+addEventListener("keydown",e=>{
+ if(e.key!=="Backspace"||/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||""))return;
+ if(!$("#shopInspectorR33").classList.contains("hidden")){$("#shopInspectorR33").classList.add("hidden");e.preventDefault()}
+ else if(!$("#attractionManagerR33").classList.contains("hidden")){$("#attractionManagerR33").classList.add("hidden");e.preventDefault()}
+});
+
+// R32 Park Manager paper-note naming drawer.
+const parkNamingOpenR32=$("#parkNamingOpenR32"),parkNamingEditorR32=$("#parkNamingEditorR32"),parkNamingCloseR32=$("#parkNamingCloseR32");
+if(parkNamingOpenR32&&parkNamingEditorR32)parkNamingOpenR32.onclick=()=>{
+ parkNamingEditorR32.style.display=parkNamingEditorR32.style.display==="none"?"block":"none";
+ const pn=$("#parkNameR30"),ps=$("#parkSignR30");if(pn)pn.value=parkNameR30;if(ps)ps.value=parkSignR30;
+};
+if(parkNamingCloseR32&&parkNamingEditorR32)parkNamingCloseR32.onclick=()=>parkNamingEditorR32.style.display="none";
+
+// R30 persistent park, entrance-sign and ride naming.
+let parkNameR30=localStorage.getItem("rct-r30-park-name")||"Forest Frontiers";
+let parkSignR30=localStorage.getItem("rct-r30-park-sign")||parkNameR30.toUpperCase();
+let activeRideR30=null;
+
+function isRideR30(o){
+ const k=String(o?.userData?.kind||"").toLowerCase();
+ return ["wheel","carousel","coaster","ride","drop","ship","teacups","bumper","swings","karts","flume","cinema","maze"].some(x=>k.includes(x));
+}
+function rideNameR30(o){
+ o.userData=o.userData||{};
+ if(!o.userData.rideNameR30)o.userData.rideNameR30=o.userData.name||o.name||"Unnamed Ride";
+ return o.userData.rideNameR30;
+}
+function saveRideNameR30(o,name){
+ if(!o)return;name=String(name||"").trim().slice(0,32);if(!name)return;
+ o.userData=o.userData||{};o.userData.rideNameR30=name;o.userData.name=name;o.name=name;
+ const key=o.userData.entityId||o.uuid;
+ localStorage.setItem("rct-r30-ride-"+key,name);
+}
+function hydrateRideNamesR30(){
+ for(const o of objects){if(!isRideR30(o))continue;const key=o.userData?.entityId||o.uuid,n=localStorage.getItem("rct-r30-ride-"+key);if(n)saveRideNameR30(o,n)}
+}
+function openRideNameR30(o){
+ activeRideR30=o;$("#rideNameInputR30").value=rideNameR30(o);$("#rideNameWindowR30").classList.remove("hidden");$("#rideNameInputR30").focus();
+}
+$("#rideNameCloseR30").onclick=()=>$("#rideNameWindowR30").classList.add("hidden");
+$("#rideNameSaveR30").onclick=()=>{if(activeRideR30){saveRideNameR30(activeRideR30,$("#rideNameInputR30").value);$("#status").textContent=`RIDE RENAMED • ${rideNameR30(activeRideR30)}`}};
+$("#rideNameInputR30").addEventListener("keydown",e=>{if(e.key==="Enter")$("#rideNameSaveR30").click()});
+
+function applyParkNamingR30(){
+ const pn=$("#parkNameR30"),ps=$("#parkSignR30");if(pn)pn.value=parkNameR30;if(ps)ps.value=parkSignR30;
+ document.title=parkNameR30+" • Rollamacoaster Tycoon";
+ // Update any existing visible park-name labels without depending on a single legacy ID.
+ ["parkName","parkTitle","parkManagerName"].forEach(id=>{const el=$("#"+id);if(el)el.textContent=parkNameR30});
+ updateEntranceSignR30();
+}
+function updateEntranceSignR30(){
+ // Reuse entrance object; attach a Three.js text-like canvas texture sign to it once.
+ const entrance=objects.find(o=>String(o.userData?.kind||"").toLowerCase().includes("entrance"));
+ if(!entrance)return;
+ let sign=entrance.userData.signR30;
+ if(!sign){
+   const c=document.createElement("canvas");c.width=512;c.height=128;
+   const tex=new THREE.CanvasTexture(c);
+   const mat=new THREE.MeshBasicMaterial({map:tex,transparent:true,side:THREE.DoubleSide});
+   sign=new THREE.Mesh(new THREE.PlaneGeometry(5.8,1.25),mat);
+   sign.position.set(0,3.65,.36);entrance.add(sign);entrance.userData.signR30=sign;entrance.userData.signCanvasR30=c;
+ }
+ const c=entrance.userData.signCanvasR30,ctx=c.getContext("2d");
+ ctx.clearRect(0,0,c.width,c.height);ctx.fillStyle="#152019";ctx.fillRect(0,0,c.width,c.height);
+ ctx.strokeStyle="#d7c77b";ctx.lineWidth=8;ctx.strokeRect(5,5,c.width-10,c.height-10);
+ ctx.fillStyle="#f3e7ae";ctx.font="bold 42px sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";
+ let text=parkSignR30.toUpperCase();while(ctx.measureText(text).width>470&&ctx.font.match(/\d+/)[0]>18){const n=parseInt(ctx.font.match(/\d+/)[0])-2;ctx.font=`bold ${n}px sans-serif`}
+ ctx.fillText(text,256,64);sign.material.map.needsUpdate=true;
+}
+const saveParkNameBtnR30=$("#saveParkNameR30");
+if(saveParkNameBtnR30)saveParkNameBtnR30.onclick=()=>{const v=$("#parkNameR30").value.trim();if(v){parkNameR30=v;localStorage.setItem("rct-r30-park-name",v);applyParkNamingR30();$("#status").textContent=`PARK RENAMED • ${v}`}};
+const saveParkSignBtnR30=$("#saveParkSignR30");
+if(saveParkSignBtnR30)saveParkSignBtnR30.onclick=()=>{const v=$("#parkSignR30").value.trim();if(v){parkSignR30=v;localStorage.setItem("rct-r30-park-sign",v);updateEntranceSignR30();$("#status").textContent=`ENTRANCE SIGN • ${v}`}};
+setTimeout(()=>{hydrateRideNamesR30();applyParkNamingR30()},0);
+
+
+
+// R34 persistent guest needs / disposition simulation.
+function ensureGuestNeedsR34(g){
+ const d=guestRecordR29(g);
+ const init=(k,a,b)=>{if(!Number.isFinite(d[k]))d[k]=a+Math.random()*(b-a)};
+ init("mood",68,94);init("hunger",8,38);init("thirst",8,34);init("boredom",4,28);
+ init("energy",72,100);init("nausea",0,8);init("bathroom",0,18);
+ init("comfort",68,96);init("excitement",28,72);
+ return d;
+}
+function needFaceR34(v,inverse=false){
+ const score=inverse?100-v:v;
+ return score>=70?"🟢":score>=40?"🟡":"🔴";
+}
+function renderGuestNeedsR34(g){
+ const d=ensureGuestNeedsR34(g);
+ const rows=[
+  ["😊","Mood",d.mood,false],["🍔","Hunger",d.hunger,true],
+  ["🥤","Thirst",d.thirst,true],["🥱","Boredom",d.boredom,true],
+  ["⚡","Energy",d.energy,false],["🤢","Nausea",d.nausea,true],
+  ["🚻","Bathroom",d.bathroom,true],["🪑","Comfort",d.comfort,false],
+  ["🎢","Excitement",d.excitement,false]
+ ];
+ $("#guestNeedsGridR34").innerHTML=rows.map(([icon,label,val,inv])=>`<div style="padding:4px 5px;background:#0b120e;border:1px solid #26342c;border-radius:3px"><div style="display:flex;justify-content:space-between"><span>${icon} ${label}</span><b>${Math.round(val)}%</b></div><div style="height:3px;background:#1b2820;margin-top:3px"><div style="height:100%;width:${Math.max(0,Math.min(100,val))}%;background:currentColor;opacity:.65"></div></div><small>${needFaceR34(val,inv)}</small></div>`).join("");
+ const problems=[];
+ if(d.hunger>70)problems.push("hungry");if(d.thirst>70)problems.push("thirsty");if(d.boredom>70)problems.push("bored");
+ if(d.energy<30)problems.push("tired");if(d.nausea>60)problems.push("nauseous");if(d.bathroom>70)problems.push("needs restroom");
+ $("#guestOverallR34").textContent=problems.length?"⚠ "+problems.join(" • "):"😊 Doing well";
+}
+let needsTickR34=performance.now();
+function updateGuestNeedsR34(now){
+ const elapsed=Math.min(5,(now-needsTickR34)/1000);if(elapsed<1)return;needsTickR34=now;
+ for(const g of guests){
+   const d=ensureGuestNeedsR34(g),q=g.rideQueueR27;
+   d.hunger=Math.min(100,d.hunger+elapsed*.055);
+   d.thirst=Math.min(100,d.thirst+elapsed*.075);
+   d.bathroom=Math.min(100,d.bathroom+elapsed*.035);
+   d.energy=Math.max(0,d.energy-elapsed*.025);
+   if(q?.state==="riding"){d.boredom=Math.max(0,d.boredom-elapsed*.8);d.excitement=Math.min(100,d.excitement+elapsed*.9);d.nausea=Math.min(100,d.nausea+elapsed*.16)}
+   else if(q){d.boredom=Math.min(100,d.boredom+elapsed*.12)}
+   else if(g.targetPath){d.boredom=Math.max(0,d.boredom-elapsed*.025)}
+   const penalty=Math.max(0,d.hunger-65)*.018+Math.max(0,d.thirst-65)*.025+Math.max(0,d.boredom-70)*.018+Math.max(0,d.bathroom-75)*.025+Math.max(0,d.nausea-65)*.025;
+   d.mood=Math.max(0,Math.min(100,d.mood-penalty*elapsed+(d.excitement>60?.012:0)*elapsed));
+   d.comfort=Math.max(0,Math.min(100,100-(d.thirst*.18+d.bathroom*.25+d.nausea*.35)));
+ }
+ if(activeGuestR29)renderGuestNeedsR34(activeGuestR29);
+}
+
+// R31 canonical first + last guest identities and Ollama-backed conversation.
+const guestFirstNamesR31=["Maya","Ivy","Noah","Liam","Ava","Emma","Sofia","Lucas","Mason","Chloe","Ethan","Zoe","Nora","Leo","Mila","Caleb","Ruby","Elijah","Grace","Owen","Lily","Theo","Hazel","Miles","Aria","Julian","Sadie","Isaac","Naomi","Finn"];
+const guestLastNamesR31=["Carter","Bennett","Morgan","Reed","Hayes","Brooks","Foster","Parker","Collins","Rivera","Murphy","Turner","Bailey","Cooper","Ward","Price","Sullivan","Gray","Bell","Morris","Kelly","Howard","Ross","Wood","Diaz","James","Stone","Coleman","Powell","Long"];
+
+function canonicalGuestNameR31(g){
+ const d=guestRecordR29(g);
+ if(!d.firstName)d.firstName=guestFirstNamesR31[Math.floor(Math.random()*guestFirstNamesR31.length)];
+ if(!d.lastName)d.lastName=guestLastNamesR31[Math.floor(Math.random()*guestLastNamesR31.length)];
+ d.fullName=`${d.firstName} ${d.lastName}`;
+ g.name=d.fullName;
+ return d.fullName;
+}
+function hydrateGuestNamesR31(){for(const g of guests)canonicalGuestNameR31(g)}
+
+let ollamaModelsR31=[],ollamaModelR31=localStorage.getItem("rct-r31-ollama-model")||"";
+async function detectOllamaR31(){
+ const state=$("#gw29OllamaState"),sel=$("#gw29Model");
+ try{
+   state.textContent="DETECTING…";
+   const r=await fetch("http://127.0.0.1:11434/api/tags");
+   if(!r.ok)throw new Error("HTTP "+r.status);
+   const data=await r.json();ollamaModelsR31=(data.models||[]).map(x=>x.name).filter(Boolean);
+   sel.innerHTML=ollamaModelsR31.map(n=>`<option value="${n}">${n}</option>`).join("");
+   if(ollamaModelR31&&ollamaModelsR31.includes(ollamaModelR31))sel.value=ollamaModelR31;
+   else if(ollamaModelsR31.length){ollamaModelR31=ollamaModelsR31[0];sel.value=ollamaModelR31}
+   state.textContent=ollamaModelsR31.length?"OLLAMA READY":"NO MODELS";
+ }catch(err){state.textContent="OLLAMA OFFLINE";console.warn("R31 Ollama detect:",err)}
+}
+async function speakToGuestR31(g,userText){
+ const d=guestRecordR29(g),name=canonicalGuestNameR31(g),model=$("#gw29Model")?.value||ollamaModelR31;
+ if(!model)return "I can't reach the local guest agent right now.";
+ ollamaModelR31=model;localStorage.setItem("rct-r31-ollama-model",model);
+ const recent=d.chatR29.slice(-10).map(m=>({role:m.who==="player"?"user":"assistant",content:m.text}));
+ const inventory=d.inventory.map(i=>i.name||"item").join(", ")||"nothing";
+ const system=`You are ${name}, an individual guest currently visiting ${parkNameR30}. Speak naturally in first person as this guest. Never call yourself selectedGuest. Current activity: ${guestActivityR29(g)}. Current thought: ${d.currentThought||"exploring the park"}. Mood: ${guestMoodR29(g)[1]}. Wallet: $${d.wallet.toFixed(2)}. Inventory: ${inventory}. Mood ${Math.round(d.mood)}%, hunger ${Math.round(d.hunger)}%, thirst ${Math.round(d.thirst)}%, boredom ${Math.round(d.boredom)}%, energy ${Math.round(d.energy)}%, nausea ${Math.round(d.nausea)}%, bathroom need ${Math.round(d.bathroom)}%, comfort ${Math.round(d.comfort)}%, excitement ${Math.round(d.excitement)}%. Park popularity: ${Math.round(parkPopularityR21)}%. Stay grounded in what this guest could personally know and keep replies concise.`;
+ try{
+   const state=$("#gw29OllamaState");state.textContent="THINKING…";
+   const r=await fetch("http://127.0.0.1:11434/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model,messages:[{role:"system",content:system},...recent,{role:"user",content:userText}],stream:false})});
+   if(!r.ok)throw new Error("HTTP "+r.status);
+   const data=await r.json();state.textContent="OLLAMA READY";
+   return data.message?.content?.trim()||"I'm still taking everything in.";
+ }catch(err){$("#gw29OllamaState").textContent="OLLAMA ERROR";console.warn("R31 guest chat:",err);return "I lost my train of thought for a second."}
+}
+
+// R29 richer guest interaction, kept outside generic window-management machinery.
+let activeGuestR29=null;
+function guestRecordR29(g){g.userData=g.userData||{};const d=g.userData;if(!d.guestId)d.guestId="gst-"+Math.random().toString(36).slice(2,10);if(!Number.isFinite(d.wallet))d.wallet=20+Math.floor(Math.random()*41);if(!Array.isArray(d.inventory))d.inventory=[];if(!Array.isArray(d.chatR29))d.chatR29=[];return d}
+function guestMoodR29(g){const n=Number(g.userData?.thoughtSentiment||0);return n>.25?["😊","Happy"]:n<-.25?["☹️","Unhappy"]:["😐","Okay"]}
+function guestActivityR29(g){if(g.rideQueueR27?.state==="riding")return"🎢 Riding";if(g.rideQueueR27)return"⏳ "+(g.userData?.activity||"Queueing");if(g.targetPath&&g.targetPath!==g.currentPath)return"🚶 Walking";return"🧍 Looking around"}
+function renderHoverR29(g,x,y){const d=guestRecordR29(g),m=guestMoodR29(g),h=$("#guestHoverR29");h.innerHTML=`<b style="font-size:11px">${m[0]} ${canonicalGuestNameR31(g)}</b><div>${guestActivityR29(g)} • ${m[1]}</div><div>👛 $${d.wallet.toFixed(2)} • 🎒 ${d.inventory.length} items ${g.rideQueueR27?`• 🎟️ Queue #${g.rideQueueR27.slot+1}`:""}</div><div>⭐ Park ${Math.round(parkPopularityR21)}%</div><div style="margin-top:5px;border-top:1px solid #28372e;padding-top:5px">💭 “${d.currentThought||"Taking in Forest Frontiers."}”</div>`;h.style.left=Math.min(innerWidth-300,x+14)+"px";h.style.top=Math.min(innerHeight-150,y+14)+"px";h.style.display="block"}
+function renderGuestWindowR29(){const g=activeGuestR29;if(!g)return;const d=guestRecordR29(g),m=guestMoodR29(g);$("#gw29Name").textContent=`${m[0]} ${canonicalGuestNameR31(g)}`;$("#gw29Meta").textContent=`${d.guestId} • ${m[1]} • ${guestActivityR29(g)}${g.rideQueueR27?` • Queue ${g.rideQueueR27.slot+1}`:""}`;$("#gw29Thought").textContent="💭 "+(d.currentThought||"Taking in Forest Frontiers.");$("#gw29Wallet").textContent="$"+d.wallet.toFixed(2);$("#gw29Count").textContent=d.inventory.length+" items";$("#gw29Inventory").innerHTML=d.inventory.length?d.inventory.slice().reverse().map(i=>`<div>${i.icon||"📦"} <b>${i.name||"Item"}</b> <small>${i.source||""}</small></div>`).join(""):"🎒 Nothing carried yet.";$("#gw29Log").innerHTML=d.chatR29.length?d.chatR29.map(x=>`<div><b>${x.who==="player"?"You":canonicalGuestNameR31(g)}:</b> ${x.text}</div>`).join(""):`<div><b>${g.name||"Guest"}:</b> ${d.currentThought||"Hi! I'm exploring the park."}</div>`}
+function openGuestWindowR29(g){activeGuestR29=g;guestRecordR29(g);renderGuestWindowR29();$("#guestWindowR29").classList.remove("hidden")}
+$("#gw29Close").onclick=()=>$("#guestWindowR29").classList.add("hidden");
+$("#gw29Form").onsubmit=async e=>{
+ e.preventDefault();if(!activeGuestR29)return;
+ const input=$("#gw29Input"),text=input.value.trim();if(!text)return;
+ const g=activeGuestR29,d=guestRecordR29(g);canonicalGuestNameR31(g);
+ d.chatR29.push({who:"player",text});input.value="";renderGuestWindowR29();
+ const reply=await speakToGuestR31(g,text);
+ d.chatR29.push({who:"guest",text:reply});
+ renderGuestWindowR29();
+;renderGuestNeedsR34(g)
+};
+
+
+$("#gw29Detect").onclick=detectOllamaR31;
+setTimeout(()=>{hydrateGuestNamesR31();detectOllamaR31()},250);
+// R28 graph router + anti-stall movement.
+// Finds an actual connected path route instead of repeatedly guessing the nearest neighbor.
+function routeBetweenPathsR28(start,goal){
+ if(!start||!goal)return [];
+ if(start===goal)return [start];
+ const q=[start],prev=new Map([[start,null]]);
+ while(q.length){
+   const cur=q.shift();
+   for(const n of pathNeighborsR24(cur)){
+     if(prev.has(n))continue;
+     prev.set(n,cur);
+     if(n===goal){
+       const route=[goal];let p=cur;
+       while(p){route.push(p);p=prev.get(p)}
+       return route.reverse();
+     }
+     q.push(n);
+   }
+ }
+ return [];
+}
+function setGuestRouteR28(g,goal){
+ const start=g.currentPath||pathNodeNear(g.mesh.position.x,g.mesh.position.z);
+ const route=routeBetweenPathsR28(start,goal);
+ g.routeR28=route.length>1?route.slice(1):[];
+ return route;
+}
+function chooseWanderTargetR28(g){
+ const cur=g.currentPath;if(!cur)return null;
+ const neighbors=pathNeighborsR24(cur).filter(n=>isWalkablePathR26(n)&&n!==cur);
+ if(!neighbors.length)return null;
+ const forward=neighbors.filter(n=>n!==g.prevPath),pool=forward.length?forward:neighbors;
+ return pool[Math.floor(Math.random()*pool.length)];
+}
+
+// R27 ride queues.
+// Guests who decide to ride seek connected QUEUE path nodes, stand in line,
+// advance toward the ride, board when they reach the front, then return to normal paths.
+function isQueuePathR27(o){
+ if(!o)return false;
+ const u=o.userData||{},k=String(u.kind||"").toLowerCase(),t=String(u.type||"").toLowerCase();
+ return k==="queue"||t==="queue"||u.isQueue===true||u.queuePath===true;
+}
+function isRideR27(o){
+ const k=String(o?.userData?.kind||"").toLowerCase();
+ return ["wheel","carousel","coaster","ride","drop","ship","teacups","bumper","swings","karts","flume","cinema","maze"].some(x=>k.includes(x));
+}
+function nearestQueueForRideR27(ride){
+ if(!ride)return null;
+ let best=null,d=Infinity;
+ for(const o of objects){
+   if(!isQueuePathR27(o))continue;
+   const dx=o.position.x-ride.position.x,dz=o.position.z-ride.position.z,dd=dx*dx+dz*dz;
+   if(dd<d){d=dd;best=o}
+ }
+ return best;
+}
+function queueChainR27(front){
+ if(!front)return [];
+ const chain=[front],seen=new Set([front]);
+ let cur=front;
+ for(let guard=0;guard<80;guard++){
+   const next=pathNeighborsR24(cur).filter(n=>isQueuePathR27(n)&&!seen.has(n));
+   if(!next.length)break;
+   // Walk outward from the ride by choosing the neighbor furthest from the queue front.
+   next.sort((a,b)=>{
+     const ad=(a.position.x-front.position.x)**2+(a.position.z-front.position.z)**2;
+     const bd=(b.position.x-front.position.x)**2+(b.position.z-front.position.z)**2;
+     return bd-ad;
+   });
+   cur=next[0];seen.add(cur);chain.push(cur);
+ }
+ return chain;
+}
+function queueOccupantsR27(ride){
+ return guests.filter(g=>g.rideQueueR27?.ride===ride && g.rideQueueR27.state!=="riding");
+}
+function joinRideQueueR27(g,ride){
+ const front=nearestQueueForRideR27(ride);if(!front)return false;
+ const chain=queueChainR27(front);if(!chain.length)return false;
+ const occupied=new Set(queueOccupantsR27(ride).map(q=>q.rideQueueR27.slot));
+ const slot=Math.min(chain.length-1,Math.max(0,[...Array(chain.length).keys()].find(i=>!occupied.has(i))??chain.length-1));
+ g.rideQueueR27={ride,front,chain,slot,state:"joining",joinedAt:performance.now(),rideUntil:0};
+ g.targetPath=chain[slot];
+ g.userData=g.userData||{};g.userData.activity="Queueing for ride";
+ return true;
+}
+function maybeChooseRideR27(g){
+ if(g.rideQueueR27||Math.random()>.002)return;
+ const rides=objects.filter(isRideR27);
+ if(!rides.length)return;
+ const candidates=rides.filter(r=>nearestQueueForRideR27(r));
+ if(!candidates.length)return;
+ joinRideQueueR27(g,candidates[Math.floor(Math.random()*candidates.length)]);
+}
+function updateRideQueuesR27(now){
+ for(const g of guests){
+   maybeChooseRideR27(g);
+   const q=g.rideQueueR27;if(!q)continue;
+   const m=g.mesh||g;if(!m?.position)continue;
+
+   if(q.state==="riding"){
+     m.visible=false;
+     if(now>=q.rideUntil){
+       m.visible=true;
+       const exit=nearestWalkablePathR26(q.ride.position.x,q.ride.position.z,o=>!isQueuePathR27(o));
+       if(exit){m.position.x=exit.position.x;m.position.z=exit.position.z;g.currentPath=exit}
+       g.prevPath=null;g.targetPath=null;g.userData.activity="Walking";
+       addThoughtR21?.(g,"That ride was fun!",.42);
+       g.rideQueueR27=null;
+     }
+     continue;
+   }
+
+   // Recalculate positions so the line compresses when the front guest boards.
+   const line=queueOccupantsR27(q.ride).sort((a,b)=>a.rideQueueR27.joinedAt-b.rideQueueR27.joinedAt);
+   const idx=line.indexOf(g);
+   q.slot=Math.min(idx,q.chain.length-1);
+   const desired=q.chain[q.slot]||q.front;
+
+   const dist=Math.hypot(m.position.x-desired.position.x,m.position.z-desired.position.z);
+   if(dist>.12){
+     q.state="joining";
+     // Let normal path locomotion carry them toward their assigned queue node.
+     if(g.currentPath!==desired){
+       if(!g.routeR28?.length||g.routeR28[g.routeR28.length-1]!==desired)setGuestRouteR28(g,desired);
+       g.targetPath=g.routeR28?.[0]||null;
+     }
+   }else{
+     // At their assigned line position: stop and wait.
+     q.state="waiting";
+     m.position.x=desired.position.x;m.position.z=desired.position.z;
+     g.currentPath=desired;g.targetPath=null;
+     g.userData.activity=`Waiting in queue • position ${idx+1}`;
+   }
+
+   // Only the oldest guest at slot 0 can board.
+   if(idx===0 && q.state==="waiting" && now-q.joinedAt>2500){
+     q.state="riding";q.rideUntil=now+6500;g.userData.activity="On ride";
+   }
+ }
+}
+
+// R24 strict path walking.
+// Guests may only choose registered path/queue nodes and are pulled back to the
+// nearest path node if an older movement target would take them across grass.
+function pathNeighborsR24(node){
+ if(!node)return [];
+ const out=[];
+ for(const o of objects){
+   if(o===node)continue;
+   const k=o.userData?.kind;
+   if(!isWalkablePathR26(o))continue;
+   const dx=Math.abs(o.position.x-node.position.x),dz=Math.abs(o.position.z-node.position.z);
+   if((dx<=1.25&&dz<.35)||(dz<=1.25&&dx<.35))out.push(o);
+ }
+ return out;
+}
+function enforceGuestPathsR24(){
+ for(const g of guests){
+   const m=g.mesh||g;if(!m?.position||!g.currentPath)continue;
+   const cur=g.currentPath,target=g.targetPath;
+   // A guest must remain inside the corridor connecting two adjacent path centers.
+   if(target){
+     const ax=cur.position.x,az=cur.position.z,bx=target.position.x,bz=target.position.z;
+     const vx=bx-ax,vz=bz-az,len2=vx*vx+vz*vz||1;
+     const t=Math.max(0,Math.min(1,((m.position.x-ax)*vx+(m.position.z-az)*vz)/len2));
+     const px=ax+vx*t,pz=az+vz*t;
+     if(Math.hypot(m.position.x-px,m.position.z-pz)>.18){m.position.x=px;m.position.z=pz}
+   }else if(Math.hypot(m.position.x-cur.position.x,m.position.z-cur.position.z)>.18){
+     m.position.x=cur.position.x;m.position.z=cur.position.z;
+   }
+ }
+}
+
+canvas.addEventListener("pointermove",e=>{if(e.buttons)return;const r=canvas.getBoundingClientRect();mouse.x=((e.clientX-r.left)/r.width)*2-1;mouse.y=-((e.clientY-r.top)/r.height)*2+1;raycaster.setFromCamera(mouse,camera);const hits=raycaster.intersectObjects(guests.map(g=>g.mesh).filter(Boolean),true);let found=null;if(hits.length){let o=hits[0].object;while(o){found=guests.find(g=>g.mesh===o);if(found)break;o=o.parent}}if(found)renderHoverR29(found,e.clientX,e.clientY);else $("#guestHoverR29").style.display="none"},{passive:true});
+
+
+canvas.addEventListener("dblclick",e=>{
+ if(cameraModeR14!==3&&cameraModeR14!==4)return;
+ const rect=canvas.getBoundingClientRect();
+ mouse.x=((e.clientX-rect.left)/rect.width)*2-1;mouse.y=-((e.clientY-rect.top)/rect.height)*2+1;
+ raycaster.setFromCamera(mouse,camera);
+ const hits=raycaster.intersectObjects(objects,true);
+ for(const hit of hits){
+   let o=hit.object;
+   while(o&&!objects.includes(o))o=o.parent;
+   if(o&&isRideR30(o)){openRideNameR30(o);e.preventDefault();break}
+ }
+});
+
+
+let nextNamingRefreshR30=0;
+function updateNamingR30(now){
+ if(now<nextNamingRefreshR30)return;nextNamingRefreshR30=now+1500;
+ hydrateRideNamesR30();updateEntranceSignR30();
+}
+
+
+canvas.addEventListener("dblclick",e=>{
+ if(cameraModeR14!==4)return;
+ const rect=canvas.getBoundingClientRect();
+ mouse.x=((e.clientX-rect.left)/rect.width)*2-1;mouse.y=-((e.clientY-rect.top)/rect.height)*2+1;
+ raycaster.setFromCamera(mouse,camera);
+ const hits=raycaster.intersectObjects(objects,true);
+ for(const hit of hits){
+   let o=hit.object;while(o&&!objects.includes(o))o=o.parent;
+   if(o&&isShopR33(o)){openShopR33(o);$("#status").textContent=`SHOP INSPECT • ${shopDefR33(o).title}`;e.preventDefault();break}
+ }
+});
+
+function frame(){
+ requestAnimationFrame(frame);
+ const nowR21=performance.now();
+ updateNamingR30(nowR21);
+ updateGuestNeedsR34(nowR21);
+ if(!$("#guestManagerR35").classList.contains("hidden"))renderGuestManagerR35();
+ if(!$("#attractionManagerR33").classList.contains("hidden"))renderAttractionsR35();
+ economyTickR36(nowR21);
+ researchTickR37(nowR21);
+ updateRideQueuesR27(nowR21);
+ updateThoughtsR21(nowR21);
+ updateArrivalsR21(nowR21);
+ const dt=Math.min(.05,clock.getDelta());
+ updateSky(dt);
+ updateCameraMotion(dt);
+ updateCharacterPivot();
+ updateFrontierR9();
+ guests.forEach((g,i)=>{
+   if(!g.mesh)return;
+
+   let cur=g.currentPath;
+   if(!cur||!isWalkablePathR26(cur)){
+     cur=pathNodeNear(g.mesh.position.x,g.mesh.position.z);
+     if(!cur)return;
+     g.currentPath=cur;g.prevPath=null;g.targetPath=null;g.routeR28=[];
+     g.mesh.position.x=cur.position.x;g.mesh.position.z=cur.position.z;
+   }
+
+   // Queue guests get a complete connected route to their assigned queue slot.
+   const queueGoal=g.rideQueueR27?.state!=="riding" ? g.rideQueueR27?.chain?.[g.rideQueueR27.slot] : null;
+   if(queueGoal && cur!==queueGoal){
+     if(!g.routeR28?.length || g.routeR28[g.routeR28.length-1]!==queueGoal) setGuestRouteR28(g,queueGoal);
+     g.targetPath=g.routeR28?.[0]||null;
+   }else if(queueGoal && cur===queueGoal){
+     g.targetPath=null;g.routeR28=[];
+   }else if(!g.targetPath || !pathNeighborsR24(cur).includes(g.targetPath)){
+     g.targetPath=chooseWanderTargetR28(g);
+   }
+
+   const target=g.targetPath;
+   let actuallyMoving=false;
+   if(target && target!==cur){
+     const dx=target.position.x-g.mesh.position.x;
+     const dz=target.position.z-g.mesh.position.z;
+     const dist=Math.hypot(dx,dz);
+     if(dist<.06){
+       g.mesh.position.x=target.position.x;g.mesh.position.z=target.position.z;
+       g.prevPath=cur;g.currentPath=target;
+       if(g.routeR28?.[0]===target)g.routeR28.shift();
+       g.targetPath=null;
+       g.stallR28=0;
+     }else{
+       const speed=1.65,step=Math.min(dist,speed*dt);
+       const ox=g.mesh.position.x,oz=g.mesh.position.z;
+       g.mesh.position.x+=dx/dist*step;g.mesh.position.z+=dz/dist*step;
+       g.mesh.rotation.y=Math.atan2(dx,dz);
+       actuallyMoving=Math.hypot(g.mesh.position.x-ox,g.mesh.position.z-oz)>.0005;
+       g.stallR28=actuallyMoving?0:(g.stallR28||0)+dt;
+     }
+   }else{
+     g.stallR28=0;
+   }
+
+   // Limb animation ONLY while translating. Waiting guests stand still.
+   const L=g.mesh.userData.limbs;
+   if(L){
+     if(actuallyMoving){
+       g.walkPhase=(g.walkPhase||0)+dt*6;
+       const sw=Math.sin(g.walkPhase)*.6;
+       L.armL.rotation.x=sw;L.armR.rotation.x=-sw;L.legL.rotation.x=-sw*.75;L.legR.rotation.x=sw*.75;
+     }else{
+       L.armL.rotation.x*=.72;L.armR.rotation.x*=.72;L.legL.rotation.x*=.72;L.legR.rotation.x*=.72;
+     }
+   }
+
+   // If a target becomes unreachable, discard it and choose a valid connected path on the next frame.
+   if((g.stallR28||0)>1.2){g.targetPath=null;g.routeR28=[];g.stallR28=0}
+ });
+ objects.forEach(o=>{
+   const k=o.userData?.kind,u=o.userData;
+   if(k==="wheel"&&u.main)u.main.rotation.x+=dt*.22;
+   if(k==="carousel"&&u.main)u.main.rotation.y+=dt*.18;
+   if((k==="coaster"||k==="wood")&&u.curve&&u.main){
+     u.t=((u.t||0)+dt*.035)%1;const p=u.curve.getPointAt(u.t);u.main.position.copy(p);
+   }
+ });
+ controls.update();enforceGuestPathsR24();
+ renderer.render(scene,camera);
+}
+refreshCounts();frame();
+</script>
+</body>
+</html>

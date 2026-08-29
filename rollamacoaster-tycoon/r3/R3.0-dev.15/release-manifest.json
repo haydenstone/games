@@ -1,0 +1,46 @@
+{
+  "release": "R3.0-dev.15",
+  "createdAt": "2026-08-28T22:50:04.454742+00:00",
+  "artifact": "rollamacoasterTycoon_R3_rebuilt.html",
+  "sha256": "91f3aa8c5752907cb3d9866c73202ebcce750f2058551eefebd0775c61f4a8e7",
+  "bytes": 2078354,
+  "codex": {
+    "file": "codex(1).json",
+    "sha256": "2a7ea9ee5971065ced42934eee2cedbb3539e5e0f63c9f7b3ebefab0dbd56795",
+    "bytes": 4787468
+  },
+  "tests": [
+    {
+      "cmd": "/opt/pyvenv/bin/python3 /mnt/data/r3dev15/R3.0-dev.14/build_rct_r3.py --codex /mnt/data/r3dev15/R3.0-dev.14/codex(1).json",
+      "ok": true,
+      "stdout": "Built /mnt/data/r3dev15/R3.0-dev.14/rollamacoasterTycoon_R3_rebuilt.html (2,078,354 bytes)\nCodex /mnt/data/r3dev15/R3.0-dev.14/codex(1).json (4,787,468 bytes)\n",
+      "stderr": ""
+    },
+    {
+      "cmd": "deterministic rebuild",
+      "ok": true,
+      "stdout": "Built /mnt/data/r3dev15/R3.0-dev.14/.r3-determinism.html (2,078,354 bytes)\nCodex /mnt/data/r3dev15/R3.0-dev.14/codex(1).json (4,787,468 bytes)\n",
+      "stderr": ""
+    },
+    {
+      "cmd": "/opt/nvm/versions/node/v22.16.0/bin/node --check /mnt/data/r3dev15/R3.0-dev.14/.r3-release-check.js",
+      "ok": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "cmd": "required markers",
+      "ok": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "cmd": "camera/grid regression guard",
+      "ok": true,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "passed": true,
+  "workflowNext": "TEST \u2192 COMMENTS \u2192 CORE DUMP \u2192 REVIEW \u2192 PLAN \u2192 BUILD \u2192 RELEASE"
+}

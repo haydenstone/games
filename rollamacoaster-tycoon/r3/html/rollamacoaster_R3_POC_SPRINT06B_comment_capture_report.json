@@ -1,0 +1,158 @@
+{
+  "release": "R3-POC-SPRINT06B",
+  "generatedAt": "2026-08-28T23:03:30",
+  "file": "rollamacoasterTycoon_R3_POC_SPRINT06B_comment_capture_fix.html",
+  "validation": {
+    "allExecutableScriptsParse": true,
+    "scriptsChecked": 19,
+    "collectorVersion": "R3-COLLECTOR-3G",
+    "commentFrozenBeforeAsync": true,
+    "textareaNotClearedAfterSave": true,
+    "userCommentTextField": true,
+    "feedbackSubmissionField": true,
+    "integrityGate": true,
+    "exportPackCapturesTextarea": true,
+    "emergencyPreservesComment": true,
+    "redundantCommentCopies": [
+      "userComment.text",
+      "userCommentText",
+      "feedbackSubmission.text",
+      "cycle.comments[].text"
+    ]
+  },
+  "scriptChecks": [
+    {
+      "index": 0,
+      "id": "rctFlatLabEarlyR3",
+      "type": "classic",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 1,
+      "id": null,
+      "type": "module",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 2,
+      "id": "r231qRideVisibilityAudit",
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 3,
+      "id": null,
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 4,
+      "id": null,
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 5,
+      "id": "r232oRetailPathPatch",
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 6,
+      "id": null,
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 7,
+      "id": "r233bQueueWorkersAccessPatch",
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 8,
+      "id": "r233cWorldSystemsPatch",
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 9,
+      "id": null,
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 10,
+      "id": null,
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 11,
+      "id": null,
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 12,
+      "id": null,
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 13,
+      "id": "r233hFountainWaterfallCoasterFix",
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 14,
+      "id": "r233iHudWifiGuestDbRag",
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 15,
+      "id": "r233jStaffOrbitSaveHudFix",
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 16,
+      "id": "r233kEntityInteractionWorkerHudFix",
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 17,
+      "id": "r233lGuestActivityDiversity",
+      "type": "application/x-rct-migrated",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 18,
+      "id": "rctConversionLabR3",
+      "type": "classic",
+      "ok": true,
+      "stderr": ""
+    }
+  ]
+}

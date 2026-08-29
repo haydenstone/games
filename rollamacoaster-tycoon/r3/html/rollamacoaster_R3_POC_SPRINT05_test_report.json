@@ -1,0 +1,20 @@
+{
+  "release": "R3-POC-SPRINT05",
+  "generated_at": "2026-08-28T22:45:24",
+  "file": "rollamacoasterTycoon_R3_POC_SPRINT05_viewport_capture.html",
+  "validation": {
+    "all_executable_scripts_parse": "PASS",
+    "script_payloads_checked": 19,
+    "viewport_capture_button_present": true,
+    "command_aliases": [
+      "screencap",
+      "capture",
+      "screen"
+    ],
+    "capture_method": "navigator.mediaDevices.getDisplayMedia",
+    "capture_includes": "current rendered viewport/tab when permitted by the browser",
+    "save_workflow_preserved": true,
+    "collector_version": "R3-COLLECTOR-3E",
+    "failed_scripts": []
+  }
+}

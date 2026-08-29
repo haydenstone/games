@@ -1,0 +1,156 @@
+{
+  "release": "R3-POC-SPRINT04",
+  "collector": "R3-COLLECTOR-3D",
+  "generatedAt": "2026-08-28T22:33:46",
+  "syntax": {
+    "checked": 19,
+    "allPass": true,
+    "results": [
+      {
+        "index": 0,
+        "id": "rctFlatLabEarlyR3",
+        "type": "classic",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 1,
+        "id": null,
+        "type": "module",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 2,
+        "id": "r231qRideVisibilityAudit",
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 3,
+        "id": null,
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 4,
+        "id": null,
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 5,
+        "id": "r232oRetailPathPatch",
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 6,
+        "id": null,
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 7,
+        "id": "r233bQueueWorkersAccessPatch",
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 8,
+        "id": "r233cWorldSystemsPatch",
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 9,
+        "id": null,
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 10,
+        "id": null,
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 11,
+        "id": null,
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 12,
+        "id": null,
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 13,
+        "id": "r233hFountainWaterfallCoasterFix",
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 14,
+        "id": "r233iHudWifiGuestDbRag",
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 15,
+        "id": "r233jStaffOrbitSaveHudFix",
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 16,
+        "id": "r233kEntityInteractionWorkerHudFix",
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 17,
+        "id": "r233lGuestActivityDiversity",
+        "type": "application/x-rct-migrated",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 18,
+        "id": "rctConversionLabR3",
+        "type": "classic",
+        "pass": true,
+        "stderr": ""
+      }
+    ]
+  },
+  "ui": {
+    "auditInParkManager": false,
+    "auditInSettingsDiagnostics": true,
+    "auditDetailsCollapsedByDefault": true,
+    "buttonPreserved": true
+  },
+  "behavior": {
+    "auditFunctionPreserved": true,
+    "satisfactionGoalsPreserved": true,
+    "diagnosticsRefreshHook": true,
+    "parkPanelPollingRemoved": true
+  }
+}

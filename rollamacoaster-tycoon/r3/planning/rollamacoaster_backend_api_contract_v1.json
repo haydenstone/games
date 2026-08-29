@@ -1,0 +1,140 @@
+{
+  "name": "Rollamacoaster Agentic Backend API",
+  "version": "1.0.0-draft",
+  "principles": [
+    "database-first",
+    "RAG-first",
+    "Flock backend authoritative for agent orchestration",
+    "game UI and agents share the same validated Game API",
+    "renderer objects are never durable simulation truth",
+    "provider selection never changes tool permissions",
+    "broker failure does not block local Ollama workflow"
+  ],
+  "providers": {
+    "ollama": {
+      "role": "default_local_worker",
+      "required": true,
+      "capabilities": [
+        "chat",
+        "model_discovery",
+        "optional_embeddings"
+      ]
+    },
+    "openai": {
+      "role": "optional_knowledge_broker_or_stage_worker",
+      "required": false,
+      "compatibility": {
+        "preserve_r231e": true,
+        "cadence": [
+          "run",
+          "stage",
+          "recursive"
+        ],
+        "failure_policy": "continue_local"
+      }
+    },
+    "gemini": {
+      "role": "optional_knowledge_broker_or_stage_worker",
+      "required": false,
+      "note": "Provider adapter target. No literal Gemini implementation was found in the supplied R233M source."
+    }
+  },
+  "namespaces": {
+    "rag": [
+      "search",
+      "lookup_feature",
+      "lookup_symbol",
+      "lookup_entity",
+      "related",
+      "provenance"
+    ],
+    "project": [
+      "manifest",
+      "search",
+      "read_file",
+      "propose_write",
+      "apply_write",
+      "diff",
+      "validate"
+    ],
+    "game": [
+      "state_summary",
+      "search_entities",
+      "inspect_entity",
+      "inspect_area",
+      "build",
+      "demolish",
+      "configure_ride",
+      "open_ride",
+      "close_ride",
+      "configure_stall",
+      "hire_staff",
+      "fire_staff",
+      "assign_staff",
+      "route_guest",
+      "query_economy",
+      "start_research",
+      "run_audit",
+      "save",
+      "load"
+    ],
+    "flock": [
+      "start_run",
+      "cancel_run",
+      "get_run",
+      "list_runs",
+      "set_provider_policy",
+      "review_stage"
+    ],
+    "broker": [
+      "health",
+      "models",
+      "test",
+      "complete",
+      "review"
+    ],
+    "audit": [
+      "ride_scale",
+      "seat_fit",
+      "queue_access",
+      "economy",
+      "save_reconstruction",
+      "parity"
+    ]
+  },
+  "ride_scale_contract": {
+    "canonical_guest_rig": true,
+    "required_anchors": [
+      "entrance",
+      "queue_merge",
+      "boarding",
+      "exit",
+      "seat"
+    ],
+    "required_checks": [
+      "guest standing comparison",
+      "seated occupant fit",
+      "boarding animation",
+      "full-cycle occupied animation",
+      "unboarding animation",
+      "head/leg clipping",
+      "restraint/hand relationship",
+      "world scale beside path/stall"
+    ],
+    "policy": "preserve feature identity; rebuild geometry when old mesh fails human-scale or rider-fit requirements"
+  },
+  "asset_policy": {
+    "preserve_priority": [
+      "guest_models",
+      "scenery",
+      "stalls",
+      "custom_rides",
+      "custom_path_engineering"
+    ],
+    "rebuild_candidates": [
+      "underscaled_stock_rides",
+      "rides_without_rider_fit",
+      "rides_without_boarding_geometry"
+    ]
+  }
+}

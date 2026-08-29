@@ -1,0 +1,23 @@
+{
+  "release": "R3-POC-SPRINT06J",
+  "generated_at": "2026-08-29T00:07:17",
+  "file": "rollamacoasterTycoon_R3_POC_SPRINT06J_crisp_sign_identity_cleanup.html",
+  "validation": {
+    "all_executable_scripts_parse": true,
+    "script_payloads_checked": 19,
+    "legacy_sign_text_input_removed": true,
+    "legacy_apply_sign_button_removed": true,
+    "legacy_name_sign_drawer_removed": true,
+    "legacy_sign_localstorage_owner_removed": true,
+    "legacy_update_method_removed": true,
+    "single_identity_input_present": true,
+    "sign_text_derived_from_park_name": true,
+    "texture_4096x512": true,
+    "max_anisotropy_used": true,
+    "marquee_preserved": true,
+    "five_fonts_preserved": true,
+    "feedback_export_preserved": true,
+    "collector_version": true
+  },
+  "failed_scripts": []
+}

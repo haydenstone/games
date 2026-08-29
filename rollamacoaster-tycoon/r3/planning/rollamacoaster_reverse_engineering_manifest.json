@@ -1,0 +1,4083 @@
+{
+  "project": "RollamacoasterTycoon!! clean-core reverse engineering manifest",
+  "generated_from": {
+    "legacy": {
+      "name": "rollamacoasterTycoon_R233M_playtest_guard_needs_root_fix(2).html",
+      "sha256": "5c138a005993c07f1aee1b4161b4b9489d23bc35a153af81f78eecc57b4c90a7",
+      "lines": 28374,
+      "bytes": 2011720
+    },
+    "r3": {
+      "name": "index(20260828-190842).html",
+      "sha256": "1e9b37d17ef5ba3b1c468f34f2e0a94672872fd9152889fb229e0f159a0dd546",
+      "lines": 378,
+      "bytes": 1974658
+    },
+    "r3_notes": {
+      "name": "rollamacoasterTycoon_R3_REBUILD_NOTES(1).md",
+      "sha256": "3e9f2559ef5b258673ef1bbc6cbb6114dcde90c0e655f9af74a11e019b346532"
+    },
+    "builder": {
+      "name": "build_rct_r3(1).py",
+      "sha256": "751366215c2bbccfead60158ba64d1efab9aa5b0b42b49dc67f780910b1c1366"
+    }
+  },
+  "interpretation": "Atoms are recoverable implementation/behavior/design contracts, not a claim that every row is an independent player-facing feature.",
+  "counts": {
+    "feature_implementation_atoms": 11923,
+    "revision_meta_descriptions": 201,
+    "build_catalog_items": 140,
+    "build_meta_descriptions": 75,
+    "legacy_audit_contracts": 221,
+    "legacy_functions": 1345,
+    "legacy_dom_ids": 900,
+    "legacy_runtime_userdata_keys": 298
+  },
+  "atom_counts_by_kind": {
+    "revision_meta_description": 201,
+    "revision_requirement": 609,
+    "function": 1345,
+    "arrow_function": 63,
+    "implementation_symbol": 6724,
+    "dom_id": 900,
+    "css_class": 213,
+    "runtime_userdata_key": 298,
+    "dataset_contract": 125,
+    "persistence_key": 13,
+    "event_binding": 363,
+    "ui_tooltip": 72,
+    "ui_placeholder": 43,
+    "ui_accessibility_label": 6,
+    "ui_button_label": 484,
+    "external_endpoint": 28,
+    "audit_contract": 221,
+    "build_catalog_item": 140,
+    "build_meta_description": 75
+  },
+  "atom_counts_by_domain": {
+    "frontieros_comms": 191,
+    "audio_media": 259,
+    "persistence": 174,
+    "environment": 199,
+    "guest_sim": 446,
+    "queue_boarding": 235,
+    "ui_ux": 539,
+    "core_misc": 7616,
+    "flock_ai": 376,
+    "paths_construction": 367,
+    "rides_attractions": 660,
+    "economy_research": 121,
+    "camera_input": 133,
+    "staff_ops": 172,
+    "performance_diagnostics": 323,
+    "alexandria_geocache": 112
+  },
+  "legacy_r3_surface_comparison": {
+    "functions": {
+      "legacy_unique": 1345,
+      "r3_unique": 120,
+      "overlap": 2,
+      "legacy_not_named_in_r3": 1343,
+      "r3_only": 118
+    },
+    "dom_ids": {
+      "legacy_unique": 880,
+      "r3_unique": 112,
+      "overlap": 6,
+      "legacy_not_named_in_r3": 874,
+      "r3_only": 106
+    },
+    "runtime_userdata_keys": {
+      "legacy_unique": 298,
+      "r3_unique": 5,
+      "overlap": 2,
+      "legacy_not_named_in_r3": 296,
+      "r3_only": 3
+    },
+    "events": {
+      "legacy_unique": 35,
+      "r3_unique": 11,
+      "overlap": 8,
+      "legacy_not_named_in_r3": 27,
+      "r3_only": 3
+    }
+  },
+  "revision_summaries": [
+    {
+      "revision": "R231W",
+      "line": 20792,
+      "description": "Jamendo lookup now explicitly includes both singles and album tracks with direct-fetch plus JSONP fallback, and resolved music metadata is written into nearby guest music memory/neural context. Main PA linked speakers mirror one synchronized program at every physical speaker location. Adds $320 pole-mounted Wi-Fi access points with green/blue/red status lights, persistent configurable park SSIDs, a colored in-world hotspot coverage overlay, guest phone Wi-Fi state, a guest-visible FrontierOS phone with Browser/Messages/Map/Music/Wi-Fi/Ollama Park AI apps, and $240 continuously panning security cameras. Park Wi-Fi definitions are included in park saves.",
+      "domain": "frontieros_comms"
+    },
+    {
+      "revision": "R231Z",
+      "line": 20793,
+      "description": "lighting realism adds real performance-budgeted local PointLights to lamp posts and luminous scenery plus four programmable lighting/spectacle objects with color, brightness, frequency, waveform and night automation controls. Community dogs/cats are independently guaranteed within wildlife populations instead of guest-owned pets. Queue ownership now purges stale far-crowd GPU instances immediately when a guest joins a line, preventing duplicate transparent blinking. Every guest owns a persistent individual brain with personal memory/knowledge, autonomous phone research and social sharing, guest-to-guest messaging, and FrontierOS Research/People/My Mind apps backed by the existing Ollama connection.",
+      "domain": "environment"
+    },
+    {
+      "revision": "R232A",
+      "line": 20794,
+      "description": "adds a persistent 📱 OS button to the primary HUD registered to Park Manager. It opens a dedicated FrontierOS Manager Edition handset, separate from guest identities, with live Dashboard, Guests, Attractions, Park Map, Wi-Fi, Main PA, Guest Flock, Settings and Ollama-backed Park AI launchers. Park Manager panel also exposes the registered device.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R232B",
+      "line": 20795,
+      "description": "FrontierOS now renders the actual live paper park map inside both guest and Park Manager phones. Adds a searchable geocaching phone client with live cache locations and manual guest GPS targeting. Fixes programmable light color fidelity by recoloring each fixture's own cloned luminous materials, and makes nights substantially darker by reducing hemisphere fill, sun intensity and exposure so local lamps matter.",
+      "domain": "frontieros_comms"
+    },
+    {
+      "revision": "R232E",
+      "line": 20796,
+      "description": "wildlife entity explorer now mirrors the complete rich hover telemetry, including live activity, species, temperament, nearby guests, home distance, habitat, movement rate, coordinates, home range and current thought. The status block refreshes while the animal roams without altering the main camera/control loop.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R232H",
+      "line": 20797,
+      "description": "music playback gate repair. Direct URL playback no longer forces CORS mode; explicit Play URL controls report media errors; Jamendo Use Track and Radio Browser station selection attempt immediate local playback under the user's click gesture.",
+      "domain": "audio_media"
+    },
+    {
+      "revision": "R232P",
+      "line": 20798,
+      "description": "Guest Flock is reworked as a persistent IDE-style workbench with a dense collapsible project explorer, multiple editor tabs, dirty-state tracking, quick-open, full-project search, grouped conversation sessions, archived-run resume, file-to-agent context linking, conversation-to-file references, drag-to-move tree nodes, right-click file actions, and persistent linked-context priority in Ollama/GPT project prompts.",
+      "domain": "flock_ai"
+    },
+    {
+      "revision": "R232G",
+      "line": 25273,
+      "description": "speaker online media adds Jamendo + Radio Browser provider selection, Jamendo singles/audio URL playback repair, generic local/PA media routing, and geocaches gain varied physical container shapes plus surface-aware adjustable-height placement.",
+      "domain": "audio_media"
+    },
+    {
+      "revision": "R232D",
+      "line": 25274,
+      "description": "park clock now runs one full day every 20 real minutes at 1x, with a 21:00-03:00 six-game-hour night lasting about 5 real minutes; automatic lamps follow the same night window.",
+      "domain": "environment"
+    },
+    {
+      "revision": "R96B",
+      "line": 25276,
+      "description": "rotation HUD visible only during active rotatable placement.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R98B",
+      "line": 25278,
+      "description": "high-detail to-scale food stalls with rooftop product sculptures.",
+      "domain": "core_misc"
+    },
+    {
+      "revision": "R99B",
+      "line": 25279,
+      "description": "shorter individually themed HD food stalls.",
+      "domain": "core_misc"
+    },
+    {
+      "revision": "R100B",
+      "line": 25280,
+      "description": "remaining stalls themed, including balloons, information pavilion and arcade.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R101B",
+      "line": 25281,
+      "description": "smaller restroom; continued HD theming for balloons, kiosks, candy, donuts, umbrellas and tacos.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R102B",
+      "line": 25282,
+      "description": "guests understand and use ATMs to replenish spending money.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R103B",
+      "line": 25283,
+      "description": "backend ride geometry redraw, no generated images.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R104B",
+      "line": 25284,
+      "description": "every queue variant qualifies ride startup; queue corners render as cardinal 90-degree turns.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R112B",
+      "line": 25285,
+      "description": "exact R104 baseline; R103 redrawn ride models retained; animations expanded only inside frame.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R114B",
+      "line": 25306,
+      "description": "+10 HD/lore/logo/emoji/priced animated objects in paths, rides, shops, services and scenery.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R126B",
+      "line": 25307,
+      "description": "stable R115D import architecture + builder exposure + unique HD models + universal ride class/access/economy + ride animations + $12 tree salvage. No selectedGuest global.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R127B",
+      "line": 25308,
+      "description": "import/load reconstruction yields to browser between object/ride/guest batches to prevent Chrome UI freeze.",
+      "domain": "persistence"
+    },
+    {
+      "revision": "R128B",
+      "line": 25309,
+      "description": "compact smiley happiness menu + diverse guest identities/interests + all-guests neural social mesh with independent/social behavior.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R129B",
+      "line": 25310,
+      "description": "completed economy/items for smoothie, pretzel, sushi, fries, souvenir, chicken and plush; selected advanced buildables are completely hidden until research unlocks them.",
+      "domain": "economy_research"
+    },
+    {
+      "revision": "R130B",
+      "line": 25311,
+      "description": "fixes R129 startup UI lock by removing pre-initialization dependency on researchStateR37 from initial builder render.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R131B",
+      "line": 25312,
+      "description": "guests cannot form queues on ordinary paths; ride queue intent now requires a reachable queue entry and waiting positions remain queue-only.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R132B",
+      "line": 25313,
+      "description": "import camera lifecycle fix. Clears stale guest camera pivot and stranded pointer-disable state; explicitly transitions import to GAME + CAMERA READY.",
+      "domain": "camera_input"
+    },
+    {
+      "revision": "R133B",
+      "line": 25314,
+      "description": "import readiness now ends in neutral ORBIT mode; saved park state never restores transient Build/editor camera interaction state.",
+      "domain": "camera_input"
+    },
+    {
+      "revision": "R134B",
+      "line": 25315,
+      "description": "visual-only HD art pass for guests, placed trees, frontier trees, grass terrain and lighting. Gameplay/import/camera logic unchanged from R133B.",
+      "domain": "environment"
+    },
+    {
+      "revision": "R136B",
+      "line": 25316,
+      "description": "safe searchable Build Database built on R134. Keeps research visibility declarations and valid buildTopicR10 states intact.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R137B",
+      "line": 25317,
+      "description": "Build Database can be opened repeatedly. Build button/F1 use canonical open path; closing exits build mode cleanly.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R138B",
+      "line": 25318,
+      "description": "localStorage park project explorer replaces JSON import/export; Save/Save As/Open manage named internal save files. Build/F1 can open multiple independent Build Database windows.",
+      "domain": "persistence"
+    },
+    {
+      "revision": "R139B",
+      "line": 25319,
+      "description": "guest puke/litter/bins + per-handyman duty checkboxes + garden watering + mowable growing grass stubble.",
+      "domain": "staff_ops"
+    },
+    {
+      "revision": "R140B",
+      "line": 25320,
+      "description": "guest models now face their actual travel direction; HD face geometry forward axis corrected by 180 degrees.",
+      "domain": "performance_diagnostics"
+    },
+    {
+      "revision": "R141B",
+      "line": 25321,
+      "description": "guests use benches/tables, sit and rest, animate eating/drinking purchased food, carry/release/click-pop balloons.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R142B",
+      "line": 25322,
+      "description": "guests physically sit on bench/table geometry and visibly manage/eat/drink portable inventory while walking.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R143B",
+      "line": 25323,
+      "description": "expands visible guest inventory to plush toys and souvenirs; guests can walk while carrying plush, maps, photos, keychains, guides and pet rocks.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R145B",
+      "line": 25324,
+      "description": "safe wellbeing retry from R143. Positive/negative thoughts plus uncommon stress spirals using existing periodic service sweep; Family Care/Security can recover guests.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R154B",
+      "line": 25325,
+      "description": "built directly from R145B. Root save/load fix: live Three.js runtime refs (guest limbs, ride rotors, meshes/curves) are never serialized or overwritten by legacy JSON.",
+      "domain": "persistence"
+    },
+    {
+      "revision": "R159B",
+      "line": 25326,
+      "description": "built directly from R154B. Guest status/time/relationships + invitation-only whiteboard with duplicate merging/reinforcement counts + least-happy priority feed.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R160B",
+      "line": 25327,
+      "description": "adds explicit whiteboard collaborator dismissal/revocation from guest page and idea cards; existing workflow history remains intact.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R161B",
+      "line": 25328,
+      "description": "glass UI expert pass with contextual bottom information dock for camera modes, hovered/clicked entities, guests, placement, tooltips, and live status messages.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R162B",
+      "line": 25329,
+      "description": "context glass dock moved upward 35px on desktop and mobile.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R163E",
+      "line": 25330,
+      "description": "main HUD park-value tracker derived from economy, placed asset appraisal, stock-at-cost and conservative operating goodwill.",
+      "domain": "economy_research"
+    },
+    {
+      "revision": "R165B",
+      "line": 25331,
+      "description": "new path/queue placement locked to 2m construction grid; grid visibility toggle; cardinal path snapping; auto queue bends/rails; queue capacity 3 guests per square with live occupancy tracking.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R166B",
+      "line": 25332,
+      "description": "attached queue grid cells form continuous snaking/S-turn queues; rails open on shared edges, bends get contained inner guides, queue chain follows successive turns, and 3-person slot positions follow bend geometry.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R167B",
+      "line": 25333,
+      "description": "path speakers can open a YouTube selector popup, store a per-speaker YouTube video ID, and embed a minimized/openable youtube-nocookie player inside the speaker inspector.",
+      "domain": "audio_media"
+    },
+    {
+      "revision": "R168B",
+      "line": 25334,
+      "description": "queue cells visually weld into continuous snake corridors. Shared edges remain open, barriers only wrap outer perimeter, and orange center guides flow through straight and bent sections.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R169B",
+      "line": 25335,
+      "description": "Jamendo royalty-free/licensed track selector and minimized inline audio player replace YouTube speaker media.",
+      "domain": "audio_media"
+    },
+    {
+      "revision": "R170B",
+      "line": 25335,
+      "description": "guests hear nearby path speakers, collect source/track/title/artist/tag/volume/distance/exposure metadata, form preference-based opinions, publish music thoughts, and retain music memories on guest records.",
+      "domain": "audio_media"
+    },
+    {
+      "revision": "R173B",
+      "line": 25336,
+      "description": "starts from working R170 player. Jamendo playback now uses persistent hidden DOM audio elements per speaker, preserving the browser-compatible R170 playback path while surviving inspector close/refocus/re-render.",
+      "domain": "audio_media"
+    },
+    {
+      "revision": "R174B",
+      "line": 25337,
+      "description": "Jamendo track title, artist, album, genre/mood/musicinfo tags, duration and license are fetched automatically from Jamendo track metadata using JSONP, including when opened from file://.",
+      "domain": "audio_media"
+    },
+    {
+      "revision": "R175B",
+      "line": 25338,
+      "description": "path-speaker audio is spatially attenuated by camera distance. Main PA acts as a program bus reproduced by linked physical speakers, with link-all/unlink-all and PA play controls.",
+      "domain": "audio_media"
+    },
+    {
+      "revision": "R176B",
+      "line": 25339,
+      "description": "organized Family Zone expansion with 6 cinematic animated scenery objects and 4 gentle family rides, standardized through ITEMS, BUILD_META_R114, catalog grouping, placement, animation, and save-safe runtime references.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R177B",
+      "line": 25340,
+      "description": "Jumping Fountain now launches animated water packets from each of four valves to each of the other three valves using continuous ballistic arcs across the path.",
+      "domain": "environment"
+    },
+    {
+      "revision": "R178B",
+      "line": 25341,
+      "description": "guest navigation is material-agnostic across every catalog path type; queues are restricted to active ride queue routing only, with legacy queue-wander recovery and diagnostics.",
+      "domain": "performance_diagnostics"
+    },
+    {
+      "revision": "R179B",
+      "line": 25342,
+      "description": "verifies jumping-fountain ballistic water arcs and adds animated pond, waterfall, musical-fountain, duck-boat and rapids water surfaces with ripples, shimmer, flow and churn.",
+      "domain": "environment"
+    },
+    {
+      "revision": "R180B",
+      "line": 25343,
+      "description": "repairs scenery placement previews and missing constructors for Rose Arch, Neon Tree, Firefly Grove, Mini Clock Tower and Laser Flowers; improves Frontier Statue/Park Gazebo/Topiary models; adds 6 HD tree species and 6 flower/garden items with lore, logos, prices and DB/economy placement.",
+      "domain": "environment"
+    },
+    {
+      "revision": "R181B",
+      "line": 25344,
+      "description": "hover any placed object or path and press R to rotate it 90 degrees. Placement ghosts retain R priority; selected-object rotation remains as fallback.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R182B",
+      "line": 25345,
+      "description": "paths freeplace by default; Shift is burst-build drag mode; Ctrl+Shift is snapped burst mode using the 2m construction grid and cardinal stepping; Ctrl alone remains bulldoze.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R183B",
+      "line": 25346,
+      "description": "performance pass adds spatial hashing for paths/objects/speakers, staggered guest logic, throttled manager redraws, lower-frequency PA/music updates, guest LOD, and adaptive guest processing budget.",
+      "domain": "performance_diagnostics"
+    },
+    {
+      "revision": "R184B",
+      "line": 25347,
+      "description": "procedural soundscape adds category-aware placement SFX, sparse positional machinery squeaks, adaptive crowd ambience that grows with guest population, park open/close cues, and an ambience toggle.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R185B",
+      "line": 25348,
+      "description": "repairs researchListR37 manual research with persistent active state, delegated Start buttons, explicit errors, manual activation/pause, expanded advanced attraction research, and separation from Finance auto-portfolio quota.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R186B",
+      "line": 25349,
+      "description": "Manual R&D now gates a prerequisite research tree. Activating Manual R&D unlocks tier-one projects; completing projects unlocks child programs beneath them, with explicit disabled states and prerequisite labels.",
+      "domain": "economy_research"
+    },
+    {
+      "revision": "R187B",
+      "line": 25350,
+      "description": "geocaching mini-game adds buildable Alexandria Geocaches, exactly 10,000 deterministic indexed knowledge topics, coordinate hunting, guest route assignment, cache reading, portable information-card inventory, library search, cache atlas, and economy-linked network seeding.",
+      "domain": "alexandria_geocache"
+    },
+    {
+      "revision": "R188B",
+      "line": 25351,
+      "description": "Alexandria geocaching is explicitly free for guests. Hunting, reading, and information-card pickup never deduct from guest wallets; only the park pays the cache construction cost.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R189B",
+      "line": 25352,
+      "description": "adds Guest Flock main-menu entry and persistent guest-agent DB modeled on shared neural workspace concepts: every guest auto-joins as Scout/Shepherd/Planner/Builder/Reviewer/Archivist, sharing tasks, facts, discoveries, turns and decisions; geocaches and whiteboard feed the workflow.",
+      "domain": "flock_ai"
+    },
+    {
+      "revision": "R190B",
+      "line": 25353,
+      "description": "Guest Flock Studio adds custom tasks, CHAT/BUILD modes, thinking toggle, Ollama model selection, persistent project explorer, code editor, live web preview, popout, TAR/JSON export, and role-based file delivery.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R191B",
+      "line": 25354,
+      "description": "Park Manager guest cap slider 0–2000 plus Unlimited; admission cap persists. Crowd optimization collapses mid/far HD guest bodies to single-mesh proxies, suppresses distant shadows/limb animation, and staggers leisure/inventory/mess systems.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R192B",
+      "line": 25355,
+      "description": "Guest Flock Studio UI redesigned around the attached Ollama Studio composition with left rail, model header, agent state bar, chat-style composer, project drawer and right live/code preview. Adds explicit run ID, elapsed timer, mode, current stage, active guest agent, stage progression, file delivery count, stop/stopping/error/complete states and recent-run status.",
+      "domain": "flock_ai"
+    },
+    {
+      "revision": "R193B",
+      "line": 25356,
+      "description": "preserves full recognizable human guest models at every distance, uses shadow/animation LOD rather than capsule replacement, adds guest dogs/cats, and connects all guests through a persistent shared neural-learning mesh that exchanges nearby observations, collective facts and lessons and feeds them into Guest Flock.",
+      "domain": "flock_ai"
+    },
+    {
+      "revision": "R194B",
+      "line": 25357,
+      "description": "Project Explorer can open in a dedicated new window. Double-click any file or press Window. The external explorer includes file tree, code editor, save/create/delete sync back to the game project DB, and split live web preview with relative HTML/CSS/JS resolution.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R196B",
+      "line": 25357,
+      "description": "rebased from R194B. Natural multi-project explorer adds create/switch/rename/delete projects, persistent folders including empty folders, file/folder selection, create, rename, move, duplicate and delete operations, while preserving R194 external window and live-preview behavior.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R197B",
+      "line": 25358,
+      "description": "Flock coding workflow now enforces operator-intent deliverables, requires index.html for website/app requests, rejects config/settings-only website output, automatically requests a corrected Builder pass, injects the actual assigned live guest entity into every agent call, and shows every flock member with role icon, live park location and Chat button.",
+      "domain": "flock_ai"
+    },
+    {
+      "revision": "R198B",
+      "line": 25359,
+      "description": "fixes Builder no-file-block failures by accepting file tags, filename-labeled Markdown fences and raw HTML, adds automatic transport retry, and renders agent code in fenced transcript blocks with inline Copy and Preview controls.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R199B",
+      "line": 25360,
+      "description": "adds strict artifact-only synthesis after prose-only Builder retries, plus deletable recent runs and recent flock conversations with open/delete controls.",
+      "domain": "flock_ai"
+    },
+    {
+      "revision": "R200B",
+      "line": 25361,
+      "description": "operational reachable bathrooms relieve bathroom/nausea/comfort, hungry/thirsty guests route to stocked open food stalls and consume matching products, completed roller coasters relieve boredom and raise excitement/mood, and Park Manager exposes a live entity coverage audit.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R201B",
+      "line": 25362,
+      "description": "restores high-contrast Flock/Explorer text and hardens Research & Development with document-level click capture, auto-activation of Manual R&D on project start, persistent progress, catalog unlock refresh, live R&D audit, and Next Available action.",
+      "domain": "economy_research"
+    },
+    {
+      "revision": "R202B",
+      "line": 25363,
+      "description": "queue paths remain simple flat 2m ground slabs unless their connected topology forms a genuine snake: at least 5 queue slabs, exactly 2 endpoints, no junctions, and at least 2 bends. Snake rails/guides appear only while that topology remains valid.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R231K",
+      "line": 25394,
+      "description": "repairs Custom Coaster finalization. Commission cost/affordability is now shown inside the coaster panel instead of only in the globally hidden status line; BUILD RIDE uses a guarded off-scene geometry phase followed by an atomic scene/entity commit; successful rides force the attraction/performance caches to refresh, initialize their train immediately, and use the authoritative buildSpend economy transaction. registerEntityR36 also no longer returns before its refresh hooks.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R231M",
+      "line": 25395,
+      "description": "custom coasters now use persistent selectable skins, physically dwell at their loading station for FIFO queue boarding, launch only after the dispatch timer seats riders, complete exactly one circuit, return and unload before the next train. Guest-demand seeding gives custom coasters a stronger visible queue target. Save/load now excludes live coaster car Object3D arrays, writes an explicit compact customCoaster record, and reconstructs track/station/train geometry through the same constructor used by BUILD RIDE.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R203B",
+      "line": 25396,
+      "description": "adds point-by-point custom roller coaster engineering with required complete circuits and intelligent intensity assessment. All ride guests remain visible while riding; every ride gets rider anchor placement and compact attractions auto-scale upward when needed to visibly hold people.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R204B",
+      "line": 25397,
+      "description": "repairs R203 runtime regressions. beforeR200 snapshots now have function scope, Custom Coaster Builder no longer assigns nonexistent buildModeR47, its controls use delegated DOM listeners despite late markup, and open/placement errors surface visibly instead of failing silently.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R205B",
+      "line": 25398,
+      "description": "Custom Coaster Builder is camera-mode independent. Number keys 1–5 switch camera modes without leaving the builder, key 2 no longer routes into the normal Build Manager while coaster engineering is active, the panel exposes 1–5 camera buttons, and mode-2 coaster engineering retains WASD/arrows plus Shift-wheel camera movement.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R206B",
+      "line": 25399,
+      "description": "coaster trains are articulated into independently sampled linked cars that bend and pitch around the curve, riders are visibly seated on individual cars, Ride Manager has configurable ride-cycle duration, every ride calculates an intensity rating, and guests choose/co-satisfy rides based on personal intensity cravings and craving-match quality.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R207B",
+      "line": 25430,
+      "description": "adds route-built Tram, Park Railway, Monorail and Log Flume engineering tools. Routes are laid point-by-point with camera 1-5 support, must form complete circuits, and transport rides support multiple station nodes. Built vehicles use articulated cars that follow the route independently and riders remain visible in cars.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R208B",
+      "line": 25431,
+      "description": "fixes route builders missing from Build Database. Tram and Park Railway now have explicit Rides catalog entries, Monorail and Log Flume are labeled as route builders, route types remain visible even when research-locked, and cloned Build Database windows launch the correct route engineer.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R209B",
+      "line": 25432,
+      "description": "Camera mode 1 is now exclusively Orbit while custom coaster, tram, train, monorail or flume builders are active. Canvas clicks/drags in mode 1 pass through to camera rotation and never create track nodes. Construction point placement is restricted to camera modes 2-5.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R210B",
+      "line": 25433,
+      "description": "every routed transport station can now receive its own entrance and exit gate, each access point must attach to a normal guest path, guests choose reachable origin/destination stations, wait at the origin, board during station dwell, remain visibly seated in articulated cars, and disembark onto the destination exit path. Tram/train/monorail cars also run with much tighter coupling spacing.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R211B",
+      "line": 25434,
+      "description": "multi-stop station entrances/exits now reuse the exact normal ride-access placement pipeline: same full-size gatehouse geometry, same silhouette preview, same R rotation and rotation HUD, same pointer-following ghost, same right-click cancel, with station-specific path-link validation and metadata.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R212B",
+      "line": 25435,
+      "description": "station access placement is now flexible. Routed rides default to an 18m entrance/exit placement radius and 4.5m path attachment tolerance, both adjustable per ride in Ride Manager from 6-40m and 2-8m respectively. Existing silhouette, R rotation and full-size gate behavior is retained.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R213B",
+      "line": 25436,
+      "description": "riders are now actively animated while mounted on rides. Boarding interpolates guests into seats, seated limbs pose correctly, bodies sway/bounce with ride motion and intensity, coaster/transport riders follow their individual cars, and poses reset on exit.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R214B",
+      "line": 25437,
+      "description": "station entrances/exits are now explicitly linked to the selected transport stop, may be placed several grid blocks away, automatically snap onto the nearest normal guest path, default to a 32m stop radius and 12m path-search radius, and can be adjusted up to 48m/14m in Ride Manager.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R215B",
+      "line": 25438,
+      "description": "hotkey 6 toggles Tree X-Ray. All identified placed trees and procedural frontier trees become 18% transparent with depth write disabled, then restore their original materials on the next press. State persists and newly created frontier/placed trees inherit it.",
+      "domain": "performance_diagnostics"
+    },
+    {
+      "revision": "R216B",
+      "line": 25439,
+      "description": "fixes multi-station access placement. Every station Entrance/Exit button now carries the routed ride ID, each stop stores independent stable gate IDs, placed gates draw at the clicked world location aligned to path height, visibility/scene parenting is verified before the ghost clears, and legacy stale gate references can recover by stop metadata.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R217B",
+      "line": 25440,
+      "description": "sequential routed stops now expose independent world drop zones for missing entrance/exit gates and retain stop-specific placement after each gate. Guests may leave paths only for explicit animated reasons: trash disposal, bird watching, picnic seating, or geocache inspection, then return to their anchor path.",
+      "domain": "queue_boarding"
+    },
+    {
+      "revision": "R218B",
+      "line": 25441,
+      "description": "station entrance/exit drop zones are now truly clickable. Raycastable green/blue markers resolve their exact routed ride, stop index and access type; clicking a marker arms the canonical gate silhouette for that sequential stop, R rotates it, and the following ground click places the full-size gate.",
+      "domain": "queue_boarding"
+    },
+    {
+      "revision": "R223B",
+      "line": 25443,
+      "description": "fixes ride-start requirements for routed rides. Tram/train/monorail now require at least two operational stations, each with entrance + exit + linked paths, and do not require a queue. Routed non-transport rides require one operational station. Normal attractions retain entrance + exit + queue rules. R218 route-builder core remains unchanged.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R224B",
+      "line": 25444,
+      "description": "routed transport now selects stops based on the guest actual destination and continues the original journey after alighting. Adds Main Menu Park Map: zoomable/pannable bird-eye grid plotting paths, buildings, rides, stations, guests and all world entities, with live database search/filter and shared customerParkMapR224 dataset/API.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R225B",
+      "line": 25445,
+      "description": "adds a full Geocaching Website under More with cache creation, micro/small/regular/large containers, searchable park cache DB, JSON/text/binary file attachments, Ollama Guest Flock staging, guest-interest cache search, logged finds, and a persistent log book.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R226B",
+      "line": 25446,
+      "description": "ducks synthesize a quack on click. Geocaches now maintain persistent item inventories; attached files are takeable cache items; guests can take and leave items during visits; the Geocaching Website includes a live object tracker; file items support editable operator lore.",
+      "domain": "alexandria_geocache"
+    },
+    {
+      "revision": "R227B",
+      "line": 25447,
+      "description": "geocache seed networks now randomize cache locations and micro/small/regular/large sizes across owned public-path regions. Manual construction and custom coaster/transport route control nodes are blocked beyond the purchased land boundary.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R231Q",
+      "line": 25486,
+      "description": "ride visibility authority fix. The bottom ride count, Attraction Manager, guest GPS, queue-demand scheduler and transport selection now share one operational/readiness predicate. Legacy running flags are repaired from authoritative commerce state, the old attraction renderer delegates to the canonical manager, and services no longer masquerade as rides in the manager. rideVisibilityAuditR231Q() exposes per-ride guest visibility reasons.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R228B",
+      "line": 25488,
+      "description": "active coaster/transport builders support plain mouse-wheel height adjustment, while Shift+wheel remains camera movement. Save snapshots now persist routed tram/train/monorail/flume structural route data and load them through a dedicated runtime constructor that rebuilds track, stations, curve, cars and ride metadata.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R228G",
+      "line": 25492,
+      "description": "routed ride vehicles use a dedicated self-healing visual and animation pass. Missing/detached cars are rebuilt, cars are forced visible and initialized on the curve immediately, and started routed rides animate independently of generic ride-category animation filtering.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R228H",
+      "line": 25493,
+      "description": "transport service now initializes at Station 1, performs deterministic 3.2s boarding/alighting dwells, directly services passengers on arrival, uses wider station capture at speed, evaluates guest transport every few seconds instead of rare random chance, and Ride Manager exposes current rider inventory with locate/chat controls.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R228I",
+      "line": 25494,
+      "description": "save/load now persists explicit world coordinates for every routed station stop and exact station entrance/exit gate coordinates. Station access gates have a dedicated restore constructor and are relinked to their exact ride/stop after import, with path-link recovery by proximity when path IDs change.",
+      "domain": "persistence"
+    },
+    {
+      "revision": "R228J",
+      "line": 25495,
+      "description": "all rides use physical queue lines. Routed tram/train/monorail stations now require a queue connected near each entrance; transport guests walk to the queue, occupy visible FIFO slots, advance in line, board only during station dwell when their turn reaches the front, and alight at their selected destination station exit.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R228K",
+      "line": 25496,
+      "description": "queue-demand fix. Guests now evaluate normal rides and transport on periodic clocks instead of tiny frame lotteries. Transport can generate an exploratory destination when a guest has no existing goal, candidate routing targets the real queue entry, and physical arrival tolerance advances guests into the queue even if currentPath metadata lags behind their position.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R228L",
+      "line": 25497,
+      "description": "Park Pulse and the bottom mode/status glass now annunciate live world operations including park state, attendance, ride availability, queue load, transit riders/waiters, guest hunger/thirst/mood, cleanliness, cash, geocaching activity, busiest ride queues, boarding and station arrivals.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R228M",
+      "line": 25498,
+      "description": "New Game now force-neutralizes every transient build tool before entering the park, including tree placement, ghosts, path painting, coaster/route builders and station access placement. Startup forest generation is explicitly boot-only and cannot be re-run by New Game.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R228N",
+      "line": 25499,
+      "description": "adds Main Menu → Cheats → Tree Clear. The command cancels tree/build placement, removes resettable trees, and restores the canonical 58-tree startup forest seed while leaving paths, rides, buildings, and non-tree scenery untouched.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R228O",
+      "line": 25500,
+      "description": "rider/boarding ownership overhaul. Queue and transport states now exclusively own guest movement; transport boards throughout station dwell; normal rides dispatch waiting guests in capacity batches; open rides get deterministic queue demand; all riders follow the actual moving ride mechanism; and ride/station entrance-exit gatehouses use one compact canonical scale.",
+      "domain": "queue_boarding"
+    },
+    {
+      "revision": "R228Q",
+      "line": 25501,
+      "description": "safe retry from R228O. R228P lifecycle transition machinery is not included. Fixes walking suppression by letting approaching/joining guests use normal movement, keeps transport dwell boarding from R228O, strengthens rider attachment, and uses compact static gates.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R228R",
+      "line": 25502,
+      "description": "fixes frozen guest walking animation. The crowd LOD system keeps full articulated people visible at LOD 1/2, but the walker previously animated limbs only at LOD 0. Walking limbs now animate at every visible LOD with 1x/1⁄2x/1⁄4x update frequency for performance, plus missing limb runtime references self-repair on demand.",
+      "domain": "performance_diagnostics"
+    },
+    {
+      "revision": "R228S",
+      "line": 25503,
+      "description": "standardizes normal and transport ride entrances/exits through one guest-proportional gate constructor sized once at placement/restore. Adds Custom Elevated Bridge to the build database and a dedicated Bridge Builder in Path Engineer with 0.5–16m height, wheel height control, freeplace/CTRL+SHIFT snap, SHIFT burst building, optional rails, supports and auto-ramp elevation constraints. R228R walking-animation LOD fix retained.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R228T",
+      "line": 25504,
+      "description": "transport passengers wait FIFO for the next vehicle dwell, reserve a stable physical seat index (two seats per car), and remain attached to that exact moving car-seat coordinate until their destination station. Adds a lightweight GPS Mind to every guest with an autonomous five-step park schedule spanning rides, transport, food, drinks, restrooms, geocaches, scenery, rest and exploration; scheduling feeds existing navigation systems rather than creating a second movement engine.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R228U",
+      "line": 25505,
+      "description": "Park Pulse guest thoughts now draw from a broader contextual palette including needs, queues, transport, rides, GPS plans, pets, relationships, Alexandria readings, wildlife, ruins and exploration. Every two real-time minutes a random Alexandria topic is sent to the selected local Ollama model for a concise Park Pulse reading, with deterministic offline fallback. Guest entity chat/status now displays the full GPS Mind itinerary and Ollama guest chat receives that schedule as persona context.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R228V",
+      "line": 25506,
+      "description": "guest hover now exposes a live Doing Now section, mood/needs/location, GPS current+next task, compact inventory contents, geocache hunt state, logged finds, latest carried Alexandria cache reading, recent Alexandria topic IDs/titles, wallet and current thought. Camera Mode 5 hover banner uses the same telemetry source.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R228W",
+      "line": 25507,
+      "description": "replaces generic GPS schedules with a queued Ollama itinerary planner. Each prompt includes live guest health needs, interests, mood, wallet, thrill target, location, geocache history, park time and up to 70 reachable named park entities. Ollama returns strict JSON with five real destination IDs and human reasons. Local planning remains as an immediate/offline fallback; generic \"explore park area\" is avoided whenever named reachable destinations exist. Guest panel includes planner source/state and manual GPS replan.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R228X",
+      "line": 25508,
+      "description": "fixes queue admission root cause. Transport guests are now authorized users of queue paths, preventing the generic path guard from ejecting them when they reach a station. Queue-entry tolerance is widened and near-tile route failures recover instead of cancelling. Riding now uses an explicit temporary rider proxy: the walking avatar is hidden, a cloned articulated guest is drawn at the exact ride/car seat coordinate every frame, the hidden authoritative guest coordinate follows it, then the proxy is removed and the walking avatar is restored at exit.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R228Y",
+      "line": 25509,
+      "description": "Escape menu is now a true keyboard toggle. Press Escape once to open the main escape menu and press Escape again to close it and return to the park. Text-entry controls retain their Escape guard.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R229A",
+      "line": 25510,
+      "description": "transport now uses explicit station event flags. Arrival opens BOARDING at one station epoch; queue guests physically near their assigned slot become QUEUE_LOCKED and stop oscillating. When the train is present, waiting guests receive BOARD_GRANTED, are removed from the queue, reserve a seat, hide their walking avatar and attach the rider proxy. Departure sets DEPARTED; every station sets ARRIVED; destination stations set ALIGHT_GRANTED and restore the walking avatar at the exit.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R229B",
+      "line": 25511,
+      "description": "queues are now true single-file formations with two guests per 2m queue slab and ~0.82m spacing. FIFO order is re-indexed every update so duplicate/stale slots cannot stack guests. Both normal and transport queues proximity-lock guests into reserved positions to prevent meet-point bouncing. While riding, the walking avatar always disappears; the temporary articulated rider proxy is only shown after a valid chair/seat coordinate is available, otherwise the rider remains hidden rather than floating beside the attraction.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R229C",
+      "line": 25512,
+      "description": "transport rider visuals are now tucked into the actual vehicle box. Tram/train/monorail cars include recessed seat cushions and backs; seat anchor Y is lowered below the car lip, transportation rider proxies use a compact seated scale, and legs tuck farther into the car. Normal thrill-ride rider scale is unchanged.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R229D",
+      "line": 25513,
+      "description": "fixes Log Flume and other single-station routed thrill rides being trapped at their load station. Station capture is now armed/disarmed: after loading, the vehicle must clear the station zone before that station can be detected again, preventing an endless dwell-recapture loop. Log Flume starts once at its platform, pauses briefly for loading, then runs the full circuit before returning.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R229F",
+      "line": 25514,
+      "description": "adds a node-based Custom Elevated Path Engineer modeled after the coaster builder. Camera 1 orbits; cameras 2–5 place 3D control nodes; mouse wheel sets each next node height from 0–24m; Build Path interpolates a continuous walkable elevated route with optional rails/supports and optional grid snap. Path duplicate and graph logic are now height-aware, allowing true overpasses and underpasses without accidentally connecting elevated and ground paths.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R229J",
+      "line": 25515,
+      "description": "rebased directly from R229F with only three targeted changes: routed non-transport rides such as Log Flume board only during physical station dwell and unload only on a later station-arrival event; Custom Path Engineer can choose normal path textures directly through Building Manager; geocache spontaneous discovery/revisits are less frequent and logbook signatures are varied first-person guest notes.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R229K",
+      "line": 25516,
+      "description": "UI bootstrap root-cause repair. R229J referenced customPathBuilderStateR229F inside renderBuildCatalogR10 before that const was initialized; the initial renderBuildCatalogR10 call therefore hit JavaScript temporal-dead-zone semantics and could abort module initialization, making the UI appear locked. Catalog highlighting now reads a safe global state bridge. Custom path preview GPU resources are also disposed when rebuilt to prevent accumulated preview memory churn.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R229L",
+      "line": 25517,
+      "description": "adds a subtle procedural cash-register cha-ching to the existing ambient SFX bus for monetary economy-ledger transactions. The ledger is hooked centrally so builds, sales, refunds, payroll, ATM movements, research spending and other money events are covered without duplicating handlers. Retail COGS entries are intentionally silent because the paired income entry already represents the same customer transaction. Ambience toggle controls the sound.",
+      "domain": "economy_research"
+    },
+    {
+      "revision": "R229M",
+      "line": 25518,
+      "description": "right-click inspects guests and placed entities in camera modes when no build/cancel tool owns the click. Log Flume routed rider anchors are lowered to 0.17m with compact 0.40 rider proxies and deeper leg tuck so riders sit inside the raft hull. Ride Manager Dispatch Seconds is now the authoritative boarding/loading wait: normal rides wait before dispatching a batch and routed rides hold physically at stations for the configured dispatch duration before leaving.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R229N",
+      "line": 25519,
+      "description": "fixes right-click inspection specifically in Orbit mode. The R229M listener ran in bubble phase after OrbitControls had already preventDefaulted contextmenu, so the inspector returned early. The inspector now runs in capture phase before OrbitControls, uses the existing contextual raycast for guests/objects, adds a path fallback, and still yields to active placement/cancel tools.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R229O",
+      "line": 25520,
+      "description": "transport queue demand fairness/root-cause fix. The route seeder previously looped over a specific tram/train/monorail but called the global transport chooser, so guests could be claimed by a different route and leave other transport lines empty. GPS transport tasks also ignored their selected transport entity. The chooser now accepts a preferred route; per-ride seeding and GPS honor it, spontaneous selection includes a load-balancing penalty, and seeding sorts guests by the nearest operational station.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R229P",
+      "line": 25521,
+      "description": "system-wide rider-fit audit. Static rides are measured and, only when undersized, enlarged once to a ride-type minimum footprint; routed rides/custom coasters keep their authored world scale. All boarded guests immediately enter the animated rider-proxy lifecycle and generic ride seats use wider spaced rows. Ride and station entrances/exits are now fixed-size 1.55m guest-scale geometry at transform scale 1.0; placement and save/load explicitly re-lock that scale so gates cannot grow after placement.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R229Q",
+      "line": 25522,
+      "description": "fixes Custom Path Engineer discoverability in Build Manager. Root cause: the engineer existed as a Path Engineer button only, while Build Manager renders strictly from catalogR10; no custompath catalog record or click route existed. A first-class Custom Elevated Path Engineer entry now appears under Paths in both the main Build Manager and independent Build Database windows and opens the existing R229F engineer.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R229R",
+      "line": 25523,
+      "description": "adds persistent Lo-Def performance mode under More and hotkey 6. Low-def reduces WebGL pixel ratio, disables shadows, uses more aggressive guest LOD, halves full path enforcement, throttles pet/bird/decorative animations, reduces marquee/clock update frequency, cuts background guest logic budget and slows hidden-manager UI refresh. Simulation state, queues, rides, transport, saves and gameplay remain active.",
+      "domain": "performance_diagnostics"
+    },
+    {
+      "revision": "R229S",
+      "line": 25524,
+      "description": "removes the redundant legacy Bridge Builder UI and consolidates elevated path construction into Custom Path Engineer. Legacy bridgepath objects remain load-compatible. Custom Path Engineer now defaults to Asphalt Path, has a one-click Asphalt texture button, excludes legacy bridgepath from texture choices, and normal Asphalt remains independently selectable from Build Manager when the custom engineer is not active.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R229T",
+      "line": 25525,
+      "description": "elevated path traversal + stronger transport demand. Guests now follow path Y while walking, snap to elevated path height on arrival/recovery, custom elevated path sampling is denser, and adjacent custom ramp pieces can connect across up to 1.15m vertical steps while true overpasses remain separated. Transport checks are more frequent, exploratory acceptance rises to 82%, route benefit discounts riding versus walking, per-route seeding can add two guests at once, and long wander decisions give transit first refusal.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R229U",
+      "line": 25526,
+      "description": "handyman/staff visual overhaul. Newly hired handymen use a full adult-height articulated human model (~1.72m) with head, torso, arms, legs, boots, cap, work-vest accents and broom. Staff now face travel direction, walk with alternating limb animation, follow elevated path Y, and handymen animate sweeping/cleaning/mowing plus empty-bin/watering motions based on their current task.",
+      "domain": "staff_ops"
+    },
+    {
+      "revision": "R229W",
+      "line": 25527,
+      "description": "handymen are now conversational staff entities with first-person operational opinions, persistent-in-session chat, and a dedicated duties window. Handymen can be opened from Staff Manager or right-clicked in the world. Guest, object and handyman entity windows receive an embedded live entity camera. The live camera uses one shared throttled secondary WebGL renderer that follows the currently opened entity rather than creating expensive renderers per panel.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R229X",
+      "line": 25528,
+      "description": "deep ride boarding root-cause fix + raised-path confinement. Normal rides previously chose the queue nearest the ride BODY rather than the queue touching their own entrance, so dense parks could make multiple rides claim the wrong queue and produce zero reachable riders. Queue ownership now resolves from each ride entrance first. Ride demand seeds only guests with a valid graph route to that queue entry. Walking avatars remain hidden while riding. Guests on paths above 0.32m cannot start/continue off-path excursions; path enforcement clamps X/Y/Z to the bridge corridor until they reach a ground-connected path or turn around.",
+      "domain": "queue_boarding"
+    },
+    {
+      "revision": "R229Y",
+      "line": 25529,
+      "description": "Orbit-mode left-click is now camera navigation only. Root cause was a generic object pointerdown handler that excluded only Build mode, so mode 1 still opened object inspectors; the main non-build handler could also open Park/Land panels before guest mode checks. All left-click UI selection is suppressed in Orbit, including double-click recovery. Interact/Inspect modes retain left-click entity UI, and right-click inspection remains available in Orbit.",
+      "domain": "camera_input"
+    },
+    {
+      "revision": "R229Z",
+      "line": 25530,
+      "description": "replaces the old single Park Bench with Path Bench Pair furniture. Bench placement now requires a nearby walkable path, snaps to that path center/elevation, aligns to path direction, and creates two adult-scale benches on opposite walkway edges with four seats total. Paired benches are treated as integrated path furniture so guests can sit on them even on elevated paths without leaving the bridge deck.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R230A",
+      "line": 25531,
+      "description": "GPS ride invariant. Unless a guest is actively taking a rest/break, their GPS task queue is continuously repaired to contain a ride or transport entrance immediately followed by that ride’s proceeding exit. When operational transport exists, mandatory ride-pair generation chooses transport with a 50% probability; spontaneous transport acceptance is also 50%. Breaks temporarily exempt the invariant, and standing up immediately restores it. Path Bench Pair seat facings are corrected so opposite benches face each other across the walkway.",
+      "domain": "queue_boarding"
+    },
+    {
+      "revision": "R230B",
+      "line": 25532,
+      "description": "corrects Path Bench Pair orientation. The north/+Z bench now keeps its default front toward -Z/path center, the south/-Z bench rotates 180 degrees toward +Z/path center, and seated guest facings match those inward directions.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R230C",
+      "line": 25533,
+      "description": "park closing evacuation root fix. Closing now cancels rides, transport, leisure, geocache and GPS intent; restores each guest walking avatar; routes every guest through the actual park entrance path using routeBetweenPathsR28; and removes the guest entity when it reaches the gate. The old code targeted the internal spawn coordinate (-12,14) and called nonexistent findPathRouteR28, so evacuation routes could silently fail. GPS ignores guests while they are leaving.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R230D",
+      "line": 25534,
+      "description": "Build-mode object pickup/move. Right-clicking a placed build object selects and lifts it instead of opening an inspector. The object follows the pointer; left-click places it, right-click or Escape cancels, and R rotates 90 degrees. Moving a ride carries separately placed linked ride/station access gates as one assembly. Path Bench Pair furniture re-snaps to a valid path and gate objects refresh their nearest path linkage. Protected park infrastructure cannot be moved.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R230E",
+      "line": 25535,
+      "description": "restores generic SHIFT rapid-build behavior. In Build mode, hold SHIFT + left mouse and drag while an ordinary catalog item is in hand to stamp repeated copies along the pointer path. Adaptive spacing and duplicate-cell guards prevent accidental piles. The selected material remains in hand after the stroke. Existing path burst painting, right-click object pickup/move, specialized coaster/route/custom-path builders and path-bench snapping remain separate and intact.",
+      "domain": "camera_input"
+    },
+    {
+      "revision": "R230F",
+      "line": 25536,
+      "description": "ordinary paths and queues are now centerline-drawn instead of square-tile placed. Left-click and drag draws a continuous ribbon from the navigation line guests actually follow; samples are inserted about every 0.5m so routing remains connected. Queue lines get narrower ribbons with side rails. The old square visual meshes are suppressed while navigation entities remain intact for pathfinding and save/load.",
+      "domain": "persistence"
+    },
+    {
+      "revision": "R230G",
+      "line": 25537,
+      "description": "temporary nearest-queue diagnostic mode. Every eligible non-break guest without an active ride/transport trip is forced toward the closest reachable operational queue, including normal rides and transportation stations. A Ride Debug panel under More reports per-ride running state, queue linkage/capacity, reachable free guests, approaching/waiting/riding counts, transport station readiness, dispatch timers, assignment failures and recent force-routing events, with a copy-to-clipboard dump button.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R230H",
+      "line": 25538,
+      "description": "moves Ride Debug into a unified Settings window with General, Diagnostics and Docs tabs. Fixes rideEntrance/rideExit gatehouses being misclassified as attractions by isRideR27. Based on the supplied R230G dump, the transport failure boundary is narrowed to queue approach/entry handoff: Station 1 was operational and full (4/4 assigned) while all four guests remained approaching. Transport diagnostics now record distance-to-entry, route node count, route failures, approach duration, current path and target path; approach routes refresh every 2.5s without teleporting guests.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R230I",
+      "line": 25539,
+      "description": "adds 26 free-roaming animated wildlife entities: deer, foxes, rabbits, raccoons, squirrels and ducks. Animals have simple articulated gait/body animations, autonomous roaming targets, species-specific temperaments and observations, right-click entity tracking, shared live entity camera, first-person Ollama chat with local fallback, and Park Map animal markers/search filtering.",
+      "domain": "flock_ai"
+    },
+    {
+      "revision": "R230J",
+      "line": 25540,
+      "description": "cleans the main More menu by removing Lo-Def, Ambience, Entity DB and Map DB buttons. Those controls now live in Settings → General, with Settings remaining the single main-HUD gateway. Free-roaming wildlife heading is rotated 180 degrees so animals face the direction they travel instead of walking backward.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R230K",
+      "line": 25541,
+      "description": "fixes the transport queue approach root cause revealed by the supplied debug dump. The shared guest movement loop cleared targetPath after each route node, then chose a random wander target even when routeR28 still contained the remaining explicit route. Transport guests therefore advanced roughly one route node per periodic repair and could remain queueApproaching indefinitely. Explicit route nodes now outrank wandering, and reaching the queue-entry node immediately transitions to queueJoining.",
+      "domain": "queue_boarding"
+    },
+    {
+      "revision": "R230L",
+      "line": 25542,
+      "description": "ground-walking entities avoid water. Deer, foxes, rabbits, raccoons and squirrels reject water targets and turn away before entering; ducks/fowl may enter. Guest off-path excursions cannot target water, staff reject ground-level water path nodes, and guests reject ground-level water nodes while elevated bridges over water remain valid. Grid control moves from More into Settings → General. Park Value is now a live readout instead of a clickable button.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R230M",
+      "line": 25543,
+      "description": "orderly queue holding. Guests snap into unique FIFO queue slots once within 0.82m, then their world position is locked exactly to that slot every frame. Waiting animation only moves limbs, never X/Z, eliminating wall vibration and queue shuffling. Joining motion approaches the reserved slot center directly. Normal and transport queues share this behavior. Force Nearest Queue diagnostics default OFF.",
+      "domain": "queue_boarding"
+    },
+    {
+      "revision": "R230N",
+      "line": 25544,
+      "description": "fixes transport alighting locality, persists workers, and adds wildlife population control. Transport riders now rematerialize only on the exit path belonging to the station where the vehicle is physically stopped, with a 0.9s exit hold that blocks stale onward routing/teleporting. Saves now include staff role/name/position/path/task/duties/chat/opinion/shift time and restore workers without charging hire costs. Settings General adds a 0–80 wildlife population slider and persists its target.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R230O",
+      "line": 25545,
+      "description": "Phase 1 GPU acceleration. WebGL requests high-performance GPU preference. Far trees switch from individual scene hierarchies to two THREE.InstancedMesh batches (trunks + crowns), reducing far-forest draw calls. Guest and wildlife articulated limb animation is distance-throttled at 1/3/8-frame cadence while simulation movement remains authoritative. Settings Diagnostics adds live renderer/GPU telemetry for FPS, draw calls, triangles, textures, geometries, WebGL capabilities and far-tree instance count. Exact VRAM bytes are not exposed by WebGL.",
+      "domain": "performance_diagnostics"
+    },
+    {
+      "revision": "R230P",
+      "line": 25546,
+      "description": "Settings is now directly available from the Escape/Pause menu. Pause → Settings opens the same General/Diagnostics/Docs workspace, temporarily hides the pause overlay, and closing Settings or pressing Escape returns to Pause. Settings opened from the main HUD still closes directly back to the park. R230O GPU acceleration remains intact.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R230Q",
+      "line": 25547,
+      "description": "GPU Phase 2. Far guests are rendered through one InstancedMesh crowd batch instead of full articulated child hierarchies. Far wildlife is rendered through one InstancedMesh per species. Original entity simulation/state remains authoritative, and right-click raycasts on GPU instances map back to the real guest/animal entity. Adaptive resolution adjusts renderer pixel ratio using measured FPS. R230P pause-menu Settings and R230O tree batching remain intact.",
+      "domain": "environment"
+    },
+    {
+      "revision": "R230R",
+      "line": 25548,
+      "description": "fixes queue jitter and normal-ride starvation. Queue slots are no longer compacted/re-numbered every update. Once a normal or transport guest reaches waiting state, the assigned slot remains immutable and owns the guest transform until boarding, eliminating back/forth movement as other guests board. Every operational non-transport ride entrance now independently attracts reachable guests every 1.3 seconds toward a target queue occupancy of about 55% capacity, while individual ride selection favors queue-starved attractions instead of transport dominating demand.",
+      "domain": "queue_boarding"
+    },
+    {
+      "revision": "R230S",
+      "line": 25549,
+      "description": "park-closing evacuation now understands disconnected path components connected only by transport rides. Guests first try a normal walking route to the park entrance. If none exists, the evacuation planner finds a reachable operational transport station on the guest side and a destination station whose exit path has a walking route to the park entrance. The guest queues, rides across, alights at that station exit, and then resumes walking evacuation. The evacuation updater does not overwrite an active emergency transport trip.",
+      "domain": "queue_boarding"
+    },
+    {
+      "revision": "R230T",
+      "line": 25550,
+      "description": "entity hover is information-only. Pointer movement over wildlife, workers, guests or objects may update the context glass, but it never opens entity UI panels. Animal/staff windows and other entity inspectors now require an explicit right-click inspection gesture.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R230U",
+      "line": 25551,
+      "description": "Performance Phase 3. Adds an adaptive CPU performance governor driven by measured FPS; caches ride/routed-ride/fountain/water/decor hot object sets; removes duplicate rider-proxy synchronization passes; adaptively throttles decorative water/fountain/catalog animation and noncritical guest maintenance; reduces crowd/wildlife GPU instance-buffer update frequency under pressure; renders entity live cameras only while visible; and permits a lower adaptive-resolution floor under heavy load. Core locomotion, queues, boarding, ride movement and economy remain full-authority.",
+      "domain": "performance_diagnostics"
+    },
+    {
+      "revision": "R230V",
+      "line": 25552,
+      "description": "Draw-call collapse pass based on supplied 2 FPS / 2116 calls / 138,528 triangles / 2,178 geometries telemetry. Derived path ribbons, queue rails and queue guides are converted from individual BoxGeometry meshes into material-grouped InstancedMesh batches, and the original per-piece geometries are disposed. Queue rail/guide visuals now use topology signatures so they are not destroyed and rebuilt every 450ms when unchanged. Auto Shadow Governor disables shadow rendering below 44 FPS and only restores after sustained >55 FPS recovery. Navigation and queue simulation remain unchanged.",
+      "domain": "performance_diagnostics"
+    },
+    {
+      "revision": "R230W",
+      "line": 25553,
+      "description": "profiling/test build following R230V draw-call collapse. Adds a repeatable 12-second performance benchmark under Settings → Diagnostics → GPU / Renderer. Samples FPS, render calls, triangle count and adaptive pixel ratio every 500ms, then reports average/min/p10/median/max FPS and renderer averages. A scene-cost profiler groups visible meshes, unique geometries and materials by rides, paths, queues, guests, wildlife, workers, trees, scenery, water and GPU batches to identify the next remaining bottleneck.",
+      "domain": "performance_diagnostics"
+    },
+    {
+      "revision": "R230X",
+      "line": 25554,
+      "description": "benchmark-directed mesh collapse. R230W measured 2.02 FPS, 2,146 draw calls, 8,395 visible meshes, 8,384 unique geometries, and 6,612 unique materials. Dominant categories were otherScene (5,992 meshes) and trees (1,356 meshes). R230X converts decorative frontier trees/rocks into at most four shared InstancedMesh draw calls and hides their original multi-mesh hierarchies. Park-tree full-detail radius drops from 34m to 18m.",
+      "domain": "performance_diagnostics"
+    },
+    {
+      "revision": "R230Y",
+      "line": 25555,
+      "description": "static terrain/path optimization. Ground transform matrices no longer update during simulation. Path node transforms and children are frozen between edit operations; the nodes remain lightweight navigation/snap/bridge records. Base path deck meshes are hidden and replaced with material-grouped InstancedMesh batches. Path topology/corner/queue adjacency recalculates only when the player builds, rotates, moves, or constructs elevated/custom paths, not continuously.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R230Z",
+      "line": 25556,
+      "description": "CPU hot-path optimization based on the R230Y benchmark. Draw calls had already fallen from 2,146 to ~407 while FPS remained ~2.14, proving GPU submission was no longer the primary limiter. Path adjacency is now cached and rebuilt only after path edits; routeBetweenPaths uses cached neighbors and an index-based BFS queue; blocked paths are cached instead of scanning objects per edge; water footprints are cached instead of traversing the 5,900+ frontier scene on every point-in-water test. Static path batching is fixed for path nodes that are Mesh roots.",
+      "domain": "performance_diagnostics"
+    },
+    {
+      "revision": "R231A",
+      "line": 25557,
+      "description": "CPU phase profiling build. Empty-map benchmark with camera motion averaged 44.45 FPS at 114 draw calls, while the populated park previously remained near 2 FPS after draw-call collapse. Adds a 10-second profiler for guest movement, transport, queues, workers, economy, needs/background logic, GPS, frontier, wildlife, ride animation, GPU instance updates, renderer.render, and entity live camera work. This identifies the actual JS hot subsystem in the populated save.",
+      "domain": "performance_diagnostics"
+    },
+    {
+      "revision": "R231B",
+      "line": 25558,
+      "description": "interaction-safe CPU hot-path pass. INTERACT/INSPECT left-click and right-click on guests/workers now follow the selected entity and open its entity panel. All worker roles can open the worker entity panel. Guest and worker panels continue attaching the embedded live entity camera. Hover remains non-opening. CPU changes include 750ms ride-access economy maintenance, staggered ambient guest decisions, cached transport availability, and cached carryable hierarchy lookup.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R231C",
+      "line": 25559,
+      "description": "Distance-based render reduction is now an optional Settings feature and defaults OFF. When OFF, full-detail park trees, guests and wildlife remain rendered regardless of distance; static navigation/path batching and other non-visual CPU optimizations remain active. Object Inspector now contains an embedded live camera feed targeting the selected object, and the main live-camera update gate includes the Object Inspector.",
+      "domain": "environment"
+    },
+    {
+      "revision": "R231D",
+      "line": 25560,
+      "description": "entity camera singleton cleanup. Object Inspector no longer creates a second dynamic camera mount inside its body; it uses only the canonical static entityCamMountObjectR229W mount. attachEntityLiveCameraR229W now enforces at most one .entityLiveCamR229W wrapper/canvas per entity page and clears stale duplicate mounts from older renders. Guest, worker, wildlife and object pages retain live camera feeds.",
+      "domain": "staff_ops"
+    },
+    {
+      "revision": "R231E",
+      "line": 25561,
+      "description": "Guest Flock Studio gains an optional GPT Knowledge Broker, OFF by default. GPT uses the OpenAI Responses API to create workflow direction, knowledge briefs, per-role directives, acceptance checks and risk notes that are injected into the local Ollama Scout/Shepherd/Planner/Builder/Reviewer/Archivist prompts. Default OpenAI model is gpt-5.6-luna, with Terra and Sol selectable. Direct mode accepts an API key into module-scoped session memory only; the password input is immediately cleared and the key is never stored in localStorage, save data, project files, exports, transcripts or diagnostics. Local Relay mode is available for stronger server-side key isolation. Broker errors do not block the local Ollama workflow.",
+      "domain": "flock_ai"
+    },
+    {
+      "revision": "R231G",
+      "line": 25562,
+      "description": "wildlife receives the same rich pointer-hover treatment as guests. Hovering an animal now shows its species icon/name, coordinates, current activity, temperament, nearby guest count, habitat, distance from home range and current thought without opening a panel. Right-click inspection now has an explicit normal-wildlife raycast in addition to GPU-instance mapping, so Orbit mode reliably opens the wildlife entity window and live camera whether distance render reduction is on or off.",
+      "domain": "camera_input"
+    },
+    {
+      "revision": "R231I",
+      "line": 25563,
+      "description": "guest entity windows replace the generic auto-spinning live camera with an interactive Guest Observer. The replacement reuses the shared secondary renderer for performance but adds Orbit, Follow, Face and first-person POV modes, drag orbiting, wheel zoom, a live mode/target readout and POV crosshair. Wildlife, worker and object cameras remain unchanged.",
+      "domain": "camera_input"
+    },
+    {
+      "revision": "R231J",
+      "line": 25564,
+      "description": "Guest Flock chat transcript is left anchored and left aligned across ordinary responses and fenced code while preserving selectable themed text and Copy/Preview controls.",
+      "domain": "flock_ai"
+    },
+    {
+      "revision": "R231L",
+      "line": 25565,
+      "description": "restores CTRL+left-click demolition priority. A capture-phase bulldozer guard now runs before specialized construction/inspection handlers that can stopImmediatePropagation. Plain CTRL+click demolishes again even while Custom Path, Custom Coaster, route/station builders, grabber, or Inspect mode are active; CTRL+SHIFT on a normal path remains reserved for snapped path construction.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R231P",
+      "line": 25566,
+      "description": "reverted the R231O mobility experiment to the stable R231N camera/control baseline. Adds a complete persistent Ollama/GPT Flock conversation browser backed by IndexedDB with search, speaker/run filters, pagination, copy and JSON export. Existing retained turns/tasks migrate into the archive. Park Map is redrawn as a live colored paper map with parchment terrain, colored path/queue ink, coaster routes, water washes and cartographic markers. No camera/control-loop handlers are changed.",
+      "domain": "flock_ai"
+    },
+    {
+      "revision": "R231R",
+      "line": 25567,
+      "description": "fixes three live-simulation regressions without changing the main camera control loop. Guest Observer now owns a dedicated throttled secondary renderer so object/wildlife/worker camera attachments cannot steal its canvas; it targets visible rider proxies when present and temporarily reveals LOD-hidden guest visuals only for the secondary render. GPS ordinary destinations complete on the exact movement frame they are reached, closing the 1Hz scheduler gap that could pull guests back and forth across the same path tile, and New Game clears stale GPS planner jobs. CTRL+click demolition now resolves the highest registered object/path root across every ray hit instead of stopping on entity-tagged child meshes. Normal object, rapid-build and path placement now charge ITEMS catalog cost through the authoritative economy ledger and show the existing red spend popup; routed rides use that same ledger too.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R231Y",
+      "line": 25568,
+      "description": "every guest has a persistent Frontier Phone inventory device with Wi-Fi/cellular Internet bearer, direct OPEN OS launch, and the rotation HUD heals its deleted value node so it cannot remain stuck visible after move/placement tools.",
+      "domain": "frontieros_comms"
+    },
+    {
+      "revision": "R231X",
+      "line": 25569,
+      "description": "removes guest-owned/follower animal coupling. All visible animals are independent world entities with individual temperament/personality, bounded autonomous roaming and first-person Ollama animal identity. Geocache Object Inspector now exposes cache inventory plus a guest-linked interaction ledger with each visitor's current or persisted inventory snapshot and signed log entries; live visitors can be opened directly.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R231S",
+      "line": 25570,
+      "description": "queue authority hardening. Guests walk only to the outer queue entrance; once inside a normal or transport queue they are mapped by FIFO order to unique contiguous three-per-tile world slots and hard-frozen with no idle/walk animation, eliminating competing walker ownership, slot collisions and visible queue jitter. Queue geometry now guarantees distinct center spacing on straight segments and bends. Rich entity hover now reports live riders/capacity for rides and live waiting occupancy/capacity for queue lines, including connected ride/station ownership. Diagnostics: queueFreezeAuditR231S() and rideQueueHoverAuditR231S().",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R231T",
+      "line": 25571,
+      "description": "Attraction Manager DB actions now use side-effect-free entity lookup and click-phase inspector mounting; entity registration refreshes only on first registration. Waiting queue guests are excluded from far-crowd LOD batching and forced fully visible to eliminate queue blinking.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R231U",
+      "line": 25581,
+      "description": "transport performance hotfix. Transport route planning is removed from the guest walker, capped to one or two guests per frame, route/station readiness work is short-lived cached, demand seeding only requests future planning, and routed-ride scans reuse the performance object cache. This directly targets transport_trips and the transport work formerly leaking into guest_movement_loop.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R231V",
+      "line": 25582,
+      "description": "path realism pass. Construction grid is offset by half a 2m cell so its lines represent cell boundaries and line up with the edges around the starter pavement. Standard paths are 1.44m wide and queues 0.96m wide rather than filling a full 2m square. R230F root-mesh suppression is corrected so square path bases no longer remain visible beneath centerline ribbons. Default asphalt uses a shared procedural aggregate/crack texture, and queue snake rails stay constrained to the narrow lane instead of rebuilding a full-tile perimeter.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R232C",
+      "line": 25583,
+      "description": "fixes blank Park Manager FrontierOS by correcting the SSID registry reference and adds persistent drag positioning. Guest phone texts are surfaced as an all-conversation message database in FrontierOS and in each guest entity database; guest-to-guest traffic periodically appears in Park Pulse. Park Pulse now continuously rotates through live ride, queue, guest, network, audio, wildlife, geocache, lighting, economy, social, research and operations topics. Night ambient floor is raised slightly from R232B while real local lights receive stronger output, longer practical reach and gentler falloff.",
+      "domain": "frontieros_comms"
+    },
+    {
+      "revision": "R232F",
+      "line": 25585,
+      "description": "fixes Jumping Fountain self-animation by routing the catalog/save key jumpfountain into the existing R177 ballistic fountain constructor; removes the earlier static branch that intercepted it. Also removes the duplicate legacy speaker constructor so the updated weatherproof pole speaker model is authoritative.",
+      "domain": "environment"
+    },
+    {
+      "revision": "R232I",
+      "line": 25698,
+      "description": "all child panels/dialogs and both FrontierOS handsets share universal drag, close and z-order behavior. Backspace discovers the actual top child dynamically, and the physical mouse Browser-Back button closes that same child. Future dynamically created child windows inherit the behavior automatically.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R232J",
+      "line": 25752,
+      "description": "guest phone messaging now reads authoritative inbox/outbox records and bootstraps two-way park introductions so guests do not sit at 0 sent / 0 received for minutes. Social autonomy checks are budgeted across several guests per tick. Speaker testing now has an inspector monitor that overrides distance attenuation only while the selected speaker inspector is open, Radio Browser prefers HTTPS non-HLS browser-playable stations, and media status reports actual playing/paused/local-field state instead of the misleading generic continues-unfocused label.",
+      "domain": "audio_media"
+    },
+    {
+      "revision": "R232K",
+      "line": 25754,
+      "description": "adds a dedicated Synthwave Radio provider with ten curated preset streams: Nightride FM, ChillSynth FM, Datawave FM, SpaceSynth FM, DarkSynth, HorrorSynth, Synthwave City FM, SynthZone, Record Synthwave, and Nightwave Plaza. Presets use the existing persistent local-speaker and Main PA audio pipeline and retain station metadata for nearby guest minds.",
+      "domain": "audio_media"
+    },
+    {
+      "revision": "R232L",
+      "line": 25755,
+      "description": "Main PA now owns its own provider/program selection instead of receiving media pushed from a speaker. Linked speakers subscribe to that program and may be individually switched to a persistent Local Override. Festival Banners expose per-entity cloth color and Rectangle/Pennant/Swallowtail/Vertical shape controls.",
+      "domain": "audio_media"
+    },
+    {
+      "revision": "R232M",
+      "line": 25757,
+      "description": "park Wi-Fi access points are now 4×4 MU-MIMO entities that can broadcast multiple SSIDs at once, expose per-AP SSID checkboxes, support temporary directional beamforming pushes to selected guest phones, visualize the beam, and publish every push to Park Pulse. Normal build tiles and ride-access placements snap to one-eighth of the 2m construction cell (0.25m) while paths retain their dedicated navigation/strict-snap rules.",
+      "domain": "paths_construction"
+    },
+    {
+      "revision": "R232N",
+      "line": 25758,
+      "description": "every speaker entity inspector now has a 📢 Open Main PA button that opens and fronts the authoritative PA console directly from the speaker UI without changing link/override state.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R233A",
+      "line": 26136,
+      "description": "Guest Flock removes the permanent left activity rail and fixed workbench sidebar. Files/Search/Conversations are on-demand drawers; the project tree uses a compact VS Code/Nemo/Sublime-style editor presentation; Code and Preview are explicit workspace modes; grouped conversations have real per-session IndexedDB deletion; existing project/editor/context/agent behavior is preserved.",
+      "domain": "ui_ux"
+    },
+    {
+      "revision": "R233B",
+      "line": 26353,
+      "description": "waiting guests now use a queue-owned stationary idle/facing animation completely separate from ride rider proxies, preventing Ferris queues from inheriting wheel motion. Security guards and entertainers now use the same rich worker inspector model as handymen with role-specific duties, opinions, Ollama chat, live camera, persistent FrontierOS Worker phones, and a dedicated Forest Frontiers Worker WPA3 SSID broadcast by park APs. Normal attractions expose brighter, closer green Entrance and blue Exit pickup/drop handles immediately after placement, and those handles remain clickable even while a build tool is still selected.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R233C",
+      "line": 26642,
+      "description": "Ferris riding clears queue ownership at boarding and uses a once-per-frame cabin-seat renderer, eliminating rider/queue double ownership and ghost copies. All programmable park lights are heavily suppressed by daylight and rise naturally after dusk; Wave Beacon defaults to a much slower 0.08 Hz soft sine. Alexandria devotes a large recurring slice of its 10,000 entries to programming, web development, Linux/Bash, Docker, Ansible, Node, Python, LLMs, Ollama, RAG, databases, APIs, DevOps, networking and agents. A park-level Flock Topic of the Day panel drives real live guest-to-guest learning/messages and shared memory. Security guards are a distinct profession: ATM service, crime prevention, camera hotspot awareness, GPS suspect pursuit, vandalism response, most-wanted tracking, ejection and persistent incident reporting; they never perform handyman cleanup. Orbit left-click follow and right-click entity Inspect are restored.",
+      "domain": "rides_attractions"
+    },
+    {
+      "revision": "R233D",
+      "line": 26934,
+      "description": "user-facing ride readiness terminology now says guest-ready instead of the misleading guest-visible. All non-routed attractions missing access receive the same large green/blue pickup sockets plus standing gatehouse hologram shortcuts, even when a build catalog tool remains selected. GPS rest tasks reserve a real bench/table seat and remain active through the walk-to-seat, link, seated-rest and stand-up animation before completing. Adds small/medium live wildlife food/habitat objects including clover, berry shrubs, seed scatter, insect/pollinator patches, mushrooms, pondweed and community bowls; wildlife develops hunger, seeks compatible food, eats visible resources and natural sources regrow.",
+      "domain": "guest_sim"
+    },
+    {
+      "revision": "R233E",
+      "line": 27075,
+      "description": "Alexandria technical curriculum is promoted from keyword/tag enrichment into a searchable relational-style knowledge database. Every requested technical topic record exposes a parent topics row plus populated concepts, workflow, diagnostics, related_topics, and request_more child tables with named columns and detailed rows. Alexandria search indexes nested table content, topic detail renders the schema and rows, and each record explains how to request deeper information with local row search, real Guest Flock follow-up, or Topic-of-the-Day handoff.",
+      "domain": "alexandria_geocache"
+    },
+    {
+      "revision": "R233F",
+      "line": 27211,
+      "description": "flock learning now records the actual lesson instead of generic 'learned something' thoughts. The existing periodic flock peer loop routes into a real guest-backed Ollama conversation engine. Active live flock guests rotate through three-turn peer discussions grounded in Topic of the Day, their persistent personal brains, and Alexandria relational rows; every turn is stored as real guest-to-guest phone/social traffic, concrete TAKEAWAY lessons are written into memory/knowledge/neural lessons/shared flock facts, and the park-level Flock Topic panel shows the latest transcript and exact learned content with a manual learning-round trigger. Alexandria-grounded fallback is used only when local Ollama is unavailable.",
+      "domain": "flock_ai"
+    },
+    {
+      "revision": "R233G",
+      "line": 27356,
+      "description": "adds a persistent park-level Collective Flock Prompt distinct from one-run Studio tasks and Topic of the Day, and injects it into role-based Ollama agents plus automatic real-guest peer learning. Alexandria relational technical additions are now explicitly married to geocaching: every placed cache owns a deterministic 12-entry Alexandria shelf with guaranteed relational technical records, old caches migrate, technical cards retain authoritative database references, and the Geocaching Website exposes each cache shelf directly. Park Pulse now renders inline hotlinks for mentioned guests, workers, wildlife, objects/caches, and Alexandria topic IDs; each link opens the entity's native UI or Alexandria record.",
+      "domain": "flock_ai"
+    },
+    {
+      "revision": "R233M",
+      "line": 28372,
+      "description": "in-module root fix for Staff Manager worker/security inspector and urgent guest facility routing. Later classic scripts cannot access the core module scope; this patch lives inside the authoritative module.",
+      "domain": "staff_ops"
+    }
+  ],
+  "catalog": [
+    {
+      "key": "custompath",
+      "icon": "🛤️",
+      "name": "Custom Elevated Path Engineer",
+      "description": "Node-based 3D path builder for ramps, bridges, overpasses and elevated walkways. Choose path texture after opening.",
+      "category": "paths",
+      "line": 4359
+    },
+    {
+      "key": "path",
+      "icon": "🛣️",
+      "name": "Asphalt Path",
+      "description": "Fresh blacktop for the first roads into Forest Frontiers.",
+      "category": "paths",
+      "line": 4360,
+      "price": 20.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "queue",
+      "icon": "〰️",
+      "name": "Queue Path",
+      "description": "A controlled waiting lane for future attractions.",
+      "category": "paths",
+      "line": 4361,
+      "price": 28.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "stonepath",
+      "icon": "🪨",
+      "name": "Stone Path",
+      "description": "Rugged fitted stone for scenic woodland routes and old frontier plazas.",
+      "category": "paths",
+      "line": 4362,
+      "price": 32.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "boardwalk",
+      "icon": "🪵",
+      "name": "Boardwalk",
+      "description": "Raised timber decking for waterfronts, marshes and rustic midway districts.",
+      "category": "paths",
+      "line": 4363,
+      "price": 38.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "brickpath",
+      "icon": "🧱",
+      "name": "Brick Promenade",
+      "description": "A premium brick walkway for entrances, plazas and high-value shopping streets.",
+      "category": "paths",
+      "line": 4364,
+      "price": 42.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "dirtpath",
+      "icon": "🥾",
+      "name": "Frontier Trail",
+      "description": "An inexpensive natural trail for remote forest areas and low-development land.",
+      "category": "paths",
+      "line": 4365,
+      "price": 16.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "glowpath",
+      "icon": "✨",
+      "name": "Glow Path",
+      "description": "Research-era illuminated paving for nighttime districts and futuristic attractions.",
+      "category": "paths",
+      "line": 4366,
+      "price": 65.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "sandpath",
+      "icon": "🏜️",
+      "name": "Sandstone Trail",
+      "description": "Golden paving for canyon and desert districts.",
+      "category": "paths",
+      "line": 4367,
+      "price": 48.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "slatepath",
+      "icon": "⬛",
+      "name": "Slate Walk",
+      "description": "Dark premium paving for modern attraction districts.",
+      "category": "paths",
+      "line": 4368,
+      "price": 58.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "gardenpath",
+      "icon": "🌿",
+      "name": "Garden Walk",
+      "description": "Green-edged paving for botanical areas.",
+      "category": "paths",
+      "line": 4369,
+      "price": 52.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "cobblepath",
+      "icon": "🪨",
+      "name": "Cobblestone Lane",
+      "description": "Old-world rounded stone paving.",
+      "category": "paths",
+      "line": 4370,
+      "price": 46.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "checkerpath",
+      "icon": "🏁",
+      "name": "Checker Midway",
+      "description": "Graphic paving for arcades and kart districts.",
+      "category": "paths",
+      "line": 4371,
+      "price": 44.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "neonpath",
+      "icon": "💠",
+      "name": "Neon Circuit",
+      "description": "Dark paving with luminous nighttime edges.",
+      "category": "paths",
+      "line": 4372,
+      "price": 78.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "glasspath",
+      "icon": "🪟",
+      "name": "Glass Skywalk",
+      "description": "Elevated transparent-style bridge decking.",
+      "category": "paths",
+      "line": 4373,
+      "price": 90.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "steelpath",
+      "icon": "🔩",
+      "name": "Steel Catwalk",
+      "description": "Industrial bridge and platform decking.",
+      "category": "paths",
+      "line": 4373,
+      "price": 72.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "rubberpath",
+      "icon": "🎨",
+      "name": "Rubber Funway",
+      "description": "Colorful family-area paving.",
+      "category": "paths",
+      "line": 4373,
+      "price": 36.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "marblepath",
+      "icon": "🏛️",
+      "name": "Marble Plaza",
+      "description": "Premium formal paving.",
+      "category": "paths",
+      "line": 4373,
+      "price": 75.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "queueblue",
+      "icon": "🔵",
+      "name": "Blue Queue",
+      "description": "Blue-railed queue lane.",
+      "category": "paths",
+      "line": 4374,
+      "price": 30.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "queuered",
+      "icon": "🔴",
+      "name": "Red Queue",
+      "description": "Red-railed queue lane.",
+      "category": "paths",
+      "line": 4374,
+      "price": 30.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "queuegreen",
+      "icon": "🟢",
+      "name": "Green Queue",
+      "description": "Green-railed queue lane.",
+      "category": "paths",
+      "line": 4374,
+      "price": 30.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "queuewood",
+      "icon": "🪵",
+      "name": "Wood Queue",
+      "description": "Rustic timber queue.",
+      "category": "paths",
+      "line": 4374,
+      "price": 34.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "queuevip",
+      "icon": "⭐",
+      "name": "VIP Queue",
+      "description": "Illuminated priority queue.",
+      "category": "paths",
+      "line": 4374,
+      "price": 55.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "crystalpath",
+      "icon": "💎",
+      "name": "Crystal Causeway",
+      "description": "Faceted translucent paving for future districts. • CRY • $96",
+      "category": "paths",
+      "line": 4374,
+      "price": 96.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "copperpath",
+      "icon": "🟠",
+      "name": "Copper Promenade",
+      "description": "Industrial copper plates with riveted trim. • CPR • $84",
+      "category": "paths",
+      "line": 4374,
+      "price": 84.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "mosaicpath",
+      "icon": "🎨",
+      "name": "Mosaic Avenue",
+      "description": "Hand-laid geometric festival mosaics. • MOS • $88",
+      "category": "paths",
+      "line": 4374,
+      "price": 88.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "snowpath",
+      "icon": "❄️",
+      "name": "Alpine Walk",
+      "description": "Frost-toned paving for winter districts. • ALP • $54",
+      "category": "paths",
+      "line": 4374,
+      "price": 54.0,
+      "entity_type": "path"
+    },
+    {
+      "key": "burger",
+      "icon": "🍔",
+      "name": "Burger Stand",
+      "description": "A frontier grill serving quick meals to hungry explorers.",
+      "category": "food",
+      "line": 4376,
+      "price": 150.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "pizza",
+      "icon": "🍕",
+      "name": "Pizza Stall",
+      "description": "Hot slices for guests unwilling to leave the midway.",
+      "category": "food",
+      "line": 4377,
+      "price": 170.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "drink",
+      "icon": "🥤",
+      "name": "Drink Stall",
+      "description": "Cold drinks for long summer days beneath the pines.",
+      "category": "food",
+      "line": 4378,
+      "price": 110.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "icecream",
+      "icon": "🍦",
+      "name": "Ice Cream Stall",
+      "description": "A small frozen-treat counter with old park charm.",
+      "category": "food",
+      "line": 4379,
+      "price": 130.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "donutshop",
+      "icon": "🍩",
+      "name": "Donut Shop",
+      "description": "Fresh donuts beneath a giant rooftop donut sign.",
+      "category": "food",
+      "line": 4380,
+      "price": 340.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "tacostall",
+      "icon": "🌮",
+      "name": "Taco Stall",
+      "description": "Trail tacos beneath a sculpted rooftop taco.",
+      "category": "food",
+      "line": 4381,
+      "price": 390.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "candyshop",
+      "icon": "🍬",
+      "name": "Candy Shop",
+      "description": "Bright sweets with oversized candy roof sculpture.",
+      "category": "food",
+      "line": 4382,
+      "price": 360.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "balloonstall",
+      "icon": "🎈",
+      "name": "Balloon Stall",
+      "description": "Colorful helium balloons beneath a compact rooftop balloon bouquet.",
+      "category": "food",
+      "line": 4383,
+      "price": 260.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "coffee",
+      "icon": "☕",
+      "name": "Coffee Lab",
+      "description": "Roasted beans and chrome machinery fuel the morning crowd. • CAF • $190",
+      "category": "food",
+      "line": 4383,
+      "price": 190.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "popcorn",
+      "icon": "🍿",
+      "name": "Popcorn Rocket",
+      "description": "A striped kettle kiosk perfuming the midway. • POP • $160",
+      "category": "food",
+      "line": 4383,
+      "price": 160.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "pretzel",
+      "icon": "🥨",
+      "name": "Pretzel Forge",
+      "description": "Twisted golden pretzels from a tiny park forge. • PRZ • $175",
+      "category": "food",
+      "line": 4383,
+      "price": 175.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "sushi",
+      "icon": "🍣",
+      "name": "Sushi Pod",
+      "description": "A clean modern counter serving compact rolls. • SUS • $310",
+      "category": "food",
+      "line": 4383,
+      "price": 310.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "smoothie",
+      "icon": "🥤",
+      "name": "Smoothie Reactor",
+      "description": "Fruit colors spin beneath a glowing blender crown. • SMO • $220",
+      "category": "food",
+      "line": 4383,
+      "price": 220.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "fries",
+      "icon": "🍟",
+      "name": "Fries Factory",
+      "description": "Crisp fries beneath an oversized carton beacon. • FRY • $185",
+      "category": "food",
+      "line": 4383,
+      "price": 185.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "chicken",
+      "icon": "🍗",
+      "name": "Chicken Shack",
+      "description": "A rustic counter crowned by a golden drumstick. • CHK • $260",
+      "category": "food",
+      "line": 4383,
+      "price": 260.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "souvenir",
+      "icon": "🎁",
+      "name": "Souvenir Vault",
+      "description": "Park relics, shirts and keepsakes under one roof. • SVR • $330",
+      "category": "food",
+      "line": 4383,
+      "price": 330.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "plush",
+      "icon": "🧸",
+      "name": "Plush Palace",
+      "description": "A soft-toy emporium with a giant bear mascot. • PLS • $290",
+      "category": "food",
+      "line": 4383,
+      "price": 290.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "photo",
+      "icon": "📸",
+      "name": "Photo Booth",
+      "description": "Instant park portraits beneath a camera marquee. • PIC • $240",
+      "category": "food",
+      "line": 4383,
+      "price": 240.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "info",
+      "icon": "ℹ️",
+      "name": "Information Kiosk",
+      "description": "Maps, directions and a human landmark in the wilderness.",
+      "category": "facilities",
+      "line": 4385,
+      "price": 180.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "infokiosk",
+      "icon": "🗺️",
+      "name": "Map Kiosk",
+      "description": "Compact staffed map and guide kiosk with a physical park map display.",
+      "category": "facilities",
+      "line": 4386
+    },
+    {
+      "key": "umbrellakiosk",
+      "icon": "☂️",
+      "name": "Umbrella Kiosk",
+      "description": "Weather kiosk selling umbrellas and ponchos with real umbrella displays.",
+      "category": "facilities",
+      "line": 4387
+    },
+    {
+      "key": "restroom",
+      "icon": "🚻",
+      "name": "Restroom",
+      "description": "A compact permanent two-door park comfort station.",
+      "category": "facilities",
+      "line": 4388
+    },
+    {
+      "key": "arcade",
+      "icon": "🕹️",
+      "name": "Midway Arcade",
+      "description": "A compact neon game hall with cabinets, marquee and rooftop joystick.",
+      "category": "facilities",
+      "line": 4389,
+      "price": 320.0,
+      "entity_type": "shop"
+    },
+    {
+      "key": "deluxetoilet",
+      "icon": "🚻",
+      "name": "Deluxe Restroom",
+      "description": "A polished high-capacity comfort station. • DLX • $420",
+      "category": "facilities",
+      "line": 4389,
+      "price": 420.0,
+      "entity_type": "service"
+    },
+    {
+      "key": "familycare",
+      "icon": "👨‍👩‍👧",
+      "name": "Family Care Center",
+      "description": "Quiet family rooms, changing areas and seating. • FAM • $720",
+      "category": "facilities",
+      "line": 4389,
+      "price": 720.0,
+      "entity_type": "service"
+    },
+    {
+      "key": "charging",
+      "icon": "🔋",
+      "name": "Phone Charging Hub",
+      "description": "Locking power bays restore tired devices. • CHG • $280",
+      "category": "facilities",
+      "line": 4389,
+      "price": 280.0,
+      "entity_type": "service"
+    },
+    {
+      "key": "waterstation",
+      "icon": "💧",
+      "name": "Water Refill Station",
+      "description": "Free refill taps keep guests hydrated. • H2O • $150",
+      "category": "facilities",
+      "line": 4389,
+      "price": 150.0,
+      "entity_type": "service"
+    },
+    {
+      "key": "lostfound",
+      "icon": "🔎",
+      "name": "Lost & Found",
+      "description": "A bright beacon for misplaced park treasures. • LNF • $260",
+      "category": "facilities",
+      "line": 4389,
+      "price": 260.0,
+      "entity_type": "service"
+    },
+    {
+      "key": "parkoffice",
+      "icon": "🏢",
+      "name": "Park Services Office",
+      "description": "The administrative nerve center of the park. • OPS • $850",
+      "category": "facilities",
+      "line": 4389,
+      "price": 850.0,
+      "entity_type": "service"
+    },
+    {
+      "key": "securitypost",
+      "icon": "🛡️",
+      "name": "Security Post",
+      "description": "A visible security outpost overlooking the midway. • SEC • $560",
+      "category": "facilities",
+      "line": 4389,
+      "price": 560.0,
+      "entity_type": "service"
+    },
+    {
+      "key": "clinic",
+      "icon": "🏥",
+      "name": "Park Clinic",
+      "description": "Expanded medical care for guests who need recovery. • MED • $1,100",
+      "category": "facilities",
+      "line": 4389,
+      "price": 1100.0,
+      "entity_type": "service"
+    },
+    {
+      "key": "cashoffice",
+      "icon": "💵",
+      "name": "Cash Office",
+      "description": "A hardened counting room supporting park cash flow. • CSH • $900",
+      "category": "facilities",
+      "line": 4389,
+      "price": 900.0,
+      "entity_type": "service"
+    },
+    {
+      "key": "transporthub",
+      "icon": "🚌",
+      "name": "Transport Hub",
+      "description": "A sheltered interchange for park transportation. • HUB • $1,300",
+      "category": "facilities",
+      "line": 4389,
+      "price": 1300.0,
+      "entity_type": "service"
+    },
+    {
+      "key": "bench",
+      "icon": "🪑",
+      "name": "Path Bench Pair",
+      "description": "Snaps to a walkway and installs two adult-size benches, one on each side of the path, with four total seats.",
+      "category": "scenery",
+      "line": 4391,
+      "price": 45.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "lamp",
+      "icon": "💡",
+      "name": "Lamp Post",
+      "description": "Warm pools of light when the frontier turns dark.",
+      "category": "scenery",
+      "line": 4392,
+      "price": 35.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "tree",
+      "icon": "🌲",
+      "name": "Pine Tree",
+      "description": "Restore a piece of woodland wherever construction thins it.",
+      "category": "scenery",
+      "line": 4393,
+      "price": 30.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "fountain",
+      "icon": "⛲",
+      "name": "Fountain",
+      "description": "A civic centerpiece where paths and guests can gather.",
+      "category": "scenery",
+      "line": 4394,
+      "price": 140.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "flowerbed",
+      "icon": "🌺",
+      "name": "Flower Bed",
+      "description": "Dense seasonal flowers with strong scenery appeal.",
+      "category": "scenery",
+      "line": 4395
+    },
+    {
+      "key": "hedge",
+      "icon": "🌳",
+      "name": "Trimmed Hedge",
+      "description": "Sculpted greenery for borders and queues.",
+      "category": "scenery",
+      "line": 4396
+    },
+    {
+      "key": "statue",
+      "icon": "🗿",
+      "name": "Frontier Statue",
+      "description": "Stone landmark for plazas and ride entrances.",
+      "category": "scenery",
+      "line": 4397,
+      "price": 180.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "rockgarden",
+      "icon": "🪨",
+      "name": "Rock Garden",
+      "description": "Layered natural boulders for rugged landscaping.",
+      "category": "scenery",
+      "line": 4398
+    },
+    {
+      "key": "gazebo",
+      "icon": "🏛️",
+      "name": "Park Gazebo",
+      "description": "Covered ornamental gathering point.",
+      "category": "scenery",
+      "line": 4399,
+      "price": 260.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "archway",
+      "icon": "⛩️",
+      "name": "Decorative Arch",
+      "description": "Walk-through themed district landmark.",
+      "category": "scenery",
+      "line": 4400
+    },
+    {
+      "key": "flagpole",
+      "icon": "🚩",
+      "name": "Park Flagpole",
+      "description": "Tall plaza marker.",
+      "category": "scenery",
+      "line": 4401
+    },
+    {
+      "key": "planter",
+      "icon": "🪴",
+      "name": "Large Planter",
+      "description": "Portable greenery for pedestrian areas.",
+      "category": "scenery",
+      "line": 4402
+    },
+    {
+      "key": "topiary",
+      "icon": "🌲",
+      "name": "Topiary",
+      "description": "Carefully shaped ornamental tree.",
+      "category": "scenery",
+      "line": 4403,
+      "price": 135.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "campfire",
+      "icon": "🔥",
+      "name": "Campfire",
+      "description": "Glowing frontier camp decoration.",
+      "category": "scenery",
+      "line": 4404
+    },
+    {
+      "key": "waterfall",
+      "icon": "🌊",
+      "name": "Decorative Waterfall",
+      "description": "Rock feature with cascading water.",
+      "category": "scenery",
+      "line": 4405,
+      "price": 320.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "pond",
+      "icon": "💧",
+      "name": "Garden Pond",
+      "description": "Small landscaped water feature.",
+      "category": "scenery",
+      "line": 4406
+    },
+    {
+      "key": "clock",
+      "icon": "🕰️",
+      "name": "Park Clock",
+      "description": "Tall meeting-point clock.",
+      "category": "scenery",
+      "line": 4407
+    },
+    {
+      "key": "banner",
+      "icon": "🎏",
+      "name": "Festival Banner",
+      "description": "Colorful path and event decoration.",
+      "category": "scenery",
+      "line": 4408
+    },
+    {
+      "key": "marquee",
+      "icon": "🪧",
+      "name": "Scrolling Path Marquee",
+      "description": "Over-path scrolling message sign. Inspect it to edit the marquee or set DO NOT ENTER to block guest routing beneath it.",
+      "category": "scenery",
+      "line": 4408
+    },
+    {
+      "key": "speaker",
+      "icon": "🔊",
+      "name": "Music Speaker",
+      "description": "A park ambience speaker. Nearby guests notice the music and judge the area more favorably.",
+      "category": "scenery",
+      "line": 4409
+    },
+    {
+      "key": "rosearch",
+      "icon": "🌹",
+      "name": "Rose Arch",
+      "description": "Climbing roses frame a romantic garden threshold. • ROS • $95",
+      "category": "scenery",
+      "line": 4409,
+      "price": 95.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "neontree",
+      "icon": "🌳",
+      "name": "Neon Tree",
+      "description": "A sculptural tree threaded with electric light. • NTR • $120",
+      "category": "scenery",
+      "line": 4409,
+      "price": 120.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "fireflies",
+      "icon": "✨",
+      "name": "Firefly Grove",
+      "description": "Tiny lights drift through a miniature grove. • FLY • $145",
+      "category": "scenery",
+      "line": 4409,
+      "price": 145.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "clocktower",
+      "icon": "🕰️",
+      "name": "Mini Clock Tower",
+      "description": "A miniature landmark keeping park time. • CLK • $240",
+      "category": "scenery",
+      "line": 4409,
+      "price": 240.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "laserflower",
+      "icon": "🌺",
+      "name": "Laser Flowers",
+      "description": "Mechanical petals pulse with luminous cores. • LSR • $110",
+      "category": "scenery",
+      "line": 4409,
+      "price": 110.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "kineticsculpture",
+      "icon": "🎐",
+      "name": "Kinetic Sculpture",
+      "description": "Balanced metal rings rotate in the breeze. • KIN • $210",
+      "category": "scenery",
+      "line": 4409,
+      "price": 210.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "lanterncanopy",
+      "icon": "🏮",
+      "name": "Lantern Canopy",
+      "description": "Warm suspended lanterns sway gently over family walkways. • LNC • $180",
+      "category": "scenery",
+      "line": 4410,
+      "price": 180.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "storybookgate",
+      "icon": "📖",
+      "name": "Storybook Gate",
+      "description": "A cinematic illuminated gateway for a family district. • SBG • $240",
+      "category": "scenery",
+      "line": 4411,
+      "price": 240.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "butterflygarden",
+      "icon": "🦋",
+      "name": "Butterfly Garden",
+      "description": "Animated butterflies drift above a dense flowering garden. • BFG • $165",
+      "category": "scenery",
+      "line": 4412,
+      "price": 165.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "musicalfountain",
+      "icon": "🎼",
+      "name": "Musical Fountain",
+      "description": "Soft illuminated water jets pulse in a family-friendly rhythm. • MFT • $280",
+      "category": "scenery",
+      "line": 4413,
+      "price": 280.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "familytree",
+      "icon": "🌳",
+      "name": "Family Memory Tree",
+      "description": "A glowing landmark tree with shimmering animated leaves. • FMT • $220",
+      "category": "scenery",
+      "line": 4414,
+      "price": 220.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "windribbons",
+      "icon": "🎀",
+      "name": "Wind Ribbon Sculpture",
+      "description": "Polished ribbon blades rotate slowly in the breeze. • WRS • $195",
+      "category": "scenery",
+      "line": 4415,
+      "price": 195.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "oaktree",
+      "icon": "🌳",
+      "name": "Heritage Oak",
+      "description": "Broad HD shade tree with a mature branching crown. • OAK • $70",
+      "category": "scenery",
+      "line": 4416,
+      "price": 70.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "mapletree",
+      "icon": "🍁",
+      "name": "Crimson Maple",
+      "description": "Layered red-orange canopy for strong seasonal color. • MAP • $65",
+      "category": "scenery",
+      "line": 4417,
+      "price": 65.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "birchtree",
+      "icon": "🌿",
+      "name": "Silver Birch",
+      "description": "Pale bark and airy green foliage for woodland edges. • BIR • $58",
+      "category": "scenery",
+      "line": 4418,
+      "price": 58.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "willowtree",
+      "icon": "🌿",
+      "name": "Weeping Willow",
+      "description": "Long drooping branches for ponds and quiet garden paths. • WIL • $82",
+      "category": "scenery",
+      "line": 4419,
+      "price": 82.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "cherrytree",
+      "icon": "🌸",
+      "name": "Cherry Blossom Tree",
+      "description": "Soft pink flowering canopy with drifting blossom motion. • CHR • $78",
+      "category": "scenery",
+      "line": 4420,
+      "price": 78.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "magnoliatree",
+      "icon": "🌺",
+      "name": "Magnolia Tree",
+      "description": "Glossy foliage and large pale ornamental flowers. • MAG • $74",
+      "category": "scenery",
+      "line": 4421,
+      "price": 74.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "lavenderbed",
+      "icon": "🪻",
+      "name": "Lavender Bed",
+      "description": "Low purple flowering border. • LAV • $32",
+      "category": "scenery",
+      "line": 4422,
+      "price": 32.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "tulipbed",
+      "icon": "🌷",
+      "name": "Tulip Garden",
+      "description": "Crisp rows of colorful tulips. • TUL • $34",
+      "category": "scenery",
+      "line": 4423,
+      "price": 34.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "daisybed",
+      "icon": "🌼",
+      "name": "Daisy Meadow",
+      "description": "Loose white-and-yellow meadow planting. • DSY • $28",
+      "category": "scenery",
+      "line": 4424,
+      "price": 28.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "hydrangeabed",
+      "icon": "💠",
+      "name": "Hydrangea Border",
+      "description": "Dense clusters of blue and pink flowers. • HYD • $38",
+      "category": "scenery",
+      "line": 4425,
+      "price": 38.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "sunflowerbed",
+      "icon": "🌻",
+      "name": "Sunflower Patch",
+      "description": "Tall golden flowers for bright family gardens. • SUN • $30",
+      "category": "scenery",
+      "line": 4426,
+      "price": 30.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "rosebed",
+      "icon": "🌹",
+      "name": "Rose Garden",
+      "description": "Layered rose bushes with rich ornamental color. • RBD • $42",
+      "category": "scenery",
+      "line": 4427,
+      "price": 42.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "geocache",
+      "icon": "🧭",
+      "name": "Alexandria Geocache",
+      "description": "A coordinate-based miniature library cache. FREE for guests to hunt, read, and collect information cards; $85 is only the park construction cost. • ALEX • $85",
+      "category": "scenery",
+      "line": 4428,
+      "price": 85.0,
+      "entity_type": "scenery"
+    },
+    {
+      "key": "wheel",
+      "icon": "🎡",
+      "name": "Ferris Wheel",
+      "description": "A slow landmark rising above the Forest Frontiers canopy.",
+      "category": "rides",
+      "line": 4430,
+      "price": 500.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "carousel",
+      "icon": "🎠",
+      "name": "Carousel",
+      "description": "Painted horses and music, a traditional heart for a young park.",
+      "category": "rides",
+      "line": 4431,
+      "price": 300.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "customcoaster",
+      "icon": "🛠️",
+      "name": "Custom Coaster Builder",
+      "description": "Design a complete roller-coaster circuit point by point. The engineering tool evaluates length, height, drops, slope, curvature, speed potential and overall intensity before the ride can be commissioned.",
+      "category": "rides",
+      "line": 4432,
+      "price": 1800.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "coaster",
+      "icon": "🎢",
+      "name": "Steel Coaster",
+      "description": "The frontier's first major skyline-changing thrill ride.",
+      "category": "rides",
+      "line": 4432,
+      "price": 1100.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "hypercoaster",
+      "icon": "🎢",
+      "name": "Frontier Hypercoaster",
+      "description": "A massive steel coaster with a towering first drop and broad airtime layout.",
+      "category": "rides",
+      "line": 4433
+    },
+    {
+      "key": "woodencoaster",
+      "icon": "🪵",
+      "name": "Timber Colossus",
+      "description": "A sprawling wooden coaster with a huge lift hill and long train.",
+      "category": "rides",
+      "line": 4434
+    },
+    {
+      "key": "gigacoaster",
+      "icon": "⚡",
+      "name": "Apex Giga Coaster",
+      "description": "A colossal steel skyline ride with a huge lift, plunging first drop and long high-speed circuit. Available from Day 1.",
+      "category": "rides",
+      "line": 4435
+    },
+    {
+      "key": "tower",
+      "icon": "🗼",
+      "name": "Drop Tower",
+      "description": "Vertical thrill ride with a compact footprint.",
+      "category": "rides",
+      "line": 4436,
+      "price": 700.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "pirate",
+      "icon": "🏴‍☠️",
+      "name": "Pirate Ship",
+      "description": "A swinging timber ship.",
+      "category": "rides",
+      "line": 4437,
+      "price": 450.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "spinner",
+      "icon": "☕",
+      "name": "Spinning Cups",
+      "description": "Independent spinning cups on a rotating platform.",
+      "category": "rides",
+      "line": 4438,
+      "price": 260.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "swing",
+      "icon": "🪂",
+      "name": "Chair Swings",
+      "description": "Flying chairs beneath a rotating canopy.",
+      "category": "rides",
+      "line": 4439,
+      "price": 420.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "goKart",
+      "icon": "🏎️",
+      "name": "Go Karts",
+      "description": "A compact competitive motor circuit.",
+      "category": "rides",
+      "line": 4440,
+      "price": 750.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "log",
+      "icon": "🪵",
+      "name": "Log Flume Route Builder",
+      "description": "Engineer a complete flume channel point by point with a loading station, slope assessment and articulated logs.",
+      "category": "rides",
+      "line": 4441,
+      "price": 900.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "maze",
+      "icon": "🌿",
+      "name": "Hedge Maze",
+      "description": "A walk-through hedge attraction.",
+      "category": "rides",
+      "line": 4442,
+      "price": 240.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "bumper",
+      "icon": "🚗",
+      "name": "Bumper Cars",
+      "description": "Electric cars and controlled collisions.",
+      "category": "rides",
+      "line": 4443,
+      "price": 380.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "juniorcarousel",
+      "icon": "🐴",
+      "name": "Junior Carousel",
+      "description": "A gentle ride for younger explorers.",
+      "category": "rides",
+      "line": 4444,
+      "price": 1450.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "scrambler",
+      "icon": "🌀",
+      "name": "Scrambler",
+      "description": "A compact spinning thrill ride.",
+      "category": "rides",
+      "line": 4445,
+      "price": 1900.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "riverboats",
+      "icon": "🚤",
+      "name": "River Boats",
+      "description": "A scenic water attraction.",
+      "category": "rides",
+      "line": 4446,
+      "price": 3200.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "minigolf",
+      "icon": "🏌️",
+      "name": "Mini Golf",
+      "description": "A low-intensity course attraction.",
+      "category": "rides",
+      "line": 4447,
+      "price": 2100.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "orbiter",
+      "icon": "🛸",
+      "name": "Neon Orbiter",
+      "description": "Counter-rotating neon arms sling riders through the skyline. • ORB • $980",
+      "category": "rides",
+      "line": 4447,
+      "price": 980.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "viking",
+      "icon": "🛶",
+      "name": "Viking Voyager",
+      "description": "A carved longship swings beneath iron supports. • VKG • $820",
+      "category": "rides",
+      "line": 4447,
+      "price": 820.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "rocket",
+      "icon": "🚀",
+      "name": "Starshot Rockets",
+      "description": "Orbiting rocket pods climb around a luminous mast. • RKT • $1,250",
+      "category": "rides",
+      "line": 4447,
+      "price": 1250.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "pendulum",
+      "icon": "⚙️",
+      "name": "Titan Pendulum",
+      "description": "A giant powered arm sweeps riders through the horizon. • TIT • $1,550",
+      "category": "rides",
+      "line": 4447,
+      "price": 1550.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "helix",
+      "icon": "🌀",
+      "name": "Helix Spinner",
+      "description": "Twin rotating rings create a spiraling dance. • HLX • $1,120",
+      "category": "rides",
+      "line": 4447,
+      "price": 1120.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "skyride",
+      "icon": "🚡",
+      "name": "Sky Glider",
+      "description": "Suspended gondolas drift above the midway. • SKY • $1,380",
+      "category": "rides",
+      "line": 4447,
+      "price": 1380.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "tram",
+      "icon": "🚋",
+      "name": "Park Tram Route Builder",
+      "description": "Build an electric park tram route point by point with a complete circuit and multiple passenger stops. • TRM • $1,800+",
+      "category": "rides",
+      "line": 4447,
+      "price": 1800.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "train",
+      "icon": "🚂",
+      "name": "Park Railway Route Builder",
+      "description": "Build a full park railway with articulated coaches, a complete circuit and multiple stations. • RAIL • $2,400+",
+      "category": "rides",
+      "line": 4448,
+      "price": 2400.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "monorail",
+      "icon": "🚝",
+      "name": "Park Monorail Route Builder",
+      "description": "Engineer an elevated monorail circuit with multiple stations and articulated cars. • MON • $2,200+",
+      "category": "rides",
+      "line": 4449,
+      "price": 2200.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "rapids",
+      "icon": "🌊",
+      "name": "Thunder Rapids",
+      "description": "Circular rafts churn through rock-lined whitewater. • RPD • $1,850",
+      "category": "rides",
+      "line": 4449,
+      "price": 1850.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "darkride",
+      "icon": "👻",
+      "name": "Phantom Circuit",
+      "description": "A haunted circuit of glowing portals and shadow chambers. • PHM • $1,450",
+      "category": "rides",
+      "line": 4449,
+      "price": 1450.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "flyingcarpet",
+      "icon": "🪄",
+      "name": "Flying Carpet",
+      "description": "A jeweled platform rises and rolls through the air. • CRP • $760",
+      "category": "rides",
+      "line": 4449,
+      "price": 760.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "cloudcarousel",
+      "icon": "☁️",
+      "name": "Cloud Carousel",
+      "description": "A gentle cloud-gondola carousel for families and younger riders. • CLC • $420",
+      "category": "rides",
+      "line": 4450,
+      "price": 420.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "ladybugride",
+      "icon": "🐞",
+      "name": "Ladybug Roundabout",
+      "description": "Friendly bug cars orbit a giant flower at a relaxed pace. • LBR • $390",
+      "category": "rides",
+      "line": 4451,
+      "price": 390.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "duckboats",
+      "icon": "🦆",
+      "name": "Duckling Boats",
+      "description": "Small duck boats drift around a scenic shallow lagoon. • DUK • $460",
+      "category": "rides",
+      "line": 4452,
+      "price": 460.0,
+      "entity_type": "ride"
+    },
+    {
+      "key": "storybooktrain",
+      "icon": "🚂",
+      "name": "Storybook Train",
+      "description": "A miniature train loops through lanterns and flower scenery. • SBT • $520",
+      "category": "rides",
+      "line": 4453,
+      "price": 520.0,
+      "entity_type": "ride"
+    }
+  ],
+  "r3_catalog": [
+    {
+      "key": "path",
+      "name": "Asphalt Path",
+      "price": 8.0,
+      "icon": "🛣️",
+      "description": "Narrow realistic blacktop. Core walk graph tile."
+    },
+    {
+      "key": "queue",
+      "name": "Queue Path",
+      "price": 10.0,
+      "icon": "〰️",
+      "description": "Narrow queue-only lane. Three waiting positions per tile."
+    },
+    {
+      "key": "stonepath",
+      "name": "Stone Path",
+      "price": 12.0,
+      "icon": "🪨",
+      "description": "Scenic fitted-stone walk surface."
+    },
+    {
+      "key": "boardwalk",
+      "name": "Boardwalk",
+      "price": 14.0,
+      "icon": "🪵",
+      "description": "Timber path for waterfront and family districts."
+    },
+    {
+      "key": "brickpath",
+      "name": "Brick Promenade",
+      "price": 16.0,
+      "icon": "🧱",
+      "description": "Premium brick plaza path."
+    },
+    {
+      "key": "dirtpath",
+      "name": "Dirt Trail",
+      "price": 6.0,
+      "icon": "🥾",
+      "description": "Low-cost frontier walking trail."
+    },
+    {
+      "key": "ferris",
+      "name": "Ferris Wheel",
+      "price": 2400.0,
+      "icon": "🎡",
+      "description": "Upright gondolas, independent queue animation and physical riders."
+    },
+    {
+      "key": "carousel",
+      "name": "Grand Carousel",
+      "price": 1800.0,
+      "icon": "🎠",
+      "description": "Classic family carousel with rotating platform."
+    },
+    {
+      "key": "teacups",
+      "name": "Tea Cups",
+      "price": 1700.0,
+      "icon": "☕",
+      "description": "Spinning cups on a gentle rotating deck."
+    },
+    {
+      "key": "train",
+      "name": "Frontier Train",
+      "price": 4200.0,
+      "icon": "🚂",
+      "description": "Compact family transport attraction."
+    },
+    {
+      "key": "darkride",
+      "name": "Storybook Dark Ride",
+      "price": 5200.0,
+      "icon": "🏰",
+      "description": "Indoor family ride with moderate capacity."
+    },
+    {
+      "key": "giantswing",
+      "name": "Giant Swing",
+      "price": 4600.0,
+      "icon": "🎢",
+      "description": "High-capacity pendulum thrill ride."
+    },
+    {
+      "key": "freefall",
+      "name": "Mega Freefall",
+      "price": 5200.0,
+      "icon": "🗼",
+      "description": "Vertical launch and drop tower."
+    },
+    {
+      "key": "observation",
+      "name": "Observation Tower",
+      "price": 3900.0,
+      "icon": "🔭",
+      "description": "Slow panoramic tower with broad appeal."
+    },
+    {
+      "key": "coaster",
+      "name": "Hyper Coaster",
+      "price": 12000.0,
+      "icon": "🎢",
+      "description": "Procedural compact steel coaster."
+    },
+    {
+      "key": "launchcoaster",
+      "name": "Launch Coaster",
+      "price": 15000.0,
+      "icon": "🚀",
+      "description": "High-intensity launched steel coaster."
+    },
+    {
+      "key": "logflume",
+      "name": "Log Flume",
+      "price": 8200.0,
+      "icon": "🛶",
+      "description": "Water ride with splash trough and moving logs."
+    },
+    {
+      "key": "rapids",
+      "name": "River Rapids",
+      "price": 10500.0,
+      "icon": "🌊",
+      "description": "Circular raft water attraction."
+    },
+    {
+      "key": "burger",
+      "name": "Burger Stand",
+      "price": 650.0,
+      "icon": "🍔",
+      "description": "Burgers reduce hunger and produce food revenue."
+    },
+    {
+      "key": "fries",
+      "name": "Fries Stand",
+      "price": 520.0,
+      "icon": "🍟",
+      "description": "Fast salty snack."
+    },
+    {
+      "key": "pizza",
+      "name": "Pizza Counter",
+      "price": 700.0,
+      "icon": "🍕",
+      "description": "High-satiety pizza slices."
+    },
+    {
+      "key": "pretzel",
+      "name": "Pretzel Cart",
+      "price": 480.0,
+      "icon": "🥨",
+      "description": "Portable snack."
+    },
+    {
+      "key": "smoothie",
+      "name": "Smoothie Bar",
+      "price": 720.0,
+      "icon": "🥤",
+      "description": "Drink and hunger relief."
+    },
+    {
+      "key": "icecream",
+      "name": "Ice Cream Kiosk",
+      "price": 590.0,
+      "icon": "🍦",
+      "description": "Cold treat with happiness boost."
+    },
+    {
+      "key": "drink",
+      "name": "Drink Kiosk",
+      "price": 430.0,
+      "icon": "🥤",
+      "description": "Simple thirst relief."
+    },
+    {
+      "key": "souvenir",
+      "name": "Souvenir Shop",
+      "price": 900.0,
+      "icon": "🎁",
+      "description": "Maps, photos, keychains and guides."
+    },
+    {
+      "key": "plush",
+      "name": "Plush Shop",
+      "price": 850.0,
+      "icon": "🧸",
+      "description": "Portable plush toys that guests visibly carry."
+    },
+    {
+      "key": "photo",
+      "name": "Photo Booth",
+      "price": 760.0,
+      "icon": "📸",
+      "description": "Park photo keepsakes."
+    },
+    {
+      "key": "restroom",
+      "name": "Restroom",
+      "price": 900.0,
+      "icon": "🚻",
+      "description": "Urgent bathroom destination."
+    },
+    {
+      "key": "familycare",
+      "name": "Family Care Center",
+      "price": 1400.0,
+      "icon": "💗",
+      "description": "Quiet recovery and wellbeing service."
+    },
+    {
+      "key": "firstaid",
+      "name": "First Aid",
+      "price": 1600.0,
+      "icon": "🩹",
+      "description": "Treats nausea and guest distress."
+    },
+    {
+      "key": "securitypost",
+      "name": "Security Outpost",
+      "price": 1800.0,
+      "icon": "🛡️",
+      "description": "Security response and safe recovery point."
+    },
+    {
+      "key": "information",
+      "name": "Information Kiosk",
+      "price": 620.0,
+      "icon": "ℹ️",
+      "description": "Maps and guest navigation help."
+    },
+    {
+      "key": "atm",
+      "name": "ATM",
+      "price": 850.0,
+      "icon": "🏧",
+      "description": "Lets low-cash guests replenish wallets."
+    },
+    {
+      "key": "wifiap",
+      "name": "4x4 MU-MIMO Wi-Fi AP",
+      "price": 320.0,
+      "icon": "📶",
+      "description": "Multi-SSID park access point."
+    },
+    {
+      "key": "speaker",
+      "name": "Weatherproof Speaker",
+      "price": 210.0,
+      "icon": "🔊",
+      "description": "Local audio endpoint linked to the park PA."
+    },
+    {
+      "key": "securitycam",
+      "name": "Security Camera",
+      "price": 240.0,
+      "icon": "📹",
+      "description": "Panning security observation node."
+    },
+    {
+      "key": "staffroom",
+      "name": "Staff Room",
+      "price": 1200.0,
+      "icon": "🧑‍🔧",
+      "description": "Staff rest and operations hub."
+    },
+    {
+      "key": "bench",
+      "name": "Path Bench Pair",
+      "price": 85.0,
+      "icon": "🪑",
+      "description": "Real seat anchors for guest resting."
+    },
+    {
+      "key": "table",
+      "name": "Picnic Table",
+      "price": 120.0,
+      "icon": "🍽️",
+      "description": "Four-seat rest and eating point."
+    },
+    {
+      "key": "bin",
+      "name": "Trash Bin",
+      "price": 55.0,
+      "icon": "🗑️",
+      "description": "Guest waste target serviced by handymen."
+    },
+    {
+      "key": "lamp",
+      "name": "Path Lamp",
+      "price": 75.0,
+      "icon": "💡",
+      "description": "Night-automated local light."
+    },
+    {
+      "key": "bollardlight",
+      "name": "Path Bollard Light",
+      "price": 55.0,
+      "icon": "🔅",
+      "description": "Shielded low-level path illumination."
+    },
+    {
+      "key": "banner",
+      "name": "Festival Banner",
+      "price": 90.0,
+      "icon": "🚩",
+      "description": "Colorful wayfinding scenery."
+    },
+    {
+      "key": "rgbflood",
+      "name": "Spectrum Floodlight",
+      "price": 180.0,
+      "icon": "🌈",
+      "description": "Programmable RGB floodlight."
+    },
+    {
+      "key": "wavebeacon",
+      "name": "Wave Beacon",
+      "price": 260.0,
+      "icon": "📡",
+      "description": "Defaults to a quiet 0.08 Hz sine glow."
+    },
+    {
+      "key": "lasershow",
+      "name": "Laser Spectacle",
+      "price": 420.0,
+      "icon": "✨",
+      "description": "Rotating decorative beam fixture."
+    },
+    {
+      "key": "fountain",
+      "name": "Musical Fountain",
+      "price": 680.0,
+      "icon": "⛲",
+      "description": "Animated water and light landmark."
+    },
+    {
+      "key": "jumpfountain",
+      "name": "Jumping Fountain",
+      "price": 740.0,
+      "icon": "💦",
+      "description": "Ballistic water packets jump between valves."
+    },
+    {
+      "key": "tree",
+      "name": "Frontier Oak",
+      "price": 35.0,
+      "icon": "🌳",
+      "description": "Shade tree and habitat."
+    },
+    {
+      "key": "flowerbed",
+      "name": "Flower Garden",
+      "price": 65.0,
+      "icon": "🌷",
+      "description": "Scenery value and guest happiness."
+    },
+    {
+      "key": "pond",
+      "name": "Wildlife Pond",
+      "price": 520.0,
+      "icon": "🦆",
+      "description": "Small habitat water feature."
+    },
+    {
+      "key": "geocache",
+      "name": "Alexandria Geocache",
+      "price": 150.0,
+      "icon": "🧭",
+      "description": "Free guest knowledge cache with a 12-topic shelf."
+    },
+    {
+      "key": "statue",
+      "name": "Frontier Statue",
+      "price": 340.0,
+      "icon": "🗿",
+      "description": "Signature orientation landmark."
+    }
+  ],
+  "catalog_surface_comparison": {
+    "legacy_catalog_items": 140,
+    "r3_catalog_items": 54,
+    "exact_key_overlap": 34,
+    "legacy_keys_not_exactly_present_in_r3": [
+      "arcade",
+      "archway",
+      "balloonstall",
+      "birchtree",
+      "bumper",
+      "butterflygarden",
+      "campfire",
+      "candyshop",
+      "cashoffice",
+      "charging",
+      "checkerpath",
+      "cherrytree",
+      "chicken",
+      "clinic",
+      "clock",
+      "clocktower",
+      "cloudcarousel",
+      "cobblepath",
+      "coffee",
+      "copperpath",
+      "crystalpath",
+      "customcoaster",
+      "custompath",
+      "daisybed",
+      "deluxetoilet",
+      "donutshop",
+      "duckboats",
+      "familytree",
+      "fireflies",
+      "flagpole",
+      "flyingcarpet",
+      "gardenpath",
+      "gazebo",
+      "gigacoaster",
+      "glasspath",
+      "glowpath",
+      "goKart",
+      "hedge",
+      "helix",
+      "hydrangeabed",
+      "hypercoaster",
+      "info",
+      "infokiosk",
+      "juniorcarousel",
+      "kineticsculpture",
+      "ladybugride",
+      "lanterncanopy",
+      "laserflower",
+      "lavenderbed",
+      "log",
+      "lostfound",
+      "magnoliatree",
+      "mapletree",
+      "marblepath",
+      "marquee",
+      "maze",
+      "minigolf",
+      "monorail",
+      "mosaicpath",
+      "musicalfountain",
+      "neonpath",
+      "neontree",
+      "oaktree",
+      "orbiter",
+      "parkoffice",
+      "pendulum",
+      "pirate",
+      "planter",
+      "popcorn",
+      "queueblue",
+      "queuegreen",
+      "queuered",
+      "queuevip",
+      "queuewood",
+      "riverboats",
+      "rocket",
+      "rockgarden",
+      "rosearch",
+      "rosebed",
+      "rubberpath",
+      "sandpath",
+      "scrambler",
+      "skyride",
+      "slatepath",
+      "snowpath",
+      "spinner",
+      "steelpath",
+      "storybookgate",
+      "storybooktrain",
+      "sunflowerbed",
+      "sushi",
+      "swing",
+      "tacostall",
+      "topiary",
+      "tower",
+      "tram",
+      "transporthub",
+      "tulipbed",
+      "umbrellakiosk",
+      "viking",
+      "waterfall",
+      "waterstation",
+      "wheel",
+      "willowtree",
+      "windribbons",
+      "woodencoaster"
+    ],
+    "r3_keys_not_exactly_present_in_legacy": [
+      "atm",
+      "bin",
+      "bollardlight",
+      "ferris",
+      "firstaid",
+      "freefall",
+      "giantswing",
+      "information",
+      "jumpfountain",
+      "lasershow",
+      "launchcoaster",
+      "logflume",
+      "observation",
+      "rgbflood",
+      "securitycam",
+      "staffroom",
+      "table",
+      "teacups",
+      "wavebeacon",
+      "wifiap"
+    ],
+    "warning": "Exact-key comparison only; some R3 concepts are renamed or consolidated and require semantic parity review."
+  },
+  "build_meta": [
+    {
+      "key": "sandpath",
+      "icon": "🏜️",
+      "code": "SUN",
+      "description": "Warm sandstone laid for frontier promenades.",
+      "line": 2411
+    },
+    {
+      "key": "slatepath",
+      "icon": "🌑",
+      "code": "SLT",
+      "description": "Dark-cut slate for dramatic plazas.",
+      "line": 2411
+    },
+    {
+      "key": "gardenpath",
+      "icon": "🌿",
+      "code": "GRD",
+      "description": "A planted promenade woven through the park.",
+      "line": 2411
+    },
+    {
+      "key": "cobblepath",
+      "icon": "🪨",
+      "code": "COB",
+      "description": "Old-world stonework with kingdom character.",
+      "line": 2411
+    },
+    {
+      "key": "checkerpath",
+      "icon": "🏁",
+      "code": "CHK",
+      "description": "Carnival tiles built for midway energy.",
+      "line": 2411
+    },
+    {
+      "key": "neonpath",
+      "icon": "💠",
+      "code": "NEO",
+      "description": "Embedded glow strips ignite after dusk.",
+      "line": 2411
+    },
+    {
+      "key": "crystalpath",
+      "icon": "💎",
+      "code": "CRY",
+      "description": "Faceted translucent paving for future districts.",
+      "line": 2411
+    },
+    {
+      "key": "copperpath",
+      "icon": "🟠",
+      "code": "CPR",
+      "description": "Industrial copper plates with riveted trim.",
+      "line": 2411
+    },
+    {
+      "key": "mosaicpath",
+      "icon": "🎨",
+      "code": "MOS",
+      "description": "Hand-laid geometric festival mosaics.",
+      "line": 2411
+    },
+    {
+      "key": "snowpath",
+      "icon": "❄️",
+      "code": "ALP",
+      "description": "Frost-toned paving for winter districts.",
+      "line": 2411
+    },
+    {
+      "key": "orbiter",
+      "icon": "🛸",
+      "code": "ORB",
+      "description": "Counter-rotating neon arms sling riders through the skyline.",
+      "line": 2412
+    },
+    {
+      "key": "viking",
+      "icon": "🛶",
+      "code": "VKG",
+      "description": "A carved longship swings beneath iron supports.",
+      "line": 2412
+    },
+    {
+      "key": "rocket",
+      "icon": "🚀",
+      "code": "RKT",
+      "description": "Orbiting rocket pods climb around a luminous mast.",
+      "line": 2412
+    },
+    {
+      "key": "pendulum",
+      "icon": "⚙️",
+      "code": "TIT",
+      "description": "A giant powered arm sweeps riders through the horizon.",
+      "line": 2412
+    },
+    {
+      "key": "helix",
+      "icon": "🌀",
+      "code": "HLX",
+      "description": "Twin rotating rings create a spiraling dance.",
+      "line": 2412
+    },
+    {
+      "key": "skyride",
+      "icon": "🚡",
+      "code": "SKY",
+      "description": "Suspended gondolas drift above the midway.",
+      "line": 2412
+    },
+    {
+      "key": "monorail",
+      "icon": "🚝",
+      "code": "MON",
+      "description": "A sleek elevated transit loop for panoramic tours.",
+      "line": 2412
+    },
+    {
+      "key": "rapids",
+      "icon": "🌊",
+      "code": "RPD",
+      "description": "Circular rafts churn through rock-lined whitewater.",
+      "line": 2412
+    },
+    {
+      "key": "darkride",
+      "icon": "👻",
+      "code": "PHM",
+      "description": "A haunted circuit of glowing portals and shadow chambers.",
+      "line": 2412
+    },
+    {
+      "key": "flyingcarpet",
+      "icon": "🪄",
+      "code": "CRP",
+      "description": "A jeweled platform rises and rolls through the air.",
+      "line": 2412
+    },
+    {
+      "key": "coffee",
+      "icon": "☕",
+      "code": "CAF",
+      "description": "Roasted beans and chrome machinery fuel the morning crowd.",
+      "line": 2413
+    },
+    {
+      "key": "popcorn",
+      "icon": "🍿",
+      "code": "POP",
+      "description": "A striped kettle kiosk perfuming the midway.",
+      "line": 2413
+    },
+    {
+      "key": "pretzel",
+      "icon": "🥨",
+      "code": "PRZ",
+      "description": "Twisted golden pretzels from a tiny park forge.",
+      "line": 2413
+    },
+    {
+      "key": "sushi",
+      "icon": "🍣",
+      "code": "SUS",
+      "description": "A clean modern counter serving compact rolls.",
+      "line": 2413
+    },
+    {
+      "key": "smoothie",
+      "icon": "🥤",
+      "code": "SMO",
+      "description": "Fruit colors spin beneath a glowing blender crown.",
+      "line": 2413
+    },
+    {
+      "key": "fries",
+      "icon": "🍟",
+      "code": "FRY",
+      "description": "Crisp fries beneath an oversized carton beacon.",
+      "line": 2413
+    },
+    {
+      "key": "chicken",
+      "icon": "🍗",
+      "code": "CHK",
+      "description": "A rustic counter crowned by a golden drumstick.",
+      "line": 2413
+    },
+    {
+      "key": "souvenir",
+      "icon": "🎁",
+      "code": "SVR",
+      "description": "Park relics, shirts and keepsakes under one roof.",
+      "line": 2413
+    },
+    {
+      "key": "plush",
+      "icon": "🧸",
+      "code": "PLS",
+      "description": "A soft-toy emporium with a giant bear mascot.",
+      "line": 2413
+    },
+    {
+      "key": "photo",
+      "icon": "📸",
+      "code": "PIC",
+      "description": "Instant park portraits beneath a camera marquee.",
+      "line": 2413
+    },
+    {
+      "key": "deluxetoilet",
+      "icon": "🚻",
+      "code": "DLX",
+      "description": "A polished high-capacity comfort station.",
+      "line": 2414
+    },
+    {
+      "key": "familycare",
+      "icon": "👨‍👩‍👧",
+      "code": "FAM",
+      "description": "Quiet family rooms, changing areas and seating.",
+      "line": 2414
+    },
+    {
+      "key": "charging",
+      "icon": "🔋",
+      "code": "CHG",
+      "description": "Locking power bays restore tired devices.",
+      "line": 2414
+    },
+    {
+      "key": "waterstation",
+      "icon": "💧",
+      "code": "H2O",
+      "description": "Free refill taps keep guests hydrated.",
+      "line": 2414
+    },
+    {
+      "key": "lostfound",
+      "icon": "🔎",
+      "code": "LNF",
+      "description": "A bright beacon for misplaced park treasures.",
+      "line": 2414
+    },
+    {
+      "key": "parkoffice",
+      "icon": "🏢",
+      "code": "OPS",
+      "description": "The administrative nerve center of the park.",
+      "line": 2414
+    },
+    {
+      "key": "securitypost",
+      "icon": "🛡️",
+      "code": "SEC",
+      "description": "A visible security outpost overlooking the midway.",
+      "line": 2414
+    },
+    {
+      "key": "clinic",
+      "icon": "🏥",
+      "code": "MED",
+      "description": "Expanded medical care for guests who need recovery.",
+      "line": 2414
+    },
+    {
+      "key": "cashoffice",
+      "icon": "💵",
+      "code": "CSH",
+      "description": "A hardened counting room supporting park cash flow.",
+      "line": 2414
+    },
+    {
+      "key": "transporthub",
+      "icon": "🚌",
+      "code": "HUB",
+      "description": "A sheltered interchange for park transportation.",
+      "line": 2414
+    },
+    {
+      "key": "rosearch",
+      "icon": "🌹",
+      "code": "ROS",
+      "description": "Climbing roses frame a romantic garden threshold.",
+      "line": 2415
+    },
+    {
+      "key": "topiary",
+      "icon": "🐉",
+      "code": "TOP",
+      "description": "A clipped green dragon guards the flower beds.",
+      "line": 2415
+    },
+    {
+      "key": "neontree",
+      "icon": "🌳",
+      "code": "NTR",
+      "description": "A sculptural tree threaded with electric light.",
+      "line": 2415
+    },
+    {
+      "key": "statue",
+      "icon": "🗿",
+      "code": "STU",
+      "description": "A bronze founder watches over the avenue.",
+      "line": 2415
+    },
+    {
+      "key": "gazebo",
+      "icon": "🏛️",
+      "code": "GZB",
+      "description": "An ornate pavilion for quiet scenic moments.",
+      "line": 2415
+    },
+    {
+      "key": "fireflies",
+      "icon": "✨",
+      "code": "FLY",
+      "description": "Tiny lights drift through a miniature grove.",
+      "line": 2415
+    },
+    {
+      "key": "waterfall",
+      "icon": "💦",
+      "code": "WTR",
+      "description": "Layered stone sends animated water into a lower pool.",
+      "line": 2415
+    },
+    {
+      "key": "clocktower",
+      "icon": "🕰️",
+      "code": "CLK",
+      "description": "A miniature landmark keeping park time.",
+      "line": 2415
+    },
+    {
+      "key": "laserflower",
+      "icon": "🌺",
+      "code": "LSR",
+      "description": "Mechanical petals pulse with luminous cores.",
+      "line": 2415
+    },
+    {
+      "key": "kineticsculpture",
+      "icon": "🎐",
+      "code": "KIN",
+      "description": "Balanced metal rings rotate in the breeze.",
+      "line": 2415
+    },
+    {
+      "key": "lanterncanopy",
+      "icon": "🏮",
+      "code": "LNC",
+      "description": "A cinematic canopy of warm lanterns drifting gently above family paths.",
+      "line": 2416
+    },
+    {
+      "key": "storybookgate",
+      "icon": "📖",
+      "code": "SBG",
+      "description": "An ornate storybook arch with glowing pages and animated heraldry.",
+      "line": 2417
+    },
+    {
+      "key": "butterflygarden",
+      "icon": "🦋",
+      "code": "BFG",
+      "description": "Flowering habitat where luminous butterflies orbit in soft looping paths.",
+      "line": 2418
+    },
+    {
+      "key": "musicalfountain",
+      "icon": "🎼",
+      "code": "MFT",
+      "description": "A family-scale fountain whose illuminated jets pulse in a gentle musical rhythm.",
+      "line": 2419
+    },
+    {
+      "key": "familytree",
+      "icon": "🌳",
+      "code": "FMT",
+      "description": "A sculptural memory tree with glowing leaves that shimmer like tiny keepsakes.",
+      "line": 2420
+    },
+    {
+      "key": "windribbons",
+      "icon": "🎀",
+      "code": "WRS",
+      "description": "Tall metallic ribbons flex and rotate in the breeze, adding motion to quiet plazas.",
+      "line": 2421
+    },
+    {
+      "key": "oaktree",
+      "icon": "🌳",
+      "code": "OAK",
+      "description": "A broad-canopy heritage oak creates a shaded landmark for mature park districts.",
+      "line": 2422
+    },
+    {
+      "key": "mapletree",
+      "icon": "🍁",
+      "code": "MAP",
+      "description": "A layered crimson maple adds strong seasonal color and a dense sculptural crown.",
+      "line": 2423
+    },
+    {
+      "key": "birchtree",
+      "icon": "🌿",
+      "code": "BIR",
+      "description": "A pale-barked silver birch with airy foliage brightens woodland edges.",
+      "line": 2424
+    },
+    {
+      "key": "willowtree",
+      "icon": "🌿",
+      "code": "WIL",
+      "description": "Long hanging branches sweep toward the ground, ideal beside ponds and quiet paths.",
+      "line": 2425
+    },
+    {
+      "key": "cherrytree",
+      "icon": "🌸",
+      "code": "CHR",
+      "description": "A blossom-heavy ornamental tree creates a cinematic spring canopy.",
+      "line": 2426
+    },
+    {
+      "key": "magnoliatree",
+      "icon": "🌺",
+      "code": "MAG",
+      "description": "Large pale flowers sit among glossy leaves on a compact ornamental tree.",
+      "line": 2427
+    },
+    {
+      "key": "lavenderbed",
+      "icon": "🪻",
+      "code": "LAV",
+      "description": "Dense lavender spikes create a low fragrant-looking purple border.",
+      "line": 2428
+    },
+    {
+      "key": "tulipbed",
+      "icon": "🌷",
+      "code": "TUL",
+      "description": "Ordered rows of colorful tulips provide crisp spring planting.",
+      "line": 2429
+    },
+    {
+      "key": "daisybed",
+      "icon": "🌼",
+      "code": "DSY",
+      "description": "A loose meadow of white daisies softens path edges and family lawns.",
+      "line": 2430
+    },
+    {
+      "key": "hydrangeabed",
+      "icon": "💠",
+      "code": "HYD",
+      "description": "Large clustered flower heads form a lush formal garden border.",
+      "line": 2431
+    },
+    {
+      "key": "sunflowerbed",
+      "icon": "🌻",
+      "code": "SUN",
+      "description": "Tall golden flowers turn a bright face toward the park skyline.",
+      "line": 2432
+    },
+    {
+      "key": "rosebed",
+      "icon": "🌹",
+      "code": "RBD",
+      "description": "Layered rose bushes create a rich ornamental garden with deep color.",
+      "line": 2433
+    },
+    {
+      "key": "geocache",
+      "icon": "🧭",
+      "code": "ALEX",
+      "description": "A weatherproof knowledge cache linked to the 10,000-topic Library of Alexandria index. Guests navigate to its coordinates, read a topic, and carry an information card away.",
+      "line": 2434
+    },
+    {
+      "key": "cloudcarousel",
+      "icon": "☁️",
+      "code": "CLC",
+      "description": "A slow floating carousel of cloud gondolas designed for families and younger riders.",
+      "line": 2435
+    },
+    {
+      "key": "ladybugride",
+      "icon": "🐞",
+      "code": "LBR",
+      "description": "Friendly ladybug cars circle a flower hub at a relaxed family pace.",
+      "line": 2436
+    },
+    {
+      "key": "duckboats",
+      "icon": "🦆",
+      "code": "DUK",
+      "description": "Bright duck-shaped boats drift around a shallow scenic lagoon.",
+      "line": 2437
+    },
+    {
+      "key": "storybooktrain",
+      "icon": "🚂",
+      "code": "SBT",
+      "description": "A miniature family train loops through a storybook platform of lanterns and flowers.",
+      "line": 2438
+    },
+    {
+      "key": "tram",
+      "icon": "🚋",
+      "code": "TRM",
+      "description": "A route-built electric park tram with multiple passenger stops. Guests can board at one station and ride the circuit between districts.",
+      "line": 2439
+    },
+    {
+      "key": "train",
+      "icon": "🚂",
+      "code": "RAIL",
+      "description": "A route-built park railway with linked passenger coaches, multiple stations and a complete operating circuit.",
+      "line": 2440
+    }
+  ],
+  "legacy_palette": [
+    {
+      "color": "#fff",
+      "uses": 20
+    },
+    {
+      "color": "#ffffff12",
+      "uses": 20
+    },
+    {
+      "color": "#315d58",
+      "uses": 11
+    },
+    {
+      "color": "#26342c",
+      "uses": 10
+    },
+    {
+      "color": "#28372e",
+      "uses": 10
+    },
+    {
+      "color": "#777",
+      "uses": 9
+    },
+    {
+      "color": "#ffffff18",
+      "uses": 9
+    },
+    {
+      "color": "#ffffff08",
+      "uses": 8
+    },
+    {
+      "color": "#eee4c3",
+      "uses": 7
+    },
+    {
+      "color": "#101416",
+      "uses": 7
+    },
+    {
+      "color": "#405647",
+      "uses": 6
+    },
+    {
+      "color": "#aaa",
+      "uses": 6
+    },
+    {
+      "color": "#070a08e8",
+      "uses": 5
+    },
+    {
+      "color": "#304137",
+      "uses": 5
+    },
+    {
+      "color": "#0008",
+      "uses": 5
+    },
+    {
+      "color": "#292929",
+      "uses": 5
+    },
+    {
+      "color": "#333",
+      "uses": 5
+    },
+    {
+      "color": "#000",
+      "uses": 5
+    },
+    {
+      "color": "#dff",
+      "uses": 5
+    },
+    {
+      "color": "#ffffff22",
+      "uses": 5
+    },
+    {
+      "color": "#8e815e",
+      "uses": 5
+    },
+    {
+      "color": "#071411",
+      "uses": 5
+    },
+    {
+      "color": "#0009",
+      "uses": 4
+    },
+    {
+      "color": "#171717",
+      "uses": 4
+    },
+    {
+      "color": "#eee",
+      "uses": 4
+    },
+    {
+      "color": "#888",
+      "uses": 4
+    },
+    {
+      "color": "#ddd",
+      "uses": 4
+    },
+    {
+      "color": "#666",
+      "uses": 4
+    },
+    {
+      "color": "#18d7d1",
+      "uses": 4
+    },
+    {
+      "color": "#cfffff",
+      "uses": 4
+    },
+    {
+      "color": "#121719",
+      "uses": 4
+    },
+    {
+      "color": "#0f1315",
+      "uses": 4
+    },
+    {
+      "color": "#2b3b31",
+      "uses": 4
+    },
+    {
+      "color": "#ffffff14",
+      "uses": 4
+    },
+    {
+      "color": "#eaf1eb",
+      "uses": 3
+    },
+    {
+      "color": "#111713",
+      "uses": 3
+    },
+    {
+      "color": "#34483b",
+      "uses": 3
+    },
+    {
+      "color": "#000c",
+      "uses": 3
+    },
+    {
+      "color": "#29382f",
+      "uses": 3
+    },
+    {
+      "color": "#1b1b1b",
+      "uses": 3
+    }
+  ],
+  "r3_css_variables": {
+    "bg": "#06100d",
+    "panel": "rgba(8,22,18,.92)",
+    "panel2": "rgba(12,31,25,.96)",
+    "line": "#355c4a",
+    "line2": "#7da98d",
+    "text": "#eef6ef",
+    "muted": "#9db5a6",
+    "gold": "#e2c977",
+    "green": "#6ee99a",
+    "blue": "#79c8ff",
+    "red": "#ff7272",
+    "cyan": "#7be6db",
+    "shadow": "0 18px 55px #0009",
+    "radius": "10px"
+  },
+  "roadmap_domains": [
+    {
+      "id": "KERNEL",
+      "name": "Kernel / Boot / Time / Event Bus",
+      "depends_on": [],
+      "purpose": "One boot state machine, simulation clock, event bus, deterministic RNG, lifecycle and error boundary."
+    },
+    {
+      "id": "DATA",
+      "name": "Canonical Data Contracts",
+      "depends_on": [
+        "KERNEL"
+      ],
+      "purpose": "Plain serializable park state, stable IDs, schemas, migrations, runtime-reference firewall."
+    },
+    {
+      "id": "UI",
+      "name": "Desktop UI / Windowing / Input Router",
+      "depends_on": [
+        "KERNEL",
+        "DATA"
+      ],
+      "purpose": "One command router, one draggable/z-order manager, keyboard priority, hover/inspect contracts, title/HUD/status/pulse."
+    },
+    {
+      "id": "WORLD",
+      "name": "World / Terrain / Spatial Index / Camera",
+      "depends_on": [
+        "KERNEL",
+        "DATA",
+        "UI"
+      ],
+      "purpose": "Three.js runtime maps, raycasting, terrain, land, camera modes, entity picking and LOD boundaries."
+    },
+    {
+      "id": "BUILD",
+      "name": "Build Database / Placement / Demolition",
+      "depends_on": [
+        "WORLD",
+        "DATA",
+        "UI"
+      ],
+      "purpose": "Authoritative catalog, ghosts, rotation, freeplace/grid modes, bulldoze/refunds, research visibility."
+    },
+    {
+      "id": "PATH",
+      "name": "Paths / Queues / Navigation Graph",
+      "depends_on": [
+        "BUILD",
+        "WORLD"
+      ],
+      "purpose": "2m cells plus freeplace engineering, welded path topology, queue-only semantics, snake geometry, bridges/elevated paths."
+    },
+    {
+      "id": "ECON",
+      "name": "Economy / Inventory / R&D",
+      "depends_on": [
+        "DATA",
+        "BUILD"
+      ],
+      "purpose": "Single ledger, wallets, prices, COGS, wages, park value, research tree and funding."
+    },
+    {
+      "id": "GUEST",
+      "name": "Guest Entity / Brain / Needs / Social",
+      "depends_on": [
+        "PATH",
+        "ECON"
+      ],
+      "purpose": "Needs, routing, thoughts, wellbeing, inventory visuals, seating, identities, relationships and persistent brains."
+    },
+    {
+      "id": "STAFF",
+      "name": "Staff / Duties / Operations",
+      "depends_on": [
+        "PATH",
+        "ECON"
+      ],
+      "purpose": "Handymen, security, entertainers/mechanics where present, duty toggles, placement, fire/follow/inspect and service jobs."
+    },
+    {
+      "id": "RIDE",
+      "name": "Attractions / Access / Queue / Boarding",
+      "depends_on": [
+        "PATH",
+        "GUEST",
+        "ECON"
+      ],
+      "purpose": "Ride registry, access drop zones, readiness authority, FIFO queues, rider proxies, seat ownership, operation and managers."
+    },
+    {
+      "id": "ENGINEERING",
+      "name": "Custom Coaster / Route Ride / Path Engineering",
+      "depends_on": [
+        "RIDE",
+        "BUILD",
+        "PATH"
+      ],
+      "purpose": "Custom coaster points/validation/skins/stations, tram/train/monorail/log routes, custom elevated path engineer."
+    },
+    {
+      "id": "RETAIL",
+      "name": "Shops / Services / Facilities",
+      "depends_on": [
+        "GUEST",
+        "ECON",
+        "BUILD"
+      ],
+      "purpose": "Stocked products, consumption, ATM, restrooms, care/security/clinic/water/charging and service routing."
+    },
+    {
+      "id": "ENV",
+      "name": "Scenery / Water / Wildlife / Lighting / Audio",
+      "depends_on": [
+        "WORLD",
+        "BUILD",
+        "GUEST"
+      ],
+      "purpose": "HD scenery constructors, trees/grass/water, animals, programmable lights, ambience, speakers and Main PA."
+    },
+    {
+      "id": "ALEX",
+      "name": "Alexandria / Geocache Knowledge DB",
+      "depends_on": [
+        "DATA",
+        "GUEST",
+        "BUILD"
+      ],
+      "purpose": "10k deterministic index, relational topic records, caches, portable/tradable files/cards, guest learning."
+    },
+    {
+      "id": "PHONE",
+      "name": "FrontierOS / Wi-Fi / Messaging",
+      "depends_on": [
+        "GUEST",
+        "ALEX",
+        "ENV"
+      ],
+      "purpose": "Guest and manager phones, SSIDs/APs, maps, messages, research/social apps, Park AI."
+    },
+    {
+      "id": "FLOCK",
+      "name": "Guest Flock / IDE / Ollama Brokers",
+      "depends_on": [
+        "GUEST",
+        "ALEX",
+        "DATA",
+        "UI"
+      ],
+      "purpose": "Persistent conversations/projects/files, role agents, CHAT/BUILD, code/preview, context linking, Ollama/GPT broker."
+    },
+    {
+      "id": "PERF",
+      "name": "Performance / Diagnostics / Compatibility",
+      "depends_on": [
+        "WORLD",
+        "GUEST",
+        "RIDE",
+        "ENV",
+        "FLOCK"
+      ],
+      "purpose": "Benchmarks, budgets, batching/LOD, audits, browser guards and feature-preserving performance policy."
+    },
+    {
+      "id": "SAVE",
+      "name": "Save / Migration / Legacy Import",
+      "depends_on": [
+        "DATA",
+        "WORLD",
+        "GUEST",
+        "RIDE",
+        "FLOCK"
+      ],
+      "purpose": "IndexedDB snapshots, project saves, JSON interchange, R138 migration, legacy normalization, reconstruction-only load."
+    },
+    {
+      "id": "PARITY",
+      "name": "Parity Harness / Golden Playtests",
+      "depends_on": [
+        "SAVE",
+        "PERF"
+      ],
+      "purpose": "Port 221 audit hooks, behavioral scenarios, screenshots, save round-trips and no-feature-loss release gates."
+    }
+  ]
+}

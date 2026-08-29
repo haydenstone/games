@@ -1,0 +1,5578 @@
+{
+  "kind": "rollamacoaster-r3-core-dump",
+  "version": 1,
+  "release": {
+    "id": "R3.0-dev.17",
+    "schema": 1,
+    "builtBy": "build_rct_r3.py",
+    "artifact": "rollamacoasterTycoon_R3_rebuilt.html"
+  },
+  "sessionId": "R3.0-dev.17-2026-08-28T23-32-03-812Z-tjqed",
+  "capturedAt": "2026-08-28T23:34:38.809Z",
+  "reason": "review-packet",
+  "testResult": "FAIL",
+  "phase": "COMMENTS",
+  "boot": {
+    "phase": "RUNNING",
+    "log": [
+      {
+        "t": "2026-08-28T23:32:03.790Z",
+        "p": "DB",
+        "msg": "Opening Revision 3 IndexedDB"
+      },
+      {
+        "t": "2026-08-28T23:32:03.810Z",
+        "p": "DB",
+        "msg": "Schema ready: saves, ledger, brains, conversations, files, Alexandria, Codex"
+      },
+      {
+        "t": "2026-08-28T23:32:03.810Z",
+        "p": "UI",
+        "msg": "Binding one window manager and one input router"
+      },
+      {
+        "t": "2026-08-28T23:32:03.818Z",
+        "p": "3D",
+        "msg": "Creating clean renderer and camera lifecycle"
+      },
+      {
+        "t": "2026-08-28T23:32:03.819Z",
+        "p": "3D",
+        "msg": "Loading Three.js cleanly"
+      },
+      {
+        "t": "2026-08-28T23:32:03.962Z",
+        "p": "WORLD",
+        "msg": "Constructing starter world graph"
+      },
+      {
+        "t": "2026-08-28T23:32:03.978Z",
+        "p": "AI",
+        "msg": "Discovering local Ollama without blocking gameplay"
+      },
+      {
+        "t": "2026-08-28T23:32:03.978Z",
+        "p": "KNOWLEDGE",
+        "msg": "Scheduling disk-backed Alexandria and Codex seeding"
+      },
+      {
+        "t": "2026-08-28T23:32:04.004Z",
+        "p": "READY",
+        "msg": "Revision 3 entry guards passed"
+      }
+    ]
+  },
+  "context": {
+    "bootPhase": "RUNNING",
+    "toolMode": "orbit",
+    "selectedBuild": null,
+    "buildRotationDeg": 0,
+    "selectedEntity": null,
+    "hoveredEntity": null,
+    "camera": {
+      "position": [
+        61.66134798963857,
+        11.151761867326261,
+        13.773194131772925
+      ],
+      "target": [
+        64.03511508681669,
+        -1.625688469912931e-18,
+        32.85163363660427
+      ],
+      "input": {
+        "keysDown": [],
+        "shift": false,
+        "moveFrames": 305,
+        "lastMove": {
+          "at": 27775.400000035763,
+          "delta": [
+            0.0712398218317623,
+            0,
+            0.19000477381101225
+          ],
+          "speed": 12.224155742516706,
+          "keys": [
+            "KeyW"
+          ]
+        },
+        "lastKeyAt": 27576.80000001192
+      },
+      "frameFaults": []
+    },
+    "focus": {
+      "tag": "BUTTON",
+      "id": "devExportReview",
+      "contentEditable": false
+    },
+    "park": {
+      "id": "park_mtdl6iw9_v5echg",
+      "name": "Forest Frontiers",
+      "open": true,
+      "day": 1,
+      "minutes": 652.2469199998794,
+      "rate": 1,
+      "cash": 50110,
+      "guests": 19,
+      "staff": 0,
+      "entities": 19
+    },
+    "construction": {
+      "gridStep": 2,
+      "gridCellHalf": 1,
+      "pathTileSize": 2,
+      "entranceSignMode": "fixed-plane-both-faces",
+      "signText": "FOREST FRONTIERS",
+      "signFont": "frontier",
+      "gateStyle": "frontier",
+      "masonryStyle": "granite",
+      "bounds": {
+        "minX": -43,
+        "maxX": 43,
+        "minZ": -39,
+        "maxZ": 27
+      },
+      "gate": {
+        "centerX": -12,
+        "width": 6,
+        "northZ": 27
+      },
+      "wildernessApproach": {
+        "worldPublicPath": true,
+        "immutable": true,
+        "fromGate": [
+          -12,
+          27
+        ],
+        "mapEdge": [
+          82,
+          47
+        ],
+        "waypoints": [
+          [
+            -12,
+            26
+          ],
+          [
+            -12,
+            29
+          ],
+          [
+            -8,
+            33
+          ],
+          [
+            1,
+            34
+          ],
+          [
+            10,
+            32
+          ],
+          [
+            20,
+            36
+          ],
+          [
+            30,
+            35
+          ],
+          [
+            40,
+            40
+          ],
+          [
+            52,
+            39
+          ],
+          [
+            72,
+            44
+          ],
+          [
+            82,
+            47
+          ]
+        ]
+      },
+      "propertyParcels": {},
+      "lastContextAction": {
+        "kind": "entrance",
+        "source": "contextmenu",
+        "time": 1787959943191
+      },
+      "lastPlacement": null
+    },
+    "ui": {
+      "settingsOpen": false,
+      "systemsOpen": false,
+      "menuOpen": false,
+      "menuMode": "main",
+      "menuOpenedAt": 429.5,
+      "lastUserAction": {
+        "kind": "ui-pointer",
+        "detail": "devExportReview",
+        "time": 1787960078749
+      },
+      "lastActionTip": null,
+      "entrancePreviewActive": true,
+      "screenshot": {
+        "capturedAt": "2026-08-28T23:34:34.714Z",
+        "width": 1800,
+        "height": 930,
+        "bytes": 697782,
+        "mode": "display-media-full-composited-viewport",
+        "displaySurface": "browser",
+        "includesUi": true
+      }
+    },
+    "economyRules": {
+      "maxEntranceFee": 200,
+      "guestWalletMean": 120,
+      "guestWalletMin": 20,
+      "guestWalletMax": 220,
+      "walletDistribution": "triangular-20-220-mean-120"
+    },
+    "network": {
+      "endpoint": "http://127.0.0.1:11434",
+      "model": "gemma4:e2b",
+      "ssids": [
+        "Forest Frontiers Guest",
+        "Forest Frontiers Worker"
+      ],
+      "pa": {
+        "program": "Frontier Ambient",
+        "playing": false
+      }
+    },
+    "economyFeedback": {
+      "lastOperatorTransaction": null
+    },
+    "interaction": {
+      "lastRoute": {
+        "target": "guest_1_803681",
+        "route": "guest-entity-window",
+        "source": "contextmenu",
+        "consumed": true,
+        "time": 1787959959689
+      }
+    },
+    "visiblePanels": [
+      "economyPanel",
+      "devPanel"
+    ],
+    "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+  },
+  "visualCapture": {
+    "capturedAt": "2026-08-28T23:34:34.714Z",
+    "width": 1800,
+    "height": 930,
+    "bytes": 697782,
+    "mode": "display-media-full-composited-viewport",
+    "displaySurface": "browser",
+    "viewport": {
+      "width": 1801,
+      "height": 911,
+      "devicePixelRatio": 1
+    },
+    "visiblePanels": [
+      "economyPanel",
+      "devPanel"
+    ],
+    "menuOpen": false
+  },
+  "performance": {
+    "now": 155235,
+    "memory": {
+      "jsHeapSizeLimit": 4395630592,
+      "totalJSHeapSize": 32316040,
+      "usedJSHeapSize": 20664504
+    },
+    "frames": 8644,
+    "devicePixelRatio": 1,
+    "viewport": {
+      "width": 1801,
+      "height": 930
+    }
+  },
+  "database": {
+    "saves": 1,
+    "ledger": 567,
+    "guestBrains": 584,
+    "conversations": 8,
+    "flockFiles": 3,
+    "metadata": 5,
+    "codex": 31102,
+    "alexandria": 10000
+  },
+  "errors": [],
+  "console": [],
+  "comments": [
+    {
+      "id": "comment_mtdl9glw_qld4f1",
+      "release": "R3.0-dev.17",
+      "sessionId": "R3.0-dev.17-2026-08-28T23-32-03-812Z-tjqed",
+      "time": "2026-08-28T23:34:31.508Z",
+      "area": "Guests",
+      "severity": "note",
+      "text": "didn't get an admission ticket when walking into the park and guests should keep economy transaction history collapsed.",
+      "context": {
+        "bootPhase": "RUNNING",
+        "toolMode": "orbit",
+        "selectedBuild": null,
+        "buildRotationDeg": 0,
+        "selectedEntity": null,
+        "hoveredEntity": null,
+        "camera": {
+          "position": [
+            61.66134798963857,
+            11.151761867326261,
+            13.773194131772925
+          ],
+          "target": [
+            64.03511508681669,
+            -1.625688469912931e-18,
+            32.85163363660427
+          ],
+          "input": {
+            "keysDown": [],
+            "shift": false,
+            "moveFrames": 305,
+            "lastMove": {
+              "at": 27775.400000035763,
+              "delta": [
+                0.0712398218317623,
+                0,
+                0.19000477381101225
+              ],
+              "speed": 12.224155742516706,
+              "keys": [
+                "KeyW"
+              ]
+            },
+            "lastKeyAt": 27576.80000001192
+          },
+          "frameFaults": []
+        },
+        "focus": {
+          "tag": "BUTTON",
+          "id": "devAddComment",
+          "contentEditable": false
+        },
+        "park": {
+          "id": "park_mtdl6iw9_v5echg",
+          "name": "Forest Frontiers",
+          "open": true,
+          "day": 1,
+          "minutes": 643.5199199998867,
+          "rate": 1,
+          "cash": 50090,
+          "guests": 19,
+          "staff": 0,
+          "entities": 19
+        },
+        "construction": {
+          "gridStep": 2,
+          "gridCellHalf": 1,
+          "pathTileSize": 2,
+          "entranceSignMode": "fixed-plane-both-faces",
+          "signText": "FOREST FRONTIERS",
+          "signFont": "frontier",
+          "gateStyle": "frontier",
+          "masonryStyle": "granite",
+          "bounds": {
+            "minX": -43,
+            "maxX": 43,
+            "minZ": -39,
+            "maxZ": 27
+          },
+          "gate": {
+            "centerX": -12,
+            "width": 6,
+            "northZ": 27
+          },
+          "wildernessApproach": {
+            "worldPublicPath": true,
+            "immutable": true,
+            "fromGate": [
+              -12,
+              27
+            ],
+            "mapEdge": [
+              82,
+              47
+            ],
+            "waypoints": [
+              [
+                -12,
+                26
+              ],
+              [
+                -12,
+                29
+              ],
+              [
+                -8,
+                33
+              ],
+              [
+                1,
+                34
+              ],
+              [
+                10,
+                32
+              ],
+              [
+                20,
+                36
+              ],
+              [
+                30,
+                35
+              ],
+              [
+                40,
+                40
+              ],
+              [
+                52,
+                39
+              ],
+              [
+                72,
+                44
+              ],
+              [
+                82,
+                47
+              ]
+            ]
+          },
+          "propertyParcels": {},
+          "lastContextAction": {
+            "kind": "entrance",
+            "source": "contextmenu",
+            "time": 1787959943191
+          },
+          "lastPlacement": null
+        },
+        "ui": {
+          "settingsOpen": false,
+          "systemsOpen": false,
+          "menuOpen": false,
+          "menuMode": "main",
+          "menuOpenedAt": 429.5,
+          "lastUserAction": {
+            "kind": "ui-pointer",
+            "detail": "devAddComment",
+            "time": 1787960071425
+          },
+          "lastActionTip": null,
+          "entrancePreviewActive": true,
+          "screenshot": null
+        },
+        "economyRules": {
+          "maxEntranceFee": 200,
+          "guestWalletMean": 120,
+          "guestWalletMin": 20,
+          "guestWalletMax": 220,
+          "walletDistribution": "triangular-20-220-mean-120"
+        },
+        "network": {
+          "endpoint": "http://127.0.0.1:11434",
+          "model": "gemma4:e2b",
+          "ssids": [
+            "Forest Frontiers Guest",
+            "Forest Frontiers Worker"
+          ],
+          "pa": {
+            "program": "Frontier Ambient",
+            "playing": false
+          }
+        },
+        "economyFeedback": {
+          "lastOperatorTransaction": null
+        },
+        "interaction": {
+          "lastRoute": {
+            "target": "guest_1_803681",
+            "route": "guest-entity-window",
+            "source": "contextmenu",
+            "consumed": true,
+            "time": 1787959959689
+          }
+        },
+        "visiblePanels": [
+          "economyPanel",
+          "devPanel"
+        ],
+        "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+      },
+      "errorsSinceStart": 0
+    },
+    {
+      "id": "comment_mtdl9heo_h85nrs",
+      "release": "R3.0-dev.17",
+      "sessionId": "R3.0-dev.17-2026-08-28T23-32-03-812Z-tjqed",
+      "time": "2026-08-28T23:34:32.544Z",
+      "area": "Guests",
+      "severity": "bug",
+      "text": "Marked this playtest checkpoint FAIL.",
+      "context": {
+        "bootPhase": "RUNNING",
+        "toolMode": "orbit",
+        "selectedBuild": null,
+        "buildRotationDeg": 0,
+        "selectedEntity": null,
+        "hoveredEntity": null,
+        "camera": {
+          "position": [
+            61.66134798963857,
+            11.151761867326261,
+            13.773194131772925
+          ],
+          "target": [
+            64.03511508681669,
+            -1.625688469912931e-18,
+            32.85163363660427
+          ],
+          "input": {
+            "keysDown": [],
+            "shift": false,
+            "moveFrames": 305,
+            "lastMove": {
+              "at": 27775.400000035763,
+              "delta": [
+                0.0712398218317623,
+                0,
+                0.19000477381101225
+              ],
+              "speed": 12.224155742516706,
+              "keys": [
+                "KeyW"
+              ]
+            },
+            "lastKeyAt": 27576.80000001192
+          },
+          "frameFaults": []
+        },
+        "focus": {
+          "tag": "BUTTON",
+          "id": "devFail",
+          "contentEditable": false
+        },
+        "park": {
+          "id": "park_mtdl6iw9_v5echg",
+          "name": "Forest Frontiers",
+          "open": true,
+          "day": 1,
+          "minutes": 644.7598799998856,
+          "rate": 1,
+          "cash": 50090,
+          "guests": 19,
+          "staff": 0,
+          "entities": 19
+        },
+        "construction": {
+          "gridStep": 2,
+          "gridCellHalf": 1,
+          "pathTileSize": 2,
+          "entranceSignMode": "fixed-plane-both-faces",
+          "signText": "FOREST FRONTIERS",
+          "signFont": "frontier",
+          "gateStyle": "frontier",
+          "masonryStyle": "granite",
+          "bounds": {
+            "minX": -43,
+            "maxX": 43,
+            "minZ": -39,
+            "maxZ": 27
+          },
+          "gate": {
+            "centerX": -12,
+            "width": 6,
+            "northZ": 27
+          },
+          "wildernessApproach": {
+            "worldPublicPath": true,
+            "immutable": true,
+            "fromGate": [
+              -12,
+              27
+            ],
+            "mapEdge": [
+              82,
+              47
+            ],
+            "waypoints": [
+              [
+                -12,
+                26
+              ],
+              [
+                -12,
+                29
+              ],
+              [
+                -8,
+                33
+              ],
+              [
+                1,
+                34
+              ],
+              [
+                10,
+                32
+              ],
+              [
+                20,
+                36
+              ],
+              [
+                30,
+                35
+              ],
+              [
+                40,
+                40
+              ],
+              [
+                52,
+                39
+              ],
+              [
+                72,
+                44
+              ],
+              [
+                82,
+                47
+              ]
+            ]
+          },
+          "propertyParcels": {},
+          "lastContextAction": {
+            "kind": "entrance",
+            "source": "contextmenu",
+            "time": 1787959943191
+          },
+          "lastPlacement": null
+        },
+        "ui": {
+          "settingsOpen": false,
+          "systemsOpen": false,
+          "menuOpen": false,
+          "menuMode": "main",
+          "menuOpenedAt": 429.5,
+          "lastUserAction": {
+            "kind": "ui-pointer",
+            "detail": "devFail",
+            "time": 1787960072447
+          },
+          "lastActionTip": null,
+          "entrancePreviewActive": true,
+          "screenshot": null
+        },
+        "economyRules": {
+          "maxEntranceFee": 200,
+          "guestWalletMean": 120,
+          "guestWalletMin": 20,
+          "guestWalletMax": 220,
+          "walletDistribution": "triangular-20-220-mean-120"
+        },
+        "network": {
+          "endpoint": "http://127.0.0.1:11434",
+          "model": "gemma4:e2b",
+          "ssids": [
+            "Forest Frontiers Guest",
+            "Forest Frontiers Worker"
+          ],
+          "pa": {
+            "program": "Frontier Ambient",
+            "playing": false
+          }
+        },
+        "economyFeedback": {
+          "lastOperatorTransaction": null
+        },
+        "interaction": {
+          "lastRoute": {
+            "target": "guest_1_803681",
+            "route": "guest-entity-window",
+            "source": "contextmenu",
+            "consumed": true,
+            "time": 1787959959689
+          }
+        },
+        "visiblePanels": [
+          "economyPanel",
+          "devPanel"
+        ],
+        "url": "http://127.0.0.1:8765/rollamacoasterTycoon_R3_rebuilt.html"
+      },
+      "errorsSinceStart": 0
+    }
+  ],
+  "recentLedger": [
+    {
+      "id": "tx_mtdkfyjr_m32whh",
+      "time": 1787958695079,
+      "simMinutes": 964.2901199997757,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_103_708238",
+      "balance": 51030
+    },
+    {
+      "id": "tx_mtdkghz8_v08vdv",
+      "time": 1787958720260,
+      "simMinutes": 967.1702399997776,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_104_227703",
+      "balance": 51040
+    },
+    {
+      "id": "tx_mtdkgoiq_l04gmw",
+      "time": 1787958728738,
+      "simMinutes": 970.067159999779,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_105_747168",
+      "balance": 51050
+    },
+    {
+      "id": "tx_mtdkgqdx_3yacsf",
+      "time": 1787958731157,
+      "simMinutes": 972.9670799997809,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_106_266633",
+      "balance": 51060
+    },
+    {
+      "id": "tx_mtdkj6oc_8d99to",
+      "time": 1787958845580,
+      "simMinutes": 975.8569199997833,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_107_786098",
+      "balance": 51070
+    },
+    {
+      "id": "tx_mtdkjizs_0n9cp0",
+      "time": 1787958861544,
+      "simMinutes": 978.7520399997849,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_108_305563",
+      "balance": 51080
+    },
+    {
+      "id": "tx_mtdkjkuy_8ld5pb",
+      "time": 1787958863962,
+      "simMinutes": 981.6519599997869,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_109_825028",
+      "balance": 51090
+    },
+    {
+      "id": "tx_mtdkjmqe_dz2ycw",
+      "time": 1787958866390,
+      "simMinutes": 984.5519999997884,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_110_429953",
+      "balance": 51100
+    },
+    {
+      "id": "tx_mtdkjol0_qjvwch",
+      "time": 1787958868788,
+      "simMinutes": 987.4319999997904,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_111_910488",
+      "balance": 51110
+    },
+    {
+      "id": "tx_mtdkjqg7_ig6hvf",
+      "time": 1787958871207,
+      "simMinutes": 990.3317999997922,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_112_391023",
+      "balance": 51120
+    },
+    {
+      "id": "tx_mtdkjwy3_1ehczd",
+      "time": 1787958879627,
+      "simMinutes": 993.2192399997936,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_113_871558",
+      "balance": 51130
+    },
+    {
+      "id": "tx_mtdklmqm_ck4n5o",
+      "time": 1787958959710,
+      "simMinutes": 996.1102799997955,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_114_507813",
+      "balance": 51140
+    },
+    {
+      "id": "tx_mtdkm4jd_tn6g4m",
+      "time": 1787958982777,
+      "simMinutes": 999.0095999997974,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_115_988348",
+      "balance": 51150
+    },
+    {
+      "id": "tx_mtdknrvh_cid8ik",
+      "time": 1787959059677,
+      "simMinutes": 559.1401199999602,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_1_79058",
+      "balance": 50010
+    },
+    {
+      "id": "tx_mtdkns8w_tpgai1",
+      "time": 1787959060160,
+      "simMinutes": 559.7200799999597,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_2_637453",
+      "balance": 50020
+    },
+    {
+      "id": "tx_mtdknum2_ktvr2p",
+      "time": 1787959063226,
+      "simMinutes": 563.4002399999564,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_3_117988",
+      "balance": 50030
+    },
+    {
+      "id": "tx_mtdknz2a_ob0pf7",
+      "time": 1787959068994,
+      "simMinutes": 570.3200399999502,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_4_520663",
+      "balance": 50040
+    },
+    {
+      "id": "tx_mtdko1gu_lxh24v",
+      "time": 1787959072110,
+      "simMinutes": 574.0601999999468,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_5_1198",
+      "balance": 50050
+    },
+    {
+      "id": "tx_mtdko1op_db1hct",
+      "time": 1787959072393,
+      "simMinutes": 574.4001599999465,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_6_559593",
+      "balance": 50060
+    },
+    {
+      "id": "tx_mtdko42c_wg1vzj",
+      "time": 1787959075476,
+      "simMinutes": 578.1002399999431,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_7_40128",
+      "balance": 50070
+    },
+    {
+      "id": "tx_mtdko8rt_g2tvc1",
+      "time": 1787959081577,
+      "simMinutes": 585.4202399999368,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_8_442803",
+      "balance": 50080
+    },
+    {
+      "id": "tx_mtdko9rg_kk2wq2",
+      "time": 1787959082860,
+      "simMinutes": 586.9601999999355,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_10_110183",
+      "balance": 50090
+    },
+    {
+      "id": "tx_mtdkob3l_x6rtim",
+      "time": 1787959084593,
+      "simMinutes": 589.0401599999338,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_11_629648",
+      "balance": 50100
+    },
+    {
+      "id": "tx_mtdkob8p_hme4wg",
+      "time": 1787959084777,
+      "simMinutes": 589.2602399999337,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_9_923338",
+      "balance": 50110
+    },
+    {
+      "id": "tx_mtdkocet_xdsny6",
+      "time": 1787959086293,
+      "simMinutes": 591.080159999932,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_12_149113",
+      "balance": 50120
+    },
+    {
+      "id": "tx_mtdkodrf_ruaw6q",
+      "time": 1787959088043,
+      "simMinutes": 593.1802799999302,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_13_668578",
+      "balance": 50130
+    },
+    {
+      "id": "tx_mtdkojgj_klzxul",
+      "time": 1787959095427,
+      "simMinutes": 602.040119999923,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_14_32323",
+      "balance": 50140
+    },
+    {
+      "id": "tx_mtdkokoz_27qpj6",
+      "time": 1787959097027,
+      "simMinutes": 603.9602399999217,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_18_265903",
+      "balance": 50150
+    },
+    {
+      "id": "tx_mtdkokqt_ggefwu",
+      "time": 1787959097093,
+      "simMinutes": 604.0402799999216,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_15_551788",
+      "balance": 50160
+    },
+    {
+      "id": "tx_mtdkom0n_pbsiz8",
+      "time": 1787959098743,
+      "simMinutes": 606.0201599999198,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_16_71253",
+      "balance": 50170
+    },
+    {
+      "id": "tx_mtdkom4e_y731a6",
+      "time": 1787959098878,
+      "simMinutes": 606.1813199999197,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_19_785368",
+      "balance": 50180
+    },
+    {
+      "id": "tx_mtdkoncc_ic0hx0",
+      "time": 1787959100460,
+      "simMinutes": 608.080199999918,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_17_590718",
+      "balance": 50190
+    },
+    {
+      "id": "tx_mtdkotqf_r25xu1",
+      "time": 1787959108743,
+      "simMinutes": 618.0201599999092,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_20_442033",
+      "balance": 50200
+    },
+    {
+      "id": "tx_mtdkow5g_3er6ar",
+      "time": 1787959111876,
+      "simMinutes": 621.7802399999059,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_21_922568",
+      "balance": 50210
+    },
+    {
+      "id": "tx_mtdkowbh_tvph7y",
+      "time": 1787959112093,
+      "simMinutes": 622.0402799999057,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_22_480963",
+      "balance": 50220
+    },
+    {
+      "id": "tx_mtdkowyn_nxj3x6",
+      "time": 1787959112927,
+      "simMinutes": 623.0402399999049,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_25_844708",
+      "balance": 50230
+    },
+    {
+      "id": "tx_mtdkoyqi_ob2i32",
+      "time": 1787959115226,
+      "simMinutes": 625.8001199999023,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_23_961498",
+      "balance": 50240
+    },
+    {
+      "id": "tx_mtdkp3k4_2whitj",
+      "time": 1787959121476,
+      "simMinutes": 633.2999999998956,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_24_364173",
+      "balance": 50250
+    },
+    {
+      "id": "tx_mtdkp3x3_rrgw1u",
+      "time": 1787959121943,
+      "simMinutes": 633.8600399998951,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_28_286313",
+      "balance": 50260
+    },
+    {
+      "id": "tx_mtdkp61y_iah4bt",
+      "time": 1787959124710,
+      "simMinutes": 637.1801999998921,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_26_403103",
+      "balance": 50270
+    },
+    {
+      "id": "tx_mtdkp67z_8grkif",
+      "time": 1787959124927,
+      "simMinutes": 637.4402399998919,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_29_766848",
+      "balance": 50280
+    },
+    {
+      "id": "tx_mtdkp8id_syxvee",
+      "time": 1787959127893,
+      "simMinutes": 641.0001599998891,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_27_883638",
+      "balance": 50290
+    },
+    {
+      "id": "tx_mtdkp8sk_t25644",
+      "time": 1787959128260,
+      "simMinutes": 641.4403199998887,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_30_670403",
+      "balance": 50300
+    },
+    {
+      "id": "tx_mtdkpa63_majhe9",
+      "time": 1787959130043,
+      "simMinutes": 643.580279999887,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_31_189868",
+      "balance": 50310
+    },
+    {
+      "id": "tx_mtdkpdi0_22wtj3",
+      "time": 1787959134360,
+      "simMinutes": 648.7603199998828,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_32_631473",
+      "balance": 50320
+    },
+    {
+      "id": "tx_mtdkped1_g606wh",
+      "time": 1787959135477,
+      "simMinutes": 650.1002399998819,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_34_748263",
+      "balance": 50330
+    },
+    {
+      "id": "tx_mtdkpev3_tnwn1c",
+      "time": 1787959136127,
+      "simMinutes": 650.8802399998813,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_33_150938",
+      "balance": 50340
+    },
+    {
+      "id": "tx_mtdkpfry_sqr0af",
+      "time": 1787959137310,
+      "simMinutes": 652.30031999988,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_35_267728",
+      "balance": 50350
+    },
+    {
+      "id": "tx_mtdkpj0m_yowc2x",
+      "time": 1787959141510,
+      "simMinutes": 657.3400799998753,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_36_709333",
+      "balance": 50360
+    },
+    {
+      "id": "tx_mtdkpke5_j0g4lp",
+      "time": 1787959143293,
+      "simMinutes": 659.4801599998738,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_37_228798",
+      "balance": 50370
+    },
+    {
+      "id": "tx_mtdkps08_qq0qzj",
+      "time": 1787959153160,
+      "simMinutes": 671.3203199998636,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_38_514683",
+      "balance": 50380
+    },
+    {
+      "id": "tx_mtdkpt9m_hcdtoj",
+      "time": 1787959154794,
+      "simMinutes": 673.2801599998619,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_39_34148",
+      "balance": 50390
+    },
+    {
+      "id": "tx_mtdkptie_k7rcw3",
+      "time": 1787959155110,
+      "simMinutes": 673.6601999998616,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_40_401213",
+      "balance": 50400
+    },
+    {
+      "id": "tx_mtdkpvwz_35adr3",
+      "time": 1787959158227,
+      "simMinutes": 677.4002399998584,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_41_881748",
+      "balance": 50410
+    },
+    {
+      "id": "tx_mtdkpych_jv6jxm",
+      "time": 1787959161377,
+      "simMinutes": 681.180239999855,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_42_362283",
+      "balance": 50420
+    },
+    {
+      "id": "tx_mtdkpywu_5m0mzi",
+      "time": 1787959162110,
+      "simMinutes": 682.0601999998541,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_44_479073",
+      "balance": 50430
+    },
+    {
+      "id": "tx_mtdkq0rz_x3pzoy",
+      "time": 1787959164527,
+      "simMinutes": 684.9602399998521,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_43_842818",
+      "balance": 50440
+    },
+    {
+      "id": "tx_mtdkq193_h1mowh",
+      "time": 1787959165143,
+      "simMinutes": 685.7001599998514,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_45_959608",
+      "balance": 50450
+    },
+    {
+      "id": "tx_mtdkq3mr_xuhr18",
+      "time": 1787959168227,
+      "simMinutes": 689.4002399998482,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_46_440143",
+      "balance": 50460
+    },
+    {
+      "id": "tx_mtdkq406_ng3x9h",
+      "time": 1787959168710,
+      "simMinutes": 689.9801999998476,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_48_245493",
+      "balance": 50470
+    },
+    {
+      "id": "tx_mtdkq61k_4y60h2",
+      "time": 1787959171352,
+      "simMinutes": 693.1401599998447,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_47_920678",
+      "balance": 50480
+    },
+    {
+      "id": "tx_mtdkq6a4_oh0j57",
+      "time": 1787959171660,
+      "simMinutes": 693.5201999998444,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_49_726028",
+      "balance": 50490
+    },
+    {
+      "id": "tx_mtdkqdbd_o0spl4",
+      "time": 1787959180777,
+      "simMinutes": 704.4601199998347,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_50_121103",
+      "balance": 50500
+    },
+    {
+      "id": "tx_mtdkqem4_d68ikw",
+      "time": 1787959182460,
+      "simMinutes": 706.4801999998328,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_51_640568",
+      "balance": 50510
+    },
+    {
+      "id": "tx_mtdkqfww_9nzofh",
+      "time": 1787959184144,
+      "simMinutes": 708.500279999831,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_52_160033",
+      "balance": 50520
+    },
+    {
+      "id": "tx_mtdkqh8k_yu5zzh",
+      "time": 1787959185860,
+      "simMinutes": 710.5601999998294,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_53_679498",
+      "balance": 50530
+    },
+    {
+      "id": "tx_mtdkqil6_1b6ii1",
+      "time": 1787959187610,
+      "simMinutes": 712.6601999998277,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_54_198963",
+      "balance": 50540
+    },
+    {
+      "id": "tx_mtdkqjxs_ukigvn",
+      "time": 1787959189360,
+      "simMinutes": 714.7599599998265,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_55_718428",
+      "balance": 50550
+    },
+    {
+      "id": "tx_mtdkqlae_g57hgw",
+      "time": 1787959191110,
+      "simMinutes": 716.8600799998246,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_56_237894",
+      "balance": 50560
+    },
+    {
+      "id": "tx_mtdkqmov_fpe8kj",
+      "time": 1787959192927,
+      "simMinutes": 719.0398799998227,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_57_757359",
+      "balance": 50570
+    },
+    {
+      "id": "tx_mtdkqnkc_3bbnhx",
+      "time": 1787959194060,
+      "simMinutes": 720.4000799998217,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_58_965383",
+      "balance": 50580
+    },
+    {
+      "id": "tx_mtdkqoz9_iq80vv",
+      "time": 1787959195893,
+      "simMinutes": 722.5999199998199,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_59_484848",
+      "balance": 50590
+    },
+    {
+      "id": "tx_mtdkr0cs_7j54qo",
+      "time": 1787959210636,
+      "simMinutes": 733.6009199998108,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_60_830073",
+      "balance": 50600
+    },
+    {
+      "id": "tx_mtdkuj31_jcerwz",
+      "time": 1787959374877,
+      "simMinutes": 737.3558399998091,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_61_310608",
+      "balance": 50610
+    },
+    {
+      "id": "tx_mtdkuj9k_mg1119",
+      "time": 1787959375112,
+      "simMinutes": 737.6357999998088,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_62_869003",
+      "balance": 50620
+    },
+    {
+      "id": "tx_mtdkulno_2vmpn8",
+      "time": 1787959378212,
+      "simMinutes": 741.3559199998092,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_63_349538",
+      "balance": 50630
+    },
+    {
+      "id": "tx_mtdkulxc_slii3g",
+      "time": 1787959378560,
+      "simMinutes": 741.7757999998092,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_64_907933",
+      "balance": 50640
+    },
+    {
+      "id": "tx_mtdkuoaz_1cwopl",
+      "time": 1787959381643,
+      "simMinutes": 745.4758799998091,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_65_388468",
+      "balance": 50650
+    },
+    {
+      "id": "tx_mtdkuom3_ln0tq9",
+      "time": 1787959382043,
+      "simMinutes": 745.9558799998089,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_66_946863",
+      "balance": 50660
+    },
+    {
+      "id": "tx_mtdkuqzs_4xg561",
+      "time": 1787959385128,
+      "simMinutes": 749.6558399998069,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_67_427398",
+      "balance": 50670
+    },
+    {
+      "id": "tx_mtdkure4_qowdj1",
+      "time": 1787959385644,
+      "simMinutes": 750.2758799998068,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_68_985793",
+      "balance": 50680
+    },
+    {
+      "id": "tx_mtdkutpw_zzxvot",
+      "time": 1787959388660,
+      "simMinutes": 753.8957999998038,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_69_466328",
+      "balance": 50690
+    },
+    {
+      "id": "tx_mtdkuwty_fmdllk",
+      "time": 1787959392694,
+      "simMinutes": 758.7359999998006,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_70_681323",
+      "balance": 50700
+    },
+    {
+      "id": "tx_mtdkuy7y_2zefi1",
+      "time": 1787959394494,
+      "simMinutes": 760.8958799997993,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_71_200788",
+      "balance": 50710
+    },
+    {
+      "id": "tx_mtdkv1m6_bo1gg0",
+      "time": 1787959398894,
+      "simMinutes": 766.1757599997967,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_72_642393",
+      "balance": 50720
+    },
+    {
+      "id": "tx_mtdkv2yb_04ld02",
+      "time": 1787959400627,
+      "simMinutes": 768.2157599997952,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_73_161858",
+      "balance": 50730
+    },
+    {
+      "id": "tx_mtdkv6fb_ag45el",
+      "time": 1787959405127,
+      "simMinutes": 773.6157599997919,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_74_603463",
+      "balance": 50740
+    },
+    {
+      "id": "tx_mtdkv7sm_w0la6v",
+      "time": 1787959406902,
+      "simMinutes": 775.7356799997907,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_75_122928",
+      "balance": 50750
+    },
+    {
+      "id": "tx_mtdl10ht_ev23im",
+      "time": 1787959677377,
+      "simMinutes": 781.2633599997938,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_76_564533",
+      "balance": 50760
+    },
+    {
+      "id": "tx_mtdl82cq_bgnn20",
+      "time": 1787960006378,
+      "simMinutes": 565.719959999954,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_1_803681",
+      "balance": 50010
+    },
+    {
+      "id": "tx_mtdl83ey_ltaapu",
+      "time": 1787960007754,
+      "simMinutes": 567.4198799999527,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_2_284216",
+      "balance": 50020
+    },
+    {
+      "id": "tx_mtdl8cdd_duvhds",
+      "time": 1787960019361,
+      "simMinutes": 581.3597999999408,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_3_764751",
+      "balance": 50030
+    },
+    {
+      "id": "tx_mtdl8eqj_rngxw7",
+      "time": 1787960022427,
+      "simMinutes": 585.0398399999383,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_4_401006",
+      "balance": 50040
+    },
+    {
+      "id": "tx_mtdl8k6u_rlbvjs",
+      "time": 1787960029494,
+      "simMinutes": 593.5197599999309,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_5_881541",
+      "balance": 50050
+    },
+    {
+      "id": "tx_mtdl8vk3_yrc6mv",
+      "time": 1787960044227,
+      "simMinutes": 611.1998399999148,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_6_362076",
+      "balance": 50060
+    },
+    {
+      "id": "tx_mtdl95ux_6fk6ow",
+      "time": 1787960057577,
+      "simMinutes": 626.8197599999012,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_7_842611",
+      "balance": 50070
+    },
+    {
+      "id": "tx_mtdl9bwo_g0dz14",
+      "time": 1787960065416,
+      "simMinutes": 636.219959999893,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_9_959401",
+      "balance": 50080
+    },
+    {
+      "id": "tx_mtdl9czv_wb23lp",
+      "time": 1787960066827,
+      "simMinutes": 637.9198799998915,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_8_478866",
+      "balance": 50090
+    },
+    {
+      "id": "tx_mtdl9ioz_54ez1w",
+      "time": 1787960074211,
+      "simMinutes": 646.7799599998839,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_10_426265",
+      "balance": 50100
+    },
+    {
+      "id": "tx_mtdl9ipw_5lbc1k",
+      "time": 1787960074244,
+      "simMinutes": 646.8199199998838,
+      "amount": 10,
+      "type": "admission",
+      "label": "Park admission",
+      "entityId": "park-entrance",
+      "guestId": "guest_11_945730",
+      "balance": 50110
+    }
+  ],
+  "simulation": {
+    "schema": 3,
+    "id": "park_mtdl6iw9_v5echg",
+    "name": "Forest Frontiers",
+    "sign": "FOREST FRONTIERS",
+    "signFont": "frontier",
+    "gateStyle": "frontier",
+    "masonryStyle": "granite",
+    "property": {
+      "parcels": {}
+    },
+    "created": 1787959934505,
+    "updated": 1787959934505,
+    "sim": {
+      "minutes": 652.8598799998789,
+      "rate": 1,
+      "open": true,
+      "day": 1,
+      "spawnClock": 7.949899999999976,
+      "nextGuestIn": 16.20772555615821,
+      "guestLimit": 300
+    },
+    "economy": {
+      "cash": 50110,
+      "entranceFee": 10,
+      "income": 110,
+      "expenses": 0,
+      "revenue": 110,
+      "wages": 0,
+      "parkValue": 50965
+    },
+    "entities": [
+      {
+        "id": "path_mtdl6iw9_vdookm",
+        "kind": "path",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 24
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_h1ys68",
+        "kind": "path",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 22
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_90lxj9",
+        "kind": "path",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 20
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_o36o1j",
+        "kind": "path",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 18
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_2mvb31",
+        "kind": "path",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 16
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_67t47z",
+        "kind": "path",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 14
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_4zd4rb",
+        "kind": "path",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 12
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_c3c8i5",
+        "kind": "path",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 10
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_ss82lr",
+        "kind": "path",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 8
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_axck1o",
+        "kind": "path",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 6
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_dejqmr",
+        "kind": "path",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 4
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_fcwyay",
+        "kind": "path",
+        "pos": {
+          "x": -10,
+          "y": 0,
+          "z": 4
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_p19h7a",
+        "kind": "path",
+        "pos": {
+          "x": -8,
+          "y": 0,
+          "z": 4
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_p5bqha",
+        "kind": "path",
+        "pos": {
+          "x": -6,
+          "y": 0,
+          "z": 4
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "path_mtdl6iw9_0je1zr",
+        "kind": "path",
+        "pos": {
+          "x": -4,
+          "y": 0,
+          "z": 4
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true
+      },
+      {
+        "id": "lamp_mtdl6iw9_lyrrxh",
+        "kind": "lamp",
+        "pos": {
+          "x": -10,
+          "y": 0,
+          "z": 6
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": []
+      },
+      {
+        "id": "bench_mtdl6iw9_cjhiwr",
+        "kind": "bench",
+        "pos": {
+          "x": -8,
+          "y": 0,
+          "z": 5
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": []
+      },
+      {
+        "id": "bin_mtdl6iw9_1ydix1",
+        "kind": "bin",
+        "pos": {
+          "x": -6,
+          "y": 0,
+          "z": 5
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": []
+      },
+      {
+        "id": "path_mtdl6iw9_s56mxi",
+        "kind": "path",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 26
+        },
+        "rot": 0,
+        "running": true,
+        "price": 0,
+        "access": null,
+        "queue": [],
+        "protected": true,
+        "infrastructure": "gateConnector"
+      }
+    ],
+    "guests": [
+      {
+        "id": "guest_1_803681",
+        "name": "Avery Foster",
+        "pos": {
+          "x": -7.75,
+          "y": 0,
+          "z": 5.25
+        },
+        "wallet": 101,
+        "arrivalWallet": 111,
+        "admitted": true,
+        "phase": "in-park",
+        "profile": {
+          "archetype": "Food Wanderer",
+          "icon": "🍕",
+          "origin": "weekend road trip",
+          "rideTolerance": 16,
+          "curiosity": 24,
+          "spending": 49,
+          "social": 51,
+          "patience": 79,
+          "foodAdventurous": 56,
+          "pace": 1.0872771307290532,
+          "lore": "Treats the park as a moving tasting map and budgets for snacks more than souvenirs."
+        },
+        "mood": 63,
+        "needs": {
+          "hunger": 70.48183483612068,
+          "thirst": 96.35717625576842,
+          "bathroom": 62.02008468133607,
+          "energy": 79.46995312311881,
+          "nausea": 7.375620694831014,
+          "stress": 14.167408212199726
+        },
+        "interests": [
+          "food",
+          "gardens"
+        ],
+        "traits": {
+          "thrill": 16,
+          "social": 51,
+          "patience": 79,
+          "curiosity": 24,
+          "spending": 49
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl6smf_c59nwv",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl6smf_yr7vyg",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          },
+          {
+            "id": "ticket_mtdl82cq_7p18m0",
+            "kind": "admission-ticket",
+            "name": "Forest Frontiers Admission · Day 1",
+            "icon": "🎟️",
+            "issuedAt": 1787960006378,
+            "paid": 10
+          }
+        ],
+        "thought": "Food Wanderer pointed me toward Path Bench Pair.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960075543,
+        "activity": "walking to Path Bench Pair",
+        "arrivalRoute": [],
+        "route": [],
+        "targetId": "bench_mtdl6iw9_cjhiwr",
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [
+          {
+            "time": 1787960022361,
+            "targetId": "bench_mtdl6iw9_cjhiwr",
+            "kind": "bench"
+          }
+        ],
+        "visited": {
+          "bench_mtdl6iw9_cjhiwr": 1
+        },
+        "created": 1787959947111,
+        "brainId": "guest_1_803681",
+        "gps": {
+          "tasks": [
+            {
+              "type": "scenery",
+              "targetId": "bench_mtdl6iw9_cjhiwr",
+              "label": "Visit Path Bench Pair",
+              "reason": "Food Wanderer pointed me toward Path Bench Pair.",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "break",
+          "plan": [
+            {
+              "x": -8,
+              "z": 5,
+              "label": "🪑 Path Bench Pair"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 8,
+              "label": "Forecast path"
+            },
+            {
+              "x": -8,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -6,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 16,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 22,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 14,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960079343
+        },
+        "messages": [],
+        "facing": 1.5707963267948966
+      },
+      {
+        "id": "guest_2_284216",
+        "name": "Aria Kim",
+        "pos": {
+          "x": -7.75,
+          "y": 0,
+          "z": 5.25
+        },
+        "wallet": 92,
+        "arrivalWallet": 102,
+        "admitted": true,
+        "phase": "in-park",
+        "profile": {
+          "archetype": "Completionist",
+          "icon": "✅",
+          "origin": "nearby town",
+          "rideTolerance": 20,
+          "curiosity": 20,
+          "spending": 41,
+          "social": 17,
+          "patience": 20,
+          "foodAdventurous": 62,
+          "pace": 1.0551199874654411,
+          "lore": "Builds a mental checklist and strongly prefers destinations not already visited."
+        },
+        "mood": 94,
+        "needs": {
+          "hunger": 68.73909104041358,
+          "thirst": 92.61107877291661,
+          "bathroom": 61.406133280296494,
+          "energy": 79.7427541051513,
+          "nausea": 6.404932755976915,
+          "stress": 29.09207218603602
+        },
+        "interests": [
+          "gardens",
+          "quiet spaces",
+          "music"
+        ],
+        "traits": {
+          "thrill": 20,
+          "social": 17,
+          "patience": 20,
+          "curiosity": 20,
+          "spending": 41
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl6t6b_nuq1dp",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl6t6b_or5flb",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          },
+          {
+            "id": "ticket_mtdl83ey_ahuqu3",
+            "kind": "admission-ticket",
+            "name": "Forest Frontiers Admission · Day 1",
+            "icon": "🎟️",
+            "issuedAt": 1787960007754,
+            "paid": 10
+          }
+        ],
+        "thought": "Completionist pointed me toward Path Bench Pair.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960070466,
+        "activity": "walking to Path Bench Pair",
+        "arrivalRoute": [],
+        "route": [],
+        "targetId": "bench_mtdl6iw9_cjhiwr",
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [
+          {
+            "time": 1787960023994,
+            "targetId": "bench_mtdl6iw9_cjhiwr",
+            "kind": "bench"
+          }
+        ],
+        "visited": {
+          "bench_mtdl6iw9_cjhiwr": 1
+        },
+        "created": 1787959947827,
+        "brainId": "guest_2_284216",
+        "gps": {
+          "tasks": [
+            {
+              "type": "scenery",
+              "targetId": "bench_mtdl6iw9_cjhiwr",
+              "label": "Visit Path Bench Pair",
+              "reason": "Completionist pointed me toward Path Bench Pair.",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "break",
+          "plan": [
+            {
+              "x": -8,
+              "z": 5,
+              "label": "🪑 Path Bench Pair"
+            },
+            {
+              "x": -12,
+              "z": 14,
+              "label": "Forecast path"
+            },
+            {
+              "x": -6,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -6,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 10,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 18,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 6,
+              "label": "Forecast path"
+            },
+            {
+              "x": -8,
+              "z": 4,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960079343
+        },
+        "messages": [],
+        "facing": 1.5707963267948966
+      },
+      {
+        "id": "guest_3_764751",
+        "name": "Noah Brooks",
+        "pos": {
+          "x": -7.75,
+          "y": 0,
+          "z": 5.25
+        },
+        "wallet": 83,
+        "arrivalWallet": 93,
+        "admitted": true,
+        "phase": "in-park",
+        "profile": {
+          "archetype": "Food Wanderer",
+          "icon": "🍕",
+          "origin": "return visitor",
+          "rideTolerance": 25,
+          "curiosity": 96,
+          "spending": 33,
+          "social": 83,
+          "patience": 47,
+          "foodAdventurous": 67,
+          "pace": 1.0229628442018293,
+          "lore": "Treats the park as a moving tasting map and budgets for snacks more than souvenirs."
+        },
+        "mood": 87,
+        "needs": {
+          "hunger": 58.417935336497386,
+          "thirst": 77.94969895783127,
+          "bathroom": 53.68799687925783,
+          "energy": 84.745063868292,
+          "nausea": 5.434244817122817,
+          "stress": 21.536896159872413
+        },
+        "interests": [
+          "thrill rides",
+          "coasters"
+        ],
+        "traits": {
+          "thrill": 25,
+          "social": 83,
+          "patience": 47,
+          "curiosity": 96,
+          "spending": 33
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl71lk_8yw18c",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl71lk_aztkqz",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          },
+          {
+            "id": "ticket_mtdl8cdd_g5ldg8",
+            "kind": "admission-ticket",
+            "name": "Forest Frontiers Admission · Day 1",
+            "icon": "🎟️",
+            "issuedAt": 1787960019361,
+            "paid": 10
+          }
+        ],
+        "thought": "My thirst is getting hard to ignore, so that is shaping my next decision.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960073894,
+        "activity": "walking to Path Bench Pair",
+        "arrivalRoute": [],
+        "route": [],
+        "targetId": "bench_mtdl6iw9_cjhiwr",
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [
+          {
+            "time": 1787960035610,
+            "targetId": "bench_mtdl6iw9_cjhiwr",
+            "kind": "bench"
+          }
+        ],
+        "visited": {
+          "bench_mtdl6iw9_cjhiwr": 1
+        },
+        "created": 1787959958744,
+        "brainId": "guest_3_764751",
+        "gps": {
+          "tasks": [
+            {
+              "type": "scenery",
+              "targetId": "bench_mtdl6iw9_cjhiwr",
+              "label": "Visit Path Bench Pair",
+              "reason": "Food Wanderer pointed me toward Path Bench Pair.",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "break",
+          "plan": [
+            {
+              "x": -8,
+              "z": 5,
+              "label": "🪑 Path Bench Pair"
+            },
+            {
+              "x": -12,
+              "z": 18,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 8,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 16,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 6,
+              "label": "Forecast path"
+            },
+            {
+              "x": -6,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 14,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 10,
+              "label": "Forecast path"
+            },
+            {
+              "x": -6,
+              "z": 4,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960079343
+        },
+        "messages": [],
+        "facing": 1.5707963267948966
+      },
+      {
+        "id": "guest_4_401006",
+        "name": "Jordan Diaz",
+        "pos": {
+          "x": -7.75,
+          "y": 0,
+          "z": 5.25
+        },
+        "wallet": 148,
+        "arrivalWallet": 158,
+        "admitted": true,
+        "phase": "in-park",
+        "profile": {
+          "archetype": "Completionist",
+          "icon": "✅",
+          "origin": "nearby town",
+          "rideTolerance": 84,
+          "curiosity": 44,
+          "spending": 90,
+          "social": 20,
+          "patience": 31,
+          "foodAdventurous": 28,
+          "pace": 1.248062847047113,
+          "lore": "Builds a mental checklist and strongly prefers destinations not already visited."
+        },
+        "mood": 60,
+        "needs": {
+          "hunger": 68.1798634122668,
+          "thirst": 65.1029487336663,
+          "bathroom": 56.4918016865351,
+          "energy": 69.92587009984135,
+          "nausea": 4.229060389101505,
+          "stress": 24.663688343018293
+        },
+        "interests": [
+          "music",
+          "geocaching"
+        ],
+        "traits": {
+          "thrill": 84,
+          "social": 20,
+          "patience": 31,
+          "curiosity": 44,
+          "spending": 90
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl77o3_4l07jh",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl77o3_mzfvq0",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          },
+          {
+            "id": "ticket_mtdl8eqj_g5yrl0",
+            "kind": "admission-ticket",
+            "name": "Forest Frontiers Admission · Day 1",
+            "icon": "🎟️",
+            "issuedAt": 1787960022427,
+            "paid": 10
+          }
+        ],
+        "thought": "Completionist pointed me toward Path Bench Pair.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960068466,
+        "activity": "walking to Path Bench Pair",
+        "arrivalRoute": [],
+        "route": [],
+        "targetId": "bench_mtdl6iw9_cjhiwr",
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [
+          {
+            "time": 1787960037594,
+            "targetId": "bench_mtdl6iw9_cjhiwr",
+            "kind": "bench"
+          }
+        ],
+        "visited": {
+          "bench_mtdl6iw9_cjhiwr": 1
+        },
+        "created": 1787959966611,
+        "brainId": "guest_4_401006",
+        "gps": {
+          "tasks": [
+            {
+              "type": "scenery",
+              "targetId": "bench_mtdl6iw9_cjhiwr",
+              "label": "Visit Path Bench Pair",
+              "reason": "Completionist pointed me toward Path Bench Pair.",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "break",
+          "plan": [
+            {
+              "x": -8,
+              "z": 5,
+              "label": "🪑 Path Bench Pair"
+            },
+            {
+              "x": -10,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 22,
+              "label": "Forecast path"
+            },
+            {
+              "x": -8,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 20,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 6,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 24,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 8,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 14,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 14,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960079343
+        },
+        "messages": [],
+        "facing": 1.5707963267948966
+      },
+      {
+        "id": "guest_5_881541",
+        "name": "Jasper Bennett",
+        "pos": {
+          "x": -7.75,
+          "y": 0,
+          "z": 5.25
+        },
+        "wallet": 39,
+        "arrivalWallet": 49,
+        "admitted": true,
+        "phase": "in-park",
+        "profile": {
+          "archetype": "Food Wanderer",
+          "icon": "🍕",
+          "origin": "return visitor",
+          "rideTolerance": 89,
+          "curiosity": 40,
+          "spending": 82,
+          "social": 86,
+          "patience": 57,
+          "foodAdventurous": 33,
+          "pace": 1.215905703783501,
+          "lore": "Treats the park as a moving tasting map and budgets for snacks more than souvenirs."
+        },
+        "mood": 92,
+        "needs": {
+          "hunger": 61.938528454200416,
+          "thirst": 55.63968983016516,
+          "bathroom": 52.26627528549602,
+          "energy": 63.76583810074308,
+          "nausea": 3.258372450247407,
+          "stress": 20.788432316854596
+        },
+        "interests": [
+          "gardens",
+          "family rides"
+        ],
+        "traits": {
+          "thrill": 89,
+          "social": 86,
+          "patience": 57,
+          "curiosity": 40,
+          "spending": 82
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl7cnp_l6y9aj",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl7cnp_s4mtsm",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          },
+          {
+            "id": "ticket_mtdl8k6u_91w40x",
+            "kind": "admission-ticket",
+            "name": "Forest Frontiers Admission · Day 1",
+            "icon": "🎟️",
+            "issuedAt": 1787960029494,
+            "paid": 10
+          }
+        ],
+        "thought": "Finally, the scent of park snacks is drawing me in.",
+        "thoughtSource": "ollama",
+        "thoughtAt": 1787960074148,
+        "activity": "walking to Path Bench Pair",
+        "arrivalRoute": [],
+        "route": [],
+        "targetId": "bench_mtdl6iw9_cjhiwr",
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [
+          {
+            "time": 1787960044877,
+            "targetId": "bench_mtdl6iw9_cjhiwr",
+            "kind": "bench"
+          }
+        ],
+        "visited": {
+          "bench_mtdl6iw9_cjhiwr": 1
+        },
+        "created": 1787959973077,
+        "brainId": "guest_5_881541",
+        "gps": {
+          "tasks": [
+            {
+              "type": "scenery",
+              "targetId": "bench_mtdl6iw9_cjhiwr",
+              "label": "Visit Path Bench Pair",
+              "reason": "Food Wanderer pointed me toward Path Bench Pair.",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "break",
+          "plan": [
+            {
+              "x": -8,
+              "z": 5,
+              "label": "🪑 Path Bench Pair"
+            },
+            {
+              "x": -8,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 14,
+              "label": "Forecast path"
+            },
+            {
+              "x": -6,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 10,
+              "label": "Forecast path"
+            },
+            {
+              "x": -4,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -4,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 24,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 8,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 22,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960079343
+        },
+        "messages": [],
+        "facing": 1.5707963267948966
+      },
+      {
+        "id": "guest_6_362076",
+        "name": "Lena Patel",
+        "pos": {
+          "x": -7.75,
+          "y": 0,
+          "z": 5.25
+        },
+        "wallet": 129,
+        "arrivalWallet": 139,
+        "admitted": true,
+        "phase": "in-park",
+        "profile": {
+          "archetype": "Completionist",
+          "icon": "✅",
+          "origin": "weekend road trip",
+          "rideTolerance": 94,
+          "curiosity": 36,
+          "spending": 74,
+          "social": 52,
+          "patience": 84,
+          "foodAdventurous": 39,
+          "pace": 1.183748560519889,
+          "lore": "Builds a mental checklist and strongly prefers destinations not already visited."
+        },
+        "mood": 85,
+        "needs": {
+          "hunger": 50.031016359941965,
+          "thirst": 38.97493331577388,
+          "bathroom": 43.48394388445689,
+          "energy": 70.06679990708564,
+          "nausea": 2.2876845113933086,
+          "stress": 16.9131762906909
+        },
+        "interests": [
+          "thrill rides",
+          "quiet spaces",
+          "shopping"
+        ],
+        "traits": {
+          "thrill": 94,
+          "social": 52,
+          "patience": 84,
+          "curiosity": 36,
+          "spending": 74
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl7nje_m8f6z3",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl7nje_4nys9e",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          },
+          {
+            "id": "ticket_mtdl8vk3_64yt7d",
+            "kind": "admission-ticket",
+            "name": "Forest Frontiers Admission · Day 1",
+            "icon": "🎟️",
+            "issuedAt": 1787960044227,
+            "paid": 10
+          }
+        ],
+        "thought": "Completionist brain: walking to Path Bench Pair. Next GPS point is 🪑 Path Bench Pair.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960077927,
+        "activity": "walking to Path Bench Pair",
+        "arrivalRoute": [],
+        "route": [],
+        "targetId": "bench_mtdl6iw9_cjhiwr",
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [
+          {
+            "time": 1787960059951,
+            "targetId": "bench_mtdl6iw9_cjhiwr",
+            "kind": "bench"
+          }
+        ],
+        "visited": {
+          "bench_mtdl6iw9_cjhiwr": 1
+        },
+        "created": 1787959987178,
+        "brainId": "guest_6_362076",
+        "gps": {
+          "tasks": [
+            {
+              "type": "scenery",
+              "targetId": "bench_mtdl6iw9_cjhiwr",
+              "label": "Visit Path Bench Pair",
+              "reason": "Completionist pointed me toward Path Bench Pair.",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "break",
+          "plan": [
+            {
+              "x": -8,
+              "z": 5,
+              "label": "🪑 Path Bench Pair"
+            },
+            {
+              "x": -12,
+              "z": 14,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 24,
+              "label": "Forecast path"
+            },
+            {
+              "x": -6,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -10,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 22,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 24,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 24,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 6,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 12,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960079343
+        },
+        "messages": [],
+        "facing": 1.5707963267948966
+      },
+      {
+        "id": "guest_7_842611",
+        "name": "Riley Stone",
+        "pos": {
+          "x": -7.75,
+          "y": 0,
+          "z": 5.25
+        },
+        "wallet": 120,
+        "arrivalWallet": 130,
+        "admitted": true,
+        "phase": "in-park",
+        "profile": {
+          "archetype": "Food Wanderer",
+          "icon": "🍕",
+          "origin": "nearby town",
+          "rideTolerance": 98,
+          "curiosity": 32,
+          "spending": 66,
+          "social": 18,
+          "patience": 25,
+          "foodAdventurous": 45,
+          "pace": 1.151591417256277,
+          "lore": "Treats the park as a moving tasting map and budgets for snacks more than souvenirs."
+        },
+        "mood": 77,
+        "needs": {
+          "hunger": 39.67193103071605,
+          "thirst": 24.2694584030852,
+          "bathroom": 35.80315248341631,
+          "energy": 98.21487593694062,
+          "nausea": 1.3169965725392103,
+          "stress": 13.037920264527202
+        },
+        "interests": [
+          "geocaching",
+          "coasters",
+          "gentle rides"
+        ],
+        "traits": {
+          "thrill": 98,
+          "social": 18,
+          "patience": 25,
+          "curiosity": 32,
+          "spending": 66
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl7x2w_gqp8f4",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl7x2w_kcipbu",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          },
+          {
+            "id": "ticket_mtdl95ux_q1m2a2",
+            "kind": "admission-ticket",
+            "name": "Forest Frontiers Admission · Day 1",
+            "icon": "🎟️",
+            "issuedAt": 1787960057577,
+            "paid": 10
+          }
+        ],
+        "thought": "Food Wanderer pointed me toward Path Bench Pair.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960071210,
+        "activity": "walking to Path Bench Pair",
+        "arrivalRoute": [],
+        "route": [],
+        "targetId": "bench_mtdl6iw9_cjhiwr",
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [
+          {
+            "time": 1787960073182,
+            "targetId": "bench_mtdl6iw9_cjhiwr",
+            "kind": "bench"
+          }
+        ],
+        "visited": {
+          "bench_mtdl6iw9_cjhiwr": 1
+        },
+        "created": 1787959999544,
+        "brainId": "guest_7_842611",
+        "gps": {
+          "tasks": [
+            {
+              "type": "scenery",
+              "targetId": "bench_mtdl6iw9_cjhiwr",
+              "label": "Visit Path Bench Pair",
+              "reason": "Food Wanderer pointed me toward Path Bench Pair.",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "break",
+          "plan": [
+            {
+              "x": -8,
+              "z": 5,
+              "label": "🪑 Path Bench Pair"
+            },
+            {
+              "x": -12,
+              "z": 26,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 16,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 10,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -10,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 18,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 20,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 16,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960079343
+        },
+        "messages": [],
+        "facing": 1.5707963267948966
+      },
+      {
+        "id": "guest_8_478866",
+        "name": "Layla Nguyen",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 7.58788907637689
+        },
+        "wallet": 85,
+        "arrivalWallet": 95,
+        "admitted": true,
+        "phase": "in-park",
+        "profile": {
+          "archetype": "Quiet Observer",
+          "icon": "🔭",
+          "origin": "weekend road trip",
+          "rideTolerance": 66,
+          "curiosity": 61,
+          "spending": 43,
+          "social": 55,
+          "patience": 95,
+          "foodAdventurous": 95,
+          "pace": 0.8266914201015606,
+          "lore": "Prefers benches, scenery and lower-intensity discoveries between occasional rides."
+        },
+        "mood": 90,
+        "needs": {
+          "hunger": 42.96464628705692,
+          "thirst": 39.347565844056234,
+          "bathroom": 35.82956729069395,
+          "energy": 62.44076734805589,
+          "nausea": 0.11181214451789856,
+          "stress": 16.164712447673082
+        },
+        "interests": [
+          "photography",
+          "music",
+          "gentle rides"
+        ],
+        "traits": {
+          "thrill": 66,
+          "social": 55,
+          "patience": 95,
+          "curiosity": 61,
+          "spending": 43
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl7ygw_kqhnko",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl7ygw_qv19ob",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          },
+          {
+            "id": "ticket_mtdl9czv_fndcw4",
+            "kind": "admission-ticket",
+            "name": "Forest Frontiers Admission · Day 1",
+            "icon": "🎟️",
+            "issuedAt": 1787960066827,
+            "paid": 10
+          }
+        ],
+        "thought": "Quiet Observer brain: walking to Path Bench Pair. Next GPS point is Path waypoint.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960078360,
+        "activity": "walking to Path Bench Pair",
+        "arrivalRoute": [],
+        "route": [
+          "path_mtdl6iw9_axck1o",
+          "path_mtdl6iw9_dejqmr",
+          "path_mtdl6iw9_fcwyay",
+          "path_mtdl6iw9_p19h7a"
+        ],
+        "targetId": "bench_mtdl6iw9_cjhiwr",
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [],
+        "visited": {},
+        "created": 1787960001344,
+        "brainId": "guest_8_478866",
+        "gps": {
+          "tasks": [
+            {
+              "type": "scenery",
+              "targetId": "bench_mtdl6iw9_cjhiwr",
+              "label": "Visit Path Bench Pair",
+              "reason": "Quiet Observer pointed me toward Path Bench Pair.",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "local",
+          "plan": [
+            {
+              "x": -12,
+              "z": 6,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -10,
+              "z": 4,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -8,
+              "z": 4,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -8,
+              "z": 5,
+              "label": "🪑 Path Bench Pair"
+            },
+            {
+              "x": -12,
+              "z": 22,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -6,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -10,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 24,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960079343
+        },
+        "messages": [],
+        "facing": 3.141592653589793
+      },
+      {
+        "id": "guest_9_959401",
+        "name": "Kai Reed",
+        "pos": {
+          "x": -9.53625093898724,
+          "y": 0,
+          "z": 4
+        },
+        "wallet": 176,
+        "arrivalWallet": 186,
+        "admitted": true,
+        "phase": "in-park",
+        "profile": {
+          "archetype": "Park Naturalist",
+          "icon": "🌿",
+          "origin": "nearby town",
+          "rideTolerance": 70,
+          "curiosity": 57,
+          "spending": 35,
+          "social": 22,
+          "patience": 36,
+          "foodAdventurous": 11,
+          "pace": 1.3445342768379487,
+          "lore": "Notices gardens, water, quiet places and the texture of the park itself."
+        },
+        "mood": 83,
+        "needs": {
+          "hunger": 43.810983787731985,
+          "thirst": 38.813117723467705,
+          "bathroom": 35.994690889654315,
+          "energy": 59.718479957500456,
+          "nausea": 7.1411242056638,
+          "stress": 12.289456421509385
+        },
+        "interests": [
+          "family rides",
+          "gardens",
+          "thrill rides"
+        ],
+        "traits": {
+          "thrill": 70,
+          "social": 22,
+          "patience": 36,
+          "curiosity": 57,
+          "spending": 35
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl85z4_v4x9eu",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl85z4_ilpats",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          },
+          {
+            "id": "ticket_mtdl9bwo_dvf8bd",
+            "kind": "admission-ticket",
+            "name": "Forest Frontiers Admission · Day 1",
+            "icon": "🎟️",
+            "issuedAt": 1787960065416,
+            "paid": 10
+          }
+        ],
+        "thought": "Park Naturalist brain: walking to Path Bench Pair. Next GPS point is Path waypoint.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960077827,
+        "activity": "walking to Path Bench Pair",
+        "arrivalRoute": [],
+        "route": [
+          "path_mtdl6iw9_p19h7a"
+        ],
+        "targetId": "bench_mtdl6iw9_cjhiwr",
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [],
+        "visited": {},
+        "created": 1787960011072,
+        "brainId": "guest_9_959401",
+        "gps": {
+          "tasks": [
+            {
+              "type": "scenery",
+              "targetId": "bench_mtdl6iw9_cjhiwr",
+              "label": "Visit Path Bench Pair",
+              "reason": "Park Naturalist pointed me toward Path Bench Pair.",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "local",
+          "plan": [
+            {
+              "x": -8,
+              "z": 4,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -8,
+              "z": 5,
+              "label": "🪑 Path Bench Pair"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 22,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 20,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 20,
+              "label": "Forecast path"
+            },
+            {
+              "x": -10,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 16,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 24,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 14,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960079343
+        },
+        "messages": [],
+        "facing": 1.5707963267948966
+      },
+      {
+        "id": "guest_10_426265",
+        "name": "Leo Park",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 17.81561700160352
+        },
+        "wallet": 180,
+        "arrivalWallet": 190,
+        "admitted": true,
+        "phase": "in-park",
+        "profile": {
+          "archetype": "Quiet Observer",
+          "icon": "🔭",
+          "origin": "rail excursion",
+          "rideTolerance": 37,
+          "curiosity": 53,
+          "spending": 77,
+          "social": 53,
+          "patience": 97,
+          "foodAdventurous": 76,
+          "pace": 1.0569623950798996,
+          "lore": "Prefers benches, scenery and lower-intensity discoveries between occasional rides."
+        },
+        "mood": 85,
+        "needs": {
+          "hunger": 23.878113926971626,
+          "thirst": 11.97750967637853,
+          "bathroom": 12.626153210190068,
+          "energy": 66.06696158072575,
+          "nausea": 2.7858679238706827,
+          "stress": 14.115145908668637
+        },
+        "interests": [
+          "gardens",
+          "shopping",
+          "scenery"
+        ],
+        "traits": {
+          "thrill": 37,
+          "social": 53,
+          "patience": 97,
+          "curiosity": 53,
+          "spending": 77
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl88f3_wsvnv2",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl88f3_0v8opc",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          },
+          {
+            "id": "ticket_mtdl9ioz_7mj5ow",
+            "kind": "admission-ticket",
+            "name": "Forest Frontiers Admission · Day 1",
+            "icon": "🎟️",
+            "issuedAt": 1787960074211,
+            "paid": 10
+          }
+        ],
+        "thought": "Quiet Observer brain: walking to Path Bench Pair. Next GPS point is Path waypoint.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960074227,
+        "activity": "walking to Path Bench Pair",
+        "arrivalRoute": [],
+        "route": [
+          "path_mtdl6iw9_2mvb31",
+          "path_mtdl6iw9_67t47z",
+          "path_mtdl6iw9_4zd4rb",
+          "path_mtdl6iw9_c3c8i5",
+          "path_mtdl6iw9_ss82lr",
+          "path_mtdl6iw9_axck1o",
+          "path_mtdl6iw9_dejqmr",
+          "path_mtdl6iw9_fcwyay",
+          "path_mtdl6iw9_p19h7a"
+        ],
+        "targetId": "bench_mtdl6iw9_cjhiwr",
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [],
+        "visited": {},
+        "created": 1787960014239,
+        "brainId": "guest_10_426265",
+        "gps": {
+          "tasks": [
+            {
+              "type": "scenery",
+              "targetId": "bench_mtdl6iw9_cjhiwr",
+              "label": "Visit Path Bench Pair",
+              "reason": "Quiet Observer pointed me toward Path Bench Pair.",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "local",
+          "plan": [
+            {
+              "x": -12,
+              "z": 16,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -12,
+              "z": 14,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -12,
+              "z": 12,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -12,
+              "z": 10,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -12,
+              "z": 8,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -12,
+              "z": 6,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -10,
+              "z": 4,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -8,
+              "z": 4,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -8,
+              "z": 5,
+              "label": "🪑 Path Bench Pair"
+            }
+          ],
+          "updated": 1787960079343
+        },
+        "messages": [],
+        "facing": 3.141592653589793
+      },
+      {
+        "id": "guest_11_945730",
+        "name": "Riley Stone",
+        "pos": {
+          "x": -12,
+          "y": 0,
+          "z": 17.840098425391105
+        },
+        "wallet": 89,
+        "arrivalWallet": 99,
+        "admitted": true,
+        "phase": "in-park",
+        "profile": {
+          "archetype": "Family Explorer",
+          "icon": "🧭",
+          "origin": "local day trip",
+          "rideTolerance": 32,
+          "curiosity": 57,
+          "spending": 85,
+          "social": 87,
+          "patience": 71,
+          "foodAdventurous": 71,
+          "pace": 1.0891195383435115,
+          "lore": "Balances gentle attractions, food, scenery and dependable facilities."
+        },
+        "mood": 93,
+        "needs": {
+          "hunger": 25.22188512068524,
+          "thirst": 15.234867312330318,
+          "bathroom": 13.221844611229736,
+          "energy": 67.4969592136025,
+          "nausea": 3.756555862724781,
+          "stress": 17.990401934832335
+        },
+        "interests": [
+          "food",
+          "water rides",
+          "photography"
+        ],
+        "traits": {
+          "thrill": 32,
+          "social": 87,
+          "patience": 71,
+          "curiosity": 57,
+          "spending": 85
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl88y8_xnt7jp",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl88y8_vip49k",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          },
+          {
+            "id": "ticket_mtdl9ipw_osutv8",
+            "kind": "admission-ticket",
+            "name": "Forest Frontiers Admission · Day 1",
+            "icon": "🎟️",
+            "issuedAt": 1787960074244,
+            "paid": 10
+          }
+        ],
+        "thought": "Family Explorer brain: walking to Path Bench Pair. Next GPS point is Path waypoint.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960074260,
+        "activity": "walking to Path Bench Pair",
+        "arrivalRoute": [],
+        "route": [
+          "path_mtdl6iw9_2mvb31",
+          "path_mtdl6iw9_67t47z",
+          "path_mtdl6iw9_4zd4rb",
+          "path_mtdl6iw9_c3c8i5",
+          "path_mtdl6iw9_ss82lr",
+          "path_mtdl6iw9_axck1o",
+          "path_mtdl6iw9_dejqmr",
+          "path_mtdl6iw9_fcwyay",
+          "path_mtdl6iw9_p19h7a"
+        ],
+        "targetId": "bench_mtdl6iw9_cjhiwr",
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [],
+        "visited": {},
+        "created": 1787960014928,
+        "brainId": "guest_11_945730",
+        "gps": {
+          "tasks": [
+            {
+              "type": "scenery",
+              "targetId": "bench_mtdl6iw9_cjhiwr",
+              "label": "Visit Path Bench Pair",
+              "reason": "Family Explorer pointed me toward Path Bench Pair.",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "local",
+          "plan": [
+            {
+              "x": -12,
+              "z": 16,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -12,
+              "z": 14,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -12,
+              "z": 12,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -12,
+              "z": 10,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -12,
+              "z": 8,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -12,
+              "z": 6,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -10,
+              "z": 4,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -8,
+              "z": 4,
+              "label": "Path waypoint"
+            },
+            {
+              "x": -8,
+              "z": 5,
+              "label": "🪑 Path Bench Pair"
+            }
+          ],
+          "updated": 1787960079343
+        },
+        "messages": [],
+        "facing": 3.141592653589793
+      },
+      {
+        "id": "guest_12_387335",
+        "name": "Aria Kim",
+        "pos": {
+          "x": -11.120759805857174,
+          "y": 0,
+          "z": 29.87924019414287
+        },
+        "wallet": 71,
+        "arrivalWallet": 71,
+        "admitted": false,
+        "phase": "approach",
+        "profile": {
+          "archetype": "Quiet Observer",
+          "icon": "🔭",
+          "origin": "local day trip",
+          "rideTolerance": 46,
+          "curiosity": 45,
+          "spending": 61,
+          "social": 85,
+          "patience": 66,
+          "foodAdventurous": 88,
+          "pace": 0.9926481085526757,
+          "lore": "Prefers benches, scenery and lower-intensity discoveries between occasional rides."
+        },
+        "mood": 71,
+        "needs": {
+          "hunger": 17.80829601129517,
+          "thirst": 37.157795425504446,
+          "bathroom": 8.611510408110917,
+          "energy": 65.10280580446124,
+          "nausea": 0.8444920461624861,
+          "stress": 6.364633856341243
+        },
+        "interests": [
+          "coasters",
+          "geocaching",
+          "family rides"
+        ],
+        "traits": {
+          "thrill": 46,
+          "social": 85,
+          "patience": 66,
+          "curiosity": 45,
+          "spending": 61
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl8d5l_51v6xu",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl8d5l_245h73",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          }
+        ],
+        "thought": "I am arriving from the local day trip. The entrance is still ahead of me.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960020377,
+        "activity": "walking the wilderness approach to the park",
+        "arrivalRoute": [
+          {
+            "x": -12,
+            "y": 0,
+            "z": 29,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 26,
+            "label": "Park gate"
+          }
+        ],
+        "route": [],
+        "targetId": null,
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [],
+        "visited": {},
+        "created": 1787960020377,
+        "brainId": "guest_12_387335",
+        "gps": {
+          "tasks": [
+            {
+              "type": "arrival",
+              "targetId": "park-entrance",
+              "label": "Walk to Forest Frontiers entrance",
+              "reason": "Arrival route",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "local",
+          "plan": [
+            {
+              "x": -12,
+              "z": 29,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 26,
+              "label": "Park gate"
+            },
+            {
+              "x": -12,
+              "z": 10,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 12,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 8,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 26,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 20,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 16,
+              "label": "Forecast path"
+            },
+            {
+              "x": -4,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 16,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960076660
+        },
+        "messages": [],
+        "facing": -2.35619449019237
+      },
+      {
+        "id": "guest_13_906800",
+        "name": "Avery Wright",
+        "pos": {
+          "x": -5.728090296768582,
+          "y": 0,
+          "z": 33.25243441147017
+        },
+        "wallet": 81,
+        "arrivalWallet": 81,
+        "admitted": false,
+        "phase": "approach",
+        "profile": {
+          "archetype": "Park Naturalist",
+          "icon": "🌿",
+          "origin": "first-time tourist",
+          "rideTolerance": 42,
+          "curiosity": 49,
+          "spending": 69,
+          "social": 19,
+          "patience": 39,
+          "foodAdventurous": 82,
+          "pace": 1.0248052518162876,
+          "lore": "Notices gardens, water, quiet places and the texture of the park itself."
+        },
+        "mood": 78,
+        "needs": {
+          "hunger": 19.1452524587512,
+          "thirst": 40.40793392714113,
+          "bathroom": 9.225516809150577,
+          "energy": 66.53807800449431,
+          "nausea": 1.8151799850165844,
+          "stress": 10.23988988250494
+        },
+        "interests": [
+          "thrill rides",
+          "family rides",
+          "geocaching"
+        ],
+        "traits": {
+          "thrill": 42,
+          "social": 19,
+          "patience": 39,
+          "curiosity": 49,
+          "spending": 69
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl8gqb_tfakdb",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl8gqb_03onjq",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          }
+        ],
+        "thought": "I am arriving from the first-time tourist. The entrance is still ahead of me.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960025011,
+        "activity": "walking the wilderness approach to the park",
+        "arrivalRoute": [
+          {
+            "x": -8,
+            "y": 0,
+            "z": 33,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 29,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 26,
+            "label": "Park gate"
+          }
+        ],
+        "route": [],
+        "targetId": null,
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [],
+        "visited": {},
+        "created": 1787960025011,
+        "brainId": "guest_13_906800",
+        "gps": {
+          "tasks": [
+            {
+              "type": "arrival",
+              "targetId": "park-entrance",
+              "label": "Walk to Forest Frontiers entrance",
+              "reason": "Arrival route",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "local",
+          "plan": [
+            {
+              "x": -8,
+              "z": 33,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 29,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 26,
+              "label": "Park gate"
+            },
+            {
+              "x": -12,
+              "z": 20,
+              "label": "Forecast path"
+            },
+            {
+              "x": -6,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -8,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 12,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 20,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 18,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960075294
+        },
+        "messages": [],
+        "facing": -1.6814535479687982
+      },
+      {
+        "id": "guest_14_348405",
+        "name": "Theo Allen",
+        "pos": {
+          "x": -0.23853779594735758,
+          "y": 0,
+          "z": 33.862384689339166
+        },
+        "wallet": 53,
+        "arrivalWallet": 53,
+        "admitted": false,
+        "phase": "approach",
+        "profile": {
+          "archetype": "Quiet Observer",
+          "icon": "🔭",
+          "origin": "first-time tourist",
+          "rideTolerance": 56,
+          "curiosity": 37,
+          "spending": 44,
+          "social": 17,
+          "patience": 34,
+          "foodAdventurous": 99,
+          "pace": 0.9283338220254518,
+          "lore": "Prefers benches, scenery and lower-intensity discoveries between occasional rides."
+        },
+        "mood": 95,
+        "needs": {
+          "hunger": 15.134383116383106,
+          "thirst": 30.657518422231078,
+          "bathroom": 7.383497606031597,
+          "energy": 62.2322614043951,
+          "nausea": 6.903116168454289,
+          "stress": 22.61412180401385
+        },
+        "interests": [
+          "shopping",
+          "gentle rides"
+        ],
+        "traits": {
+          "thrill": 56,
+          "social": 17,
+          "patience": 34,
+          "curiosity": 37,
+          "spending": 44
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl8hu4_lv1vo2",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl8hu4_rzob30",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          }
+        ],
+        "thought": "I am arriving from the first-time tourist. The entrance is still ahead of me.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960026444,
+        "activity": "walking the wilderness approach to the park",
+        "arrivalRoute": [
+          {
+            "x": -8,
+            "y": 0,
+            "z": 33,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 29,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 26,
+            "label": "Park gate"
+          }
+        ],
+        "route": [],
+        "targetId": null,
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [],
+        "visited": {},
+        "created": 1787960026444,
+        "brainId": "guest_14_348405",
+        "gps": {
+          "tasks": [
+            {
+              "type": "arrival",
+              "targetId": "park-entrance",
+              "label": "Walk to Forest Frontiers entrance",
+              "reason": "Arrival route",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "local",
+          "plan": [
+            {
+              "x": -8,
+              "z": 33,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 29,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 26,
+              "label": "Park gate"
+            },
+            {
+              "x": -4,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 16,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 24,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 12,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 16,
+              "label": "Forecast path"
+            },
+            {
+              "x": -4,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -10,
+              "z": 4,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960078544
+        },
+        "messages": [],
+        "facing": -1.6814535479687904
+      },
+      {
+        "id": "guest_15_867870",
+        "name": "Noah Brooks",
+        "pos": {
+          "x": 4.297724272497375,
+          "y": 0,
+          "z": 33.267172383889516
+        },
+        "wallet": 162,
+        "arrivalWallet": 162,
+        "admitted": false,
+        "phase": "approach",
+        "profile": {
+          "archetype": "Park Naturalist",
+          "icon": "🌿",
+          "origin": "family vacation",
+          "rideTolerance": 51,
+          "curiosity": 41,
+          "spending": 52,
+          "social": 51,
+          "patience": 92,
+          "foodAdventurous": 93,
+          "pace": 0.9604909652890637,
+          "lore": "Notices gardens, water, quiet places and the texture of the park itself."
+        },
+        "mood": 63,
+        "needs": {
+          "hunger": 16.471339563839138,
+          "thirst": 33.90765692386776,
+          "bathroom": 7.997504007071257,
+          "energy": 63.66753360442817,
+          "nausea": 7.873804107308388,
+          "stress": 2.4893778301775455
+        },
+        "interests": [
+          "scenery",
+          "water rides",
+          "food"
+        ],
+        "traits": {
+          "thrill": 51,
+          "social": 51,
+          "patience": 92,
+          "curiosity": 41,
+          "spending": 52
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl8kh2_utmqpi",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl8kh2_4nmvm2",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          }
+        ],
+        "thought": "I am arriving from the family vacation. The entrance is still ahead of me.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960029862,
+        "activity": "walking the wilderness approach to the park",
+        "arrivalRoute": [
+          {
+            "x": 1,
+            "y": 0,
+            "z": 34,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -8,
+            "y": 0,
+            "z": 33,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 29,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 26,
+            "label": "Park gate"
+          }
+        ],
+        "route": [],
+        "targetId": null,
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [],
+        "visited": {},
+        "created": 1787960029862,
+        "brainId": "guest_15_867870",
+        "gps": {
+          "tasks": [
+            {
+              "type": "arrival",
+              "targetId": "park-entrance",
+              "label": "Walk to Forest Frontiers entrance",
+              "reason": "Arrival route",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "local",
+          "plan": [
+            {
+              "x": 1,
+              "z": 34,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -8,
+              "z": 33,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 29,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 26,
+              "label": "Park gate"
+            },
+            {
+              "x": -12,
+              "z": 8,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 6,
+              "label": "Forecast path"
+            },
+            {
+              "x": -6,
+              "z": 4,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 24,
+              "label": "Forecast path"
+            },
+            {
+              "x": -6,
+              "z": 4,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960075760
+        },
+        "messages": [],
+        "facing": -1.352127380920967
+      },
+      {
+        "id": "guest_16_309475",
+        "name": "Nina Nguyen",
+        "pos": {
+          "x": 11.50966627853435,
+          "y": 0,
+          "z": 32.603866511413784
+        },
+        "wallet": 134,
+        "arrivalWallet": 134,
+        "admitted": false,
+        "phase": "approach",
+        "profile": {
+          "archetype": "Quiet Observer",
+          "icon": "🔭",
+          "origin": "family vacation",
+          "rideTolerance": 65,
+          "curiosity": 29,
+          "spending": 28,
+          "social": 50,
+          "patience": 87,
+          "foodAdventurous": 20,
+          "pace": 0.8640195354982279,
+          "lore": "Prefers benches, scenery and lower-intensity discoveries between occasional rides."
+        },
+        "mood": 80,
+        "needs": {
+          "hunger": 12.460470221471041,
+          "thirst": 24.15724141895771,
+          "bathroom": 6.155484803952277,
+          "energy": 59.361717004328966,
+          "nausea": 4.961740290746093,
+          "stress": 14.863609751686454
+        },
+        "interests": [
+          "quiet spaces",
+          "geocaching",
+          "gardens"
+        ],
+        "traits": {
+          "thrill": 65,
+          "social": 50,
+          "patience": 87,
+          "curiosity": 29,
+          "spending": 28
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl8mo6_4so72i",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl8mo6_27zrd8",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          }
+        ],
+        "thought": "I am arriving from the family vacation. The entrance is still ahead of me.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960032710,
+        "activity": "walking the wilderness approach to the park",
+        "arrivalRoute": [
+          {
+            "x": 10,
+            "y": 0,
+            "z": 32,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": 1,
+            "y": 0,
+            "z": 34,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -8,
+            "y": 0,
+            "z": 33,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 29,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 26,
+            "label": "Park gate"
+          }
+        ],
+        "route": [],
+        "targetId": null,
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [],
+        "visited": {},
+        "created": 1787960032710,
+        "brainId": "guest_16_309475",
+        "gps": {
+          "tasks": [
+            {
+              "type": "arrival",
+              "targetId": "park-entrance",
+              "label": "Walk to Forest Frontiers entrance",
+              "reason": "Arrival route",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "local",
+          "plan": [
+            {
+              "x": 10,
+              "z": 32,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": 1,
+              "z": 34,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -8,
+              "z": 33,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 29,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 26,
+              "label": "Park gate"
+            },
+            {
+              "x": -12,
+              "z": 16,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 8,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 12,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 8,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 6,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960073511
+        },
+        "messages": [],
+        "facing": -1.9513027039072885
+      },
+      {
+        "id": "guest_17_828940",
+        "name": "Nora Cole",
+        "pos": {
+          "x": 22.14493940216966,
+          "y": 0,
+          "z": 35.78550605978309
+        },
+        "wallet": 143,
+        "arrivalWallet": 143,
+        "admitted": false,
+        "phase": "approach",
+        "profile": {
+          "archetype": "Park Naturalist",
+          "icon": "🌿",
+          "origin": "local day trip",
+          "rideTolerance": 60,
+          "curiosity": 33,
+          "spending": 36,
+          "social": 84,
+          "patience": 60,
+          "foodAdventurous": 15,
+          "pace": 0.8961766787618398,
+          "lore": "Notices gardens, water, quiet places and the texture of the park itself."
+        },
+        "mood": 88,
+        "needs": {
+          "hunger": 13.797426668927073,
+          "thirst": 27.407379920594394,
+          "bathroom": 6.769491204991937,
+          "energy": 60.796989204362035,
+          "nausea": 5.932428229600191,
+          "stress": 18.73886577785015
+        },
+        "interests": [
+          "transport",
+          "family rides",
+          "quiet spaces"
+        ],
+        "traits": {
+          "thrill": 60,
+          "social": 84,
+          "patience": 60,
+          "curiosity": 33,
+          "spending": 36
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl8sja_o5owfy",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl8sja_ocjj5z",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          }
+        ],
+        "thought": "I am arriving from the local day trip. The entrance is still ahead of me.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960040310,
+        "activity": "walking the wilderness approach to the park",
+        "arrivalRoute": [
+          {
+            "x": 20,
+            "y": 0,
+            "z": 36,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": 10,
+            "y": 0,
+            "z": 32,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": 1,
+            "y": 0,
+            "z": 34,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -8,
+            "y": 0,
+            "z": 33,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 29,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 26,
+            "label": "Park gate"
+          }
+        ],
+        "route": [],
+        "targetId": null,
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [],
+        "visited": {},
+        "created": 1787960040310,
+        "brainId": "guest_17_828940",
+        "gps": {
+          "tasks": [
+            {
+              "type": "arrival",
+              "targetId": "park-entrance",
+              "label": "Walk to Forest Frontiers entrance",
+              "reason": "Arrival route",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "local",
+          "plan": [
+            {
+              "x": 20,
+              "z": 36,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": 10,
+              "z": 32,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": 1,
+              "z": 34,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -8,
+              "z": 33,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 29,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 26,
+              "label": "Park gate"
+            },
+            {
+              "x": -12,
+              "z": 8,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 20,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 6,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 14,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960074361
+        },
+        "messages": [],
+        "facing": -1.4711276743037598
+      },
+      {
+        "id": "guest_18_581985",
+        "name": "Jasper Nguyen",
+        "pos": {
+          "x": 17.373927536360704,
+          "y": 0,
+          "z": 34.94957101454424
+        },
+        "wallet": 65,
+        "arrivalWallet": 65,
+        "admitted": false,
+        "phase": "approach",
+        "profile": {
+          "archetype": "Social Drifter",
+          "icon": "🫂",
+          "origin": "first-time tourist",
+          "rideTolerance": 91,
+          "curiosity": 85,
+          "spending": 63,
+          "social": 24,
+          "patience": 55,
+          "foodAdventurous": 31,
+          "pace": 1.3142195411887951,
+          "lore": "Enjoys lively places, queues and shared spectacle, with a high tolerance for crowds."
+        },
+        "mood": 66,
+        "needs": {
+          "hunger": 31.17786048585549,
+          "thirst": 33.659180441871285,
+          "bathroom": 14.751574418507516,
+          "energy": 79.45552780479193,
+          "nausea": 2.5513714347034693,
+          "stress": 21.117194117978215
+        },
+        "interests": [
+          "architecture",
+          "shopping"
+        ],
+        "traits": {
+          "thrill": 91,
+          "social": 24,
+          "patience": 55,
+          "curiosity": 85,
+          "spending": 63
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl8ulu_4nztcv",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl8ulu_17zsvx",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          }
+        ],
+        "thought": "I am arriving from the first-time tourist. The entrance is still ahead of me.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960042994,
+        "activity": "walking the wilderness approach to the park",
+        "arrivalRoute": [
+          {
+            "x": 10,
+            "y": 0,
+            "z": 32,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": 1,
+            "y": 0,
+            "z": 34,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -8,
+            "y": 0,
+            "z": 33,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 29,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 26,
+            "label": "Park gate"
+          }
+        ],
+        "route": [],
+        "targetId": null,
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [],
+        "visited": {},
+        "created": 1787960042994,
+        "brainId": "guest_18_581985",
+        "gps": {
+          "tasks": [
+            {
+              "type": "arrival",
+              "targetId": "park-entrance",
+              "label": "Walk to Forest Frontiers entrance",
+              "reason": "Arrival route",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "local",
+          "plan": [
+            {
+              "x": 10,
+              "z": 32,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": 1,
+              "z": 34,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -8,
+              "z": 33,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 29,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 26,
+              "label": "Park gate"
+            },
+            {
+              "x": -12,
+              "z": 20,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 10,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 12,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 6,
+              "label": "Forecast path"
+            },
+            {
+              "x": -12,
+              "z": 14,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960077794
+        },
+        "messages": [],
+        "facing": -1.9513027039072568
+      },
+      {
+        "id": "guest_19_101450",
+        "name": "Jordan Cole",
+        "pos": {
+          "x": 67.55076079448642,
+          "y": 0,
+          "z": 42.88769019862192
+        },
+        "wallet": 174,
+        "arrivalWallet": 174,
+        "admitted": false,
+        "phase": "approach",
+        "profile": {
+          "archetype": "Thrill Seeker",
+          "icon": "⚡",
+          "origin": "rail excursion",
+          "rideTolerance": 87,
+          "curiosity": 89,
+          "spending": 71,
+          "social": 58,
+          "patience": 29,
+          "foodAdventurous": 25,
+          "pace": 1.346376684452407,
+          "lore": "Chases acceleration, height and novelty, but still has a personal nausea ceiling."
+        },
+        "mood": 74,
+        "needs": {
+          "hunger": 32.51481693331152,
+          "thirst": 36.90931894350797,
+          "bathroom": 15.365580819547176,
+          "energy": 80.890800004825,
+          "nausea": 3.5220593735575676,
+          "stress": 24.992450144141912
+        },
+        "interests": [
+          "family rides",
+          "water rides"
+        ],
+        "traits": {
+          "thrill": 87,
+          "social": 58,
+          "patience": 29,
+          "curiosity": 89,
+          "spending": 71
+        },
+        "inventory": [
+          {
+            "id": "phone_mtdl9ggv_o33xll",
+            "kind": "phone",
+            "name": "Frontier Phone",
+            "icon": "📱"
+          },
+          {
+            "id": "wallet_mtdl9ggv_v8lsis",
+            "kind": "wallet",
+            "name": "Personal Wallet",
+            "icon": "👛"
+          }
+        ],
+        "thought": "I am arriving from the rail excursion. The entrance is still ahead of me.",
+        "thoughtSource": "local",
+        "thoughtAt": 1787960071327,
+        "activity": "walking the wilderness approach to the park",
+        "arrivalRoute": [
+          {
+            "x": 52,
+            "y": 0,
+            "z": 39,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": 40,
+            "y": 0,
+            "z": 40,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": 30,
+            "y": 0,
+            "z": 35,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": 20,
+            "y": 0,
+            "z": 36,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": 10,
+            "y": 0,
+            "z": 32,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": 1,
+            "y": 0,
+            "z": 34,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -8,
+            "y": 0,
+            "z": 33,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 29,
+            "label": "Wilderness approach"
+          },
+          {
+            "x": -12,
+            "y": 0,
+            "z": 26,
+            "label": "Park gate"
+          }
+        ],
+        "route": [],
+        "targetId": null,
+        "queue": null,
+        "ride": null,
+        "seat": null,
+        "history": [],
+        "visited": {},
+        "created": 1787960071327,
+        "brainId": "guest_19_101450",
+        "gps": {
+          "tasks": [
+            {
+              "type": "arrival",
+              "targetId": "park-entrance",
+              "label": "Walk to Forest Frontiers entrance",
+              "reason": "Arrival route",
+              "status": "active"
+            }
+          ],
+          "index": 0,
+          "source": "local",
+          "plan": [
+            {
+              "x": 52,
+              "z": 39,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": 40,
+              "z": 40,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": 30,
+              "z": 35,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": 20,
+              "z": 36,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": 10,
+              "z": 32,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": 1,
+              "z": 34,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -8,
+              "z": 33,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 29,
+              "label": "Wilderness approach"
+            },
+            {
+              "x": -12,
+              "z": 26,
+              "label": "Park gate"
+            },
+            {
+              "x": -12,
+              "z": 22,
+              "label": "Forecast path"
+            }
+          ],
+          "updated": 1787960076877
+        },
+        "messages": [],
+        "facing": -1.8157749899217799
+      }
+    ],
+    "staff": [],
+    "research": {
+      "unlocked": [
+        "path",
+        "queue",
+        "stonepath",
+        "boardwalk",
+        "brickpath",
+        "dirtpath",
+        "ferris",
+        "carousel",
+        "teacups",
+        "train",
+        "darkride",
+        "giantswing",
+        "freefall",
+        "observation",
+        "coaster",
+        "launchcoaster",
+        "logflume",
+        "rapids",
+        "burger",
+        "fries",
+        "pizza",
+        "pretzel",
+        "smoothie",
+        "icecream",
+        "drink",
+        "souvenir",
+        "plush",
+        "photo",
+        "restroom",
+        "familycare",
+        "firstaid",
+        "securitypost",
+        "information",
+        "atm",
+        "wifiap",
+        "speaker",
+        "securitycam",
+        "staffroom",
+        "bench",
+        "table",
+        "bin",
+        "lamp",
+        "bollardlight",
+        "banner",
+        "rgbflood",
+        "wavebeacon",
+        "lasershow",
+        "fountain",
+        "jumpfountain",
+        "tree",
+        "flowerbed",
+        "pond",
+        "geocache",
+        "statue"
+      ]
+    },
+    "settings": {
+      "grid": true,
+      "lowDef": false,
+      "ambience": true,
+      "trayOpen": false,
+      "showTrees": true,
+      "showWifiCoverage": false,
+      "showPeople": true,
+      "showAttractions": true,
+      "viewLevel": "surface"
+    },
+    "pulse": [
+      {
+        "id": "pulse_mtdl9ipx_98q8od",
+        "time": 1787960074245,
+        "text": "Riley Stone entered with $99 · $89 after admission",
+        "type": "GUEST",
+        "entityId": "guest_11_945730"
+      },
+      {
+        "id": "pulse_mtdl9ip0_xh6rzj",
+        "time": 1787960074212,
+        "text": "Leo Park entered with $190 · $180 after admission",
+        "type": "GUEST",
+        "entityId": "guest_10_426265"
+      },
+      {
+        "id": "pulse_mtdl9hev_cekx1c",
+        "time": 1787960072551,
+        "text": "Playtest comment saved · Guests",
+        "type": "DEV",
+        "entityId": null
+      },
+      {
+        "id": "pulse_mtdl9gmb_3qjida",
+        "time": 1787960071523,
+        "text": "Playtest comment saved · Guests",
+        "type": "DEV",
+        "entityId": null
+      },
+      {
+        "id": "pulse_mtdl9ggw_k63c59",
+        "time": 1787960071328,
+        "text": "Jordan Cole appeared at the wilderness map edge with $174",
+        "type": "ARRIVAL",
+        "entityId": "guest_19_101450"
+      },
+      {
+        "id": "pulse_mtdl9czw_h9e2xl",
+        "time": 1787960066828,
+        "text": "Layla Nguyen entered with $95 · $85 after admission",
+        "type": "GUEST",
+        "entityId": "guest_8_478866"
+      },
+      {
+        "id": "pulse_mtdl9bwp_h35jxg",
+        "time": 1787960065417,
+        "text": "Kai Reed entered with $186 · $176 after admission",
+        "type": "GUEST",
+        "entityId": "guest_9_959401"
+      },
+      {
+        "id": "pulse_mtdl95uy_8ljucz",
+        "time": 1787960057578,
+        "text": "Riley Stone entered with $130 · $120 after admission",
+        "type": "GUEST",
+        "entityId": "guest_7_842611"
+      },
+      {
+        "id": "pulse_mtdl8vk4_q9i7rf",
+        "time": 1787960044228,
+        "text": "Lena Patel entered with $139 · $129 after admission",
+        "type": "GUEST",
+        "entityId": "guest_6_362076"
+      },
+      {
+        "id": "pulse_mtdl8ulv_pxfdxm",
+        "time": 1787960042995,
+        "text": "Jasper Nguyen appeared at the wilderness map edge with $65",
+        "type": "ARRIVAL",
+        "entityId": "guest_18_581985"
+      },
+      {
+        "id": "pulse_mtdl8sjb_4rwn32",
+        "time": 1787960040311,
+        "text": "Nora Cole appeared at the wilderness map edge with $143",
+        "type": "ARRIVAL",
+        "entityId": "guest_17_828940"
+      },
+      {
+        "id": "pulse_mtdl8mo7_joixx9",
+        "time": 1787960032711,
+        "text": "Nina Nguyen appeared at the wilderness map edge with $134",
+        "type": "ARRIVAL",
+        "entityId": "guest_16_309475"
+      },
+      {
+        "id": "pulse_mtdl8kh3_bxjejq",
+        "time": 1787960029863,
+        "text": "Noah Brooks appeared at the wilderness map edge with $162",
+        "type": "ARRIVAL",
+        "entityId": "guest_15_867870"
+      },
+      {
+        "id": "pulse_mtdl8k6u_u76pht",
+        "time": 1787960029494,
+        "text": "Jasper Bennett entered with $49 · $39 after admission",
+        "type": "GUEST",
+        "entityId": "guest_5_881541"
+      },
+      {
+        "id": "pulse_mtdl8hu5_wlyc7p",
+        "time": 1787960026445,
+        "text": "Theo Allen appeared at the wilderness map edge with $53",
+        "type": "ARRIVAL",
+        "entityId": "guest_14_348405"
+      },
+      {
+        "id": "pulse_mtdl8gqc_2v6jyd",
+        "time": 1787960025012,
+        "text": "Avery Wright appeared at the wilderness map edge with $81",
+        "type": "ARRIVAL",
+        "entityId": "guest_13_906800"
+      },
+      {
+        "id": "pulse_mtdl8eqk_r29euj",
+        "time": 1787960022428,
+        "text": "Jordan Diaz entered with $158 · $148 after admission",
+        "type": "GUEST",
+        "entityId": "guest_4_401006"
+      },
+      {
+        "id": "pulse_mtdl8d5n_ige0xq",
+        "time": 1787960020379,
+        "text": "Aria Kim appeared at the wilderness map edge with $71",
+        "type": "ARRIVAL",
+        "entityId": "guest_12_387335"
+      },
+      {
+        "id": "pulse_mtdl8cdd_bu3hos",
+        "time": 1787960019361,
+        "text": "Noah Brooks entered with $93 · $83 after admission",
+        "type": "GUEST",
+        "entityId": "guest_3_764751"
+      },
+      {
+        "id": "pulse_mtdl88y9_vqozk8",
+        "time": 1787960014929,
+        "text": "Riley Stone appeared at the wilderness map edge with $99",
+        "type": "ARRIVAL",
+        "entityId": "guest_11_945730"
+      },
+      {
+        "id": "pulse_mtdl88f3_9ngb8p",
+        "time": 1787960014239,
+        "text": "Leo Park appeared at the wilderness map edge with $190",
+        "type": "ARRIVAL",
+        "entityId": "guest_10_426265"
+      },
+      {
+        "id": "pulse_mtdl85z5_qpvgft",
+        "time": 1787960011073,
+        "text": "Kai Reed appeared at the wilderness map edge with $186",
+        "type": "ARRIVAL",
+        "entityId": "guest_9_959401"
+      },
+      {
+        "id": "pulse_mtdl83ez_w7y219",
+        "time": 1787960007755,
+        "text": "Aria Kim entered with $102 · $92 after admission",
+        "type": "GUEST",
+        "entityId": "guest_2_284216"
+      },
+      {
+        "id": "pulse_mtdl82cq_ewoz9q",
+        "time": 1787960006378,
+        "text": "Avery Foster entered with $111 · $101 after admission",
+        "type": "GUEST",
+        "entityId": "guest_1_803681"
+      },
+      {
+        "id": "pulse_mtdl7ygx_uouvfy",
+        "time": 1787960001345,
+        "text": "Layla Nguyen appeared at the wilderness map edge with $95",
+        "type": "ARRIVAL",
+        "entityId": "guest_8_478866"
+      },
+      {
+        "id": "pulse_mtdl7x2x_xxbknk",
+        "time": 1787959999545,
+        "text": "Riley Stone appeared at the wilderness map edge with $130",
+        "type": "ARRIVAL",
+        "entityId": "guest_7_842611"
+      },
+      {
+        "id": "pulse_mtdl7njf_lousxr",
+        "time": 1787959987179,
+        "text": "Lena Patel appeared at the wilderness map edge with $139",
+        "type": "ARRIVAL",
+        "entityId": "guest_6_362076"
+      },
+      {
+        "id": "pulse_mtdl7cnq_dq298n",
+        "time": 1787959973078,
+        "text": "Jasper Bennett appeared at the wilderness map edge with $49",
+        "type": "ARRIVAL",
+        "entityId": "guest_5_881541"
+      },
+      {
+        "id": "pulse_mtdl77o5_d2qser",
+        "time": 1787959966613,
+        "text": "Jordan Diaz appeared at the wilderness map edge with $158",
+        "type": "ARRIVAL",
+        "entityId": "guest_4_401006"
+      },
+      {
+        "id": "pulse_mtdl71ln_ph8d9q",
+        "time": 1787959958747,
+        "text": "Noah Brooks appeared at the wilderness map edge with $93",
+        "type": "ARRIVAL",
+        "entityId": "guest_3_764751"
+      },
+      {
+        "id": "pulse_mtdl6t6d_4yk8h1",
+        "time": 1787959947829,
+        "text": "Aria Kim appeared at the wilderness map edge with $102",
+        "type": "ARRIVAL",
+        "entityId": "guest_2_284216"
+      },
+      {
+        "id": "pulse_mtdl6smh_jw57kh",
+        "time": 1787959947113,
+        "text": "Avery Foster appeared at the wilderness map edge with $111",
+        "type": "ARRIVAL",
+        "entityId": "guest_1_803681"
+      },
+      {
+        "id": "pulse_mtdl6qeh_f4v2x5",
+        "time": 1787959944233,
+        "text": "Park opened",
+        "type": "OPERATIONS",
+        "entityId": null
+      },
+      {
+        "id": "pulse_mtdl6iwz_j9shx5",
+        "time": 1787959934531,
+        "text": "New Forest Frontiers park initialized",
+        "type": "PARK",
+        "entityId": null
+      }
+    ],
+    "flock": {
+      "topic": "How can we make the park easier to navigate and more welcoming?",
+      "collectivePrompt": "Share useful observations, learn from one another, and ground claims in the park database.",
+      "lastLesson": ""
+    },
+    "network": {
+      "ssids": [
+        "Forest Frontiers Guest",
+        "Forest Frontiers Worker"
+      ],
+      "pa": {
+        "program": "Frontier Ambient",
+        "playing": false
+      },
+      "guestWifi": true
+    },
+    "nextGuest": 20,
+    "nextStaff": 1
+  }
+}

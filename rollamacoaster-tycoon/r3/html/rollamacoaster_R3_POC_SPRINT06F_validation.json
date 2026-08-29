@@ -1,0 +1,21 @@
+{
+  "release": "R3-POC-SPRINT06F",
+  "collectorVersion": "R3-COLLECTOR-4C",
+  "generatedAt": "2026-08-28T23:31:23",
+  "source": "R3-POC-SPRINT06E",
+  "feedbackImplemented": "Park Manager guest cap: explanatory copy moved to emoji tooltip; cap readout is directly typeable and live-synchronized with slider.",
+  "checks": {
+    "release_identity": true,
+    "tooltip_present": true,
+    "old_under_slider_help_removed": true,
+    "direct_number_editor_present": true,
+    "live_setter_present": true,
+    "slider_uses_same_setter": true,
+    "typed_input_uses_same_state": true,
+    "trusted_export_preserved": true,
+    "multi_comment_preserved": true,
+    "all_scripts_parse": true
+  },
+  "scriptPayloadsChecked": 19,
+  "failedScripts": []
+}

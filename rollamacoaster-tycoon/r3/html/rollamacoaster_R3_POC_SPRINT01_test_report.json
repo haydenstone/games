@@ -1,0 +1,67 @@
+{
+  "release": "R3-POC-SPRINT01",
+  "source_revision": "R233M",
+  "generated_at": "2026-08-28T20:24:31",
+  "source": {
+    "name": "rollamacoasterTycoon_R233M_playtest_guard_needs_root_fix(3).html",
+    "bytes": 2011720,
+    "sha256": "5c138a005993c07f1aee1b4161b4b9489d23bc35a153af81f78eecc57b4c90a7",
+    "scripts": 17,
+    "dom_ids": 595
+  },
+  "candidate": {
+    "name": "rollamacoasterTycoon_R3_POC_SPRINT01_conversion_lab.html",
+    "bytes": 2031277,
+    "sha256": "9b4a42c68f581df1638f85c3132a45343c3933ed7d47d60a87c0b5c263e7b2c7",
+    "scripts": 19,
+    "dom_ids": 608
+  },
+  "validation": {
+    "all_inline_executable_scripts_parse": "PASS",
+    "scripts_checked": 19,
+    "late_original_scripts_byte_preserved": "PASS",
+    "authoritative_module_changed_only_for_dev_bridge": "PASS",
+    "added_scripts": [
+      "rctFlatLabEarlyR3",
+      "rctConversionLabR3"
+    ],
+    "added_dom": [
+      "rctDevToggleR3",
+      "rctDevLabR3"
+    ],
+    "runtime_browser_smoke": "NOT_FULLY_AUTOMATED",
+    "runtime_note": "Container Chromium could not complete the live CDN Three.js boot within the headless timeout. Syntax and source-integrity gates passed; interactive browser playtest remains the release test."
+  },
+  "workflow": [
+    "RELEASE",
+    "TEST",
+    "COMMENTS",
+    "CORE DUMP",
+    "REVIEW",
+    "PLAN",
+    "BUILD",
+    "RELEASE"
+  ],
+  "commands": [
+    "rct crawl",
+    "rct test",
+    "rct snapshot",
+    "rct diff",
+    "rct comment <text>",
+    "rct dump",
+    "rct review",
+    "rct plan",
+    "rct build",
+    "rct release",
+    "rct export",
+    "rct status"
+  ],
+  "guardrails": [
+    "preserve gameplay body",
+    "preserve scenery and authored animation",
+    "preserve guest models",
+    "state dump uses parkSnapshotR53",
+    "no Three.js runtime objects exported as authority",
+    "late revision scripts left byte-identical"
+  ]
+}

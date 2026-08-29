@@ -1,0 +1,46 @@
+{
+  "release": "R3.0-dev.8",
+  "createdAt": "2026-08-28T21:24:56.202296+00:00",
+  "artifact": "rollamacoasterTycoon_R3_rebuilt.html",
+  "sha256": "abaf650d3a043935dc4fbba1acfbff0772d2c6f88770a71473fc46d6895bafca",
+  "bytes": 2008023,
+  "codex": {
+    "file": "codex(1).json",
+    "sha256": "2a7ea9ee5971065ced42934eee2cedbb3539e5e0f63c9f7b3ebefab0dbd56795",
+    "bytes": 4787468
+  },
+  "tests": [
+    {
+      "cmd": "/usr/bin/python3 /home/hstone/Documents/games/rollamacoaster-tycoon/r3/R3.0-dev.8/build_rct_r3.py --codex /home/hstone/Documents/games/rollamacoaster-tycoon/r3/R3.0-dev.8/codex(1).json",
+      "ok": true,
+      "stdout": "Built /home/hstone/Documents/games/rollamacoaster-tycoon/r3/R3.0-dev.8/rollamacoasterTycoon_R3_rebuilt.html (2,008,023 bytes)\nCodex /home/hstone/Documents/games/rollamacoaster-tycoon/r3/R3.0-dev.8/codex(1).json (4,787,468 bytes)\n",
+      "stderr": ""
+    },
+    {
+      "cmd": "deterministic rebuild",
+      "ok": true,
+      "stdout": "Built /home/hstone/Documents/games/rollamacoaster-tycoon/r3/R3.0-dev.8/.r3-determinism.html (2,008,023 bytes)\nCodex /home/hstone/Documents/games/rollamacoaster-tycoon/r3/R3.0-dev.8/codex(1).json (4,787,468 bytes)\n",
+      "stderr": ""
+    },
+    {
+      "cmd": "/usr/bin/node --check /home/hstone/Documents/games/rollamacoaster-tycoon/r3/R3.0-dev.8/.r3-release-check.js",
+      "ok": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "cmd": "required markers",
+      "ok": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "cmd": "camera/grid regression guard",
+      "ok": true,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "passed": true,
+  "workflowNext": "TEST \u2192 COMMENTS \u2192 CORE DUMP \u2192 REVIEW \u2192 PLAN \u2192 BUILD \u2192 RELEASE"
+}

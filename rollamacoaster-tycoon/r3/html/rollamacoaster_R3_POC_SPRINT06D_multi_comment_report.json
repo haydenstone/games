@@ -1,0 +1,23 @@
+{
+  "release": "R3-POC-SPRINT06D",
+  "collector": "R3-COLLECTOR-4A",
+  "generatedAt": "2026-08-28T23:10:56",
+  "file": "rollamacoasterTycoon_R3_POC_SPRINT06D_multi_comment_export.html",
+  "validation": {
+    "script_payloads_checked": 19,
+    "syntax": "PASS",
+    "failed": [],
+    "submit_comment_button": true,
+    "export_feedback_button": true,
+    "persistent_feedback_session": true,
+    "visible_comment_queue": true,
+    "export_blocks_unsent_text": true,
+    "multi_comment_integrity": true,
+    "final_filename_has_identity": true,
+    "comment_context_per_submission": true,
+    "screenshot_preserved": true,
+    "old_sprint02_identity_present": false,
+    "old_collector3B_identity_present": false,
+    "restore_rehydrates_cycle": true
+  }
+}

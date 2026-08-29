@@ -1,0 +1,98 @@
+{
+  "release": "R3-POC-SPRINT02",
+  "source": "R3-POC-SPRINT01 one-click collector",
+  "fixes": [
+    "park entrance click is owned exclusively by Park Manager and consumes event",
+    "generic object inspector excludes parkEntrance in interact/inspect/double-click paths",
+    "16 late revision patch scripts consolidated into authoritative ES-module scope",
+    "collector custom-coaster/routed-ride schema detection corrected",
+    "world interaction ownership trace added",
+    "collector validates late patch scope and ReferenceError health"
+  ],
+  "staticChecks": {
+    "migrated_inert_scripts": 16,
+    "executable_scripts": 3,
+    "module_scope_marker": true,
+    "entrance_consumes_click": true,
+    "generic_entrance_suppression": true,
+    "collector_interaction_trace": true,
+    "collector_scope_check": true,
+    "collector_custom_schema": true,
+    "collector_routed_schema": true
+  },
+  "previousUndefinedSymbols": [
+    {
+      "symbol": "guestBrainAutonomyTickR231Z",
+      "declared_in_authoritative_module": true,
+      "offset": 1357298
+    },
+    {
+      "symbol": "canvas",
+      "declared_in_authoritative_module": true,
+      "offset": 358
+    },
+    {
+      "symbol": "pulseRenderR86",
+      "declared_in_authoritative_module": true,
+      "offset": 347862
+    },
+    {
+      "symbol": "holdGuestInQueueSlotR230M",
+      "declared_in_authoritative_module": true,
+      "offset": 961685
+    },
+    {
+      "symbol": "syncRideRidersR203",
+      "declared_in_authoritative_module": true,
+      "offset": 931327
+    },
+    {
+      "symbol": "pulsePushR86",
+      "declared_in_authoritative_module": true,
+      "offset": 335607
+    },
+    {
+      "symbol": "alexandriaTopicR187",
+      "declared_in_authoritative_module": true,
+      "offset": 293416
+    },
+    {
+      "symbol": "renderFlockTopicPanelR233C",
+      "declared_in_authoritative_module": true,
+      "offset": 1583886
+    },
+    {
+      "symbol": "catalogR10",
+      "declared_in_authoritative_module": true,
+      "offset": 191214
+    },
+    {
+      "symbol": "updateParkManager",
+      "declared_in_authoritative_module": true,
+      "offset": 180368
+    },
+    {
+      "symbol": "renderStaffR61",
+      "declared_in_authoritative_module": true,
+      "offset": 540417
+    },
+    {
+      "symbol": "attachEntityLiveCameraR229W",
+      "declared_in_authoritative_module": true,
+      "offset": 3976
+    },
+    {
+      "symbol": "joinRideQueueR27",
+      "declared_in_authoritative_module": true,
+      "offset": 940526
+    },
+    {
+      "symbol": "parkIsOpen",
+      "declared_in_authoritative_module": true,
+      "offset": 177441
+    }
+  ],
+  "sha256": "d0dce5aba03ba33724938f96effc26cd00428ca20b6a1db6eb699135d9cb7991",
+  "bytes": 2330086,
+  "runtimeStatus": "requires user browser playtest; static syntax and scope-contract checks pass"
+}

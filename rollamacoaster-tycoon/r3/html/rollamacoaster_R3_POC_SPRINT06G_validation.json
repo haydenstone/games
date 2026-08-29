@@ -1,0 +1,16 @@
+{
+  "release": "R3-POC-SPRINT06G",
+  "collectorVersion": "R3-COLLECTOR-4D",
+  "generatedAt": "2026-08-28T23:40:32",
+  "validation": {
+    "allExecutableScriptsParse": "PASS",
+    "scriptsChecked": 19,
+    "failures": [],
+    "parkManagerRowsRemoved": true,
+    "managerDeviceRowNoLongerInjected": true,
+    "frontierOsHudPreserved": true,
+    "fenceCaptureOwnerPresent": true,
+    "fenceLandAuditPresent": true,
+    "trustedFeedbackExportPreserved": true
+  }
+}

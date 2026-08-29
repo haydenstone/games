@@ -1,0 +1,25 @@
+{
+  "release": "R3-POC-SPRINT02B",
+  "generatedAt": "2026-08-28T22:15:10",
+  "sha256": "d405948f4bb4522dcc08e50f06dbcf1a2748dea260ccdaa3c100fab221840a2b",
+  "bytes": 2332941,
+  "trigger": "SAVE failed because worldInteractionTraceR3 was scoped inside a pointerdown callback while the module bridge referenced it globally.",
+  "fixes": [
+    "Moved worldInteractionTraceR3 and traceWorldInteractionR3 to authoritative module scope before the path/build pointerdown handler.",
+    "Guarded bridge.interactions() so an optional trace collector cannot throw through the bridge.",
+    "Added collectSafe/collectSafeAsync wrappers around optional crawl and diagnostic probes.",
+    "Made coreDump tolerate crawl, snapshot, persistence, and optional-diagnostic failures.",
+    "Made one-click SAVE download an emergency JSON if the normal dump pipeline itself fails.",
+    "Added collectorFailures and a collector-probes-completed assessment row so collector defects are self-identifying."
+  ],
+  "validation": {
+    "executableScriptsChecked": 3,
+    "javascriptSyntax": "PASS",
+    "singleWorldInteractionTraceDeclaration": "PASS",
+    "traceDeclaredBeforeHandler": "PASS",
+    "guardedInteractionGetter": "PASS",
+    "emergencyDumpFallback": "PASS",
+    "collectorFailureSelfAssessment": "PASS"
+  },
+  "expectedUserFlow": "Play -> R3 -> type comment -> SAVE. Normal result is rollamacoaster_R3_feedback_*.json. If the collector itself breaks, result is rollamacoaster_R3_EMERGENCY_*.json; upload either one."
+}

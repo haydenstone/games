@@ -1,0 +1,21 @@
+{
+  "release": "R3-POC-SPRINT06K",
+  "collectorVersion": "R3-COLLECTOR-5A",
+  "generatedAt": "2026-08-29T00:16:56",
+  "validation": {
+    "allExecutableScriptsParse": "PASS",
+    "scriptsChecked": 19,
+    "failed": [],
+    "gpsScheduleDetailsPresent": true,
+    "gpsScheduleDefaultClosed": true,
+    "pointerMoveSampling": true,
+    "keyboardTimeline": true,
+    "focusTimeline": true,
+    "inputTimeline": true,
+    "elementTransitions": true,
+    "eventTimelineExported": true,
+    "emergencyTracePreserved": true,
+    "boundedTelemetry": true,
+    "feedbackWorkflowPreserved": true
+  }
+}
