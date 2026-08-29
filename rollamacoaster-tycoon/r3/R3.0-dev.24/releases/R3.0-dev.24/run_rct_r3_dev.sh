@@ -5,6 +5,9 @@ cd "$ROOT"
 
 PORT="${1:-${PORT:-8080}}"
 
+RCT_LOA_BASE="${RCT_LOA_BASE:-http://127.0.0.1:8090}"
+export RCT_LOA_BASE
+
 if ! command -v python3 >/dev/null 2>&1; then
   echo "ERROR: python3 is required." >&2
   exit 1
@@ -22,7 +25,12 @@ fi
 echo "R3 project: $ROOT"
 echo "Codex:      $CODEX"
 echo "Dev port:   $PORT"
+echo "Alexandria: $RCT_LOA_BASE"
 echo "Cycle:      RELEASE → TEST → COMMENTS → CORE DUMP → REVIEW → PLAN → BUILD → RELEASE"
 
 python3 rct_r3_release.py --codex "$CODEX"
+
+# R3_LOA_DEV25_LAUNCH_HOOK
+# Re-apply the bounded browser adapter after release generation/staging.
+python3 tools/r3_loa_dev25/r3_loa_inject_html.py rollamacoasterTycoon_R3_rebuilt.html
 exec python3 rct_r3_dev_server.py --port "$PORT"

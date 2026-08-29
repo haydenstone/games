@@ -1,0 +1,11 @@
+{
+  "release": {
+    "id": "R3.0-dev.3",
+    "schema": 1,
+    "builtBy": "build_rct_r3.py",
+    "artifact": "rollamacoasterTycoon_R3_rebuilt.html"
+  },
+  "sessionId": "R3.0-dev.3-2026-08-29T04-30-39-457Z-9hl9a",
+  "startedAt": "2026-08-29T04:30:39.273Z",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 OPR/135.0.0.0"
+}
