@@ -1,0 +1,55 @@
+{
+  "release": "R3-POC-SPRINT06N",
+  "collectorVersion": "R3-COLLECTOR-5D",
+  "sourceRevision": "R233M",
+  "generatedAt": "2026-08-29T01:46:56",
+  "file": "rollamacoasterTycoon_R3_POC_SPRINT06N_staff_embodiment_entertainer_photos.html",
+  "bytes": 2440700,
+  "scriptPayloadsChecked": 3,
+  "checks": {
+    "release_identity": true,
+    "guest_derived_staff_builder": true,
+    "uniform_theme_and_custom_colors": true,
+    "multiple_entertainer_costumes": true,
+    "photo_media_database_first": true,
+    "photo_is_actual_scene_render": true,
+    "photo_guest_inventory_inspector": true,
+    "photo_transaction_economy": true,
+    "worker_phone_safe_open": true,
+    "staff_save_restore": true,
+    "interaction_trace_preserved": true,
+    "all_executable_scripts_parse": true
+  },
+  "scripts": [
+    {
+      "index": 0,
+      "id": "rctFlatLabEarlyR3",
+      "type": "classic",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 1,
+      "id": null,
+      "type": "module",
+      "ok": true,
+      "stderr": ""
+    },
+    {
+      "index": 18,
+      "id": "rctConversionLabR3",
+      "type": "classic",
+      "ok": true,
+      "stderr": ""
+    }
+  ],
+  "feedbackImplemented": [
+    "entertainer costume switching with multiple types",
+    "guest-derived worker models",
+    "customizable apparel and park-themed uniform colors",
+    "autonomous/manual entertainer photo sales",
+    "inspectable rendered photos stored in IndexedDB and referenced from guest inventory",
+    "photo sale transaction history in guest/staff/economy records",
+    "worker phone safe-open routing for entertainer and all roles"
+  ]
+}

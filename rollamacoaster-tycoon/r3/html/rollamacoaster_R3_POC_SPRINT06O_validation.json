@@ -1,0 +1,20 @@
+{
+  "release": "R3-POC-SPRINT06O",
+  "collector": "R3-COLLECTOR-5E",
+  "generated_at": "2026-08-29T02:02:06",
+  "validation": {
+    "all_executable_scripts_parse": true,
+    "script_payloads_checked": 19,
+    "failed_scripts": [],
+    "r233b_public_worker_bridge": true,
+    "entertainer_loop_uses_public_worker_bridge": true,
+    "stable_worker_editor": true,
+    "inline_color_swatches": true,
+    "theme_apparel_chips": true,
+    "runtime_error_dedupe": true,
+    "worker_phone_uses_public_bridge": true,
+    "interaction_collector_preserved": true,
+    "header_collector_5e": true,
+    "revision_note_present": true
+  }
+}
