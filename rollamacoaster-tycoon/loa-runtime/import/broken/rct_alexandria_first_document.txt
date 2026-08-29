@@ -1,0 +1,12 @@
+rollamacoasterTycoon Revision 3 Alexandria Test Document
+
+The Forest Frontiers research archive records the history of roller coaster
+design, wooden coaster engineering, amusement park transportation systems,
+Ferris wheels, queue design, ride safety, park economics, guest simulation,
+and attraction management.
+
+This document exists to prove that the Library of Alexandria ingestion
+pipeline can carry real knowledge from disk into the park's searchable
+knowledge system.
+
+The phrase NEURAL COASTER ARCHIVE is intentionally unique for diagnostics.
