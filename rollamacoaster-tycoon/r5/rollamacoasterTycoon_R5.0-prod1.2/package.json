@@ -1,0 +1,10 @@
+{
+  "name": "rollamacoaster-tycoon-r5-prod1-2",
+  "version": "5.0.1-2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node tests/smoke.mjs"
+  }
+}

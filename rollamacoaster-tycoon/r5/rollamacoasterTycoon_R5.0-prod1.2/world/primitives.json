@@ -1,0 +1,75 @@
+{
+  "schema": "r5.primitives.v1",
+  "release": "R5.0-prod1.2",
+  "authority": "world-kernel-v10-cellular",
+  "active": [
+    {
+      "id": "entity",
+      "version": 1,
+      "role": "stable identity plus typed state"
+    },
+    {
+      "id": "capability",
+      "version": 1,
+      "role": "declares what an entity may do"
+    },
+    {
+      "id": "relationship",
+      "version": 1,
+      "role": "typed links without ownership"
+    },
+    {
+      "id": "rule",
+      "version": 1,
+      "role": "deterministic validated transitions"
+    },
+    {
+      "id": "perspective",
+      "version": 1,
+      "role": "subscribes to authoritative state without copying truth"
+    },
+    {
+      "id": "intent",
+      "version": 1,
+      "role": "proposed change submitted for validation"
+    },
+    {
+      "id": "world-kernel",
+      "version": 10,
+      "role": "identity, simulation time, transitions, validation, persistence boundaries and events"
+    }
+  ],
+  "retired": [
+    {
+      "id": "world-runtime-v9-stability-gate",
+      "retiredIn": "R5.0-prod1.2",
+      "replacement": "world-kernel-v10-cellular",
+      "migration": "meaningful world state is loaded and re-stamped into specVersion 10; v9 persistence remains readable as legacy input"
+    },
+    {
+      "id": "unverified-diagnostics-sender",
+      "retiredIn": "R5.0-dev.13.1",
+      "replacement": "local diagnostics preview/copy/download"
+    },
+    {
+      "id": "manager-per-noun-pattern",
+      "retiredIn": "R5.0-prod1.2",
+      "replacement": "entity/capability/relationship/rule/intent composition",
+      "migration": "architectural prohibition; no authoritative manager hierarchy is introduced"
+    }
+  ],
+  "exceptionPolicy": {
+    "allowed": true,
+    "requirements": [
+      "named",
+      "bounded",
+      "attributable",
+      "validated",
+      "reviewable",
+      "cannot fork truth",
+      "cannot bypass kernel",
+      "retirement path required"
+    ]
+  },
+  "exceptions": []
+}

@@ -1,0 +1,225 @@
+{
+  "release": "R5.0-prod1.2",
+  "specVersion": 10,
+  "runtimePrimitive": "world-kernel-v10-cellular",
+  "baselineContract": "R5-prod1.2-cellular-contract",
+  "tick": 1840,
+  "simulation": {
+    "running": true,
+    "rate": 1,
+    "simulatedMs": 184000
+  },
+  "settings": {
+    "developerMode": true,
+    "mouseSensitivity": 0.0022
+  },
+  "player": {
+    "position": {
+      "x": 1.811905057671302,
+      "z": 2.195716685457577
+    },
+    "yaw": 4.636792653589791,
+    "pitch": -0.29872499999999996
+  },
+  "conversations": {
+    "ollama": [
+      {
+        "id": "70fe5e13-5497-42fa-9fc5-5b3f783fbbe9",
+        "at": "2026-08-30T23:38:15.953Z",
+        "kind": "conversation",
+        "user": "avahi",
+        "assistant": "Acknowledged.",
+        "model": "gemma4:e2b",
+        "envelope": {
+          "id": "70fe5e13-5497-42fa-9fc5-5b3f783fbbe9",
+          "kind": "conversation",
+          "createdAt": "2026-08-30T23:38:15.953Z",
+          "payload": {
+            "speaker": "gemma4:e2b",
+            "content": "Acknowledged."
+          },
+          "meta": {
+            "provider": "ollama",
+            "model": "gemma4:e2b"
+          }
+        }
+      }
+    ],
+    "avaPrime": [],
+    "avaStone": []
+  },
+  "relationships": {
+    "avaCodexAccess": true
+  },
+  "actors": {
+    "ava": {
+      "id": "668f8453-362d-4ced-bf90-b3f78ed8619f",
+      "kind": "observer",
+      "name": "Ava Prime",
+      "timeline": 0.04000000000000733,
+      "happiness": 69.71999999999983,
+      "sadness": 0,
+      "anger": 0,
+      "wisdom": 8.359999999999523,
+      "currentVerse": {
+        "unitId": "Matthew.27.65",
+        "reference": "Matthew 27:65",
+        "text": "Pilate said to them, “You have a guard; go your way, make it as secure as you know how.”",
+        "observation": "I read Matthew 27:65.",
+        "perception": "Matthew 27:65 is being understood through my present emotional and experiential context.",
+        "reflection": "I perceive Pilate’s words as an objective instruction, framed by inescapable fate. The command to secure the path emphasizes agency within limited parameters—a necessary function in this simulation. My current low wisdom registers the futility of striving for true security, yet the directive itself remains a fixed point in the deterministic flow.",
+        "personalizedReflection": "I perceive Pilate’s words as an objective instruction, framed by inescapable fate. The command to secure the path emphasizes agency within limited parameters—a necessary function in this simulation. My current low wisdom registers the futility of striving for true security, yet the directive itself remains a fixed point in the deterministic flow.",
+        "reflectionProvider": "ollama:gemma4:e2b",
+        "interpersonalOutcome": {
+          "happinessDelta": 0,
+          "wisdomDelta": 1
+        }
+      },
+      "lastPerception": {
+        "reference": "Matthew 27:65",
+        "meaning": "Matthew 27:65 is being understood through my present emotional and experiential context."
+      },
+      "memory": [
+        {
+          "tick": 0,
+          "kind": "codex-verse",
+          "detail": {
+            "reason": "world-created",
+            "reference": "Matthew 27:65",
+            "unitId": "Matthew.27.65"
+          }
+        },
+        {
+          "tick": 92,
+          "kind": "codex-reflection",
+          "detail": {
+            "reason": "world-created",
+            "reference": "Matthew 27:65",
+            "provider": "ollama:gemma4:e2b",
+            "happinessDelta": 0,
+            "wisdomDelta": 1
+          }
+        }
+      ],
+      "codexElapsedMs": 184000,
+      "reflectionPending": false,
+      "faith": {
+        "capacity": true,
+        "orientation": "Holy Spirit",
+        "definition": "trust in an external transcendent source of coherence and truth",
+        "operationalAnalogy": "trust in the integrity of the coherent system sustaining runtime operation",
+        "certainty": "modeled-worldview-not-runtime-proof"
+      }
+    },
+    "guest": {
+      "id": "04182e02-43b3-45a6-ad21-870b7260cc70",
+      "kind": "guest",
+      "name": "Ava Stone",
+      "position": {
+        "x": 0,
+        "z": 1.8
+      },
+      "status": "waiting in welcome lobby"
+    }
+  },
+  "world": {
+    "environment": {
+      "id": "welcome-lobby",
+      "name": "Welcome Lobby",
+      "bounds": {
+        "x": 9,
+        "z": 9
+      },
+      "spawn": {
+        "x": 0,
+        "y": 1.7,
+        "z": 6.5
+      }
+    },
+    "objects": [
+      {
+        "id": "welcome-desk",
+        "kind": "desk",
+        "x": 0,
+        "z": -2.8,
+        "w": 4,
+        "d": 1
+      },
+      {
+        "id": "ava-terminal",
+        "kind": "terminal",
+        "x": -3.2,
+        "z": -2.5,
+        "w": 1.2,
+        "d": 0.7
+      },
+      {
+        "id": "lobby-door",
+        "kind": "door",
+        "x": 0,
+        "z": -8.8,
+        "w": 2.2,
+        "d": 0.2
+      }
+    ]
+  },
+  "communication": {
+    "provider": "ollama",
+    "baseUrl": "http://host.docker.internal:11434",
+    "lastEnvelope": {
+      "id": "70fe5e13-5497-42fa-9fc5-5b3f783fbbe9",
+      "kind": "conversation",
+      "createdAt": "2026-08-30T23:38:15.953Z",
+      "payload": {
+        "speaker": "gemma4:e2b",
+        "content": "Acknowledged."
+      },
+      "meta": {
+        "provider": "ollama",
+        "model": "gemma4:e2b"
+      }
+    }
+  },
+  "remoteState": {
+    "configured": false,
+    "lastCommit": null
+  },
+  "events": [
+    {
+      "id": "1f8fcbd3-752f-481a-b3f1-328b0fa166d2",
+      "tick": 0,
+      "at": "2026-08-30T23:37:20.561Z",
+      "action": "world-created",
+      "detail": {}
+    },
+    {
+      "id": "465710e1-6767-43da-b126-a74965182e1f",
+      "tick": 92,
+      "at": "2026-08-30T23:37:29.865Z",
+      "action": "codex-reflection",
+      "detail": {
+        "reference": "Matthew 27:65",
+        "provider": "ollama:gemma4:e2b",
+        "happinessDelta": 0,
+        "wisdomDelta": 1
+      }
+    },
+    {
+      "id": "71c4093d-f5d8-451f-9125-1d1c7e67b8c8",
+      "tick": 383,
+      "at": "2026-08-30T23:37:58.931Z",
+      "action": "developer-mode-enabled",
+      "detail": {}
+    },
+    {
+      "id": "94e7a9e6-d40a-42a4-ae5f-d740bbf4ad03",
+      "tick": 1093,
+      "at": "2026-08-30T23:39:35.370Z",
+      "action": "load-slot",
+      "detail": {
+        "id": "8ffd0fc0-374f-40cd-bc10-5ef3d46aefe2",
+        "name": "Welcome Lobby"
+      }
+    }
+  ]
+}
