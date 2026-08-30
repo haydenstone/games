@@ -1,0 +1,18 @@
+# R5.0-dev.1 playtest checklist
+- [ ] Container starts with only port 8765 exposed.
+- [ ] Miniature world renders and remains responsive.
+- [ ] Guest visibly moves around the path/ride area.
+- [ ] Ride visibly animates while powered.
+- [ ] Toggle power: ride stops from the generic dependency.
+- [ ] Restore power: ride resumes.
+- [ ] Toggle Wi-Fi off: guest mood falls over time.
+- [ ] Restore Wi-Fi: no crash or corrupted state.
+- [ ] Save, stop container, restart, and confirm persisted state reloads.
+- [ ] Reset returns to the initial world.
+- [ ] Spam toggles and controls; report inconsistent state or crashes.
+- [ ] Watch CPU/responsiveness for a world this small.
+- [ ] Report any behavior that feels hard-coded or coupled.
+- [ ] Propose an intent change in plain English and see whether it can be implemented without unrelated edits.
+- [ ] Ask: could the UI be replaced without changing simulation truth?
+- [ ] Ask: could this behavior later be replaced/versioned without excavating the kernel?
+- [ ] Fun check: does the tiny world already feel alive enough to invite experimentation?

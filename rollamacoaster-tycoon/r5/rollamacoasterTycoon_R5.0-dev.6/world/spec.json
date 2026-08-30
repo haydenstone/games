@@ -1,0 +1,17 @@
+{
+  "specVersion": 2,
+  "runtimePrimitive": "world-runtime-v2",
+  "release": "R5.0-dev.6",
+  "entities": {
+    "ava": {"kind":"observer","name":"Ava","memoryLimit":100,"initialHappiness":55,"initialWisdom":0},
+    "codex": {"kind":"externalKnowledge","mount":"/codex/codex.json"},
+    "clock": {"kind":"simulationClock","stepMs":100,"timelineDelta":0.006}
+  },
+  "relationships": [
+    {"from":"ava","type":"can-perceive","to":"codex"}
+  ],
+  "rules": [
+    {"when":"clock.running && ava can-perceive codex","effect":"ava perceives iteration verse; wisdom +0.12; happiness +0.08"},
+    {"when":"clock.running && !(ava can-perceive codex)","effect":"perception absent; happiness -0.06"}
+  ]
+}

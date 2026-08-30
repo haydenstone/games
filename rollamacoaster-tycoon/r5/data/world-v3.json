@@ -1,0 +1,45 @@
+{
+  "release": "R5.0-dev.7",
+  "specVersion": 3,
+  "runtimePrimitive": "world-runtime-v3-simclock",
+  "tick": 230,
+  "simulation": {
+    "running": true,
+    "rate": 1
+  },
+  "relationships": {
+    "avaCodexAccess": true
+  },
+  "entity": {
+    "id": "ava",
+    "name": "Ava",
+    "kind": "observer",
+    "timeline": 0.3800000000000009,
+    "happiness": 73.39999999999961,
+    "wisdom": 27.60000000000005,
+    "iterationReflection": {
+      "unitId": "Nehemiah.7.35",
+      "reference": "Nehemiah 7:35",
+      "text": "the sons of Harim, three hundred and twenty;",
+      "wisdom": "Ava reflects on Nehemiah 7:35; this verse becomes the wisdom she is carrying through this iteration."
+    },
+    "lastPerception": {
+      "unitId": "Nehemiah.7.35",
+      "reference": "Nehemiah 7:35",
+      "text": "the sons of Harim, three hundred and twenty;",
+      "wisdom": "Ava reflects on Nehemiah 7:35; this verse becomes the wisdom she is carrying through this iteration."
+    },
+    "memory": [
+      {
+        "tick": 0,
+        "kind": "iteration-reflection",
+        "detail": {
+          "reason": "world-created",
+          "reference": "Nehemiah 7:35",
+          "unitId": "Nehemiah.7.35"
+        }
+      }
+    ]
+  },
+  "events": []
+}

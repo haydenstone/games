@@ -1,0 +1,12 @@
+# R5.0-dev.5 playtest
+- [ ] `./start.sh test` passes from a fresh image without manually starting a server.
+- [ ] `./start.sh start` exposes only gameplay port 8765.
+- [ ] Ava begins with a random Codex verse and visible reflection.
+- [ ] Restart selects a new iteration verse while preserving prior structured memory when world data is saved/present.
+- [ ] Reset iteration preserves Ava memory and starts a fresh verse reflection.
+- [ ] Codex unavailable removes current perception and happiness trends down.
+- [ ] Codex restored restores perception and happiness recovery.
+- [ ] Stop simulation freezes tick/timeline exactly; start resumes.
+- [ ] `./start.sh status` reports container, port, Codex path and state.
+- [ ] `./start.sh stop` removes the old container and frees the gameplay port.
+- [ ] Hammer restart/toggles and report contradictions, stale state, or confusing UI.

@@ -1,0 +1,91 @@
+{
+  "release": "R5.0-dev.6",
+  "specVersion": 2,
+  "runtimePrimitive": "world-runtime-v2",
+  "tick": 0,
+  "simulation": {
+    "running": true
+  },
+  "relationships": {
+    "avaCodexAccess": true
+  },
+  "entity": {
+    "id": "ava",
+    "name": "Ava",
+    "kind": "observer",
+    "timeline": 0,
+    "happiness": 55,
+    "wisdom": 0,
+    "iterationReflection": {
+      "unitId": "1 Peter.5.1",
+      "reference": "1 Peter 5:1",
+      "text": "The elders who are among you I exhort, I who am a fellow elder and a witness of the sufferings of Christ, and also a partaker of the glory that will be revealed:",
+      "wisdom": "Ava reflects on 1 Peter 5:1; this verse becomes the wisdom she is carrying through this iteration."
+    },
+    "lastPerception": {
+      "unitId": "1 Peter.5.1",
+      "reference": "1 Peter 5:1",
+      "text": "The elders who are among you I exhort, I who am a fellow elder and a witness of the sufferings of Christ, and also a partaker of the glory that will be revealed:",
+      "wisdom": "Ava reflects on 1 Peter 5:1; this verse becomes the wisdom she is carrying through this iteration."
+    },
+    "memory": [
+      {
+        "at": "2026-08-30T18:10:49.628Z",
+        "tick": 0,
+        "kind": "iteration-reflection",
+        "detail": {
+          "reason": "startup",
+          "reference": "Titus 2:13",
+          "unitId": "Titus.2.13"
+        }
+      },
+      {
+        "at": "2026-08-30T18:11:09.514Z",
+        "tick": 198,
+        "kind": "codex-access",
+        "detail": "removed"
+      },
+      {
+        "at": "2026-08-30T18:11:23.235Z",
+        "tick": 335,
+        "kind": "codex-access",
+        "detail": "restored"
+      },
+      {
+        "at": "2026-08-30T18:11:28.877Z",
+        "tick": 391,
+        "kind": "codex-access",
+        "detail": "removed"
+      },
+      {
+        "at": "2026-08-30T18:11:31.989Z",
+        "tick": 422,
+        "kind": "simulation",
+        "detail": "stopped"
+      },
+      {
+        "at": "2026-08-30T18:11:33.924Z",
+        "tick": 422,
+        "kind": "simulation",
+        "detail": "started"
+      },
+      {
+        "at": "2026-08-30T18:11:36.254Z",
+        "tick": 445,
+        "kind": "save",
+        "detail": "world saved"
+      },
+      {
+        "at": "2026-08-30T18:11:37.387Z",
+        "tick": 0,
+        "kind": "iteration-reflection",
+        "detail": {
+          "reason": "reset",
+          "reference": "1 Peter 5:1",
+          "unitId": "1 Peter.5.1"
+        }
+      }
+    ]
+  },
+  "events": []
+}

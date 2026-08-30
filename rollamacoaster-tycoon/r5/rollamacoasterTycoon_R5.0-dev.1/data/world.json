@@ -1,0 +1,25 @@
+{
+  "version": "R5.0-dev.1",
+  "tick": 173,
+  "power": true,
+  "wifi": true,
+  "guest": {
+    "x": -0.8819949372467029,
+    "z": -2.867417815852999,
+    "mood": 80,
+    "goal": "ride"
+  },
+  "ride": {
+    "x": 0,
+    "z": 0,
+    "running": true,
+    "angle": 242.20000000000067,
+    "queue": 0
+  },
+  "events": [
+    {
+      "tick": 0,
+      "action": "reset"
+    }
+  ]
+}

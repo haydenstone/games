@@ -1,0 +1,59 @@
+import http from 'node:http';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+
+const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const PORT=Number(process.env.PORT||8765), HOST=process.env.HOST||'0.0.0.0';
+const DATA=process.env.DATA_DIR||path.join(ROOT,'data'), CODEX_PATH=process.env.CODEX_PATH||'/codex/codex.json';
+const SPEC=JSON.parse(fs.readFileSync(path.join(ROOT,'world/spec.json'),'utf8'));
+fs.mkdirSync(DATA,{recursive:true});
+if(!fs.existsSync(CODEX_PATH)){console.error(`📕 R5 startup blocked: Codex not found at ${CODEX_PATH}`);process.exit(2)}
+let codex;try{codex=JSON.parse(fs.readFileSync(CODEX_PATH,'utf8'))}catch(e){console.error(`📕 R5 startup blocked: invalid Codex JSON: ${e.message}`);process.exit(2)}
+const verses=[];
+for(const [book,chapters] of Object.entries(codex)){
+  if(book.startsWith('Info')) continue;
+  if(!chapters||typeof chapters!=='object'||Array.isArray(chapters)) continue;
+  for(const [chapter,units] of Object.entries(chapters)){
+    if(!units||typeof units!=='object'||Array.isArray(units)) continue;
+    for(const [verse,text] of Object.entries(units)) if(typeof text==='string'&&text.trim()) verses.push({id:`${book}.${chapter}.${verse}`,reference:`${book} ${chapter}:${verse}`,text});
+  }
+}
+if(!verses.length){console.error('📕 R5 startup blocked: Codex contains no addressable verse units');process.exit(2)}
+const randomVerse=()=>verses[Math.floor(Math.random()*verses.length)];
+const reflection=v=>({unitId:v.id,reference:v.reference,text:v.text,wisdom:`Ava reflects on ${v.reference}; this verse becomes the wisdom she is carrying through this iteration.`});
+const initial=()=>({release:SPEC.release,specVersion:SPEC.specVersion,runtimePrimitive:SPEC.runtimePrimitive,tick:0,simulation:{running:true},relationships:{avaCodexAccess:true},entity:{id:'ava',name:'Ava',kind:'observer',timeline:0,happiness:55,wisdom:0,iterationReflection:null,lastPerception:null,memory:[]},events:[]});
+const saveFile=path.join(DATA,'world-v2.json');
+let world=initial();
+try{const old=JSON.parse(fs.readFileSync(saveFile,'utf8'));if(old?.specVersion===SPEC.specVersion)world=old}catch{}
+world.entity.memory??=[];
+function remember(kind,detail){world.entity.memory.push({at:new Date().toISOString(),tick:world.tick,kind,detail});if(world.entity.memory.length>100)world.entity.memory.splice(0,world.entity.memory.length-100)}
+function beginIteration(reason){const v=randomVerse();world.entity.iterationReflection=reflection(v);world.entity.lastPerception=world.relationships.avaCodexAccess?reflection(v):null;remember('iteration-reflection',{reason,reference:v.reference,unitId:v.id})}
+beginIteration('startup');
+function perceive(){if(!world.relationships.avaCodexAccess){world.entity.lastPerception=null;return}world.entity.lastPerception=world.entity.iterationReflection;world.entity.wisdom=Math.min(100,world.entity.wisdom+.12)}
+function step(){if(!world.simulation.running)return;world.tick++;world.entity.timeline=(world.entity.timeline+.006)%1;if(world.relationships.avaCodexAccess){perceive();world.entity.happiness=Math.min(100,world.entity.happiness+.08)}else{world.entity.lastPerception=null;world.entity.happiness=Math.max(0,world.entity.happiness-.06)}}
+setInterval(step,100);
+const publicDir=path.join(ROOT,'src/public');
+function json(res,status,obj){res.writeHead(status,{'content-type':'application/json; charset=utf-8','cache-control':'no-store'});res.end(JSON.stringify(obj))}
+function asset(res,file,type){try{const b=fs.readFileSync(path.join(publicDir,file));res.writeHead(200,{'content-type':type,'cache-control':'no-store'});res.end(b)}catch{res.writeHead(404);res.end('not found')}}
+const server=http.createServer(async(req,res)=>{
+  const u=new URL(req.url,'http://r5.local');
+  if(u.pathname==='/health')return json(res,200,{ok:true,release:SPEC.release,specVersion:SPEC.specVersion,runtimePrimitive:SPEC.runtimePrimitive,codexUnits:verses.length});
+  if(u.pathname==='/api/world')return json(res,200,world);
+  if(u.pathname==='/api/spec')return json(res,200,SPEC);
+  if(u.pathname==='/api/codex/status')return json(res,200,{mounted:true,units:verses.length,path:CODEX_PATH});
+  if(u.pathname==='/api/command'&&req.method==='POST'){
+    let b='';for await(const ch of req)b+=ch;let action='';try{({action}=JSON.parse(b||'{}'))}catch{return json(res,400,{ok:false,error:'invalid command json'})}
+    if(action==='simulation'){world.simulation.running=!world.simulation.running;remember('simulation',world.simulation.running?'started':'stopped')}
+    else if(action==='codex'){world.relationships.avaCodexAccess=!world.relationships.avaCodexAccess;if(world.relationships.avaCodexAccess)perceive();else world.entity.lastPerception=null;remember('codex-access',world.relationships.avaCodexAccess?'restored':'removed')}
+    else if(action==='save'){remember('save','world saved');fs.writeFileSync(saveFile,JSON.stringify(world,null,2))}
+    else if(action==='reset'){const memory=world.entity.memory;world=initial();world.entity.memory=memory;beginIteration('reset');fs.writeFileSync(saveFile,JSON.stringify(world,null,2))}
+    else return json(res,400,{ok:false,error:'unknown action'});
+    world.events.push({tick:world.tick,action});return json(res,200,{ok:true});
+  }
+  if(u.pathname==='/'||u.pathname==='/index.html')return asset(res,'index.html','text/html; charset=utf-8');
+  if(u.pathname==='/app.css')return asset(res,'app.css','text/css; charset=utf-8');
+  if(u.pathname==='/app.js')return asset(res,'app.js','text/javascript; charset=utf-8');
+  res.writeHead(404);res.end('not found');
+});
+server.listen(PORT,HOST,()=>console.log(`🎢 ${SPEC.release} • ${SPEC.runtimePrimitive} • 🌐 ${PORT} • 📖 ${verses.length} verse units • 👁 Ava`));
