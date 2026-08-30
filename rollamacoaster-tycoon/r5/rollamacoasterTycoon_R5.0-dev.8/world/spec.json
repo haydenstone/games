@@ -1,0 +1,25 @@
+{
+  "specVersion": 4,
+  "runtimePrimitive": "world-runtime-v4-actors",
+  "release": "R5.0-dev.8",
+  "baselineContract": "R5.0-dev.7",
+  "entities": {
+    "ava": {"kind":"actor","name":"Ava","memoryLimit":100,"initialHappiness":55,"initialWisdom":0},
+    "guest001": {"kind":"actor","name":"Guest 001","initialHappiness":62,"initialMoney":50,"goal":"park-destination-01"},
+    "codex": {"kind":"externalKnowledge","mount":"/codex/codex.json"},
+    "clock": {"kind":"simulationClock","stepMs":100,"timelineDelta":0.006,"persistent":true},
+    "entrance": {"kind":"place","position":0},
+    "destination01": {"kind":"place","position":1}
+  },
+  "relationships": [
+    {"from":"ava","type":"can-perceive","to":"codex"},
+    {"from":"guest001","type":"travels","to":"destination01","via":"path01"}
+  ],
+  "rules": [
+    {"when":"simulation tick","effect":"all simulated actors advance from the authoritative simulation clock"},
+    {"when":"simulation tick && ava can-perceive codex","effect":"Ava perceives iteration verse; wisdom and happiness respond"},
+    {"when":"simulation stopped","effect":"no simulated actor experience changes"},
+    {"when":"guest001 has destination","effect":"guest traverses path toward destination without a GuestManager"},
+    {"when":"process starts","effect":"restore world state without changing simulation running state"}
+  ]
+}

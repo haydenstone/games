@@ -1,0 +1,212 @@
+{
+  "release": "R5.0-dev.8",
+  "specVersion": 4,
+  "runtimePrimitive": "world-runtime-v4-actors",
+  "baselineContract": "R5.0-dev.7",
+  "tick": 1800,
+  "simulation": {
+    "running": true,
+    "rate": 1
+  },
+  "relationships": {
+    "avaCodexAccess": true
+  },
+  "actors": {
+    "ava": {
+      "id": "ava",
+      "name": "Ava",
+      "kind": "actor",
+      "timeline": 0.8000000000000073,
+      "happiness": 100,
+      "wisdom": 100,
+      "iterationReflection": {
+        "unitId": "Ezekiel.10.4",
+        "reference": "Ezekiel 10:4",
+        "text": "Then the glory of the Lord went up from the cherub, and paused over the threshold of the temple; and the house was filled with the cloud, and the court was full of the brightness of the Lord’s glory.",
+        "wisdom": "Ava reflects on Ezekiel 10:4; this verse becomes the wisdom she is carrying through this iteration."
+      },
+      "lastPerception": {
+        "unitId": "Ezekiel.10.4",
+        "reference": "Ezekiel 10:4",
+        "text": "Then the glory of the Lord went up from the cherub, and paused over the threshold of the temple; and the house was filled with the cloud, and the court was full of the brightness of the Lord’s glory.",
+        "wisdom": "Ava reflects on Ezekiel 10:4; this verse becomes the wisdom she is carrying through this iteration."
+      },
+      "memory": [
+        {
+          "tick": 0,
+          "kind": "iteration-reflection",
+          "detail": {
+            "reason": "world-created",
+            "reference": "Psalm 103:21",
+            "unitId": "Psalm.103.21"
+          }
+        },
+        {
+          "tick": 1219,
+          "kind": "codex-access",
+          "detail": "removed"
+        },
+        {
+          "tick": 1274,
+          "kind": "codex-access",
+          "detail": "restored"
+        },
+        {
+          "tick": 0,
+          "kind": "iteration-reflection",
+          "detail": {
+            "reason": "new-iteration",
+            "reference": "Judges 18:31",
+            "unitId": "Judges.18.31"
+          }
+        },
+        {
+          "tick": 33,
+          "kind": "codex-access",
+          "detail": "removed"
+        },
+        {
+          "tick": 54,
+          "kind": "simulation",
+          "detail": "stopped"
+        },
+        {
+          "tick": 54,
+          "kind": "simulation",
+          "detail": "started"
+        },
+        {
+          "tick": 90,
+          "kind": "codex-access",
+          "detail": "restored"
+        },
+        {
+          "tick": 147,
+          "kind": "codex-access",
+          "detail": "removed"
+        },
+        {
+          "tick": 160,
+          "kind": "codex-access",
+          "detail": "restored"
+        },
+        {
+          "tick": 195,
+          "kind": "codex-access",
+          "detail": "removed"
+        },
+        {
+          "tick": 216,
+          "kind": "codex-access",
+          "detail": "restored"
+        },
+        {
+          "tick": 0,
+          "kind": "iteration-reflection",
+          "detail": {
+            "reason": "new-iteration",
+            "reference": "Ezekiel 10:4",
+            "unitId": "Ezekiel.10.4"
+          }
+        },
+        {
+          "tick": 21,
+          "kind": "simulation",
+          "detail": "stopped"
+        },
+        {
+          "tick": 21,
+          "kind": "simulation",
+          "detail": "started"
+        },
+        {
+          "tick": 40,
+          "kind": "simulation",
+          "detail": "stopped"
+        },
+        {
+          "tick": 40,
+          "kind": "simulation",
+          "detail": "started"
+        },
+        {
+          "tick": 71,
+          "kind": "codex-access",
+          "detail": "removed"
+        },
+        {
+          "tick": 140,
+          "kind": "codex-access",
+          "detail": "restored"
+        },
+        {
+          "tick": 176,
+          "kind": "simulation",
+          "detail": "stopped"
+        },
+        {
+          "tick": 176,
+          "kind": "simulation",
+          "detail": "started"
+        }
+      ]
+    },
+    "guest001": {
+      "id": "guest001",
+      "name": "Guest 001",
+      "kind": "actor",
+      "pathProgress": 1,
+      "happiness": 62,
+      "money": 50,
+      "goal": "destination01",
+      "status": "arrived"
+    }
+  },
+  "world": {
+    "path01": {
+      "from": "entrance",
+      "to": "destination01",
+      "length": 1
+    },
+    "entrance": {
+      "label": "Park entrance"
+    },
+    "destination01": {
+      "label": "First destination"
+    }
+  },
+  "events": [
+    {
+      "tick": 0,
+      "action": "reset"
+    },
+    {
+      "tick": 21,
+      "action": "simulation"
+    },
+    {
+      "tick": 21,
+      "action": "simulation"
+    },
+    {
+      "tick": 40,
+      "action": "simulation"
+    },
+    {
+      "tick": 71,
+      "action": "codex"
+    },
+    {
+      "tick": 140,
+      "action": "codex"
+    },
+    {
+      "tick": 176,
+      "action": "simulation"
+    },
+    {
+      "tick": 176,
+      "action": "simulation"
+    }
+  ]
+}
