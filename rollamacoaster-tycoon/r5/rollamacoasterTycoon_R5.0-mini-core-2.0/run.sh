@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+IMAGE=rct-r5-mini-core-2-0; NAME=rct-r5-mini-core-2-0; LEGACY_NAMES="rct-r5-mini-core-1-1-charlie rct-r5 rct-r5-mini-core-dev-0-1b rct-r5-mini-core-dev-0-1c1 rct-r5-mini-core-dev-0-1d rct-r5-mini-core-dev-0-1e rct-r5-mini-core-dev-0-1e-alpha rct-r5-mini-core-dev-0-1e-beta rct-r5-mini-core-dev-0-1e-gamma rct-r5-mini-core-1-1-alpha-1 rct-r5-mini-core-1-1-beta"; PORT=${R5_PORT:-8765}; CODEX=${CODEX_PATH_HOST:-$HOME/Documents/codex.json}; OLLAMA=${OLLAMA_BASE_URL:-http://host.docker.internal:11434}; ROOT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd); DATA=$ROOT/data
+logo(){ printf '\n🎢 R5 mini-core 2.0  🧬 cellular kernel  🧭 2D core lab  📖 Codex  🦙 Llama\n'; }
+need(){ [ -f "$CODEX" ] || { printf '📕 Missing %s\n' "$CODEX"; exit 2; }; }
+build(){ logo; printf '🔧 Building one-world mini core...\n'; docker build -t "$IMAGE" "$ROOT"; }
+start(){ need; mkdir -p "$DATA"; logo; printf '🧬 Loading cellular primitives...\n⏱️  Restoring authoritative simulation time...\n📖 Mounting Codex read-only...\n🦙 Linking Llama cognition adapter...\n'; for n in $LEGACY_NAMES "$NAME"; do docker rm -f "$n" >/dev/null 2>&1 || true; done; build; docker run -d --name "$NAME" --add-host=host.docker.internal:host-gateway -p "$PORT:8765" -e OLLAMA_BASE_URL="$OLLAMA" -v "$DATA:/app/data" -v "$CODEX:/codex/codex.json:ro" "$IMAGE" >/dev/null; printf '🟢 World    http://127.0.0.1:%s\n📖 Codex    %s\n🦙 Llama    %s\n💾 Data     %s\n✨ Mini core ready. One world, little kernel.\n' "$PORT" "$CODEX" "$OLLAMA" "$DATA"; }
+stop(){ for n in $LEGACY_NAMES "$NAME"; do docker rm -f "$n" >/dev/null 2>&1 || true; done; printf '🛑 Mini core stopped; simulation state preserved.\n'; }
+testit(){ need; docker image inspect "$IMAGE" >/dev/null 2>&1 || build; docker run --rm --add-host=host.docker.internal:host-gateway -e CODEX_PATH=/codex/codex.json -e OLLAMA_BASE_URL="$OLLAMA" -v "$CODEX:/codex/codex.json:ro" "$IMAGE" npm test; }
+status(){ logo; if [ "$(docker inspect -f '{{.State.Running}}' "$NAME" 2>/dev/null || true)" = true ];then printf '🟢 RUNNING http://127.0.0.1:%s\n' "$PORT";docker logs --tail 3 "$NAME";else printf '⚪ STOPPED\n';fi; }
+case "${1:-start}" in start)start;;stop)stop;;restart)stop;start;;test)testit;;status)status;;build)build;;*)printf 'Usage: ./run.sh {start|stop|restart|test|status|build}\n';exit 1;;esac

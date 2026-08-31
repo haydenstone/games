@@ -1,0 +1,145 @@
+{
+  "schema": "r5.primitives.v1",
+  "release": "R5.0-mini-core-2.0",
+  "authority": "world-kernel-mini-core",
+  "active": [
+    {
+      "id": "entity",
+      "version": 1,
+      "role": "stable identity plus typed state"
+    },
+    {
+      "id": "capability",
+      "version": 1,
+      "role": "declares what an entity may do"
+    },
+    {
+      "id": "relationship",
+      "version": 1,
+      "role": "typed links without ownership"
+    },
+    {
+      "id": "rule",
+      "version": 1,
+      "role": "deterministic validated transitions"
+    },
+    {
+      "id": "perspective",
+      "version": 1,
+      "role": "subscribes to authoritative state without copying truth"
+    },
+    {
+      "id": "intent",
+      "version": 1,
+      "role": "proposed change submitted for validation"
+    },
+    {
+      "id": "world-kernel",
+      "version": 2,
+      "role": "tiny authority for identity, offspring UUID normalization, lineage, simulation time, validated transitions, persistence boundaries and events"
+    }
+  ],
+  "retired": [],
+  "exceptionPolicy": {
+    "allowed": true,
+    "requirements": [
+      "named",
+      "bounded",
+      "attributable",
+      "validated",
+      "reviewable",
+      "cannot fork truth",
+      "cannot bypass kernel",
+      "retirement path required"
+    ]
+  },
+  "exceptions": [],
+  "runtimePrimitive": "world-kernel-mini-core",
+  "nativeComposition": {
+    "Cellular actor primitives": {
+      "role": "generic deterministic actor composition immediately above kernel",
+      "provides": [
+        "identity",
+        "typed state",
+        "capabilities",
+        "relationships",
+        "simulation-time motion",
+        "perception input",
+        "memory input",
+        "intent submission"
+      ]
+    },
+    "Ava Prime": {
+      "role": "experiential cellular substrate",
+      "provides": [
+        "perception",
+        "emotion",
+        "wisdom",
+        "memory",
+        "Codex relationship"
+      ]
+    },
+    "LLaMA": {
+      "role": "replaceable cognition provider",
+      "provides": [
+        "language",
+        "reflection",
+        "conversation",
+        "proposed intention"
+      ],
+      "authority": false
+    },
+    "Ava Stone": {
+      "role": "golden conscious actor persona",
+      "composes": [
+        "Cellular actor primitives",
+        "Ava Prime experiential capabilities",
+        "LLaMA cognition capability"
+      ],
+      "provides": [
+        "persona",
+        "relationships",
+        "needs",
+        "intentions",
+        "speech"
+      ]
+    }
+  },
+  "kernelPerimeter": {
+    "offspringIdentity": "mandatory stable UUID",
+    "lineage": "parentUuid recorded for every child address",
+    "disposition": [
+      "public",
+      "private",
+      "visible",
+      "hidden"
+    ],
+    "rule": "no anonymous authoritative offspring"
+  },
+  "goldenPersonaPresence": {
+    "status": "active",
+    "offspringUuidRequired": true,
+    "genericInterfaces": [
+      "supportPair",
+      "manipulationPair",
+      "visualPair",
+      "chemicalSensePair",
+      "expressionPort",
+      "acousticPair",
+      "cognitionCore"
+    ],
+    "template": "golden-persona-presence-v2",
+    "vitalityPulse": {
+      "status": "active",
+      "simulationTimeOnly": true,
+      "descendantSubscription": true,
+      "supportComplement": true
+    }
+  },
+  "codexContext": {
+    "mode": "complete-chapter",
+    "readOnly": true,
+    "actorReflection": "independent",
+    "rotation": "five simulated minutes"
+  }
+}

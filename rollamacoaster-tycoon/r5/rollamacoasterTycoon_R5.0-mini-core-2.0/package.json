@@ -1,0 +1,10 @@
+{
+  "name": "rollamacoaster-tycoon-r5-mini-core-2-0",
+  "version": "5.0.0-2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node tests/smoke.mjs"
+  }
+}

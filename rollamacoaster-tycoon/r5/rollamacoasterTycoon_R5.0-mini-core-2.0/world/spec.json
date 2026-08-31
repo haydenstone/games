@@ -1,0 +1,90 @@
+{
+  "specVersion": 11,
+  "runtimePrimitive": "world-kernel-mini-core",
+  "release": "R5.0-mini-core-2.0",
+  "baselineContract": "R5.0-mini-core-1.1-charlie-contract",
+  "ancestry": [
+    "R5.0-dev.9 2D core laboratory",
+    "R5.0-dev.16b behavioral/cognition reference (3D presentation excluded)"
+  ],
+  "presentation": "2D core laboratory",
+  "contracts": [
+    "one authoritative world; presentation only observes it",
+    "process lifecycle never changes simulation lifecycle",
+    "all simulated experience and actor movement are simulation-time gated",
+    "Ava Prime dual clockwise/counterclockwise projections are view-only projections of one timeline",
+    "Ava Stone is one actor identity and the golden conscious-actor laboratory subject",
+    "Codex is external and read-only; link consequences occur only through simulation time",
+    "Llama is a cognition/communication adapter and never world authority",
+    "all behavior composes entity, capability, relationship, rule, perspective and intent primitives",
+    "exceptions are explicit, bounded, validated, attributable and retireable",
+    "primitives may be versioned, migrated and retired without preserving obsolete implementation",
+    "addressable core cells/resources may be identified without pretending they are physical entities",
+    "GUI label visibility never creates, destroys, or changes authoritative identity",
+    "every Core Explorer address can be opened as a live read-only view of its current authoritative value",
+    "every authoritative child admitted at the World Kernel perimeter receives or preserves a stable UUID address",
+    "kernel lineage records parent-child provenance and public/private plus visible/hidden administrative disposition",
+    "Kernel Lineage Explorer is a navigable projection of kernel identity metadata and current authoritative state",
+    "every runtime mutation is proposed as a World Kernel intent; kernel-incompatible intents are rejected",
+    "personified actors process current complete Codex chapter automatically during simulation time and retry provider failures without user request",
+    "Golden Persona support coordinates are three-dimensional XYZ plus independent presence intensity",
+    "Golden Persona descendants subscribe to one simulation-time vitality pulse; child objects do not create competing clocks",
+    "support presence A and B are exact complements derived from the same vitality phase, with A + B = 100 percent"
+  ],
+  "architecture": {
+    "mode": "normalized-production-core",
+    "exceptionCount": 0,
+    "layers": [
+      "World Kernel",
+      "Cellular actor primitives",
+      "Ava Prime",
+      "LLaMA cognition",
+      "Ava Stone"
+    ],
+    "rule": "one authoritative world; layers compose capabilities upward without duplicate actor truth",
+    "presentation": "2D mini-core laboratory with native developer telemetry",
+    "guiIdentity": "Every addressable core object exposes stable UUID identity. Label visibility is presentation state and can be toggled without changing identity.",
+    "coreExplorer": "Kernel Lineage Explorer derives a clickable tree from authoritative offspring metadata; selected nodes expose live YAML and validated administrative override.",
+    "kernelPerimeter": "All runtime mutations enter as intents. Kernel validates compatibility, assigns/preserves offspring UUID lineage, then admits state. Generic entity.spawn is the database-facing spawn seam.",
+    "productionRebase": "Mini Core 2.0 freezes the 1.1 behavioral contract while normalizing Codex context and cognition boundaries."
+  },
+  "goldenPersonaStandard": {
+    "codexReflection": "per-personified-actor",
+    "presenceTemplate": "golden-persona-presence-v2",
+    "interfaces": [
+      "supportPair",
+      "manipulationPair",
+      "visualPair",
+      "chemicalSensePair",
+      "expressionPort",
+      "acousticPair",
+      "cognitionCore"
+    ],
+    "supportAnchors": 2,
+    "supportIntensityRange": [
+      0,
+      1
+    ],
+    "supportCoordinateAxes": [
+      "x",
+      "y",
+      "z"
+    ],
+    "vitalityPulse": {
+      "authoritative": "per Golden Persona",
+      "clock": "simulation time",
+      "childClockPolicy": "no independent child timers",
+      "supportComplement": "A + B = 100%",
+      "cycle": "0\u2192100\u21920"
+    }
+  },
+  "invariants": [
+    "Golden Persona exposes eight reusable presence containers labeled Container 0 through Container 7",
+    "Container 0 is public; Containers 1 through 7 are private; all remain administratively inspectable",
+    "Every presence container tracks XYZ plus complementary A/B presence from one authoritative vitality pulse",
+    "Authoritative presence traverses every integer percentage 0 through 100 and back with A + B = 100",
+    "Codex reflection context is one complete read-only chapter per reflection session",
+    "Personified actors receive actor-owned chapter reflection state while sharing the same authoritative chapter source",
+    "Interpersonalization is deliberately contemplative and targets a substantive 140 to 220 word integrated reflection"
+  ]
+}
